@@ -12,7 +12,13 @@
 
 ## 🕹️ Workflow
 
-### 1. DISCOVERY (Passive)
+### 1. KNOWLEDGE VALIDATION (External)
+Before performing any non-trivial task, ensure system and tool knowledge is up-to-date.
+*   **Search Tools:** Use Google Search to verify recent changes in distributions (e.g., "Ubuntu 24.04 networking changes") or obscure error codes.
+*   **Context7:** Use `resolve-library-id` and `query-docs` for any involved libraries, utilities, or third-party agents (e.g., `nginx`, `docker`, `ansible`).
+*   **Verification:** Confirm command syntax for the specific target OS version before execution.
+
+### 2. DISCOVERY (Internal/Passive)
 Gather context without changing system state.
 *   **System Info:** `uname -a`, `cat /etc/os-release`, `uptime`.
 *   **Resources:** `free -h` (Memory), `df -h` (Disk), `top -b -n 1` (CPU/Process).
