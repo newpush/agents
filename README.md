@@ -21,19 +21,26 @@ The repository is organized into two primary directories that mirror each other:
 ```text
 .
 ├── agents/                       # Agent Specifications
+│   ├── coding/                   # Coding-related Agents
+│   │   ├── bolt/
+│   │   │   ├── core.md           # General Performance Agent
+│   │   │   └── nextjs-16.md      # Next.js 16 Specialized Performance Agent
+│   │   └── sentinel/
+│   │       └── core.md           # Security Agent
 │   ├── infrastructure/
 │   │   ├── linux.md              # Spec for Linux Agent
 │   │   └── cpanel.md             # Spec for cPanel Agent
-│   └── marketing/
-│       └── social-media.md       # Spec for Social Media Agent
+│   └── communication/
+│       └── postman.md            # Email Handling Agent
 │
 ├── docs/                         # Documentation
 │   ├── agents/                   # Agent-specific Docs (Mirrors agents/)
-│   │   ├── infrastructure/
-│   │   │   ├── linux/            # Docs for Linux Agent
-│   │   │   └── cpanel/           # Docs for cPanel Agent
-│   │   └── marketing/
-│   │       └── social-media/     # Docs for Social Media Agent
+│   │   ├── coding/
+│   │   │   ├── bolt/             # Docs for Bolt Agent
+│   │   │   └── sentinel/         # Docs for Sentinel Agent
+│   │   └── infrastructure/
+│   │       ├── linux/            # Docs for Linux Agent
+│   │       └── cpanel/           # Docs for cPanel Agent
 │   │
 │   └── tool-usages/              # Shared Tool Guides
 │       └── n8n-expert-persona.md # e.g., n8n integration patterns
