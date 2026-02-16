@@ -1,15 +1,14 @@
 # NewPush Support Helper - Requirements
 
 ## Overview
-The NewPush Support Helper is a WHMCS addon module designed to provide quick access to support tools for administrators.
+The NewPush Support Helper is a tool designed to provide quick access to support utilities. (Note: Initial plans for a WHMCS addon module have been deprecated).
 
 ## Functional Requirements
-1. **Configuration**: The module must allow administrators to enable/disable specific support features.
-2. **Admin Interface**: The module must have an admin page that displays a dashboard of recent support tickets.
-3. **Security**: Access to the admin interface must be restricted to authenticated administrators with the appropriate permissions.
-4. **Performance**: The dashboard should load quickly, even with many tickets.
+1. **Configuration**: The tool must allow authorized users to enable/disable specific support features.
+2. **Admin Interface**: The tool must have an interface that displays a dashboard of support utilities. (Note: Support ticket display is no longer a requirement).
+3. **Security**: Access to the interface must be restricted to authenticated users with the appropriate permissions.
+4. **Performance**: The dashboard should load quickly.
 
 ## Technical Specifications
-- Built for WHMCS 8.x
-- Uses standard WHMCS database abstraction layer.
-- Must handle API connection timeouts gracefully.
+- [PENDING] Target platform and architecture are currently under review.
+- [PENDING] Database requirements depend on final architecture.
