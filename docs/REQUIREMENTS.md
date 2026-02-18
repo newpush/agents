@@ -16,3 +16,4 @@ The NewPush Support Helper is a tool designed to provide quick access to support
 ## Technical Specifications
 - [PENDING] Target platform and architecture are currently under review.
 - [PENDING] Database requirements depend on final architecture.
+- [PENDING] Error logging and reporting standards are to be defined (Legacy implementation uses WHMCS `logActivity`).

@@ -35,3 +35,21 @@
 *   **Ambiguity:** "Quickly" is a subjective term and cannot be tested without a specific metric.
 *   **Question:** What is the maximum acceptable load time for the Support Dashboard (e.g., < 500ms)?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-16 - Cache Clearing Utility
+*   **Context:** The requirements state that the dashboard should provide "support utilities", while the code in `src/addonmodule.php` implements an undocumented `addonmodule_clear_cache()` function.
+*   **Ambiguity:** It is unclear if cache clearing is an intended feature of the new Support Helper or a remnant of legacy code.
+*   **Question:** Should "Cache Clearing" be included as a functional requirement for the Support Helper dashboard?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-16 - Configuration Specifics (API & Auto-Reply)
+*   **Context:** The requirements state "the tool must allow authorized users to enable/disable specific support features", but the code in `src/addonmodule.php` implements an `api_key` and `enable_auto_reply`.
+*   **Ambiguity:** The requirements do not specify which features require configuration or if an external API integration is required.
+*   **Question:** Which specific support features require configuration, and should the `api_key` and `enable_auto_reply` logic be preserved or replaced?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-16 - Performance Definition
+*   **Context:** The requirements state "The dashboard should load quickly."
+*   **Ambiguity:** "Quickly" is a subjective term and lacks a measurable technical metric for verification.
+*   **Question:** What is the target maximum load time (e.g., in milliseconds) for the Support Dashboard?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
