@@ -5,14 +5,15 @@ The NewPush Support Helper is a tool designed to provide quick access to support
 
 ## Functional Requirements
 1. **Configuration**: The tool must allow authorized users to enable/disable specific support features.
-   - [PENDING] Specific configuration fields (e.g., API keys, auto-reply toggles found in legacy code) are under review.
+    - [PENDING] Clarify if legacy fields `api_key` and `enable_auto_reply` are required in the new architecture.
 2. **Admin Interface**: The tool must have an interface that displays a dashboard of support utilities. (Note: Support ticket display is no longer a requirement).
-   - [PENDING] Specific utilities to be included (e.g., Cache Clearing found in legacy code) are under review.
+    - [PENDING] Clarify if the legacy `clear_cache` utility should be included in the new dashboard.
 3. **Security**: Access to the interface must be restricted to authenticated users with the appropriate permissions.
+    - [PENDING] Define specific authentication protocols and permission levels (legacy WHMCS auth is deprecated).
    - **Fetch-on-Demand**: The tool must follow a "Fetch-on-Demand" architecture. All sensitive credentials (e.g., API keys) must be stored exclusively in 1Password Vaults and never hardcoded or stored in the application database.
    - **Runtime Resolution**: Secrets must be resolved at runtime using the 1Password CLI (`op`).
 4. **Performance**: The dashboard should load quickly.
-   - [PENDING] Target load time metrics are to be defined.
+    - [PENDING] Establish a concrete performance metric (e.g., page load < 500ms).
 
 ## Operational Requirements
 1. **Error Handling**: The system must handle failures gracefully.

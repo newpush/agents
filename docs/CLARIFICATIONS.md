@@ -18,6 +18,24 @@
 *   **Question:** Should the existing WHMCS-based code in `src/` be discarded or refactored?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
 
+### Question 2026-02-18 - Legacy Configuration Fields
+*   **Context:** The requirements state "Configuration: The tool must allow authorized users to enable/disable specific support features.", but the code in `src/addonmodule.php` implements `api_key` and `enable_auto_reply`.
+*   **Ambiguity:** It is unclear if these specific legacy fields are intended to be part of the new platform's configuration requirements.
+*   **Question:** Should the `api_key` and `enable_auto_reply` features be migrated to the new dashboard, or are they legacy drift to be discarded?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-18 - Undocumented Utility: Clear Cache
+*   **Context:** The requirements mention "a dashboard of support utilities", but the code in `src/addonmodule.php` implements an undocumented `addonmodule_clear_cache()` function.
+*   **Ambiguity:** It is unclear if "Clear Cache" is one of the intended "support utilities" for the new dashboard.
+*   **Question:** Is the "Clear Cache" functionality a required utility for the new Support Dashboard?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-18 - Dashboard Performance Metric
+*   **Context:** The requirements state "The dashboard should load quickly.", but the code in `src/addonmodule.php` has no performance monitoring or defined timeout thresholds.
+*   **Ambiguity:** "Quickly" is a subjective term and cannot be tested without a specific metric.
+*   **Question:** What is the maximum acceptable load time for the Support Dashboard (e.g., < 500ms)?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
 ### Question 2026-02-16 - Cache Clearing Utility
 *   **Context:** The requirements state that the dashboard should provide "support utilities", while the code in `src/addonmodule.php` implements an undocumented `addonmodule_clear_cache()` function.
 *   **Ambiguity:** It is unclear if cache clearing is an intended feature of the new Support Helper or a remnant of legacy code.
