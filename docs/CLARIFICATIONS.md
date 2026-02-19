@@ -35,3 +35,21 @@
 *   **Ambiguity:** "Quickly" is a subjective term and lacks a measurable technical metric for verification.
 *   **Question:** What is the target maximum load time (e.g., in milliseconds) for the Support Dashboard?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-16 - Authentication Provider for Standalone App
+*   **Context:** The requirements state that access must be restricted to "authenticated users with the appropriate permissions". With the WHMCS platform deprecated, the built-in WHMCS admin authentication is no longer available.
+*   **Ambiguity:** A new authentication provider (e.g., OIDC, LDAP, or internal DB) is not specified.
+*   **Question:** What is the intended authentication provider for the new standalone Support Helper?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-16 - Data Persistence Architecture
+*   **Context:** The legacy code in `src/addonmodule.php` uses the WHMCS database for configuration storage, while `AGENTS.md` mandates a "Fetch-on-Demand" architecture for secrets.
+*   **Ambiguity:** It is unclear where non-sensitive configuration (e.g., feature toggles) should be stored in the new architecture.
+*   **Question:** Does the tool require a dedicated database (e.g., MySQL/PostgreSQL) for non-sensitive state and configuration, or should it use file-based storage?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-16 - Standardized Error Handling & Reporting
+*   **Context:** The legacy code uses WHMCS-specific `logActivity` for error reporting, which is flagged as `[PENDING]` in `REQUIREMENTS.md`.
+*   **Ambiguity:** Modern architecture requires a standardized, non-proprietary logging interface.
+*   **Question:** Should the Support Helper implement structured logging (e.g., JSON to stdout) or integrate with an external error tracking service like Sentry?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
