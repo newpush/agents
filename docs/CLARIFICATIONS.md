@@ -71,3 +71,21 @@
 *   **Ambiguity:** Modern architecture requires a standardized, non-proprietary logging interface.
 *   **Question:** Should the Support Helper implement structured logging (e.g., JSON to stdout) or integrate with an external error tracking service like Sentry?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-19 - Granularity of Permissions (RBAC)
+*   **Context:** The requirements state that access must be restricted to "authenticated users with the appropriate permissions".
+*   **Ambiguity:** It is unclear if a simple Admin/User distinction is sufficient, or if a more granular Role-Based Access Control (RBAC) system is required for different support utilities.
+*   **Question:** What specific roles and permission levels should be supported in the new Support Dashboard?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-19 - Audit Logging Requirements
+*   **Context:** The tool allows authorized users to toggle features and execute support utilities (like "Clear Cache").
+*   **Ambiguity:** There is currently no requirement for auditing these actions. In a support environment, tracking who performed which action and when is often critical for security and troubleshooting.
+*   **Question:** Should the Support Helper implement an audit log to track configuration changes and utility executions?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-19 - Utility Extensibility Architecture
+*   **Context:** The requirements mention a "dashboard of support utilities".
+*   **Ambiguity:** It is unclear if the list of utilities is expected to be static and hard-coded, or if the architecture should support a dynamic "plugin" system for adding new utilities without core code changes.
+*   **Question:** Should the Support Dashboard be built with a dynamic plugin architecture for utilities, or is a hard-coded set of tools sufficient for the MVP?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
