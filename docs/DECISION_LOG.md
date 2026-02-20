@@ -18,3 +18,7 @@
 ## [2026-02-16] - Documentation Audit
 - **Status**: No new human feedback provided in CLARIFICATIONS.md.
 - **Action**: Requirements updated based on codebase drift and security policy (1Password) analysis.
+
+## [2026-02-19] - Documentation Audit
+- **Status**: No new human feedback provided in CLARIFICATIONS.md.
+- **Action**: REQUIREMENTS.md updated to explicitly flag legacy ticketing drift and security policy conflicts in `src/addonmodule.php`. Added new questions to CLARIFICATIONS.md regarding RBAC, Audit Logging, and Extensibility.
