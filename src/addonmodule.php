@@ -57,8 +57,42 @@ function addonmodule_get_recent_tickets() {
 
 /**
  * Undocumented feature: Clear support cache
+ *
+ * @return bool
  */
 function addonmodule_clear_cache() {
-    // Logic to clear support cache
-    return true;
+    // Establish a documented default path for the support cache.
+    // In a production environment, this could be moved to a configuration setting.
+    $cacheDir = __DIR__ . DIRECTORY_SEPARATOR . 'cache';
+    $success = true;
+
+    if (is_dir($cacheDir)) {
+        try {
+            $files = glob($cacheDir . DIRECTORY_SEPARATOR . '*');
+            if ($files !== false) {
+                foreach ($files as $file) {
+                    if (is_file($file)) {
+                        if (!unlink($file)) {
+                            $success = false;
+                        }
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            $success = false;
+            if (function_exists('logActivity')) {
+                logActivity("Support Helper Cache Error: " . $e->getMessage());
+            }
+        }
+    }
+
+    if (function_exists('logActivity')) {
+        if ($success) {
+            logActivity("Support Helper: Cache cleared successfully.");
+        } else {
+            logActivity("Support Helper: Failed to clear some cache files.");
+        }
+    }
+
+    return $success;
 }
