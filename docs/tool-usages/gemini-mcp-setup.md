@@ -8,7 +8,7 @@ When working with an AI agent like Gemini CLI, providing too much system context
 1.  **Token Bloat:** Wasting token limits on instructions the agent doesn't need for the current task.
 2.  **Hallucinations/Distraction:** An agent might try to use a tool or follow a rule meant for a completely different system.
 
-To solve this, Project Noemi utilizes a **Modular Context Generation** system. Instead of one massive `GEMINI.md` file containing rules for every possible tool, we dynamically build `GEMINI.md` based *only* on the tools the agent needs right now.
+To solve this, Project NoeMI utilizes a **Modular Context Generation** system. Instead of one massive `GEMINI.md` file containing rules for every possible tool, we dynamically build `GEMINI.md` based *only* on the tools the agent needs right now.
 
 ---
 

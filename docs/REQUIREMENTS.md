@@ -1,14 +1,14 @@
 # NewPush Agents Repository - Requirements
 
 ## Overview
-This repository serves as a comprehensive resource for agentic development and a ready-to-use toolkit for building AI agents. It functions as the central directory for Project Noemi, housing agent personas, specialized workflows, domain-specific knowledge (Markdown documentation), and integration scripts. 
+This repository serves as a comprehensive resource for agentic development and a ready-to-use toolkit for building AI agents. It functions as the central directory for Project NoeMI, housing agent personas, specialized workflows, domain-specific knowledge (Markdown documentation), and integration scripts. 
 
 The primary goal is to provide a robust foundation that developers can use to quickly scaffold, configure, and deploy intelligent agents, while also providing a suite of "out-of-the-box" agents ready for immediate use.
 
 ## Core Objectives
 1. **Agentic Development Toolkit**: Provide reusable components, standardized persona definitions (e.g., Support Helper, Infrastructure Engineer), and workflow templates to accelerate agent creation.
 2. **Out-of-the-Box Agents**: Supply fully defined, operational agent personas that can be deployed immediately for common tasks across coding, infrastructure, communication, and product domains.
-3. **Knowledge Base**: Act as a structured repository of information, protocols, and best practices that guide both human developers and the AI agents (Noemi) operating within the ecosystem.
+3. **Knowledge Base**: Act as a structured repository of information, protocols, and best practices that guide both human developers and the AI agents (NoeMI) operating within the ecosystem.
 
 ## Functional Requirements
 1. **Persona Definition**: Agents must be defined clearly using Markdown specifications (located in the `agents/` directory) dictating their Role, Tone, Capabilities, and Rules.
