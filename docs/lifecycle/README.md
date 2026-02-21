@@ -13,6 +13,7 @@ This section covers the entire operational lifecycle of the agents in this repos
     *   Best practices
 2.  **[Deployment & CI/CD](DEPLOYMENT.md)**
     *   Putting agents into production
+    *   Scheduling & Autonomous Triggers
     *   Deployment strategies (Canary, Shadow)
     *   Configuration management & environment provisioning
     *   CI/CD pipeline integration & rollback procedures
