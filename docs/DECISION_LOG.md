@@ -1,5 +1,10 @@
 # Decision Log
 
+## [2026-02-21] - Pivot to Standalone Agents and MCP
+- **Decision**: The repository is strictly for standalone scripts and agents. The "Support Helper" will be an agent that connects to a WHMCS MCP server.
+- **Context**: Clarification provided that this is an agents repo, and any WHMCS features should rely on an MCP server instead of hosting module code.
+- **Impact**: Removed `src/addonmodule.php`. Completely rewrote `REQUIREMENTS.md` and answered all pending questions in `CLARIFICATIONS.md`.
+
 ## [2026-02-15] - Project Direction Pivot
 - **Decision**: The project is no longer being developed as a WHMCS Addon Module.
 - **Context**: Answer provided in CLARIFICATIONS.md regarding Cache Clearing Feature.

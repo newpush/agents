@@ -1,0 +1,18 @@
+{
+  "active_mcps": [
+    "n8n",
+    "slack",
+    "gmail",
+    "google-drive",
+    "google-calendar",
+    "google-docs",
+    "google-sheets",
+    "google-slides",
+    "google-meet",
+    "google-chat",
+    "google-keep",
+    "google-forms",
+    "google-contacts",
+    "google-admin"
+  ]
+}
