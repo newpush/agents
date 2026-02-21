@@ -10,10 +10,13 @@ The NewPush Support Helper is a tool designed to provide quick access to support
 2. **Admin Interface**: The tool must have an interface that displays a dashboard of support utilities.
     - **Legacy Drift**: The current codebase (`src/addonmodule.php`) still contains `addonmodule_get_recent_tickets()` and logic in `addonmodule_output()` to display tickets. This functionality is deprecated and should be decommissioned.
     - **Support Utilities**: The legacy `addonmodule_clear_cache()` utility has been identified in the codebase as a candidate for the new dashboard.
+        - **Implementation Detail (Drift)**: Current logic in `src/addonmodule.php` implements a non-recursive file deletion within a hardcoded `cache/` directory relative to the script.
 3. **Security**: Access to the interface must be restricted to authenticated users with the appropriate permissions.
     - [PENDING] Define specific authentication protocols and permission levels (legacy WHMCS auth is deprecated).
+    - **Access Control Drift**: The codebase currently uses a hardcoded `die("This file cannot be accessed directly");` check for a `WHMCS` constant, which is a legacy platform dependency.
    - **Fetch-on-Demand**: The tool must follow a "Fetch-on-Demand" architecture. All sensitive credentials (e.g., API keys) must be stored exclusively in 1Password Vaults and never hardcoded or stored in the application database.
    - **Runtime Resolution**: Secrets must be resolved at runtime using the 1Password CLI (`op`).
+   - **Execution Pattern**: Commands requiring secrets must be wrapped using `op run --env-file=.env.template` to inject credentials directly into process memory.
 4. **Performance**: The dashboard should load quickly.
     - [PENDING] Establish a concrete performance metric (e.g., page load < 500ms).
 
