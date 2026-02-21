@@ -1,0 +1,204 @@
+{
+  "name": "RFP / RFQ Auto-Responder Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {
+          "labelIds": [
+            "INBOX",
+            "UNREAD"
+          ]
+        }
+      },
+      "id": "1",
+      "name": "Gmail Trigger (New Emails)",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gemini-1.5-pro",
+        "systemMessage": "You are the Knowledge Manager & Researcher agent. Analyze the incoming email to determine if it is a Request for Proposal (RFP) or a Request for Quote (RFQ). 
+
+If it IS an RFP/RFQ, extract the core requirements, deadlines, and key questions being asked. If it is NOT an RFP/RFQ, simply state so.
+
+Output ONLY valid JSON in the following format:
+{
+  "is_rfp_rfq": true/false,
+  "summary": "Brief summary of the request...",
+  "requirements": ["req 1", "req 2"],
+  "deadline": "YYYY-MM-DD or Not specified"
+}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Subject: {{ $json.snippet }}
+Body: {{ $json.textPlain }}"
+            }
+          ]
+        }
+      },
+      "id": "2",
+      "name": "Analyze Request (Gemini)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "string": [
+            {
+              "value": "={{ JSON.parse($json.text).is_rfp_rfq }}",
+              "action": "isTrue"
+            }
+          ]
+        }
+      },
+      "id": "3",
+      "name": "Is RFP/RFQ?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "document",
+        "operation": "create",
+        "title": "=RFP Draft: {{ $('Gmail Trigger (New Emails)').item.json.snippet }}",
+        "content": "=RFP / RFQ Analysis
+
+Sender: {{ $('Gmail Trigger (New Emails)').item.json.from }}
+Date: {{ $('Gmail Trigger (New Emails)').item.json.date }}
+
+Summary:
+{{ JSON.parse($('Analyze Request (Gemini)').item.json.text).summary }}
+
+Requirements:
+{{ JSON.parse($('Analyze Request (Gemini)').item.json.text).requirements.join('
+- ') }}
+
+Deadline: {{ JSON.parse($('Analyze Request (Gemini)').item.json.text).deadline }}
+
+---
+Draft Response Section:
+[Agent to continue drafting proposal here]"
+      },
+      "id": "4",
+      "name": "Create Google Doc",
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        850,
+        150
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "operation": "create",
+        "subject": "=Re: {{ $('Gmail Trigger (New Emails)').item.json.snippet }}",
+        "message": "=Hello,
+
+Thank you for reaching out with your request. Our internal Knowledge Manager agent has reviewed your requirements and prepared an initial draft for our team to finalize.
+
+Internal Reference Document: https://docs.google.com/document/d/{{ $json.documentId }}/edit
+
+We will be in touch shortly.
+
+Best,
+Project NoeMI Team",
+        "toEmail": "={{ $('Gmail Trigger (New Emails)').item.json.from }}"
+      },
+      "id": "5",
+      "name": "Draft Gmail Reply",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        1050,
+        150
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6",
+      "name": "Ignore Non-RFPs",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        850,
+        450
+      ]
+    }
+  ],
+  "connections": {
+    "Gmail Trigger (New Emails)": {
+      "main": [
+        [
+          {
+            "node": "Analyze Request (Gemini)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Request (Gemini)": {
+      "main": [
+        [
+          {
+            "node": "Is RFP/RFQ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is RFP/RFQ?": {
+      "main": [
+        [
+          {
+            "node": "Create Google Doc",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ignore Non-RFPs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Google Doc": {
+      "main": [
+        [
+          {
+            "node": "Draft Gmail Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
