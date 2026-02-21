@@ -27,12 +27,12 @@ The system relies on three components:
 
 Before generating instructions for the agent via `GEMINI.md`, the actual underlying tools must be available to your Gemini CLI. 
 
-Google provides an official set of MCP servers (found at the `google/mcp` repository on GitHub) which seamlessly integrate with Gemini CLI using **Application Default Credentials (ADC)** or a Service Account.
+Google provides an official Workspace extension specifically designed for Gemini CLI (found at the `gemini-cli-extensions/workspace` repository on GitHub) which seamlessly integrates using your Google account.
 
 **To enable the official Google Workspace MCP Server in your CLI:**
-Run the following command in your terminal. This registers the server (which includes Gmail, Drive, Docs, Calendar, etc.) so the CLI can discover its tools:
+Run the following command in your terminal. This registers the server (which includes Gmail, Drive, Docs, Calendar, etc.) and will prompt you to securely log in to your Google account:
 ```bash
-gemini mcp add google-workspace npx -y @modelcontextprotocol/server-google-workspace
+gemini extensions install https://github.com/gemini-cli-extensions/workspace
 ```
 
 *Note: Once the server is connected, you do NOT want to overwhelm the AI with all the rules for every Google app. That is why we use the modular setup below to inject only the instructions relevant to the agent's current persona!*
