@@ -13,6 +13,7 @@
     "google-keep",
     "google-forms",
     "google-contacts",
-    "google-admin"
+    "google-admin",
+    "web-search"
   ]
 }
