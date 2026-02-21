@@ -35,6 +35,12 @@ Run the following command in your terminal. This registers the server (which inc
 gemini extensions install https://github.com/gemini-cli-extensions/workspace
 ```
 
+> **⚠️ Installation Warning Notice**
+> When running the command above, Gemini CLI will display the following warning:
+> *"The extension you are about to install may have been created by a third-party developer and sourced from a public repository. Google does not vet, endorse, or guarantee the functionality or security of extensions. Please carefully inspect any extension and its source code before installing to understand the permissions it requires and the actions it may perform."*
+>
+> **This is normal and expected.** The CLI is designed with a "trust no one by default" security model. It requires you to acknowledge the risk of running code that can access personal data (emails, docs, etc.) because the code is sourced directly from a GitHub URL rather than a pre-compiled, locked-down binary.
+
 *Note: Once the server is connected, you do NOT want to overwhelm the AI with all the rules for every Google app. That is why we use the modular setup below to inject only the instructions relevant to the agent's current persona!*
 
 ---
