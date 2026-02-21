@@ -15,7 +15,95 @@ To schedule an agent to run autonomously without human conversation, deploy them
 
 *   **Workflow Engines (Recommended):** Platforms like **n8n** or **Apache Airflow** are ideal. You can use a Schedule Trigger node to wake up the agent (e.g., the "Knowledge Manager") every night at 2:00 AM, pass it a predefined prompt ("Review today's Google Drive uploads and summarize them"), and let it use its MCP integrations to complete the task.
 *   **Cron Jobs / Serverless Functions:** For simpler agents, package the LLM execution script (like a Python or Node.js wrapper that reads the `GEMINI.md` context) into an AWS Lambda, Google Cloud Function, or Kubernetes CronJob. Configure the cloud provider's scheduler to trigger the function at specific intervals.
-*   **Event-Driven Triggers:** Instead of time-based scheduling, trigger agents based on events. For example, configure a webhook so that every time a new Jira ticket is created, the "QA & Risk Manager" agent is instantly triggered to review it via an MCP integration.
+*   **Event-Driven Triggers:** Instead of time-based scheduling, trigger agents based on events. Rather than having the agent poll for data, the orchestrator listens for an event and pushes the context to the agent.
+
+#### Concrete Example 1: Slack Mention Trigger (Node.js / Express Webhook)
+When a user mentions the agent in Slack, the Slack Event API sends a payload to your orchestrator webhook. The orchestrator parses the message, loads the agent context, and passes it to the LLM via the MCP server connection.
+
+```javascript
+// Express.js Webhook Endpoint for Slack
+app.post('/slack/events', async (req, res) => {
+  const { type, event } = req.body;
+
+  // Slack URL Verification Challenge
+  if (type === 'url_verification') return res.send(req.body.challenge);
+
+  // Trigger on app_mention
+  if (event && event.type === 'app_mention') {
+    res.sendStatus(200); // Acknowledge Slack immediately
+
+    const userMessage = event.text.replace(/<@U[A-Z0-9]+>/g, '').trim(); // Remove bot tag
+    
+    // 1. Load the specific Agent Persona (e.g., Knowledge Manager)
+    const systemPrompt = fs.readFileSync('./GEMINI.md', 'utf8');
+
+    // 2. Execute the Agent (Pseudocode for LLM invocation with MCP context)
+    const agentResponse = await executeLLM({
+      systemPrompt: systemPrompt,
+      prompt: `User asked: ${userMessage}. Use your MCP tools to find the answer.`,
+      active_mcps: ['slack', 'google-docs']
+    });
+
+    // 3. Post result back to Slack thread
+    await slackClient.chat.postMessage({
+      channel: event.channel,
+      thread_ts: event.ts,
+      text: agentResponse
+    });
+  }
+});
+```
+
+#### Concrete Example 2: Gmail New Email Trigger (n8n Workflow)
+Instead of writing custom webhook code, you can use a visual orchestrator like n8n. This is the recommended approach for integrating with Gmail due to complex OAuth flows.
+
+**n8n Workflow JSON Snippet:**
+```json
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [ { "mode": "everyMinute" } ]
+        },
+        "filters": {
+          "labelIds": ["INBOX", "UNREAD"],
+          "q": "subject:\"Urgent Client Request\""
+        }
+      },
+      "id": "1",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [ 250, 300 ]
+    },
+    {
+      "parameters": {
+        "model": "gemini-1.5-pro",
+        "systemMessage": "=# You are the QA & Risk Manager...\n\n{{ $fs.readFile('/path/to/repo/agents/GEMINI.md') }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Analyze the following urgent email and draft a risk assessment: \nSubject: {{ $json.snippet }}\nBody: {{ $json.textPlain }}"
+            }
+          ]
+        }
+      },
+      "id": "2",
+      "name": "Execute Agent (Gemini)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1,
+      "position": [ 450, 300 ]
+    }
+  ],
+  "connections": {
+    "Gmail Trigger": {
+      "main": [ [ { "node": "Execute Agent (Gemini)", "type": "main", "index": 0 } ] ]
+    }
+  }
+}
+```
+In this n8n example, the workflow automatically watches the Gmail inbox. When a matching email arrives, it reads the `GEMINI.md` context file from the filesystem, injects the email contents into the prompt, and executes the AI Architect or QA Risk Manager persona, completely autonomously.
 
 ## 3. Deployment Strategies
 
