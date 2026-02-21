@@ -89,3 +89,21 @@
 *   **Ambiguity:** It is unclear if the list of utilities is expected to be static and hard-coded, or if the architecture should support a dynamic "plugin" system for adding new utilities without core code changes.
 *   **Question:** Should the Support Dashboard be built with a dynamic plugin architecture for utilities, or is a hard-coded set of tools sufficient for the MVP?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-21 - Recursive Cache Clearing
+*   **Context:** The current implementation of `addonmodule_clear_cache()` in `src/addonmodule.php` uses `glob($cacheDir . DIRECTORY_SEPARATOR . '*')` and only deletes files at the top level of the cache directory.
+*   **Ambiguity:** It is unclear if the cache clearing utility should be recursive (deleting files in subdirectories) or if it should only target specific file types/patterns.
+*   **Question:** Should the Support Dashboard's cache clearing utility perform a recursive deletion, and are there specific file patterns it should avoid?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-21 - Mandatory Environment Variables for .env.template
+*   **Context:** `AGENTS.md` mandates the use of `op run --env-file=.env.template` for secret resolution.
+*   **Ambiguity:** While sensitive credentials are to be fetched from 1Password, the non-sensitive environment variables that must be present in `.env.template` are not defined.
+*   **Question:** What are the specific non-sensitive environment variables (e.g., `APP_ENV`, `LOG_LEVEL`, `CACHE_PATH`) that must be included in the `.env.template` for the new platform?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-21 - Target Runtime Environment (PHP Version & Extensions)
+*   **Context:** The legacy codebase in `src/` is written in PHP and uses extensions like `glob` and filesystem functions.
+*   **Ambiguity:** With the move away from WHMCS, the target PHP version and required extensions for the new standalone application have not been specified.
+*   **Question:** What is the target PHP version (e.g., 8.2, 8.3) and what mandatory PHP extensions are required for the new Support Helper application?
+*   **Answer:** [WRITE YOUR ANSWER HERE]

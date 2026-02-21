@@ -22,3 +22,7 @@
 ## [2026-02-19] - Documentation Audit
 - **Status**: No new human feedback provided in CLARIFICATIONS.md.
 - **Action**: REQUIREMENTS.md updated to explicitly flag legacy ticketing drift and security policy conflicts in `src/addonmodule.php`. Added new questions to CLARIFICATIONS.md regarding RBAC, Audit Logging, and Extensibility.
+
+## [2026-02-21] - Documentation Audit
+- **Status**: No new human feedback provided in CLARIFICATIONS.md.
+- **Action**: REQUIREMENTS.md updated based on codebase analysis of `src/addonmodule.php` and security policy in `AGENTS.md`. Identified specific implementation drift in cache clearing and access control. Integrated "Fetch-on-Demand" execution patterns.
