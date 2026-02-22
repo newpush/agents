@@ -5,6 +5,15 @@
 - **Context**: Clarification provided that this is an agents repo, and any WHMCS features should rely on an MCP server instead of hosting module code.
 - **Impact**: Removed `src/addonmodule.php`. Completely rewrote `REQUIREMENTS.md` and answered all pending questions in `CLARIFICATIONS.md`.
 
+### Resolved Clarifications (Archived)
+- **New Platform**: Standalone AI agents and scripts.
+- **Dashboard & Utilities**: No physical dashboard; functionality provided via MCP tools.
+- **Legacy Code**: `src/addonmodule.php` and WHMCS-specific hooks/fields discarded.
+- **Authentication & RBAC**: Handled by the execution environment/host platform.
+- **Persistence**: Stateless execution; no dedicated database required.
+- **Logging**: Standardized to `stdout` and `stderr`.
+- **Configuration**: Managed via environment variables (secrets) and `mcp.config.json` (active MCPs).
+
 ## [2026-02-15] - Project Direction Pivot
 - **Decision**: The project is no longer being developed as a WHMCS Addon Module.
 - **Context**: Answer provided in CLARIFICATIONS.md regarding Cache Clearing Feature.
