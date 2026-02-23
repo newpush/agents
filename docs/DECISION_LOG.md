@@ -5,6 +5,27 @@
 - **Context**: Clarification provided that this is an agents repo, and any WHMCS features should rely on an MCP server instead of hosting module code.
 - **Impact**: Removed `src/addonmodule.php`. Completely rewrote `REQUIREMENTS.md` and answered all pending questions in `CLARIFICATIONS.md`.
 
+## [2026-02-21] - Resolved Architecture and Operational Clarifications
+- **Decision**: Formally integrated architecture, security, and operational resolutions into `REQUIREMENTS.md`.
+- **Impact**:
+    - Verified that Auth/RBAC/Audit are delegated to the execution environment.
+    - Standardized logging to `stdout`/`stderr`.
+    - Confirmed stateless execution model.
+    - Explicitly documented the pivot away from WHMCS PHP modules to standalone agents.
+- **Resolved Questions**:
+    - **New Platform/Architecture**: The repository is exclusively a collection of standalone AI agents and scripts. Support Helper will be a persona relying on external WHMCS MCP.
+    - **Core Functionality Replacement**: No "Support Dashboard"; Support Helper uses MCP tools (cache clearing, status checks).
+    - **Legacy Code Cleanup**: `src/addonmodule.php` removed.
+    - **Legacy Configuration Fields**: Discarded. Config via env vars and 1Password.
+    - **Undocumented Utility (Clear Cache)**: Handled by external WHMCS MCP tool.
+    - **Performance Metrics**: Applies to agent response times, not a dashboard.
+    - **Authentication Provider**: Delegated to execution environment (CLI/Orchestrator).
+    - **Data Persistence**: Stateless execution; no relational DB required.
+    - **Standardized Error Handling**: Use standardized logging to `stdout` and `stderr`.
+    - **RBAC & Auditing**: Delegated to host platform or MCP server.
+    - **Utility Extensibility**: Dynamic via Model Context Protocol (MCP).
+    - **Target Runtime Environment**: Cross-platform (Node.js/Python), no longer PHP-specific.
+
 ## [2026-02-15] - Project Direction Pivot
 - **Decision**: The project is no longer being developed as a WHMCS Addon Module.
 - **Context**: Answer provided in CLARIFICATIONS.md regarding Cache Clearing Feature.
