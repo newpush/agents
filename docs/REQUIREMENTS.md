@@ -1,7 +1,7 @@
 # NewPush Agents Repository - Requirements
 
 ## Overview
-This repository serves as a comprehensive resource for agentic development and a ready-to-use toolkit for building AI agents. It functions as the central directory for Project NoeMI, housing agent personas, specialized workflows, domain-specific knowledge (Markdown documentation), and integration scripts. 
+This repository serves as a comprehensive resource for agentic development and a ready-to-use toolkit for building AI agents. It functions as the central directory for Project [PENDING] NoeMI, housing agent personas, specialized workflows, domain-specific knowledge (Markdown documentation), and integration scripts.
 
 The primary goal is to provide a robust foundation that developers can use to quickly scaffold, configure, and deploy intelligent agents, while also providing a suite of "out-of-the-box" agents ready for immediate use.
 
@@ -22,7 +22,7 @@ The primary goal is to provide a robust foundation that developers can use to qu
 
 ## Operational & Security Requirements
 1. **Execution Environment**: Agents defined in this repository can be executed as standalone scripts via CLI, or integrated into broader orchestration systems and chat UIs.
-2. **Security & Credentials (Fetch-on-Demand)**: The toolkit mandates a "Fetch-on-Demand" architecture for secrets. All sensitive credentials (e.g., API keys, MCP connection strings) must be stored exclusively in secure vaults (e.g., 1Password) and never hardcoded.
+2. **Security & Credentials (Fetch-on-Demand)**: [PENDING] The toolkit mandates a "Fetch-on-Demand" architecture for secrets (referencing a missing `.env.template`). All sensitive credentials (e.g., API keys, MCP connection strings) must be stored exclusively in secure vaults (e.g., 1Password) and never hardcoded.
 3. **Runtime Resolution**: Secrets must be resolved dynamically at runtime using secure CLI tools (e.g., the 1Password CLI `op`).
 4. **Resilience & Logging**: Agents must handle tool execution and API failures gracefully. Technical details must be logged using [PENDING] standardized logging to `stdout` and `stderr`.
 5. **Identity & Access Management**:
@@ -33,4 +33,4 @@ The primary goal is to provide a robust foundation that developers can use to qu
 ## Technical Specifications
 - **Architecture**: A hybrid structure containing static Markdown documentation (for knowledge and persona definition) and executable scripts/configurations for runtime deployment.
 - **Data Persistence**: Agents must operate with stateless execution. They do not require a dedicated relational database; all configuration and state are injected at runtime.
-- **Runtime Environment**: Agents are designed for cross-platform compatibility, primarily utilizing Node.js or Python environments as defined by the specific agent runner.
+- **Runtime Environment**: [PENDING] Agents are designed for cross-platform compatibility, primarily utilizing Node.js or Python environments as defined by the specific agent runner (Python support currently missing).
