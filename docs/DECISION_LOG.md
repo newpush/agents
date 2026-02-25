@@ -56,3 +56,7 @@
 ## [2026-02-24] - Documentation Audit
 - **Status**: No new human feedback provided in CLARIFICATIONS.md.
 - **Action**: REQUIREMENTS.md updated to incorporate missing agent domains (engineering, marketing, operations) found in the codebase. Flagged several items as [PENDING] due to implementation drift (Support Helper, WHMCS MCP, Config via env vars, and Standardized Logging). Added new questions to CLARIFICATIONS.md to resolve these ambiguities.
+
+## [2026-02-25] - Documentation Audit
+- **Status**: No new human feedback provided in CLARIFICATIONS.md.
+- **Action**: REQUIREMENTS.md updated to flag newly identified implementation drifts: missing `.env.template` for secret resolution, lack of Python runtime environment support, and inconsistent "NoeMI" branding. Added corresponding questions to CLARIFICATIONS.md.

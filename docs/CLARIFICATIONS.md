@@ -37,3 +37,21 @@
 *   **Ambiguity:** Most agent personas (e.g., `agents/coding/bolt/core.md`) do not currently contain instructions on how to behave when an MCP tool fails or returns an error.
 *   **Question:** Should a standardized "Error Handling" or "Resilience" section be added to all agent persona templates to guide their behavior during tool failures?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-25 - Missing .env.template for Secret Resolution
+*   **Context:** `AGENTS.md` and project memories specify that secrets should be resolved using `op run --env-file=.env.template`. However, the `.env.template` file is missing from the repository.
+*   **Ambiguity:** Developers and agents lack a template to define the required environment variables for various integrations (e.g., n8n, Slack).
+*   **Question:** Should a `.env.template` be added to the root directory, or is there another intended method for defining the required environment variable keys?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-25 - Python Runtime Environment Support
+*   **Context:** `REQUIREMENTS.md` states that agents are designed for cross-platform compatibility, "primarily utilizing Node.js or Python environments." The current codebase only contains Node.js scripts.
+*   **Ambiguity:** There are no Python-specific files (e.g., `requirements.txt`, `pyproject.toml`, or agent runners) to support the stated requirement.
+*   **Question:** Is Python support planned for a future phase, and if so, what is the expected timeline or specific use case (e.g., specific agent runners)?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-25 - Consistent "NoeMI" Branding
+*   **Context:** `REQUIREMENTS.md` mentions "Project NoeMI" and "AI agents (NoeMI)", but this branding is absent from the `README.md`, `GEMINI.template.md`, and individual agent personas.
+*   **Ambiguity:** It is unclear if "NoeMI" is the official project name or an internal codename that should be standardized or removed.
+*   **Question:** Should "NoeMI" be adopted as the official branding across all documentation, or should it be removed from `REQUIREMENTS.md`?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
