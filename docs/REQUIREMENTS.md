@@ -11,11 +11,11 @@ The primary goal is to provide a robust foundation that developers can use to qu
 
 ## Core Objectives
 1. **Agentic Development Toolkit**: Provide reusable components, standardized persona definitions (e.g., [PENDING] Support Helper, Infrastructure Engineer), and workflow templates to accelerate agent creation.
-2. **Out-of-the-Box Agents**: Supply fully defined, operational agent personas that can be deployed immediately for common tasks across coding, infrastructure, communication, engineering, marketing, operations, and product domains.
+2. **Out-of-the-Box Agents**: Supply fully defined, operational agent personas that can be deployed immediately for common tasks across coding, infrastructure, communication, engineering, marketing, operations, and product domains. [PENDING] Documentation mirroring drift identified; multiple domains in `agents/` lack corresponding manuals in `docs/agents/`.
 3. **Knowledge Base**: Act as a structured repository of information, protocols, and best practices that guide both human developers and the AI agents (NoeMI) operating within the ecosystem.
 
 ## Functional Requirements
-1. **Persona Definition**: Agents must be defined clearly using Markdown specifications (located in the `agents/` directory) dictating their Role, Tone, Capabilities, and Rules.
+1. **Persona Definition**: Agents must be defined clearly using Markdown specifications (located in the `agents/` directory) dictating their Role, Tone, Capabilities, and Rules. [PENDING] Implementation drift identified in specialized coding agents (Bolt, Sentinel) which utilize a divergent template (Mission, Mandates, Workflow) and refer to external tooling (`pnpm`, `npm test`) not present in this repository.
 2. **Configuration**: [PENDING] Agent runtime execution must be configurable entirely via environment variables (e.g., `ACTIVE_MCPS`, `APP_ENV`).
 3. **Extensibility (MCP Integration)**: Agents and the underlying toolkit must be capable of seamlessly interacting with external Model Context Protocol (MCP) servers (e.g., WHMCS MCP, n8n MCP) to expand their capabilities and execute actions in external systems.
 4. **Modular Context Generation**: The system must provide a mechanism to compile `GEMINI.md` dynamically from base templates and modular MCP protocol files. This prevents context window overloading and allows developers to selectively activate only the MCP integrations relevant to their current task.
