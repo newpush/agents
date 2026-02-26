@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # 1. The Memory Layer: Where the agent stores embeddings and past conversations
+  agent-memory:
+    image: ankane/pgvector:latest # PostgreSQL pre-loaded with vector search
+    container_name: noemi-agent-memory
+    environment:
+      POSTGRES_USER: ai_user
+      POSTGRES_PASSWORD: secure_password_123
+      POSTGRES_DB: agent_memory
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai_user -d agent_memory"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 2. The Compute Layer: Where the agent's code actually runs
+  agent-runtime:
+    build:
+      context: .
+      dockerfile: Dockerfile # Points to a simple Dockerfile you'll provide
+    container_name: noemi-agent-runtime
+    depends_on:
+      agent-memory:
+        condition: service_healthy
+    env_file:
+      - .env # Automatically loads the API key the script generated
+    environment:
+      - DB_HOST=agent-memory
+      - DB_USER=ai_user
+      - DB_PASSWORD=secure_password_123
+      - DB_NAME=agent_memory
+    volumes:
+      - .:/app # Mounts local code so changes reflect instantly without rebuilding
+    command: tail -f /dev/null # Keeps the container alive so users can bash in and run code
+
+volumes:
+  pgdata: # Ensures the AI doesn't get amnesia when you turn off Docker
