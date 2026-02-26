@@ -60,3 +60,7 @@
 ## [2026-02-25] - Documentation Audit
 - **Status**: No new human feedback provided in CLARIFICATIONS.md.
 - **Action**: REQUIREMENTS.md updated to flag newly identified implementation drifts: missing `.env.template` for secret resolution, lack of Python runtime environment support, and inconsistent "NoeMI" branding. Added corresponding questions to CLARIFICATIONS.md.
+
+## [2026-02-26] - Documentation Audit
+- **Status**: No new human feedback provided in CLARIFICATIONS.md.
+- **Action**: REQUIREMENTS.md updated to flag newly identified implementation drifts: inconsistent persona templates in `agents/coding/` (Bolt, Sentinel) and references to external tooling (`pnpm`, `npm test`) not present in this repository. Added corresponding questions to CLARIFICATIONS.md regarding template standardization, execution context, and global security mandate injection.

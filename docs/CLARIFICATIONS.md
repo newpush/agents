@@ -55,3 +55,21 @@
 *   **Ambiguity:** It is unclear if "NoeMI" is the official project name or an internal codename that should be standardized or removed.
 *   **Question:** Should "NoeMI" be adopted as the official branding across all documentation, or should it be removed from `REQUIREMENTS.md`?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-26 - Persona Template Standardization
+*   **Context:** `REQUIREMENTS.md` states agents must be defined using "Role, Tone, Capabilities, and Rules", which is followed by `ai-architect.md` and `brand-strategist.md`. However, `agents/coding/bolt/core.md` and `agents/coding/sentinel/core.md` use a divergent format (Role, Mission, Core Mandates, Workflow, Journal, Boundaries).
+*   **Ambiguity:** Lack of a single source of truth for agent persona templates makes maintenance and scaling of the library difficult.
+*   **Question:** Should all agents be migrated to the "Role, Tone, Capabilities, and Rules" format, or are there different classes of agents (e.g., "Standard" vs "Specialized/Task-Oriented") that require different templates?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-26 - Execution Context and Tooling References
+*   **Context:** The personas for Bolt and Sentinel refer to `pnpm lint` and `pnpm test` as verification steps. This repository does not use `pnpm` and has no `package.json`.
+*   **Ambiguity:** It is unclear if these agents are meant to operate on the repository they are stored in (which lacks these tools), or if they are intended to be deployed into external environments where these tools are expected.
+*   **Question:** Should agent personas be generic regarding their verification tools, or should they assume a specific runtime environment?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-26 - Global Security Mandate Injection
+*   **Context:** `AGENTS.md` defines critical security rules (e.g., "NEVER ask for secrets", "ALWAYS use 1Password CLI"). These are not currently reflected in the "Rules" or "Boundaries" sections of the individual agent personas, nor are they injected into `GEMINI.md`.
+*   **Ambiguity:** Agents might not be aware of these global security mandates if they only ingest their specific persona file.
+*   **Question:** Should the global security and execution mandates from `AGENTS.md` be automatically injected into `GEMINI.md` via the generation script, or should they be manually added to each agent's "Rules" section?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
