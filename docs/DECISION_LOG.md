@@ -64,3 +64,7 @@
 ## [2026-02-26] - Documentation Audit
 - **Status**: No new human feedback provided in CLARIFICATIONS.md.
 - **Action**: REQUIREMENTS.md updated to flag newly identified implementation drifts: inconsistent persona templates in `agents/coding/` (Bolt, Sentinel) and references to external tooling (`pnpm`, `npm test`) not present in this repository. Added corresponding questions to CLARIFICATIONS.md regarding template standardization, execution context, and global security mandate injection.
+
+## [2026-02-27] - Documentation Audit
+- **Status**: No new human feedback provided in CLARIFICATIONS.md.
+- **Action**: REQUIREMENTS.md updated to resolve "Project NoéMI" branding and specify the missing agent domain manual directories. Flagged the architectural contradiction between the "Stateless Execution" mandate and the `pgvector` "Memory Layer" found in Docker examples. Added new questions to CLARIFICATIONS.md regarding the memory layer and core system dependencies (Docker, Gemini CLI).
