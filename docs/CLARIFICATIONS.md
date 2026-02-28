@@ -73,3 +73,15 @@
 *   **Ambiguity:** Agents might not be aware of these global security mandates if they only ingest their specific persona file.
 *   **Question:** Should the global security and execution mandates from `AGENTS.md` be automatically injected into `GEMINI.md` via the generation script, or should they be manually added to each agent's "Rules" section?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-27 - Stateless Execution vs. Persistent Memory Layer
+*   **Context:** `REQUIREMENTS.md` mandates that "Agents must operate with stateless execution," yet `examples/docker/docker-compose.yml` implements a persistent `pgvector` service labeled as the "Memory Layer" where the agent stores embeddings and past conversations.
+*   **Ambiguity:** There is a direct contradiction between the documented stateless requirement and the provided architectural example for persistent agent memory.
+*   **Question:** Is the "Memory Layer" (pgvector) intended to be a core, required component of the Project NoéMI architecture, or is it an optional enhancement?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-27 - Core Toolkit System Dependencies
+*   **Context:** The `scripts/verify-env.sh` "Pre-Flight Check" mandates the presence of `Docker` and the `Gemini CLI`, but these are not currently listed as core requirements in `REQUIREMENTS.md`.
+*   **Ambiguity:** It is unclear if these tools are strictly required for the toolkit to function or if they are only necessary for running the specific examples and pre-flight scripts provided.
+*   **Question:** Should `Docker` and the `Gemini CLI` be officially designated as core system requirements for the Project NoéMI toolkit?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
