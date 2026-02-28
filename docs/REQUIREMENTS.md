@@ -1,7 +1,7 @@
 # NewPush Agents Repository - Requirements
 
 ## Overview
-This repository serves as a comprehensive resource for agentic development and a ready-to-use toolkit for building AI agents. It functions as the central directory for Project [PENDING] NoeMI, housing agent personas, specialized workflows, domain-specific knowledge (Markdown documentation), and integration scripts.
+This repository serves as a comprehensive resource for agentic development and a ready-to-use toolkit for building AI agents. It functions as the central directory for Project NoéMI, housing agent personas, specialized workflows, domain-specific knowledge (Markdown documentation), and integration scripts.
 
 The primary goal is to provide a robust foundation that developers can use to quickly scaffold, configure, and deploy intelligent agents, while also providing a suite of "out-of-the-box" agents ready for immediate use.
 
@@ -11,18 +11,18 @@ The primary goal is to provide a robust foundation that developers can use to qu
 
 ## Core Objectives
 1. **Agentic Development Toolkit**: Provide reusable components, standardized persona definitions (e.g., [PENDING] Support Helper, Infrastructure Engineer), and workflow templates to accelerate agent creation.
-2. **Out-of-the-Box Agents**: Supply fully defined, operational agent personas that can be deployed immediately for common tasks across coding, infrastructure, communication, engineering, marketing, operations, and product domains. [PENDING] Documentation mirroring drift identified; multiple domains in `agents/` lack corresponding manuals in `docs/agents/`.
-3. **Knowledge Base**: Act as a structured repository of information, protocols, and best practices that guide both human developers and the AI agents (NoeMI) operating within the ecosystem.
+2. **Out-of-the-Box Agents**: Supply fully defined, operational agent personas that can be deployed immediately for common tasks across coding, infrastructure, communication, engineering, marketing, operations, and product domains. [PENDING] Documentation mirroring drift identified; the `engineering/`, `marketing/`, and `operations/` domains in `agents/` lack corresponding manuals in `docs/agents/`.
+3. **Knowledge Base**: Act as a structured repository of information, protocols, and best practices that guide both human developers and the AI agents (NoéMI) operating within the ecosystem.
 
 ## Functional Requirements
-1. **Persona Definition**: Agents must be defined clearly using Markdown specifications (located in the `agents/` directory) dictating their Role, Tone, Capabilities, and Rules. [PENDING] Implementation drift identified in specialized coding agents (Bolt, Sentinel) which utilize a divergent template (Mission, Mandates, Workflow) and refer to external tooling (`pnpm`, `npm test`) not present in this repository.
+1. **Persona Definition**: Agents must be defined clearly using Markdown specifications (located in the `agents/` directory) dictating their Role, Tone, Capabilities, and Rules. [PENDING] Implementation drift identified in specialized coding agents (`bolt`, `sentinel`) which utilize a divergent "Mission/Mandates/Workflow" template and refer to external tooling (`pnpm lint`, `pnpm test`) not present in this repository.
 2. **Configuration**: [PENDING] Agent runtime execution must be configurable entirely via environment variables (e.g., `ACTIVE_MCPS`, `APP_ENV`).
 3. **Extensibility (MCP Integration)**: Agents and the underlying toolkit must be capable of seamlessly interacting with external Model Context Protocol (MCP) servers (e.g., WHMCS MCP, n8n MCP) to expand their capabilities and execute actions in external systems.
 4. **Modular Context Generation**: The system must provide a mechanism to compile `GEMINI.md` dynamically from base templates and modular MCP protocol files. This prevents context window overloading and allows developers to selectively activate only the MCP integrations relevant to their current task.
 
 ## Operational & Security Requirements
 1. **Execution Environment**: Agents defined in this repository can be executed as standalone scripts via CLI, or integrated into broader orchestration systems and chat UIs.
-2. **Security & Credentials (Fetch-on-Demand)**: [PENDING] The toolkit mandates a "Fetch-on-Demand" architecture for secrets (referencing a missing `.env.template`). All sensitive credentials (e.g., API keys, MCP connection strings) must be stored exclusively in secure vaults (e.g., 1Password) and never hardcoded.
+2. **Security & Credentials (Fetch-on-Demand)**: [PENDING] The toolkit mandates a "Fetch-on-Demand" architecture for secrets (referencing a missing `.env.template`). All sensitive credentials (e.g., API keys, MCP connection strings) must be stored exclusively in secure vaults (e.g., 1Password) and never hardcoded. Drift identified in `scripts/verify-env.sh`, which prompts for a `GEMINI_API_KEY` and saves it to a local `.env` file, contradicting the no-hardcoding/no-local-storage mandate.
 3. **Runtime Resolution**: Secrets must be resolved dynamically at runtime using secure CLI tools (e.g., the 1Password CLI `op`).
 4. **Resilience & Logging**: Agents must handle tool execution and API failures gracefully. Technical details must be logged using [PENDING] standardized logging to `stdout` and `stderr`.
 5. **Identity & Access Management**:
@@ -31,6 +31,6 @@ The primary goal is to provide a robust foundation that developers can use to qu
     - **Auditing**: Audit logging of tool executions is the responsibility of the MCP servers or the orchestrating platform.
 
 ## Technical Specifications
-- **Architecture**: A hybrid structure containing static Markdown documentation (for knowledge and persona definition) and executable scripts/configurations for runtime deployment.
+- **Architecture**: A hybrid structure containing static Markdown documentation (for knowledge and persona definition) and executable scripts/configurations for runtime deployment. [PENDING] The `scripts/verify-env.sh` script introduces an undocumented dependency on the `gemini` CLI tool.
 - **Data Persistence**: Agents must operate with stateless execution. They do not require a dedicated relational database; all configuration and state are injected at runtime.
 - **Runtime Environment**: [PENDING] Agents are designed for cross-platform compatibility, primarily utilizing Node.js or Python environments as defined by the specific agent runner (Python support currently missing).

@@ -73,3 +73,15 @@
 *   **Ambiguity:** Agents might not be aware of these global security mandates if they only ingest their specific persona file.
 *   **Question:** Should the global security and execution mandates from `AGENTS.md` be automatically injected into `GEMINI.md` via the generation script, or should they be manually added to each agent's "Rules" section?
 *   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-27 - Pre-flight Script vs. Security Mandate
+*   **Context:** `scripts/verify-env.sh` prompts users to save a `GEMINI_API_KEY` in a local `.env` file, but `AGENTS.md` and `REQUIREMENTS.md` mandate a "Fetch-on-Demand" architecture where secrets are never hardcoded or stored locally.
+*   **Ambiguity:** The current pre-flight script encourages a practice that is explicitly forbidden by the project's security policy.
+*   **Question:** Should `verify-env.sh` be refactored to use 1Password CLI (`op`) for key verification and follow the `op run` pattern instead of local `.env` storage?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
+
+### Question 2026-02-27 - Undocumented "Gemini CLI" Dependency
+*   **Context:** `scripts/verify-env.sh` checks for a `gemini` command, but this tool is not mentioned in `REQUIREMENTS.md` nor is it a standard utility in common environments.
+*   **Ambiguity:** It is unclear which "Gemini CLI" is required (e.g., a specific npm package, a Go binary, or a custom script) and where it should be sourced from.
+*   **Question:** What is the specific source or documentation for the required `gemini` CLI tool, and should it be added to the technical specifications in `REQUIREMENTS.md`?
+*   **Answer:** [WRITE YOUR ANSWER HERE]
