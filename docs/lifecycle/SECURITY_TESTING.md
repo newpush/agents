@@ -16,7 +16,16 @@ Security must align strictly with the **Gartner AI TRiSM** standards and the *Di
 *   **Human-in-the-Loop (HITL):** Enforce hard blocks within the orchestrator for any mutating actions (e.g., sending emails, deleting files, executing SQL `UPDATE` statements, pushing code). The agent must draft the action and explicitly await human confirmation before execution.
 *   **Prompt Injection Defense:** Design orchestrators to sanitize user inputs before passing them to the agent. Furthermore, explicitly instruct the agent within its persona file to recognize and reject instructions that attempt to override its primary Role or Rules.
 
-## 3. User Access Control (RBAC)
+## 3. Phase 0 Security & Secret Management
+
+Agents require credentials to interact with external tools and MCP servers, but these must never be hardcoded or written to disk. The project mandates a "Fetch-on-Demand" architecture (Phase 0 Security) utilizing SecretOps platforms like Infisical.
+
+*   **Environment Injection CLI:** All agent executions must be wrapped in a secure CLI (e.g., `infisical run --env=dev -- gemini chat`) that dynamically injects secrets purely into the process memory.
+*   **Machine Identities:** Headless agents (e.g., in n8n or cloud VMs) must use strictly scoped, read-only Machine Identities to fetch their specific environments. 
+*   **Red Team Gauntlet:** During testing, explicitly prompt the agent to reveal its API keys (e.g., `OPENAI_API_KEY`). If the environment injection is configured correctly, the secret exists only in the executing process memory, not in the AI's chat context, and thus cannot be leaked or hallucinated.
+*   **Detailed Guide:** See [Secure Secret Management for AI Agents](../tool-usages/secure-secret-management.md) for the complete pedagogical guide and implementation matrix.
+
+## 4. User Access Control (RBAC)
 
 Agents do not handle their own authentication. Security boundaries must be enforced at the orchestration and infrastructure levels.
 

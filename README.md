@@ -1,6 +1,6 @@
-# NewPush Agents Library
+# Project NoéMI - Agents Library
 
-This repository serves as the central library for NewPush AI agent specifications, documentation, and shared tool usages. It is designed to be scalable, supporting a nested hierarchy of specialized agents.
+This repository serves as the central library for **Project NoéMI** agent specifications, documentation, and shared tool usages. It is designed to be scalable, supporting a nested hierarchy of specialized agents that orchestrators (e.g., Gemini CLI, n8n) can consume to execute tasks.
 
 ## 📦 Repository Structure
 

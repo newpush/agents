@@ -1,5 +1,15 @@
 # Decision Log
 
+## [2026-02-28] - Comprehensive Documentation and Drift Resolution
+- **Decision**: Answered all pending clarification questions and resolved documentation drifts.
+- **Context**: Project required cleanup of requirements, branding standardization to "Project NoéMI", creation of `.env.template`, and clarifying the execution model (this is purely a definitions library for external orchestrators).
+- **Impact**:
+    - Created missing mirror directories in `docs/agents/`.
+    - Added `.env.template` to the repository root.
+    - Updated `REQUIREMENTS.md` to remove `[PENDING]` drifts and reflect updated consensus on stateless execution, standard persona templates, and removal of Python runtime requirements.
+    - Updated `CLARIFICATIONS.md` with explicit answers.
+    - Updated `README.md` to reflect Project NoéMI branding.
+
 ## [2026-02-21] - Pivot to Standalone Agents and MCP
 - **Decision**: The repository is strictly for standalone scripts and agents. The "Support Helper" will be an agent that connects to a WHMCS MCP server.
 - **Context**: Clarification provided that this is an agents repo, and any WHMCS features should rely on an MCP server instead of hosting module code.
