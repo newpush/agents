@@ -1,4 +1,16 @@
-# Security, Testing, & Quality Assurance
+# The 4D Framework: Discernment
+
+## 1. The Core Principle
+Discernment focuses on validation, quality control, and testing. AI output is probabilistic, not deterministic, which means trust requires continuous verification. This phase maps directly to Gartner's TRiSM "Trust" pillar.
+
+## 2. Product and Performance Validation
+- **Product Discernment**: Is the output factually true and logically sound?
+- **Performance Discernment**: Is the agent acting within its defined guardrails and performance parameters? Are tools and MCP connections failing gracefully?
+
+## 3. The Discernment Process (High-Tech Surfboard Model)
+- **Explorers (Passengers)**: Conduct "User Acceptance Testing" (UAT) on the agents built by the Practitioners, flagging when the "vibe" feels off or data is wrong.
+- **Practitioners (Crew)**: Execute "Red Teaming." Actively try to break their own agents using edge-case inputs (e.g., inputting data in the wrong language, adversarial prompts).
+- **Accelerators (Pilots)**: Deploy the "Guardian Layer." They build supervisor agents that scan the input/output of the primary agent for policy violations, PII leaks, and prompt injections before the Explorer sees the result.# Security, Testing, & Quality Assurance
 
 ## 1. Testing Protocols
 
