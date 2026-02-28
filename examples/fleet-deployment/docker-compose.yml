@@ -1,0 +1,125 @@
+version: "3.8"
+
+# Project NoéMI: Fleet Deployment Infrastructure (Docker Compose)
+# This simulates the multi-tenant architecture for running 10 parallel boot camp cohorts.
+# It includes Traefik for routing, a centralized logging stack (Grafana/Loki), 
+# and isolated orchestrator instances (n8n).
+
+services:
+  # --------------------------------------------------------
+  # THE INGRESS LAYER
+  # Routes traffic securely to the distinct cohort environments
+  # --------------------------------------------------------
+  traefik:
+    image: traefik:v2.10
+    container_name: fleet-traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080" # Traefik Dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - noemi-fleet-net
+
+  # --------------------------------------------------------
+  # THE CENTRAL OBSERVABILITY STACK
+  # Used by Master Accelerators to audit logs across all cohorts
+  # --------------------------------------------------------
+  loki:
+    image: grafana/loki:latest
+    container_name: fleet-loki
+    ports:
+      - "3100:3100"
+    networks:
+      - noemi-fleet-net
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: fleet-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=accelerator_admin
+    depends_on:
+      - loki
+    networks:
+      - noemi-fleet-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`audit.noemi.local`)"
+
+  # --------------------------------------------------------
+  # COHORT 01 (Isolated Namespace Example)
+  # Each cohort gets an isolated orchestrator and Postgres DB
+  # --------------------------------------------------------
+  db-cohort01:
+    image: postgres:16
+    container_name: fleet-db-cohort01
+    environment:
+      - POSTGRES_USER=cohort01
+      - POSTGRES_PASSWORD=secure_pass_01
+      - POSTGRES_DB=n8n_cohort01
+    networks:
+      - noemi-fleet-net
+
+  n8n-cohort01:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: fleet-n8n-cohort01
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=db-cohort01
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=n8n_cohort01
+      - DB_POSTGRESDB_USER=cohort01
+      - DB_POSTGRESDB_PASSWORD=secure_pass_01
+      - N8N_HOST=cohort01.noemi.local
+      - WEBHOOK_URL=http://cohort01.noemi.local
+    depends_on:
+      - db-cohort01
+    networks:
+      - noemi-fleet-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.n8n-cohort01.rule=Host(`cohort01.noemi.local`)"
+
+  # --------------------------------------------------------
+  # COHORT 02 (Isolated Namespace Example)
+  # --------------------------------------------------------
+  db-cohort02:
+    image: postgres:16
+    container_name: fleet-db-cohort02
+    environment:
+      - POSTGRES_USER=cohort02
+      - POSTGRES_PASSWORD=secure_pass_02
+      - POSTGRES_DB=n8n_cohort02
+    networks:
+      - noemi-fleet-net
+
+  n8n-cohort02:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: fleet-n8n-cohort02
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=db-cohort02
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=n8n_cohort02
+      - DB_POSTGRESDB_USER=cohort02
+      - DB_POSTGRESDB_PASSWORD=secure_pass_02
+      - N8N_HOST=cohort02.noemi.local
+      - WEBHOOK_URL=http://cohort02.noemi.local
+    depends_on:
+      - db-cohort02
+    networks:
+      - noemi-fleet-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.n8n-cohort02.rule=Host(`cohort02.noemi.local`)"
+
+networks:
+  noemi-fleet-net:
+    driver: bridge
