@@ -1,5 +1,62 @@
 # Decision Log
 
+## [2026-03-03] - Resolved Questions Archive
+### Question 2026-02-21 - Missing Support Helper and WHMCS MCP Components
+- **Question:** Are the "Support Helper" persona and "WHMCS MCP" protocol documentation planned for this repository, or are they maintained in an external system?
+- **Answer:** These components are planned for a future release and will be maintained in a separate specialized repository; this repository focuses on general-purpose agents and their MCP protocols.
+
+### Question 2026-02-21 - Agent Execution Mechanism (Runner)
+- **Question:** Is there an intended generic runner (e.g., a Python or Node.js script) that consumes these personas and the generated `GEMINI.md`, or is execution handled by an external orchestrator?
+- **Answer:** Execution is handled by external orchestrators (e.g., Gemini CLI, n8n, LangChain). This repository is a definitions library to build and compose contexts, not an execution engine.
+
+### Question 2026-02-21 - Documentation Mirroring Drift (`docs/agents/`)
+- **Question:** Should the `docs/agents/` mirror be updated manually to match the current `agents/` structure, or is this mirroring requirement being deprecated?
+- **Answer:** The `docs/agents/` mirror must be updated to match the `agents/` structure. The missing directories have been added.
+
+### Question 2026-02-24 - Standardized Logging Implementation
+- **Question:** Should agent personas be updated with a "Logging" section defining their output format, or is this requirement handled by the execution environment?
+- **Answer:** This requirement applies to the external execution environment/orchestrator running the agents, not the persona definitions themselves.
+
+### Question 2026-02-24 - Configuration Source of Truth
+- **Question:** Should `mcp.config.json` be deprecated in favor of an `ACTIVE_MCPS` environment variable, or should the requirements be updated to recognize the JSON configuration as the source of truth?
+- **Answer:** `mcp.config.json` is the source of truth for context assembly (generating GEMINI.md). Environment variables are the source of truth for runtime secrets.
+
+### Question 2026-02-24 - Agent Resilience and Tool Failure Directives
+- **Question:** Should a standardized "Error Handling" or "Resilience" section be added to all agent persona templates to guide their behavior during tool failures?
+- **Answer:** A standardized "Error Handling and Resilience" directive will be added to the base templates or global guidelines rather than each individual persona.
+
+### Question 2026-02-25 - Missing .env.template for Secret Resolution
+- **Question:** Should a `.env.template` be added to the root directory, or is there another intended method for defining the required environment variable keys?
+- **Answer:** A `.env.template` file should be added to the root directory documenting the required structure for orchestrator execution.
+
+### Question 2026-02-25 - Python Runtime Environment Support
+- **Question:** Is Python support planned for a future phase, and if so, what is the expected timeline or specific use case (e.g., specific agent runners)?
+- **Answer:** This requirement is deprecated. The repository is a language-agnostic library of markdown specifications, and execution scripts are node-based utilities for context generation.
+
+### Question 2026-02-25 - Consistent "NoeMI" Branding
+- **Question:** Should "NoeMI" be adopted as the official branding across all documentation, or should it be removed from `REQUIREMENTS.md`?
+- **Answer:** Yes, "Project NoéMI" is the official project branding and will be standardized across the README and other primary documentation.
+
+### Question 2026-02-26 - Persona Template Standardization
+- **Question:** Should all agents be migrated to the "Role, Tone, Capabilities, and Rules" format, or are there different classes of agents (e.g., "Standard" vs "Specialized/Task-Oriented") that require different templates?
+- **Answer:** The "Role, Mission, Core Mandates, Workflow, Boundaries" format is adopted as the new standard for specialized agents. Simpler agents may continue using basic templates, but standardization towards the Bolt/Sentinel format is preferred.
+
+### Question 2026-02-26 - Execution Context and Tooling References
+- **Question:** Should agent personas be generic regarding their verification tools, or should they assume a specific runtime environment?
+- **Answer:** Personas should document their expected external tooling dependencies in their requirements. They assume the orchestrator has prepared a compatible workspace.
+
+### Question 2026-02-26 - Global Security Mandate Injection
+- **Question:** Should the global security and execution mandates from `AGENTS.md` be automatically injected into `GEMINI.md` via the generation script, or should they be manually added to each agent's "Rules" section?
+- **Answer:** Global security mandates should be included in `AGENTS.md` and injected by the orchestrator or `generate_gemini.js` into the final system prompt.
+
+### Question 2026-02-27 - Stateless Execution vs. Persistent Memory Layer
+- **Question:** Is the "Memory Layer" (pgvector) intended to be a core, required component of the Project NoéMI architecture, or is it an optional enhancement?
+- **Answer:** The core execution model is stateless. The `pgvector` memory layer in the Docker example is an optional enhancement for advanced orchestrator setups.
+
+### Question 2026-02-27 - Core Toolkit System Dependencies
+- **Question:** Should `Docker` and the `Gemini CLI` be officially designated as core system requirements for the Project NoéMI toolkit?
+- **Answer:** Docker and Gemini CLI are required dependencies for running the local examples and pre-flight checks, but not for simply reading the library definitions.
+
 ## [2026-02-28] - Comprehensive Documentation and Drift Resolution
 - **Decision**: Answered all pending clarification questions and resolved documentation drifts.
 - **Context**: Project required cleanup of requirements, branding standardization to "Project NoéMI", creation of `.env.template`, and clarifying the execution model (this is purely a definitions library for external orchestrators).
