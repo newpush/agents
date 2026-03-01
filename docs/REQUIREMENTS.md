@@ -33,7 +33,8 @@ The primary goal is to provide a robust foundation that developers can use to qu
 ## Technical Specifications
 - **Architecture**: A hybrid structure containing static Markdown documentation (for knowledge and persona definition) and Node.js executable scripts/configurations for runtime context deployment.
 - **Data Persistence**: The core execution model is stateless execution. Persistent memory (e.g., pgvector Memory Layer) is an optional enhancement handled by advanced orchestrators.
-- **Runtime Environment**: The context generation scripts use a Node.js environment. Docker and Gemini CLI are required dependencies for running the local examples and pre-flight checks.
+- **Runtime Environment**: The context generation scripts use a Node.js environment. Docker and Gemini CLI are required dependencies for running the local examples and pre-flight checks. 
+  - *Prerequisite Reading:* For a short class on managing Gemini CLI extensions, please see the [Getting Started with Gemini CLI Extensions Codelab](https://codelabs.developers.google.com/getting-started-gemini-cli-extensions).
 
 ## Strategic Alignment & Future Enhancements (Top 5 Areas for Improvement)
 Based on the Project NoéMI strategy (1:50 Equilibrium, 4D Framework, and Fleet Deployment), the following are the top 5 required improvements to align the repository with the project's pedagogical and operational goals:

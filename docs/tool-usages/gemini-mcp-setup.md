@@ -35,6 +35,8 @@ Run the following command in your terminal. This registers the server (which inc
 gemini extensions install https://github.com/gemini-cli-extensions/workspace
 ```
 
+*(Note: If you are new to the Gemini CLI, it is highly recommended to complete the [Getting Started with Gemini CLI Extensions Codelab](https://codelabs.developers.google.com/getting-started-gemini-cli-extensions) as a prerequisite to understand how extension management works).*
+
 > **⚠️ Installation Warning Notice**
 > When running the command above, Gemini CLI will display the following warning:
 > *"The extension you are about to install may have been created by a third-party developer and sourced from a public repository. Google does not vet, endorse, or guarantee the functionality or security of extensions. Please carefully inspect any extension and its source code before installing to understand the permissions it requires and the actions it may perform."*
