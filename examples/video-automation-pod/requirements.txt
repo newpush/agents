@@ -1,0 +1,6 @@
+google-generativeai
+rembg
+Pillow
+opencv-python
+moviepy
+pydub
