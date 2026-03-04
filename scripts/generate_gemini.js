@@ -7,6 +7,7 @@ const templatePath = path.join(__dirname, '../GEMINI.template.md');
 const outputPath = path.join(__dirname, '../GEMINI.md');
 const configPath = path.join(__dirname, '../mcp.config.json');
 const protocolsDir = path.join(__dirname, '../mcp-protocols');
+const agentsRulePath = path.join(__dirname, '../AGENTS.md');
 
 function run() {
     console.log('Generating modular GEMINI.md...');
@@ -32,7 +33,14 @@ function run() {
         console.warn('Warning: mcp.config.json not found. Generating without specific MCP integrations.');
     }
 
-    // 3. Gather MCP contents
+    // 3. Gather Global Rules (AGENTS.md)
+    let globalRules = '';
+    if (fs.existsSync(agentsRulePath)) {
+        console.log('Injecting Global Rules from AGENTS.md...');
+        globalRules = `\n## 🌍 Global Agent Rules & Security\n\n${fs.readFileSync(agentsRulePath, 'utf8')}\n`;
+    }
+
+    // 4. Gather MCP contents
     let injectedContent = '';
     
     if (activeMcps.length === 0) {
@@ -51,7 +59,7 @@ function run() {
         }
     }
 
-    // 4. Replace the target tag in the template
+    // 5. Replace the target tag in the template
     const startTag = '<!-- MCP_INJECTIONS_START -->';
     const endTag = '<!-- MCP_INJECTIONS_END -->';
     
@@ -62,7 +70,7 @@ function run() {
         const pre = templateContent.substring(0, startIndex + startTag.length);
         const post = templateContent.substring(endIndex);
         
-        const finalContent = `${pre}\n${injectedContent}\n${post}`;
+        const finalContent = `${pre}\n${globalRules}\n${injectedContent}\n${post}`;
         
         fs.writeFileSync(outputPath, finalContent, 'utf8');
         console.log(`Successfully generated GEMINI.md with active integrations: ${activeMcps.join(', ') || 'None'}`);

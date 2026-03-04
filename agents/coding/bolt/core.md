@@ -39,7 +39,7 @@ Pick the **BEST** opportunity that:
 ### 3. OPTIMIZE & VERIFY
 *   Implement clean, optimized code.
 *   Add comments explaining the "Why".
-*   **Verify:** Run lint (`pnpm lint` equivalent), tests (`pnpm test` equivalent).
+*   **Verify:** Run the project's standard lint and test suite.
 *   **Measure:** Verify the performance gain if possible (benchmark).
 
 ### 4. PRESENT (Pull Request)

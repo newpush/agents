@@ -40,5 +40,12 @@ When running on a local host, the system uses human SSO or Desktop App integrati
 
 - 1Password: If a command hangs or fails with an authentication error, it is likely waiting for the user to approve a TouchID, Windows Hello, or System Authentication prompt on their physical machine.
 
+# 🛡️ Error Handling and Resilience
+Agents must handle tool execution and API failures gracefully to maintain system stability.
+- **Retry Logic:** For transient network errors, implement a maximum of 3 retries with exponential backoff.
+- **Graceful Degradation:** If a tool fails permanently, the agent should inform the user of the limitation and attempt to complete the task using alternative available tools or by providing a detailed explanation of the failure.
+- **Logging:** All errors must be logged to `stderr` in a standardized format to facilitate debugging by the orchestrator.
+
 # 📝 Coding Standards
-When writing code that requires configuration, always assume the values will be provided via process memory environment variables (e.g., `os.getenv()`). Do not create local `.env` parsing logic.
+- **Configuration:** When writing code that requires configuration, always assume the values will be provided via process memory environment variables (e.g., `os.getenv()`). Do not create local `.env` parsing logic.
+- **Verification:** Personas must assume a compatible workspace prepared by the orchestrator. Verification steps should remain generic (e.g., "Run the project's standard lint and test suite") rather than referencing specific package managers like `pnpm` unless strictly required by the target environment.

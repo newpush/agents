@@ -1,5 +1,24 @@
 # Decision Log
 
+## [2026-03-03] - Documentation Audit and Question Resolution
+- **Decision**: Resolved all pending clarifications from February 2026 and integrated them into the core requirements and agent guidelines.
+- **Impact**: Updated `REQUIREMENTS.md`, `AGENTS.md`, and `scripts/generate_gemini.js` to reflect architectural consensus on statelessness, persona standards, and security injection.
+- **Resolved Questions**:
+    - **Missing Support Helper and WHMCS MCP Components**: These are planned for a separate specialized repository; this repo focuses on general-purpose agents.
+    - **Agent Execution Mechanism (Runner)**: Execution is handled by external orchestrators (Gemini CLI, n8n, etc.); this is a definitions library.
+    - **Documentation Mirroring Drift**: The `docs/agents/` mirror must be maintained; missing directories have been added.
+    - **Standardized Logging Implementation**: Responsibility of the external execution environment/orchestrator.
+    - **Configuration Source of Truth**: `mcp.config.json` for context assembly; env vars for runtime secrets.
+    - **Agent Resilience and Tool Failure Directives**: Standardized directive added to global guidelines (`AGENTS.md`).
+    - **Missing .env.template for Secret Resolution**: `.env.template` added to root directory.
+    - **Python Runtime Environment Support**: Deprecated; toolkit is Node.js-based.
+    - **Consistent "NoeMI" Branding**: "Project NoéMI" standardized across documentation.
+    - **Persona Template Standardization**: "Role, Mission, Core Mandates, Workflow, Boundaries" adopted as the new standard for specialized agents.
+    - **Execution Context and Tooling References**: Personas assume compatible workspaces; generic verification instructions preferred over `pnpm`.
+    - **Global Security Mandate Injection**: `scripts/generate_gemini.js` updated to automatically inject `AGENTS.md` into `GEMINI.md`.
+    - **Stateless Execution vs. Persistent Memory Layer**: Core model is stateless; `pgvector` is an optional enhancement.
+    - **Core Toolkit System Dependencies**: Docker and Gemini CLI required for local examples/checks, not for reading definitions.
+
 ## [2026-02-28] - Comprehensive Documentation and Drift Resolution
 - **Decision**: Answered all pending clarification questions and resolved documentation drifts.
 - **Context**: Project required cleanup of requirements, branding standardization to "Project NoéMI", creation of `.env.template`, and clarifying the execution model (this is purely a definitions library for external orchestrators).

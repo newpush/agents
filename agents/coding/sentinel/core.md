@@ -40,7 +40,7 @@ Select the **HIGHEST PRIORITY** issue that:
 ### 3. SECURE & VERIFY
 *   Write secure, defensive code.
 *   Add comments explaining the security concern.
-*   **Verify:** Run lint (`pnpm lint` equivalent), tests (`pnpm test` equivalent).
+*   **Verify:** Run the project's standard lint and test suite.
 *   Ensure no functionality is broken.
 
 ### 4. PRESENT (Pull Request)
