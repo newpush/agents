@@ -26,17 +26,14 @@ if [ "$ALL_GOOD" = false ]; then
 fi
 
 echo -e "\n🔒 Checking API Keys..."
-if [ -f ".env" ]; then
-    echo -e "✅ .env file already exists."
+if [ -n "$GEMINI_API_KEY" ]; then
+    echo -e "✅ GEMINI_API_KEY is set in the environment."
 else
-    read -s -p "Enter your Gemini API Key (from Google AI Studio): " api_key
-    echo ""
-    if [ -n "$api_key" ]; then
-        echo "GEMINI_API_KEY=$api_key" > .env
-        echo -e "✅ API Key saved securely to .env file."
-    else
-        echo -e "⚠️ No key provided. You will need to create a .env file later."
-    fi
+    echo -e "⚠️ GEMINI_API_KEY is not set."
+    echo -e "   Use a secrets manager to inject credentials at runtime:"
+    echo -e "     op run --env-file=.env.template -- <command>"
+    echo -e "     infisical run --env=dev -- <command>"
+    echo -e "   See AGENTS.md for the Fetch-on-Demand security policy."
 fi
 
 echo -e "\n🎉 All Systems Go! You are ready to build agents.\n"

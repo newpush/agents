@@ -24,16 +24,14 @@ if (-not $allGood) {
 }
 
 Write-Host "`n🔒 Checking API Keys..." -ForegroundColor Cyan
-if (Test-Path ".env") {
-    Write-Host "✅ .env file already exists." -ForegroundColor Green
+if ($env:GEMINI_API_KEY) {
+    Write-Host "✅ GEMINI_API_KEY is set in the environment." -ForegroundColor Green
 } else {
-    $apiKey = Read-Host "Enter your Gemini API Key (from Google AI Studio)"
-    if ($apiKey) {
-        Set-Content -Path ".env" -Value "GEMINI_API_KEY=$apiKey"
-        Write-Host "✅ API Key saved securely to .env file." -ForegroundColor Green
-    } else {
-        Write-Host "⚠️ No key provided. You will need to create a .env file later." -ForegroundColor Yellow
-    }
+    Write-Host "⚠️ GEMINI_API_KEY is not set." -ForegroundColor Yellow
+    Write-Host "   Use a secrets manager to inject credentials at runtime:" -ForegroundColor Yellow
+    Write-Host "     op run --env-file=.env.template -- <command>" -ForegroundColor Yellow
+    Write-Host "     infisical run --env=dev -- <command>" -ForegroundColor Yellow
+    Write-Host "   See AGENTS.md for the Fetch-on-Demand security policy." -ForegroundColor Yellow
 }
 
 Write-Host "`n🎉 All Systems Go! You are ready to build agents." -ForegroundColor Green
