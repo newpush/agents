@@ -11,7 +11,7 @@ Every agent designed, developed, and deployed within this repository must adhere
 
 ### D1: Description (Mastering High-Precision Instruction)
 The foundation of effective agentic behavior is clarity. Agents must be given instructions that translate a broad vision into a structured reality. 
-*   **Application:** When writing an agent persona (e.g., in `agents/`), define the Role, Tone, Capabilities, and Rules with absolute precision. Ambiguity leads to hallucination.
+*   **Application:** When writing an agent persona (e.g., in `agents/`), define the Role, Tone, Capabilities, and Rules with absolute precision. Ambiguity leads to hallucination. The canonical format for all agent specifications is [`docs/AGENT_TEMPLATE.md`](AGENT_TEMPLATE.md).
 
 ### D2: Discernment (Human vs. Synthetic Intelligence)
 Not all tasks are suited for AI. Discernment is the architectural skill of identifying which tasks require human empathy, complex judgment, or physical interaction, versus tasks that can be securely handled by synthetic agents.

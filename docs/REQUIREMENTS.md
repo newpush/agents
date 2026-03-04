@@ -15,7 +15,7 @@ The primary goal is to provide a robust foundation that developers can use to qu
 3. **Knowledge Base**: Act as a structured repository of information, protocols, and best practices that guide both human developers and the AI agents (NoéMI) operating within the ecosystem.
 
 ## Functional Requirements
-1. **Persona Definition**: Agents must be defined clearly using Markdown specifications (located in the `agents/` directory). The standard format for specialized agents is "Role, Mission, Core Mandates, Workflow, Boundaries".
+1. **Persona Definition**: Agents must be defined clearly using Markdown specifications (located in the `agents/` directory). The standard format is defined in [`docs/AGENT_TEMPLATE.md`](AGENT_TEMPLATE.md). Required sections: Role, Tone, Capabilities, Rules & Constraints, Boundaries. Optional sections (when relevant): Mission, Workflow, Tool Usage, Output Format, Journal, Files of Interest.
 2. **Configuration**: Agent runtime execution is configured via the orchestrator's environment variables. The context assembly script uses `mcp.config.json` to generate the correct base templates. 
 3. **Extensibility (MCP Integration)**: Agents and the underlying toolkit must be capable of seamlessly interacting with external Model Context Protocol (MCP) servers to expand their capabilities and execute actions in external systems.
 4. **Modular Context Generation**: The system must provide a mechanism to compile `GEMINI.md` dynamically from base templates and modular MCP protocol files. This prevents context window overloading and allows developers to selectively activate only the MCP integrations relevant to their current task.
