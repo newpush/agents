@@ -35,7 +35,7 @@
     - **New Platform/Architecture**: The repository is exclusively a collection of standalone AI agents and scripts. Support Helper will be a persona relying on external WHMCS MCP.
     - **Core Functionality Replacement**: No "Support Dashboard"; Support Helper uses MCP tools (cache clearing, status checks).
     - **Legacy Code Cleanup**: `src/addonmodule.php` removed.
-    - **Legacy Configuration Fields**: Discarded. Config via env vars and 1Password.
+    - **Legacy Configuration Fields**: Discarded. Config via env vars and Infisical.
     - **Undocumented Utility (Clear Cache)**: Handled by external WHMCS MCP tool.
     - **Performance Metrics**: Applies to agent response times, not a dashboard.
     - **Authentication Provider**: Delegated to execution environment (CLI/Orchestrator).
@@ -62,7 +62,7 @@
 
 ## [2026-02-16] - Documentation Audit
 - **Status**: No new human feedback provided in CLARIFICATIONS.md.
-- **Action**: Requirements updated based on codebase drift and security policy (1Password) analysis.
+- **Action**: Requirements updated based on codebase drift and security policy (Infisical) analysis.
 
 ## [2026-02-19] - Documentation Audit
 - **Status**: No new human feedback provided in CLARIFICATIONS.md.

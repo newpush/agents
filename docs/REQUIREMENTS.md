@@ -22,11 +22,11 @@ The primary goal is to provide a robust foundation that developers can use to qu
 
 ## Operational & Security Requirements
 1. **Execution Environment**: This repository is a definitions library for building and composing agent contexts. Execution is handled by external orchestrators (e.g., Gemini CLI, n8n, LangChain).
-2. **Security & Credentials (Fetch-on-Demand)**: The toolkit mandates a "Fetch-on-Demand" architecture for secrets (referencing `.env.template`). All sensitive credentials (e.g., API keys, MCP connection strings) must be stored exclusively in secure vaults (e.g., 1Password) and never hardcoded.
-3. **Runtime Resolution**: Secrets must be resolved dynamically at runtime using secure CLI tools (e.g., the 1Password CLI `op`).
+2. **Security & Credentials (Fetch-on-Demand)**: The toolkit mandates a "Fetch-on-Demand" architecture for secrets. All sensitive credentials (e.g., API keys, MCP connection strings) must be stored exclusively in secure vaults (e.g., Infisical) and never hardcoded.
+3. **Runtime Resolution**: Secrets must be resolved dynamically at runtime using secure CLI tools (e.g., the Infisical CLI `infisical`).
 4. **Resilience & Logging**: Agents must handle tool execution and API failures gracefully. Standardized logging to `stdout` and `stderr`, as well as error handling during execution, is the sole responsibility of the execution platform/orchestrator.
 5. **Identity & Access Management**:
-    - **Authentication**: Delegated to the environment executing the agent (e.g., 1Password CLI auth for local runs).
+    - **Authentication**: Delegated to the environment executing the agent (e.g., Infisical CLI auth for local runs).
     - **RBAC**: Role-Based Access Control is handled by the execution platform or host interface.
     - **Auditing**: Audit logging of tool executions is the responsibility of the MCP servers or the orchestrating platform.
 

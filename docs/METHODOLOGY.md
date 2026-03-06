@@ -23,7 +23,7 @@ The paradigm shift from prompt-based chatbots to true agentic development. Deleg
 
 ### D4: Diligence (Ethics, Verification, and Security)
 Generative models are probabilistic. Diligence requires continuous verification, ethical alignment, and robust security protocols for all outputs.
-*   **Application:** Implement Gartner AI TRiSM standards, Red Teaming protocols, and secure "Fetch-on-Demand" credential management (via 1Password) for every deployed agent.
+*   **Application:** Implement Gartner AI TRiSM standards, Red Teaming protocols, and secure "Fetch-on-Demand" credential management (via Infisical) for every deployed agent.
 
 ---
 
