@@ -1,0 +1,243 @@
+include as an option seamless integration with M365 and Outlook that support user’s
+reporting suspected phishing emails (including tests) to Authorized Purchaser through an
+automated feature. This aspect of the desired Services should:
+1. Ensure compatibility with popular operating systems, including Windows, macOS,
+iOS and Android.
+2. Function across various email clients, including at least Microsoft Outlook.
+3. Be capable of use on both workstations and mobile devices, such as laptops,
+desktops, smartphones, and tablets.
+4. Be simple to install and configure for administrators, and easy to use by end users.
+5. Support a custom delivery location for reports, and allow multiple recipients.
+5. Optional Simulation Filter. The State desires phishing simulation services that include as an
+option a filter mechanism that recognizes and filters out simulated phishing emails used for
+training purposes. It is expected that filter rules will accurately identify simulated phishing
+emails while allowing real phishing attempts to be reported.
+
+SECTION 3: PROCUREMENT REQUIREMENTS
+3.1 OREGONBUYS ELECTRONIC RESPONSE
+All Proposers must be registered in OregonBuys (by creating a vendor account) to do business with
+the State. Registration is free. To create a vendor account, click the blue “Register” button in the top
+right corner of the OregonBuys website: https://oregonbuys.gov/bso. For registration assistance see
+vendor registration guidance.
+Proposers are responsible for ensuring that their vendor registration and information is current and
+correct in OregonBuys. DAS PS is not responsible for defective registration or incorrect vendor
+information.
+Proposer should follow the procedures outlined at:
+https://www.oregon.gov/das/ORBuys/Documents/OregonBuys%20Vendor%20Formal%20Solicitatio
+n%20Response.pdf.
+3.2 MINIMUM QUALIFICATIONS
+To be considered for evaluation, Proposal must address each of the items listed in this Section 3.2
+and all other requirements set forth in this RFP. Proposer shall describe the Goods to be provided or
+the Services to be performed or both. A Proposal that merely offers to provide the Goods or Services
+as stated in this RFP may be considered non-Responsive to this RFP and will not be considered
+further.
+Proposer must have a minimum of five years’ experience in providing the Goods or Services that it
+proposes to provide Authorized Purchasers.
+3.2.1 Authorized Representative
+Failure of Proposer’s authorized representative to sign the Proposal may result in rejection of the
+Proposal by DAS PS.
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 11 of 27
+
+3.3
+
+MINIMUM SUBMISSION REQUIREMENTS
+
+3.3.1 Proposal Submissions
+To be considered for evaluation, Proposer must include in its Proposal each of the following
+(each of which is further detailed in Proposal Requirements section below).
+•
+
+Vendor Profile (Section 3.4.9)
+
+•
+
+Executive Summary (See section 3.4.10)
+
+•
+
+Disclosure Exemption Affidavit (Attachment B)
+
+•
+
+Proposer Information and Certification Sheet (Attachment C)
+
+•
+
+Cost Proposal (See section 3.4.8)
+
+•
+
+COBID Certification / Outreach Plan (Attachment D)
+
+•
+
+Responsibility Inquiry (Attachment E)
+
+•
+
+Sample Materials Documents (See section 3.4.11)
+
+•
+
+Optional Phishing Simulation Training Tools (Attachment F)
+
+3.4 PROPOSAL REQUIREMENTS
+A Proposal should follow the format and reference the sections listed in this Proposal Requirements
+section. Responses to each section and subsection should be labeled to indicate the item being
+addressed.
+A Proposal should not include extensive artwork, or other materials not essential to the utility and
+clarity of the Proposal. Do not include marketing or advertising materials in the Proposal, unless
+requested. Proposer’s Proposal should be straightforward and address the requests of the RFP.
+Proposals containing unsolicited marketing or advertising materials may receive a lower evaluation
+score if required information is difficult to locate.
+3.4.1 Attachment B – Exemption Disclosure Affidavit (NOT SCORED)
+Proposer will provide with its Proposal the completed, signed, and notarized Attachment B –
+Disclosure Exemption Affidavit. Proposals missing the Attachment B may be found nonresponsive and will not be considered for evaluation. If Proposer believes any of its Proposal is
+exempt from disclosure under Oregon Public Records Law (ORS 192.311 through 192.478).
+Proposer shall also mark as “Confidential” in OregonBuys all attachments to its Proposal that
+Proposer believes are exempt from disclosure.
+3.4.2 Attachment C – Proposer Information and Certification Sheet (NOT SCORED)
+Proposer shall complete and submit the Attachment C - Proposer Information and Certification
+Sheet bearing the Proposer’s authorized representative’s Signature.
+Failure to demonstrate compliance with Oregon Tax Laws and sign the Proposer Information and
+Certification Sheet may result in a finding of non-Responsibility.
+The Attachment C - Proposer Information and Certification Sheet must bear the Proposer’s
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 12 of 27
+
+authorized representative’s Signature. Electronic signatures are acceptable.
+3.4.3 Attachment D – COBID Certification / Outreach Plan (NOT SCORED)
+Proposer will provide with its Proposal a completed Attachment D – COBID Certification /
+Outreach Plan. Proposals missing the completed Attachment D may be found to be nonresponsive and will not be considered for evaluation.
+3.4.4 Attachment E – Responsibility Inquiry (NOT SCORED)
+Proposer will provide with its Proposal a completed Attachment E – Responsibility Inquiry. A
+Proposal missing the Attachment E may be found non-responsive and may not be considered for
+evaluation.
+3.4.5 Attachment F – Optional Phishing Simulation Training Tools (NOT SCORED)
+Proposer will provide (if applicable) a completed Attachment F – Optional Phishing Simulation
+Training Tools. Proposer should refer to the instructions tab on the attachment as well as section
+2.4.5.4.1 Optional Phishing Simulation Training Tools.
+3.4.6 Subscriptions and/or Service Level Agreements (NOT SCORED)
+Proposer will provide any proposed underlying licensing or subscription terms and agreements,
+and/or all proposed service level agreements, in its Proposal.
+3.4.7 Price Proposal (NOT SCORED)
+Proposer must include a price proposal that sets forth a price for each item proposed in response
+to this RFP as maximum prices for each year of the first five-year term of the Price Agreement.
+This includes items listed in Section 2.4 Scope of Services, as well as any additional optional or
+add on items. Goods and Services should be proposed as fixed costs, or as hourly rates if
+applicable. The pricing should include the associated fees and costs for any applicable
+subscriptions and service level agreements.
+If there are cost reduction advantages, such as multiple orders, Proposer will identify these.
+Proposer may include tiered pricing for alternative levels of service.
+A Proposal missing pricing information may be found non-responsive and will not be considered
+for evaluation.
+Proposer is also encouraged to list any additional products or services, and related pricing, that
+may be relevant to the scope of Goods and Services requested.
+3.4.8 Vendor Profile (30 POINTS)
+Proposer must submit a Vendor Profile consistent with this section and its offered
+Goods or Services.
+1. Assessment and Planning
+As applicable to Proposer’s proposed goods and services, describe Proposer’s capabilities
+and availability to assess the current cybersecurity awareness and training materials
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 13 of 27
+
+within an organization, and assist with the planning of new or updated cybersecurity
+awareness training and materials.
+2. Content Development
+If Proposer is offering to provide content development services such as eLearning
+modules, videos, infographics, and/or written resources, Proposer shall specify the
+subject areas and modalities, including any format compatible with industry standard
+Learning Management Systems (LMS), including the State’s current LMS, Workday.
+Proposer shall specify if its offering is compatible with Workday integration. However, it
+is possible to submit other vendor hosted LMS methods.
+If Proposer offers content development, please provide a short description of how
+Proposer ensures that content covers essential cybersecurity topics such as security
+culture, phishing, social engineering, password security, data protection, etc.
+If Proposer offers content development, please provide a short description of how
+Proposer ensures that different staff roles and level of technical expertise within the
+organization are covered.
+3. Training Delivery
+Describe Proposer’s training delivery modalities. Indicate if Proposer has the ability to
+customize training programs. If so, please describe the following:
+1. The methods Proposer uses to delivery customized training, e.g., online platforms,
+workshops, seminars, etc.
+2. How Proposer ensures that customized training sessions (such as webinars) reach
+employees in different departments, and ensuring a sufficient number of sessions to
+accommodate a diverse audience with various levels of understanding of Cyber
+Security knowledge?
+3. Proposer’s methodology for tracking and reporting of employees’ completion and
+performance in the training sessions, if offered.
+4. Cybersecurity Awareness Month Training or Materials
+Indicate if Proposer offers any special training or materials during or for the annual
+Cybersecurity Awareness Month. If so, please describe how these materials are
+disseminated to end users, and what topics may be included in the materials.
+If Proposer offers these trainings or materials, how does Proposer ensure that content is
+provided to multi and/or enterprise-wide organizations with time for the organizations to
+review before disseminating materials?
+5. Targeted Technical Training
+Indicate in its vendor profile if Proposer offers targeted technical training. If so, please
+describe the following:
+1. If the technical training is customizable to suit the organization’s specific
+requirements and industry context.
+2. If the technical training materials and sessions are scalable to accommodate
+growth or reduction in the workforce, and changing technical needs over time?
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 14 of 27
+
+3. Proposer’s capability to measure the effectiveness of the technical training
+offerings, and detailed reporting on effectiveness, including a description of the
+methodology and process.
+6. Regulation Specific Education
+Indicate if Proposer offers training sessions and materials on specific regulatory
+frameworks. If so, please specifically describe any available services, including on at least:
+1. The Security and Privacy requirements under the Health Insurance Portability and
+Accountability Act (HIPAA).
+2. Payment Card Industry (PCI) standards.
+3. The Family Education Rights and Privacy Act (FERPA).
+If training sessions and materials on specific regulatory frameworks are offered by
+Proposer, describe how Proposer ensures that training materials are up to date, accurate,
+and align with applicable regulatory requirements and best practices.
+3.4.9 Executive Summary (30 POINTS)
+Proposer shall provide a description of its organization and describe in detail the type and
+number of years of experience it has in providing the goods or services that Proposer intends to
+offer.
+Proposer’s summary must also describe the features and functionalities that address each of the
+Goods and/or Services Proposer is offering in its Proposal.
+3.4.10 Sample Materials Documentation (40 POINTS)
+Proposer shall submit documentation of the variety of the security training documents, videos,
+tutorials, and eLearning sessions that it provides that are within scope of Section 2.4, Scope of
+Services. If applicable to Proposer’s Proposal, Proposer shall describe the technology platform
+that content is built in, its tracking and reporting capabilities, and compliance with technical
+standards.
+3.4.11 Ordering Process (30 POINTS)
+Proposer shall submit a description and relevant documentation of its ordering process,
+including at a minimum:
+1.
+
+Proposer’s customer service, including hours of operation, emergency protocol, etc. In
+addition, describe any extra benefits an Authorized Purchaser could receive, such as a
+dedicated customer service representative. Proposer is expected to make available
+customer service agents and technical support staff to handle all orders and mitigate all
+order-related technical issues from 8:00 am to 5:00 pm Pacific Time on business days.
+
+2.
+
+The methods of payment Proposer accepts. Authorized Purchasers have many different
+payment methods, i.e., electronic funds Transfer (ETF), vouchers, credit cards.
+
+3.
+
+If Authorized Purchaser wants to order Goods and Services using a blanket purchase
+order (e.g., to set up an account) how many days will it take to get its account set up.
+
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 15 of 27
+
+

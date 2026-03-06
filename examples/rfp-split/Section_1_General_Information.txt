@@ -1,0 +1,183 @@
+STATE OF OREGON
+
+COVER PAGE
+Department of Administrative Services, Procurement Services
+Request For Proposals (RFP)
+OregonBuys Bid Number S-10700-00007215
+
+CYBERSECURITY AWARENESS TRAINING SERVICES AND
+MATERIALS
+Date of Issue: Monday, July 1, 2024
+Opening Date and Time: Wednesday, July 31, 2024
+Single Point of Contact (SPC):
+Address:
+City, State, Zip
+Phone (voice)
+E-mail:
+
+Nathan C. Ramos, OPBC Senior Procurement and
+Contract Specialist
+
+1225 Ferry St. SE
+Salem, OR 97301
+(971) 707-0016
+Nathan.Ramos@DAS.Oregon.gov
+
+The State of Oregon promotes equal opportunity for all individuals without regard to age, color,
+disability, marital status, national origin, race, religion or creed, sex or gender, sexual orientation, or
+veteran status.
+
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 1 of 27
+
+TABLE OF CONTENTS
+SECTION 1:
+GENERAL INFORMATION ........................................................................................... 5
+1.1
+INTRODUCTION ........................................................................................................................... 5
+1.2
+SCHEDULE .................................................................................................................................... 6
+1.3
+SINGLE POINT OF CONTACT (SPC) .............................................................................................. 6
+SECTION 2:
+AUTHORITY, OVERVIEW, AND SCOPE ........................................................................ 6
+2.1
+AUTHORITY AND METHOD ......................................................................................................... 6
+2.2
+DEFINITION OF TERMS ................................................................................................................ 6
+2.3
+OVERVIEW AND PURPOSE .......................................................................................................... 7
+2.4
+SCOPE OF WORK ......................................................................................................................... 7
+SECTION 3:
+PROCUREMENT REQUIREMENTS ............................................................................... 11
+3.1
+OregonBuys Electronic Response ............................................................................................. 11
+3.2
+MINIMUM QUALIFICATIONS .................................................................................................... 11
+3.3
+minimum submission requirements ........................................................................................ 12
+3.4
+Proposal Requirements............................................................................................................. 12
+SECTION 4:
+SOLICITATION PROCESS ............................................................................................. 16
+4.1
+PUBLIC NOTICE .......................................................................................................................... 16
+4.2
+PRE-PROPOSAL CONFERENCE .................................................................................................. 16
+4.3
+QUESTIONS / REQUESTS FOR CLARIFICATIONS....................................................................... 17
+4.4
+SOLICITATION PROTESTS .......................................................................................................... 17
+4.5
+PROPOSAL DELIVERY OPTIONS................................................................................................. 18
+4.6
+PROPOSAL MODIFICATION OR WITHDRAWAL ....................................................................... 18
+4.7
+PROPOSAL DUE.......................................................................................................................... 18
+4.8
+PUBLIC OPENING ....................................................................................................................... 18
+4.9
+PROPOSAL REJECTION............................................................................................................... 19
+4.10 EVALUATION PROCESS.............................................................................................................. 19
+4.11 POINT AND SCORE CALCULATIONS .......................................................................................... 20
+4.12 RANKING OF PROPOSERS ......................................................................................................... 21
+4.13 RESERVED................................................................................................................................... 22
+SECTION 5:
+AWARD AND NEGOTIATION ...................................................................................... 22
+5.1
+AWARD NOTIFICATION PROCESS ............................................................................................. 22
+5.2
+INTENT TO AWARD PROTEST ................................................................................................... 22
+5.3
+APPARENT SUCCESSFUL PROPOSER SUBMISSION REQUIREMENTS ..................................... 23
+5.4
+PRICE AGREEMENT NEGOTIATION........................................................................................... 24
+SECTION 6:
+ADDITIONAL INFORMATION ...................................................................................... 25
+6.1
+COMMITMENT TO DIVERSITY, EQUITY, AND INCLUSION....................................................... 25
+6.2
+CERTIFIED FIRM PARTICIPATION .............................................................................................. 25
+6.3
+GOVERNING LAWS AND REGULATIONS .................................................................................. 26
+6.4
+OWNERSHIP/PERMISSION TO USE MATERIALS ...................................................................... 26
+6.5
+CANCELLATION OF RFP; REJECTION OF PROPOSAL; NO DAMAGES. ..................................... 26
+6.6
+COST OF SUBMITTING A PROPOSAL ........................................................................................ 26
+6.7
+STATEWIDE E-WASTE/RECOVERY PROCEDURE ...................................................................... 26
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 2 of 27
+
+6.8
+
+RECYCLABLE PRODUCTS............................................................................................................ 26
+
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 3 of 27
+
+LIST OF ATTACHMENTS
+ATTACHMENT A - SAMPLE PRICE AGREEMENT
+EXHIBIT A – DESCRIPTION OF THE GOODS, SERVICES AND PRICES
+EXHIBIT B – SAMPLE PURCHASE ORDER
+EXHIBIT C – INSURANCE REQUIREMENTS
+EXHIBIT D – RIDER TO TERMS OF SERVICE
+ATTACHMENT B - DISCLOSURE EXEMPTION AFFIDAVIT
+ATTACHMENT C - PROPOSER INFORMATION AND CERTIFICATION SHEET
+ATTACHMENT D - COBID CERTIFICATION / OUTREACH PLAN
+ATTACHMENT E - RESPONSIBILITY INQUIRY
+ATTACHMENT F – OPTIONAL PHISHING SIMULATION TRAINING TOOLS
+
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 4 of 27
+
+SECTION 1: GENERAL INFORMATION
+1.1 INTRODUCTION
+The State of Oregon, acting by and through the Department of Administrative Services, Procurement
+Services (“DAS PS”), on behalf of Department of Administrative Services’ Enterprise Information
+Services (“EIS”) and all other Authorized Purchasers, including all Oregon Cooperative Procurement
+Program (“ORCPP”) members, is issuing this Request for Proposal (“RFP”) to establish one or more
+Price Agreements for the purchase of Cybersecurity Awareness Training Services and Materials.
+The State desires the services of one or more information security education and awareness
+contractors to provide materials and services to support user education awareness programs, which
+must target numerous audiences, and which will be made available for purchasing by multiple state
+agencies and local governments through one or more statewide price agreements. A Proposer does
+not need to offer all the training materials and services listed in this RFP to be considered for
+award.
+DAS PS intends to enter into one or more Price Agreements for Cybersecurity Awareness Training
+Services and Materials. Any purchases under a Price Agreement must be authorized by purchase
+orders issued by an Authorized Purchaser, and purchases may only be made by ORCCP members in
+accordance with the ordering procedures described in the Buyers’ Guide that will accompany the
+issued Price Agreement(s). If more than one Price Agreement is awarded, selection and award of
+contract(s) to be entered into under the Price Agreements will follow a Best Value process.
+The initial term of the Price Agreement(s) is anticipated to be 5 years with options to renew up to a
+cumulative maximum of 15 years for each Price Agreement.
+The State will consider Proposals from Proposers that can provide the necessary goods and/or
+services that fulfill the identified needs for cybersecurity awareness training services and materials.
+Additional details on the scope of the Goods and Services are included in the Scope section.
+DAS’ EIS contains within its organizational structure the office of Cyber Security Services (“CSS”). CSS
+brings together enterprise security capabilities into a single organization. CSS is responsible under
+ORS 276A.300 for enterprise security policy, security monitoring of the state network, enterprise
+incident response, and enterprise security architecture, as well as dissemination of security training,
+policy, and best practices across state government. CSS desires to engage in one or more contracts
+for the Goods and Services, following a Best Value process in the event of award of more than one
+Price Agreement, for cybersecurity awareness training services and materials suitable for its program
+goals and needs.
+Notwithstanding the foregoing, Proposers are advised that there is no guarantee of any specific
+amount of purchases under a Price Agreement. Further, notwithstanding the award of a Price
+Agreement, DAS PS may conduct separate solicitations or award project-specific contracts or
+purchase orders for Goods or Services similar to what is described within this RFP using any method
+allowed by law.
+
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 5 of 27
+
+

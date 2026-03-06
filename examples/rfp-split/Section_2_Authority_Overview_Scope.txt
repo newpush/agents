@@ -1,0 +1,267 @@
+1.2 SCHEDULE
+The table below represents a tentative schedule of events. All times are listed in Pacific Time. All
+dates listed are subject to change. N/A denotes that event is not applicable to this RFP.
+Event
+
+Date
+
+Time
+
+Pre-Proposal Conference
+
+07/18/2024
+
+1:00 PM
+
+Questions / Requests for Clarification Due
+
+07/15/2024
+
+4:00 PM
+
+Answers to Questions / Requests for Clarification
+Issued (approx.)
+
+07/19/2024
+
+4:00 PM
+
+RFP Protest Period Ends
+
+7/8/2024
+
+4:00 PM
+
+Opening (Proposal Due)
+
+07/31/2024
+
+4:00 PM
+
+Opening of Proposal
+
+07/31/2024
+
+4:00 PM
+
+Presentations, Demonstrations, or Interviews
+
+07/22/2024
+
+11:00 AM
+
+Issuance of Notice of Intent to Award (approx.)
+
+08/16/2024
+
+4:00 PM
+
+Award Protest Period Ends
+
+08/23/2024
+
+4:00 PM
+
+1.3 SINGLE POINT OF CONTACT (SPC)
+The SPC for this RFP is identified on the Cover Page, along with the SPC’s contact information.
+Proposer shall direct ALL communications related to any provision of the RFP ONLY to the SPC,
+whether about the technical requirements of the RFP, contractual requirements, the RFP process, or
+any other provision.
+
+SECTION 2: AUTHORITY, OVERVIEW, AND SCOPE
+2.1 AUTHORITY AND METHOD
+DAS PS is issuing this RFP pursuant to its authority under ORS 279A.050 and OAR 125-246-0170(2).
+DAS PS is using the Competitive Sealed Proposal method, pursuant to ORS 279B.060 and OAR 125247-0260. DAS PS may use a combination of the methods for Competitive Sealed Proposals,
+including optional procedures: a) Competitive Range; b) Discussions and Revised Proposals; c)
+Revised Rounds of Negotiations; d) Negotiations; e) Best and Final Offers; and f) Multistep Sealed
+Proposals.
+2.2 DEFINITION OF TERMS
+For the purposes of this RFP, capitalized words are defined in OAR 125-246-0110, below, or in the
+Sample Price Agreement.
+1. Terminology specific to the OregonBuys system may be found at:
+https://www.oregon.gov/das/ORBuys/Documents/RolesAndTermCrosswalk.pdf.
+
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 6 of 27
+
+“Agency” means executive branch agencies of the State of Oregon that are boards, commissions,
+departments, or agencies whose costs are paid, in whole or in part, from funds held in the State
+Treasury
+“Authorized Purchaser” means any Agency of the State of Oregon, and any participant in the Oregon
+Cooperative Purchasing Program (ORCPP) with appropriate purchasing authority under their
+applicable statutes, rules, regulations, or ordinances.
+“Department of Administrative Services” or “DAS” means the Oregon Department of
+Administrative Services.
+“Department of Administrative Services, Procurement Services” or “DAS PS” means the Agency
+with central procurement authority acting on behalf of the State of Oregon.
+“Oregon Cooperative Purchasing Program” or “ORCPP” means the State of Oregon’s Cooperative
+Purchasing Program. ORCPP members are authorized to use DAS PS statewide agreements. ORCPP
+members include State Agencies not subject to DAS PS purchasing authority, cities, counties, school
+districts, special districts, Oregon Forward Businesses (formerly Qualified Rehabilitation Facilities),
+residential programs under contract with the Oregon Department of Human Services, United States
+governmental agencies, and American Indian tribes or agencies.
+“Agreement (s)” or "Price Agreement (s)" means the resulting agreement(s) between Contractor
+and DAS PS under which Contractor(s) agree to hold prices, terms and conditions firm for a specified
+period of time for the benefit of Authorized Purchasers.
+2.3 OVERVIEW AND PURPOSE
+2.3.1 Agency Overview and Background
+DAS PS has authority to hold price agreements under which more than one Agency may order
+goods and services, and for ORCPP members, under ORS 279A.050(7). DAS PS seeks to make a
+wide variety of information security and cyber security training materials and services easily
+available to Authorized Purchasers at a good value and under appropriate terms and conditions.
+2.3.2 Purpose
+The purpose of the RFP is to set in place one or more Price Agreements with one or more
+vendors that provide Cybersecurity Awareness Training Services and Materials. State agencies
+and local government partners will be able to access the state price agreements when
+purchasing the options that are appropriate for their business needs.
+2.4 SCOPE OF SERVICES
+Contractor(s) awarded Price Agreement(s) resulting from the RFP will deliver Cybersecurity Training
+Services and Materials that target diverse audiences. The State reserves the right to expand or
+modify specific topics and modalities within this general area of knowledge to adequately address
+Authorized Purchasers’ information security training needs.
+Desired materials and services are described in more detail below. Proposers are encouraged to
+provide any additional materials that would add value not requested or identified in this RFP.
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 7 of 27
+
+2.4.1 All Offered Goods and Services
+2.4.1.1 Universal Access. All items and modalities must be accessible to persons with
+disabilities. Materials and services designed with principles of universal access are
+desired.
+2.4.2 Training Subjects
+Proposer must offer cybersecurity training services and materials that address one or
+more of the specific subjects within this general area of knowledge, and that are
+continuously updated by Proposer to remain up to date, accurate, and in alignment with
+applicable regulatory requirements and best practices. Subjects within this general area of
+knowledge include but are not limited to:
+1. Cybersecurity Awareness Month Training and Materials. The State desires training and materials
+specific to the annual Cybersecurity Awareness Month, consistent with current CISA and State of
+Oregon initiatives. Proposer should ensure that annual content is current, and that it will provide
+to multi and/or enterprise-wide organizations with time for the organizations to review before
+disseminating materials.
+2. Technical security training. The State desires technical security training services and materials,
+customizable to suit Authorized Purchaser’s specific requirements and industry context.
+Materials and sessions should be scalable to accommodate Authorized Purchaser’s staff size,
+growth or reduction in the workforce, and changing technical needs over time.
+2.1. Services should include tools and reports to measure the effectiveness of the technical
+training offerings and provide detailed reporting on effectiveness to Authorized Purchaser.
+3. Regulation-specific education. The State desires information security training and materials on
+specific regulatory frameworks, such as:
+3.1. The Health Insurance Portability and Accountability Act (HIPAA).
+3.2. Payment Card Industry (PCI) standards.
+3.3. The Family Education Rights and Privacy Act (FERPA).
+2.4.3 Training Delivery Methods
+Proposer must offer one or more of the following training content delivery methods. Each training
+material and training delivery method must meet standards and industry best practices for
+Information Technology and Cyber Security such as the National Institute of Standards and
+Technology (NIST).
+The State desires Proposals from Proposers that provide content development for:
+1. Video.
+2. Printed materials.
+3. eLearning modules.
+4. Infographics.
+5. Tutorials.
+6. Gamification.
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 8 of 27
+
+7. In-person advanced training. Advanced training would be for topics such as the NIST
+cybersecurity framework, application development, forensics, or other specialized advanced
+training that may be offered as contractor-hosted events.
+2.4.4 Learning Management System (LMS)
+The State seeks Proposals that offer comprehensive online learning platforms for information
+security training. If Proposer offers a hosted Learning Management System (LMS), then it is
+expected to provide a seamless experience for users, and to offer ongoing support and
+maintenance. Desired Services include:
+1.
+2.
+3.
+4.
+5.
+
+Support to address any questions or concerns from administrators, and end users.
+Support and maintenance of its services.
+A method of tracking and monitoring requests for support.
+System training and user support.
+Integration with the State’s LMS platform, Workday.
+
+2.4.5 Training Planning and Development Services
+The State seeks Proposals that offer professional training assessment, planning, and content
+development Services specific to cybersecurity awareness training services and materials for all
+staff roles and levels of technical expertise within an organization. Desired Services include:
+1. Assessment and Planning. The State seeks Services to assess the current cybersecurity
+awareness and training materials within an organization, and assist with the planning of new
+or updated cybersecurity awareness training and materials that cover essential
+cybersecurity topics such as security culture, phishing, social engineering, password security,
+data protection, etc.
+2. Content Development. The State seeks Cybersecurity Awareness Training Services and
+Materials content development services such as eLearning modules, videos, infographics,
+and/or written resources. The State’s preferred method for all videos, tutorials, and
+eLearning materials to be in the most current format compatible with industry standard
+Learning Management Systems (LMS), including the State’s current LMS, Workday. Other
+vendor hosted LMS methods may be acceptable.
+2.4.6 Phishing Simulations
+The State seeks Proposals that offer phishing simulations. Phishing simulations are expected to
+include some or all of the following:
+1. Customizable phishing templates to mimic various types of real-world phishing emails and
+other social engineering techniques.
+2. Flexibility to schedule phishing campaigns at specified intervals and adjust settings based on
+user roles, departments, or other defined criteria.
+3. Easy to use and customizable reporting for all phishing data, and multiple ways of sharing
+these reports.
+4. Customizable training content based on the nature of the simulated attack and the specific
+vulnerabilities identified.
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 9 of 27
+
+5. A sophisticated simulation and training platform that can conduct automated phishing
+simulations, with start and end dates, across multiple domains within an organization.
+6. Customizable responses to users who report phishing emails including informative
+messages, acknowledgment notifications, and educational content.
+7. Customization based on the severity of the reported email, allowing appropriate feedback
+and guidance to users.
+8. A system that automatically delivers relevant training modules to users who fail or fall victim
+to phishing simulations.
+9. Customizable, brandable, automated notifications to users and their immediate
+supervisor(s) with training assignment information along with reminders and prompts to
+encourage timely completion of training.
+10. The ability to track and report on the completion and performance of users in training
+modules. Reporting should be easy to customize and include: completion of course by user,
+date/time of completion, amount of time to complete, number of users in a particular
+organization/domain enrolled in course, number of users in a particular
+organization/domain enrolled in course that completed/started/not started course, percent
+of completions of particular course in a date range, and percent of incomplete courses in a
+date range.
+2.4.6.1 Optional Phishing Simulation Features
+The State seeks Proposals that offer phishing simulation services that also offer the following
+features, to ease Authorized Purchasers’ administration of phishing simulation activities. This
+section includes items listed on Attachment F – Optional Phishing Simulation Features; see
+Section 3.4.5 for more information on submission of this attachment. These options of are
+particular interest to the State:
+1. Optional synchronization and Active Directory Integration (or similar). The State desires
+phishing simulation services that support optional integration with Authorized Purchaser’s
+existing Active Directory infrastructure for seamless user management and authentication.
+Additional or alternative integration may be acceptable to the State. Integration is expected
+to ensure synchronization of user profiles and groups to facilitate targeted phishing
+simulations and training campaigns.
+2. Optional listing for multiple tenant Microsoft 365 environments. The State desires phishing
+simulation services that enable the customization of “allow-lists” to ensure that authorized
+emails (containing links, attachments, QR codes and credential harvesting) and domains are
+not flagged as potentially malicious in a multi-tenant MS365 environment. This element of
+the Services should provide a user-friendly interface and knowledge base for administrators
+to manage and update lists easily.
+3. Optional single sign on (SSO). The State desires phishing simulation services that include as
+an option the ability for Authorized Purchaser to enable SSO capabilities to streamline user
+authentication and access to the phishing platform. This aspect of the services should
+integrate with Authorized Purchaser’s existing SSO capabilities to facilitate a seamless login
+experience for staff members, and include user training materials for SSO.
+4. Optional Phishing Reporting Feature. The State desires phishing simulation services that
+DAS Procurement Services, Version 4.5 March 31, 2023
+
+Page 10 of 27
+
+
