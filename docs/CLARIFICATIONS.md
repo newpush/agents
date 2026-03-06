@@ -22,3 +22,17 @@
 **Question for Product Owner:** Are the ROI calculator scripts intended to be part of this repository, and if so, can you provide the logic or templates that should be implemented?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *[Once the ROI logic is clarified, please command me to create the missing ROI calculator scripts in a new `tools/roi/` directory as specified in the strategic alignment.]*
+
+### ❓ Question [2026-03-03] - Global Security Mandate Injection Drift
+**Context:** `AGENTS.md` defines critical security rules (e.g., "NEVER ask for secrets", "ALWAYS use 1Password CLI"). However, `scripts/generate_gemini.js` does not currently inject these mandates into the generated `GEMINI.md`.
+**Ambiguity / Drift:** This creates a risk where agents might not be aware of global security policies if they only ingest their specific persona file. The requirement for injection is documented in `DECISION_LOG.md` but not implemented.
+**Question for Product Owner:** Should `scripts/generate_gemini.js` be updated to automatically inject the content of `AGENTS.md` into every generated `GEMINI.md`, or should this be handled by the external orchestrator?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *[Please command me to update `scripts/generate_gemini.js` to include a new injection phase that prepends the global security mandates from `AGENTS.md` to the final `GEMINI.md` output.]*
+
+### ❓ Question [2026-03-03] - Documentation Mirror Maintenance Strategy
+**Context:** `REQUIREMENTS.md` mandates that `docs/agents/` strictly mirror the hierarchy of `agents/`. Currently, there is significant drift (e.g., engineering, marketing, and operations domains have files in `agents/` but are empty in `docs/agents/`).
+**Ambiguity / Drift:** It is unclear if the `docs/agents/` mirror should contain full duplicates of the persona files, or if it is intended for human-readable guides (like `video-automation-user-guide.md`).
+**Question for Product Owner:** Should the `docs/agents/` directories contain exact copies of the `.md` persona files from `agents/` for easier human browsing, or is the mirror intended for supplementary documentation only?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *[Once the mirroring strategy is confirmed, please command me to synchronize the `docs/agents/` directory to match the source of truth in `agents/`.]*
