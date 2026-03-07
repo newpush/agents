@@ -31,7 +31,7 @@ Use `infisical run` to dynamically pull the specified environment and inject sec
 - Infisical Pattern (Python): `infisical run --env=dev -- python script.py`
 
 
-- Starting a Chat Session: `infisical run --env=dev -- gemini chat` 
+- Starting a Chat Session: `infisical run --env=dev -- gemini chat`
 
 # 🛠 Local Development & Authentication
 When running on a local host, the system uses human SSO or Desktop App integration for authentication.
