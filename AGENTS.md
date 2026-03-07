@@ -9,7 +9,7 @@ This project follows a "Fetch-on-Demand" architecture for security (Phase 0 Secu
 - NEVER hardcode actual secret values in any files, `.env` files, or logs.
 
 
-- ALWAYS use an Environment Injection CLI (`infisical run`) to resolve credentials at runtime.
+- ALWAYS use an Environment Injection CLI (`infisical run` or `op run`) to resolve credentials at runtime.
 
 # 🛡 Error Handling and Resilience
 To ensure reliability and stability, agents and toolkit components must implement robust error handling patterns.
@@ -31,7 +31,7 @@ Use `infisical run` to dynamically pull the specified environment and inject sec
 - Infisical Pattern (Python): `infisical run --env=dev -- python script.py`
 
 
-- Starting a Chat Session: `infisical run --env=dev -- gemini chat` 
+- Starting a Chat Session: `infisical run --env=dev -- gemini chat`
 
 # 🛠 Local Development & Authentication
 When running on a local host, the system uses human SSO or Desktop App integration for authentication.
