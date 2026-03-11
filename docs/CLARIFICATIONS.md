@@ -2,94 +2,64 @@
 
 <!-- Add new questions below this line using the required format -->
 
-### ❓ Question [2026-03-03] - Python Runtime Dependency Contradiction
-**Context:** The `REQUIREMENTS.md` explicitly states that "Python runtime support is officially deprecated," yet the `scripts/verify-env.sh` pre-flight check still mandates the presence of `python3` (line 19).
-**Ambiguity / Drift:** This creates confusion for new users and automated CI/CD pipelines. It is unclear if Python is required for specific examples or if the pre-flight check is simply outdated.
-**Question for Product Owner:** Should the `python3` check be removed from `verify-env.sh`, or are there specific components (e.g., in `examples/`) that still strictly require a Python environment?
+### ❓ Question [2026-03-08] - Missing Kubernetes Manifests for Fleet Deployment
+**Context:** The `REQUIREMENTS.md` (Strategic Alignment, Item 4) specifies that for parallel "Fleet" deployments, the repository's examples must be expanded to include "automated provisioning templates (e.g., docker-compose or Kubernetes manifests)". Currently, only a Docker Compose example is provided.
+**Ambiguity / Drift:** The Kubernetes requirement is documented but no manifests exist in the repository, making it difficult for users to deploy to Kubernetes-based clusters.
+**Question for Product Owner:** Should Kubernetes manifests be created to complement the Docker Compose example, or is Docker Compose currently the primary target for fleet deployments?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *[If Python is truly deprecated, please command me to remove the `python3` check from `scripts/verify-env.sh` and `verify-env.ps1` to align with the core requirements.]*
+**🤖 Jules Action Prompt:** *Create a `examples/fleet-deployment/k8s/` directory and implement basic Kubernetes manifests (Deployments, Services, and Ingress) mirroring the multi-tenant architecture found in the Docker Compose example.*
 
-### ❓ Question [2026-03-03] - Missing Casdoor Integration in Fleet Deployment
-**Context:** The `REQUIREMENTS.md` (Strategic Alignment, Item 4) specifies that Fleet Deployment infrastructure requires "Casdoor (identity)" as part of the multi-tenant stack. However, `examples/fleet-deployment/docker-compose.yml` does not implement a Casdoor service.
-**Ambiguity / Drift:** The core requirement for identity management is documented but not present in the provided reference architecture, preventing a complete "Fleet" demonstration.
-**Question for Product Owner:** Is there a preferred Casdoor configuration or Docker image we should use to complete this example, or is identity management currently being handled by another component not shown in the compose file?
+### ❓ Question [2026-03-08] - Status of Verification Bots for ROI
+**Context:** `REQUIREMENTS.md` (Strategic Alignment, Item 5) states that the toolkit must include "Verification Bots" to audit agent logs for academic credentialing and ROI validation.
+**Ambiguity / Drift:** While the ROI methodology is now documented in `tools/roi/README.md`, the actual "Verification Bots" (automated agents or scripts that perform the auditing) are not yet present.
+**Question for Product Owner:** Are the "Verification Bots" intended to be implemented as a new agent persona (e.g., a `guardian/roi-auditor.md`), or should they be implemented as a specialized script in the `tools/` directory?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *[Please provide the Casdoor configuration details so I can update `examples/fleet-deployment/docker-compose.yml` to satisfy the Strategic Alignment requirement for identity management.]*
+**🤖 Jules Action Prompt:** *Create a new agent persona `agents/guardian/roi-auditor.md` specifically tasked with auditing logs for ROI validation, and provide an accompanying Node.js script in `tools/roi/audit-logs.js` to automate the verification.*
 
-### ❓ Question [2026-03-03] - Status of ROI Calculator Scripts
-**Context:** `REQUIREMENTS.md` states the toolkit must include "Python/Excel-based ROI calculator scripts" (Strategic Alignment, Item 5). These files are not present in the repository.
-**Ambiguity / Drift:** A high-priority "Feynman Requirement" for automated validation and ROI modeling is documented as a core deliverable but has no implementation or placeholder.
-**Question for Product Owner:** Are the ROI calculator scripts intended to be part of this repository, and if so, can you provide the logic or templates that should be implemented?
+### ❓ Question [2026-03-08] - JSON Schema for Mandatory "Audit Log"
+**Context:** `docs/frameworks/gartner-trism.md` suggests an "Audit Log" requirement for all agent personas, instructing them to output a brief JSON summary of their reasoning alongside their final payload.
+**Ambiguity / Drift:** This requirement is not currently implemented in any of the agent persona files in `agents/`. To ensure consistency, a standardized JSON schema is needed.
+**Question for Product Owner:** Is there a preferred JSON schema for the "Audit Log" output? For example, should it include fields like `reasoning`, `mcp_tools_used`, and `confidence_score`?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *[Once the ROI logic is clarified, please command me to create the missing ROI calculator scripts in a new `tools/roi/` directory as specified in the strategic alignment.]*
-### Question 2026-02-21 - Documentation Mirroring Drift (`docs/agents/`)
-*   **Context:** Project guidelines mandate that `docs/agents/` strictly mirror the hierarchy of `agents/`. Currently, `docs/agents/` is missing multiple domains (e.g., `engineering`, `marketing`, `operations`) found in the root `agents/` folder.
-*   **Ambiguity:** This indicates significant drift between the codebase structure and its required documentation mirror.
-*   **Question:** Should the `docs/agents/` mirror be updated manually to match the current `agents/` structure, or is this mirroring requirement being deprecated?
-*   **Answer:** The `docs/agents/` mirror must be updated to match the `agents/` structure. The missing directories have been added.
+**🤖 Jules Action Prompt:** *Draft a standard JSON schema for the "Audit Log" requirement and update all agent persona files in `agents/` to include this mandatory directive.*
 
-### Question 2026-02-24 - Standardized Logging Implementation
-*   **Context:** `REQUIREMENTS.md` states that "Technical details must be logged using standardized logging to stdout and stderr."
-*   **Ambiguity:** Since agents are defined as Markdown personas rather than executable code, it is unclear if "standardized logging" refers to a specific output format the persona must follow, or if this is a requirement for the (currently missing) agent runner/orchestrator.
-*   **Question:** Should agent personas be updated with a "Logging" section defining their output format, or is this requirement handled by the execution environment?
-*   **Answer:** This requirement applies to the external execution environment/orchestrator running the agents, not the persona definitions themselves.
+### ❓ Question [2026-03-08] - Priority for Python-to-Node Migration in Examples
+**Context:** `REQUIREMENTS.md` and `AGENTS.md` state that Python runtime support is deprecated, yet several examples (e.g., `examples/docker/agent.py`, `examples/video-automation-pod/seo_agent.py`) still utilize Python.
+**Ambiguity / Drift:** There is a discrepancy between the project's official stance on Python deprecation and the live example code.
+**Question for Product Owner:** What is the priority for migrating the remaining Python examples to Node.js? Should this be handled as a bulk migration or incrementally as these examples are updated?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Identify all remaining `.py` files in the repository and create a prioritized migration roadmap to convert them into Node.js equivalents.*
 
-### Question 2026-02-24 - Configuration Source of Truth
-*   **Context:** `REQUIREMENTS.md` specifies that configuration must be handled "entirely via environment variables," but `scripts/generate_gemini.js` currently relies on `mcp.config.json` to determine active MCPs.
-*   **Ambiguity:** There is a conflict between the documented requirement and the actual implementation for managing active integrations.
-*   **Question:** Should `mcp.config.json` be deprecated in favor of an `ACTIVE_MCPS` environment variable, or should the requirements be updated to recognize the JSON configuration as the source of truth?
-*   **Answer:** `mcp.config.json` is the source of truth for context assembly (generating GEMINI.md). Environment variables are the source of truth for runtime secrets.
+### ❓ Question [2026-03-09] - Enforcement of Persona Documentation Mirroring
+**Context:** `REQUIREMENTS.md` (Core Objectives, Item 2) states that "Documentation strictly mirrors these directories in `docs/agents/`." and `DECISION_LOG.md` (2026-03-03) mentions "Mandated that `docs/agents/` must strictly mirror the `agents/` hierarchy."
+**Ambiguity / Drift:** While the directory structure is mirrored, individual persona Markdown files (e.g., `agents/coding/bolt/core.md`) are missing their counterparts in `docs/agents/`. Only READMEs and a few select guides exist.
+**Question for Product Owner:** Should every individual persona file in `agents/` be mirrored as a documentation file in `docs/agents/`, or is mirroring only required at the directory/README level?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Identify all missing persona documentation files in `docs/agents/` and create mirror Markdown files that provide a technical overview and usage guide for each corresponding persona in `agents/`.*
 
-### Question 2026-02-24 - Agent Resilience and Tool Failure Directives
-*   **Context:** `REQUIREMENTS.md` requires that "Agents must handle tool execution and API failures gracefully."
-*   **Ambiguity:** Most agent personas (e.g., `agents/coding/bolt/core.md`) do not currently contain instructions on how to behave when an MCP tool fails or returns an error.
-*   **Question:** Should a standardized "Error Handling" or "Resilience" section be added to all agent persona templates to guide their behavior during tool failures?
-*   **Answer:** A standardized "Error Handling and Resilience" directive will be added to the base templates or global guidelines rather than each individual persona.
+### ❓ Question [2026-03-09] - Persona Template Standardization (Core Mandates vs Rules & Constraints)
+**Context:** `REQUIREMENTS.md` (Functional Requirements, Item 1) specifies the standard format as "Role, Mission, Core Mandates, Workflow, Boundaries."
+**Ambiguity / Drift:** A majority of personas in the `agents/` directory (e.g., `ai-architect.md`, `brand-strategist.md`, `pii-guard.md`) utilize a "Rules & Constraints" header instead of "Core Mandates."
+**Question for Product Owner:** Should all existing personas be updated to strictly use the "Core Mandates" header to align with the latest standard, or is "Rules & Constraints" considered an acceptable alias?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a bulk update of all persona files in `agents/` to rename the "Rules & Constraints" section to "Core Mandates" for strict adherence to the standardized template.*
 
-### Question 2026-02-25 - Missing .env.template for Secret Resolution
-*   **Context:** `AGENTS.md` and project memories specify that secrets should be resolved using `infisical run --env=dev`. However, the `.env.template` file is missing from the repository.
-*   **Ambiguity:** Developers and agents lack a template to define the required environment variables for various integrations (e.g., n8n, Slack).
-*   **Question:** Should a `.env.template` be added to the root directory, or is there another intended method for defining the required environment variable keys?
-*   **Answer:** A `.env.template` file should be added to the root directory documenting the required structure for orchestrator execution.
+### ❓ Question [2026-03-09] - Missing "External Tooling Dependencies" in Personas
+**Context:** `REQUIREMENTS.md` (Functional Requirements, Item 1) states that "Agents must also document any expected external tooling dependencies (e.g., pnpm, docker) in their persona files."
+**Ambiguity / Drift:** None of the current persona files in the `agents/` directory contain an explicit "External Tooling Dependencies" section, which may lead to environment setup failures during orchestrator preparation.
+**Question for Product Owner:** Should a new mandatory section "External Tooling Dependencies" be added to the persona template, and should existing personas be audited to populate it?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Audit all persona files in `agents/` and add a mandatory "External Tooling Dependencies" section, documenting required tools like `npm`, `docker`, or specific MCP servers for each.*
+### ❓ Question [2026-03-09] - Header Discrepancy in Persona Template
+**Context:** `REQUIREMENTS.md` (Functional Requirements, Item 1) specifies the persona format as "Role, Mission, Core Mandates, Workflow, Boundaries". However, `docs/AGENT_TEMPLATE.md` and the majority of agent files in `agents/` use the header "Rules & Constraints" instead of "Core Mandates".
+**Ambiguity / Drift:** This inconsistency between the core requirements and the implementation template creates confusion for developers and complicates automated persona validation.
+**Question for Product Owner:** Should `REQUIREMENTS.md` be updated to use "Rules & Constraints" to align with the template and current agents, or should the template and agents be updated to use "Core Mandates"?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a global search-and-replace across all `.md` files in `agents/` and the `docs/AGENT_TEMPLATE.md` to standardize the header as either "Core Mandates" or "Rules & Constraints" based on the PO's decision.*
 
-### Question 2026-02-25 - Python Runtime Environment Support
-*   **Context:** `REQUIREMENTS.md` states that agents are designed for cross-platform compatibility, "primarily utilizing Node.js or Python environments." The current codebase only contains Node.js scripts.
-*   **Ambiguity:** There are no Python-specific files (e.g., `requirements.txt`, `pyproject.toml`, or agent runners) to support the stated requirement.
-*   **Question:** Is Python support planned for a future phase, and if so, what is the expected timeline or specific use case (e.g., specific agent runners)?
-*   **Answer:** This requirement is deprecated. The repository is a language-agnostic library of markdown specifications, and execution scripts are node-based utilities for context generation.
-
-### Question 2026-02-25 - Consistent "NoeMI" Branding
-*   **Context:** `REQUIREMENTS.md` mentions "Project NoeMI" and "AI agents (NoeMI)", but this branding is absent from the `README.md`, `GEMINI.template.md`, and individual agent personas.
-*   **Ambiguity:** It is unclear if "NoeMI" is the official project name or an internal codename that should be standardized or removed.
-*   **Question:** Should "NoeMI" be adopted as the official branding across all documentation, or should it be removed from `REQUIREMENTS.md`?
-*   **Answer:** Yes, "Project NoéMI" is the official project branding and will be standardized across the README and other primary documentation.
-
-### Question 2026-02-26 - Persona Template Standardization
-*   **Context:** `REQUIREMENTS.md` states agents must be defined using "Role, Tone, Capabilities, and Rules", which is followed by `ai-architect.md` and `brand-strategist.md`. However, `agents/coding/bolt/core.md` and `agents/coding/sentinel/core.md` use a divergent format (Role, Mission, Core Mandates, Workflow, Journal, Boundaries).
-*   **Ambiguity:** Lack of a single source of truth for agent persona templates makes maintenance and scaling of the library difficult.
-*   **Question:** Should all agents be migrated to the "Role, Tone, Capabilities, and Rules" format, or are there different classes of agents (e.g., "Standard" vs "Specialized/Task-Oriented") that require different templates?
-*   **Answer:** The "Role, Mission, Core Mandates, Workflow, Boundaries" format is adopted as the new standard for specialized agents. Simpler agents may continue using basic templates, but standardization towards the Bolt/Sentinel format is preferred.
-
-### Question 2026-02-26 - Execution Context and Tooling References
-*   **Context:** The personas for Bolt and Sentinel refer to `pnpm lint` and `pnpm test` as verification steps. This repository does not use `pnpm` and has no `package.json`.
-*   **Ambiguity:** It is unclear if these agents are meant to operate on the repository they are stored in (which lacks these tools), or if they are intended to be deployed into external environments where these tools are expected.
-*   **Question:** Should agent personas be generic regarding their verification tools, or should they assume a specific runtime environment?
-*   **Answer:** Personas should document their expected external tooling dependencies in their requirements. They assume the orchestrator has prepared a compatible workspace.
-
-### Question 2026-02-26 - Global Security Mandate Injection
-*   **Context:** `AGENTS.md` defines critical security rules (e.g., "NEVER ask for secrets", "ALWAYS use Infisical CLI"). These are not currently reflected in the "Rules" or "Boundaries" sections of the individual agent personas, nor are they injected into `GEMINI.md`.
-*   **Ambiguity:** Agents might not be aware of these global security mandates if they only ingest their specific persona file.
-*   **Question:** Should the global security and execution mandates from `AGENTS.md` be automatically injected into `GEMINI.md` via the generation script, or should they be manually added to each agent's "Rules" section?
-*   **Answer:** Global security mandates should be included in `AGENTS.md` and injected by the orchestrator or `generate_gemini.js` into the final system prompt.
-
-### Question 2026-02-27 - Stateless Execution vs. Persistent Memory Layer
-*   **Context:** `REQUIREMENTS.md` mandates that "Agents must operate with stateless execution," yet `examples/docker/docker-compose.yml` implements a persistent `pgvector` service labeled as the "Memory Layer" where the agent stores embeddings and past conversations.
-*   **Ambiguity:** There is a direct contradiction between the documented stateless requirement and the provided architectural example for persistent agent memory.
-*   **Question:** Is the "Memory Layer" (pgvector) intended to be a core, required component of the Project NoéMI architecture, or is it an optional enhancement?
-*   **Answer:** The core execution model is stateless. The `pgvector` memory layer in the Docker example is an optional enhancement for advanced orchestrator setups.
-
-### Question 2026-02-27 - Core Toolkit System Dependencies
-*   **Context:** The `scripts/verify-env.sh` "Pre-Flight Check" mandates the presence of `Docker` and the `Gemini CLI`, but these are not currently listed as core requirements in `REQUIREMENTS.md`.
-*   **Ambiguity:** It is unclear if these tools are strictly required for the toolkit to function or if they are only necessary for running the specific examples and pre-flight scripts provided.
-*   **Question:** Should `Docker` and the `Gemini CLI` be officially designated as core system requirements for the Project NoéMI toolkit?
-*   **Answer:** Docker and Gemini CLI are required dependencies for running the local examples and pre-flight checks, but not for simply reading the library definitions.
+### ❓ Question [2026-03-09] - Enforcement of Documentation Mirroring
+**Context:** `DECISION_LOG.md` (Decision dated 2026-03-03) mandates that `docs/agents/` must "strictly mirror" the `agents/` hierarchy.
+**Ambiguity / Drift:** Currently, `docs/agents/` only contains category `README.md` files, while the individual agent personas (e.g., `agents/coding/bolt/core.md`) are missing from the `docs/` tree.
+**Question for Product Owner:** Is the requirement for "strict mirroring" intended to include a 1:1 copy of every persona file into `docs/agents/`, or should `docs/agents/` only house high-level category overviews and guides?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Create a script to automatically sync and mirror all persona `.md` files from the `agents/` directory into their corresponding locations in `docs/agents/` to ensure documentation parity.*
