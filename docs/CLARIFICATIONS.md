@@ -63,3 +63,24 @@
 **Question for Product Owner:** Is the requirement for "strict mirroring" intended to include a 1:1 copy of every persona file into `docs/agents/`, or should `docs/agents/` only house high-level category overviews and guides?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Create a script to automatically sync and mirror all persona `.md` files from the `agents/` directory into their corresponding locations in `docs/agents/` to ensure documentation parity.*
+
+### ❓ Question [2026-03-10] - SecretOps CLI Verification in Pre-Flight
+**Context:** `AGENTS.md` mandates the use of `infisical run` or `op run` for "Fetch-on-Demand" security. However, `scripts/verify-env.sh` and `verify-env.ps1` do not check if these CLIs are installed.
+**Ambiguity / Drift:** The core security policy is not enforced or verified by the project's own environment validation tools.
+**Question for Product Owner:** Should the pre-flight scripts be updated to mandate the presence of either `infisical` or `op` CLIs, or should these be treated as optional dependencies?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to include a check for SecretOps CLIs, ensuring at least one of the mandated tools (`infisical` or `op`) is available in the environment.*
+
+### ❓ Question [2026-03-10] - Documentation for Gemini CLI Dependency
+**Context:** `REQUIREMENTS.md` and `scripts/verify-env.sh` list the `gemini` CLI as a mandatory dependency for the project.
+**Ambiguity / Drift:** There is no documentation within the repository explaining where to obtain this CLI, how to install it, or which version is required.
+**Question for Product Owner:** Where is the official source for the `gemini` CLI, and can a "Dependencies" or "Getting Started" guide be added to `docs/` to provide installation instructions?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Create `docs/DEPENDENCIES.md` to document all external toolchain requirements, specifically providing installation sources and versioning for the `gemini` CLI.*
+
+### ❓ Question [2026-03-10] - Standardized Output for Mandatory "Audit Log"
+**Context:** `docs/frameworks/gartner-trism.md` and `REQUIREMENTS.md` mandate a JSON "Audit Log" for agent reasoning.
+**Ambiguity / Drift:** It is unclear if this JSON payload should be emitted to `stdout`, a dedicated `.log` file, or as a specific field in the agent's final API/Markdown response.
+**Question for Product Owner:** What is the standardized destination for the JSON Audit Log? Should it be printed to `stdout` following the primary output, or integrated into the final Markdown response within a `<details>` block?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Draft a technical specification for Audit Log delivery and update the `docs/AGENT_TEMPLATE.md` to include a standardized "Audit Log" section that adheres to this protocol.*

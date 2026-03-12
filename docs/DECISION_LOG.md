@@ -1,5 +1,14 @@
 # Decision Log
 
+## [2026-03-10] - Documentation Audit and Pre-Flight Gap Identification
+- **Decision**: Conducted a follow-up holistic scan focusing on environment setup and toolchain dependencies.
+- **Context**: Phase 2 Doc workflow requires continuous identification of drift. Discovered that mandatory SecretOps patterns in `AGENTS.md` are not validated by pre-flight scripts.
+- **Impact**:
+    - **SecretOps Verification**: Identified that `scripts/verify-env.sh` and `verify-env.ps1` lack checks for Infisical and 1Password CLIs. Flagged as `[PENDING]` in `REQUIREMENTS.md`.
+    - **Undocumented Dependency**: Noted that `gemini` CLI is a required but undocumented dependency. Flagged as `[PENDING]` in `REQUIREMENTS.md`.
+    - **ROI Link Gap**: Confirmed `tools/roi/README.md` contains placeholder links. Flagged as `[PENDING]` in `REQUIREMENTS.md`.
+    - **Clarifications**: Drafted 3 new high-priority questions in `CLARIFICATIONS.md`.
+
 ## [2026-03-09] - Documentation Audit and Gap Identification
 - **Decision**: Conducted a holistic scan of the codebase to identify drifts between implemented code and documented requirements.
 - **Context**: Phase 2 Doc workflow requires identifying technical debt and documentation drift.
