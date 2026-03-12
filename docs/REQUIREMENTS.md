@@ -31,13 +31,13 @@ The primary goal is to provide a robust foundation that developers can use to qu
 3. **Resilience & Error Handling**: Agents must handle tool execution and API failures gracefully by following the global mandates in `AGENTS.md` (e.g., exponential backoff, graceful degradation). Standardized logging to `stdout` and `stderr` is the responsibility of the orchestrator.
 4. **Identity & Access Management**: Delegated to the execution environment and MCP servers. **Casdoor** is the standardized identity management provider for multi-tenant fleet deployments.
 5. **Fleet-Ready Infrastructure**: Maintain standardized `docker-compose.yml` templates for parallel "Fleet" deployments, including Traefik for routing and a centralized observability stack (Grafana/Loki).
-6. **ROI Modeling & Validation**: Implement a standardized labor-cost-avoidance methodology for calculating agent ROI, documented in `tools/roi/README.md`.
+6. **ROI Modeling & Validation**: Implement a standardized labor-cost-avoidance methodology for calculating agent ROI, documented in `tools/roi/README.md` [PENDING: Production-ready ROI calculator template link].
 
 ## Technical Specifications
 - **Architecture**: Static Markdown documentation and Node.js executable scripts.
 - **Data Persistence**: The core execution model is stateless. Optional persistent memory layers (e.g., `pgvector`) are handled by advanced orchestrators.
 - **Runtime Environment**: Node.js based utilities. **Python runtime support is officially deprecated.** Legacy Python scripts in `examples/` are maintained for historical context but are slated for conversion [PENDING: Migration roadmap].
-- **System Dependencies**: Git, Node.js, Docker, and the Gemini CLI are required for running local examples, pre-flight checks (`scripts/verify-env.sh`), and environment validation.
+- **System Dependencies**: Git, Node.js, Docker, and the Gemini CLI are required for running local examples, pre-flight checks (`scripts/verify-env.sh`), and environment validation [PENDING: Documentation of Gemini CLI installation and SecretOps CLI pre-flight verification].
 
 ## Strategic Alignment & Future Enhancements
 1. **Role-Based Agent Toolkits**: Categorize templates for "Practitioners" and "Accelerators".
