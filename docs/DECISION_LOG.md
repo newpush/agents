@@ -1,5 +1,13 @@
 # Decision Log
 
+## [2026-03-14] - Documentation Audit and Requirement Verification
+- **Decision**: Verified implementation status of persona mirroring and documented SecretOps validation gaps.
+- **Context**: Phase 2 Doc workflow requires continuous cross-referencing against the codebase.
+- **Impact**:
+    - **Persona Mirroring**: Verified that all 18 agent personas in `agents/` are successfully mirrored to `docs/agents/` using symbolic links. Removed `[PENDING]` status from `REQUIREMENTS.md`.
+    - **SecretOps Verification**: Confirmed that `scripts/verify-env.sh` still lacks mandatory SecretOps CLI checks (Infisical/1Password). Updated `REQUIREMENTS.md` with specific implementation debt.
+    - **Audit Log Status**: Confirmed that the "Audit Log" requirement remains unimplemented across the persona library.
+
 ## [2026-03-10] - Documentation Audit and Pre-Flight Gap Identification
 - **Decision**: Conducted a follow-up holistic scan focusing on environment setup and toolchain dependencies.
 - **Context**: Phase 2 Doc workflow requires continuous identification of drift. Discovered that mandatory SecretOps patterns in `AGENTS.md` are not validated by pre-flight scripts.
