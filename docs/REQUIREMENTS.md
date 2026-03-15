@@ -36,8 +36,8 @@ The primary goal is to provide a robust foundation that developers can use to qu
 ## Technical Specifications
 - **Architecture**: Static Markdown documentation and Node.js executable scripts.
 - **Data Persistence**: The core execution model is stateless. Optional persistent memory layers (e.g., `pgvector`) are handled by advanced orchestrators.
-- **Runtime Environment**: Node.js based utilities. **Python runtime support is officially deprecated.** Legacy Python scripts in `examples/` (6 files identified) are maintained for historical context but are slated for conversion [PENDING: Migration roadmap].
-- **System Dependencies**: Git, Node.js, Docker, and the Gemini CLI are required for running local examples, pre-flight checks (`scripts/verify-env.sh`), and environment validation [PENDING: Documentation of Gemini CLI installation and SecretOps CLI pre-flight verification].
+- **Runtime Environment**: Node.js based utilities. **Python runtime support is officially deprecated.** Legacy Python scripts in `examples/` are maintained for historical context but are slated for conversion [PENDING: Migration roadmap].
+- **System Dependencies**: Git, Node.js, Docker, and the Gemini CLI are required for running local examples, pre-flight checks (`scripts/verify-env.sh`), and environment validation [PENDING: Documentation of Gemini CLI installation]. SecretOps CLI verification (`infisical` or `op`) is currently missing from the pre-flight scripts and is slated for implementation.
 
 ## Strategic Alignment & Future Enhancements
 1. **Role-Based Agent Toolkits**: Categorize templates for "Practitioners" and "Accelerators".

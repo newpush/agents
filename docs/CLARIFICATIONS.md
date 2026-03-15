@@ -58,6 +58,20 @@
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Draft a technical specification for Audit Log delivery and update the `docs/AGENT_TEMPLATE.md` to include a standardized "Audit Log" section that adheres to this protocol.*
 
+### ❓ Question [2026-03-14] - Enforcement of SecretOps CLI Verification
+**Context:** `AGENTS.md` mandates a "Fetch-on-Demand" architecture using `infisical` or `op`. However, the pre-flight script `scripts/verify-env.sh` does not yet check for these tools.
+**Ambiguity / Drift:** There is a gap between the mandatory security policy and the automated environment validation, which could lead to runtime failures for new developers.
+**Question for Product Owner:** Should the `scripts/verify-env.sh` script be updated to fail if neither `infisical` nor `op` is found, or should it simply issue a warning?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` to include a check for `infisical` and `op` CLIs, ensuring at least one is available to satisfy the Fetch-on-Demand requirement.*
+
+### ❓ Question [2026-03-14] - Finalization of ROI Template Link
+**Context:** `tools/roi/README.md` and `REQUIREMENTS.md` mention a standardized Google Sheets ROI calculator.
+**Ambiguity / Drift:** The link in `tools/roi/README.md` is still a placeholder (`[Link Placeholder for ROI Calculator Template]`), preventing users from actually using the methodology.
+**Question for Product Owner:** Is the official Google Sheets template ready for public link inclusion, or should we point to a staging version in the interim?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `tools/roi/README.md` with the live URL for the ROI Calculator Template once provided by the Product Owner.*
+
 ### ❓ Question [2026-03-12] - Missing "External Tooling Dependencies" Section
 **Context:** `REQUIREMENTS.md` mandates that "Agents must also document any expected external tooling dependencies (e.g., pnpm, docker) in their persona files."
 **Ambiguity / Drift:** A codebase audit revealed that none of the 18 existing agent personas in the `agents/` directory currently contain this section.
