@@ -64,3 +64,17 @@
 **Question for Product Owner:** Should Jules proceed with adding a placeholder `## External Tooling Dependencies` section to all personas, or should this be added only as each persona is updated with specific tool requirements?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Audit all 18 persona files in `agents/` and insert a mandatory `## External Tooling Dependencies` section with initial values based on their known capabilities (e.g., Docker for infrastructure agents).*
+
+### ❓ Question [2026-03-15] - Drift in MCP Configuration for ROI Auditor
+**Context:** The `agents/guardian/roi-auditor.md` persona specifies a dependency on a `Logging MCP (or Webhook)` to retrieve execution records. However, this MCP is not listed in the `active_mcps` array in `mcp.config.json`.
+**Ambiguity / Drift:** The `roi-auditor` cannot function in the current "out-of-the-box" configuration because its primary data source is not enabled in the central MCP manifest.
+**Question for Product Owner:** Should a standard `logging-mcp` be added to `mcp.config.json`, or is the `roi-auditor` intended to rely exclusively on custom webhooks provided by the orchestrator?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `mcp.config.json` to include the `logging-mcp` and ensure it is properly configured to interface with the `roi-auditor.md` persona.*
+
+### ❓ Question [2026-03-15] - Standardized Library for Exponential Backoff
+**Context:** `AGENTS.md` mandates that "agents and toolkit components must implement robust error handling patterns," including "Exponential Backoff."
+**Ambiguity / Drift:** While the policy is clear, there is no standardized Node.js library or implementation pattern specified in the documentation or found in the `scripts/` directory.
+**Question for Product Owner:** Is there a preferred Node.js library (e.g., `p-retry`, `axios-retry`, or a native implementation) that should be standardized across the toolkit for exponential backoff?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/METHODOLOGY.md` to specify the mandatory Node.js library for exponential backoff and provide a reference implementation in `scripts/utils/retry-helper.js`.*
