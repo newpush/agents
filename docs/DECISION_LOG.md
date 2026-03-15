@@ -1,5 +1,33 @@
 # Decision Log
 
+## [2026-03-14] - Documentation Audit and Requirement Verification
+- **Decision**: Verified implementation status of persona mirroring and documented SecretOps validation gaps.
+- **Context**: Phase 2 Doc workflow requires continuous cross-referencing against the codebase.
+- **Impact**:
+    - **Persona Mirroring**: Verified that all 18 agent personas in `agents/` are successfully mirrored to `docs/agents/` using symbolic links. Removed `[PENDING]` status from `REQUIREMENTS.md`.
+    - **SecretOps Verification**: Confirmed that `scripts/verify-env.sh` still lacks mandatory SecretOps CLI checks (Infisical/1Password). Updated `REQUIREMENTS.md` with specific implementation debt.
+    - **Audit Log Status**: Confirmed that the "Audit Log" requirement remains unimplemented across the persona library.
+
+## [2026-03-12] - Codebase Audit and Requirement Alignment
+- **Decision**: Conducted a Phase 2 holistic scan of the codebase to align documentation with reality and resolve persona template discrepancies.
+- **Context**: Discovered through automated audit that all 18 agent personas use "Rules & Constraints" instead of "Core Mandates," and that mirroring between `agents/` and `docs/agents/` is actually complete.
+- **Impact**:
+    - **Requirement Alignment**: Updated `REQUIREMENTS.md` and `AGENTS.md` to formally recognize "Rules & Constraints" as the standard persona header, resolving a recurring ambiguity.
+    - **Mirroring Verification**: Confirmed that persona file mirroring to `docs/agents/` is complete, removing the associated `[PENDING]` marker.
+    - **Python Debt Tracking**: Quantified the Python deprecation debt to exactly 6 files to provide better visibility for the migration roadmap.
+    - **ROI Status**: Updated requirements to reflect the existing implementation of the `roi-auditor` agent persona.
+    - **Clarifications**: Consolidated existing questions and added a new high-priority question regarding the bulk addition of missing mandatory sections (External Tooling Dependencies).
+
+## [2026-03-15] - Documentation Audit and MCP Configuration Drift Analysis
+- **Decision**: Verified documentation mirroring and identified drift in MCP configuration requirements.
+- **Context**: Phase 2 Doc workflow requires identifying technical debt and documentation drift.
+- **Impact**:
+    - **Mirroring Verification**: Confirmed that `docs/agents/` strictly mirrors `agents/` via symbolic links, fulfilling the 2026-03-03 mandate. Removed related `[PENDING]` marker from `REQUIREMENTS.md`.
+    - **MCP Configuration Drift**: Identified that `agents/guardian/roi-auditor.md` requires a `logging-mcp` (or webhook) which is currently absent from `mcp.config.json`.
+    - **SecretOps Pre-flight Gap**: Documented the absence of SecretOps CLI (Infisical/1Password) verification in `scripts/verify-env.sh`.
+    - **Persona Inconsistencies**: Re-confirmed that "External Tooling Dependencies" are missing from all persona files and "Rules & Constraints" remains the dominant header over "Core Mandates".
+    - **Clarifications**: Drafted 2 new high-priority questions in `CLARIFICATIONS.md` regarding MCP drift and retry logic standards.
+
 ## [2026-03-10] - Documentation Audit and Pre-Flight Gap Identification
 - **Decision**: Conducted a follow-up holistic scan focusing on environment setup and toolchain dependencies.
 - **Context**: Phase 2 Doc workflow requires continuous identification of drift. Discovered that mandatory SecretOps patterns in `AGENTS.md` are not validated by pre-flight scripts.

@@ -37,33 +37,6 @@
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Identify all missing persona documentation files in `docs/agents/` and create mirror Markdown files that provide a technical overview and usage guide for each corresponding persona in `agents/`.*
 
-### ❓ Question [2026-03-09] - Persona Template Standardization (Core Mandates vs Rules & Constraints)
-**Context:** `REQUIREMENTS.md` (Functional Requirements, Item 1) specifies the standard format as "Role, Mission, Core Mandates, Workflow, Boundaries."
-**Ambiguity / Drift:** A majority of personas in the `agents/` directory (e.g., `ai-architect.md`, `brand-strategist.md`, `pii-guard.md`) utilize a "Rules & Constraints" header instead of "Core Mandates."
-**Question for Product Owner:** Should all existing personas be updated to strictly use the "Core Mandates" header to align with the latest standard, or is "Rules & Constraints" considered an acceptable alias?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Perform a bulk update of all persona files in `agents/` to rename the "Rules & Constraints" section to "Core Mandates" for strict adherence to the standardized template.*
-
-### ❓ Question [2026-03-09] - Missing "External Tooling Dependencies" in Personas
-**Context:** `REQUIREMENTS.md` (Functional Requirements, Item 1) states that "Agents must also document any expected external tooling dependencies (e.g., pnpm, docker) in their persona files."
-**Ambiguity / Drift:** None of the current persona files in the `agents/` directory contain an explicit "External Tooling Dependencies" section, which may lead to environment setup failures during orchestrator preparation.
-**Question for Product Owner:** Should a new mandatory section "External Tooling Dependencies" be added to the persona template, and should existing personas be audited to populate it?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Audit all persona files in `agents/` and add a mandatory "External Tooling Dependencies" section, documenting required tools like `npm`, `docker`, or specific MCP servers for each.*
-### ❓ Question [2026-03-09] - Header Discrepancy in Persona Template
-**Context:** `REQUIREMENTS.md` (Functional Requirements, Item 1) specifies the persona format as "Role, Mission, Core Mandates, Workflow, Boundaries". However, `docs/AGENT_TEMPLATE.md` and the majority of agent files in `agents/` use the header "Rules & Constraints" instead of "Core Mandates".
-**Ambiguity / Drift:** This inconsistency between the core requirements and the implementation template creates confusion for developers and complicates automated persona validation.
-**Question for Product Owner:** Should `REQUIREMENTS.md` be updated to use "Rules & Constraints" to align with the template and current agents, or should the template and agents be updated to use "Core Mandates"?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Perform a global search-and-replace across all `.md` files in `agents/` and the `docs/AGENT_TEMPLATE.md` to standardize the header as either "Core Mandates" or "Rules & Constraints" based on the PO's decision.*
-
-### ❓ Question [2026-03-09] - Enforcement of Documentation Mirroring
-**Context:** `DECISION_LOG.md` (Decision dated 2026-03-03) mandates that `docs/agents/` must "strictly mirror" the `agents/` hierarchy.
-**Ambiguity / Drift:** Currently, `docs/agents/` only contains category `README.md` files, while the individual agent personas (e.g., `agents/coding/bolt/core.md`) are missing from the `docs/` tree.
-**Question for Product Owner:** Is the requirement for "strict mirroring" intended to include a 1:1 copy of every persona file into `docs/agents/`, or should `docs/agents/` only house high-level category overviews and guides?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Create a script to automatically sync and mirror all persona `.md` files from the `agents/` directory into their corresponding locations in `docs/agents/` to ensure documentation parity.*
-
 ### ❓ Question [2026-03-10] - SecretOps CLI Verification in Pre-Flight
 **Context:** `AGENTS.md` mandates the use of `infisical run` or `op run` for "Fetch-on-Demand" security. However, `scripts/verify-env.sh` and `verify-env.ps1` do not check if these CLIs are installed.
 **Ambiguity / Drift:** The core security policy is not enforced or verified by the project's own environment validation tools.
@@ -84,3 +57,38 @@
 **Question for Product Owner:** What is the standardized destination for the JSON Audit Log? Should it be printed to `stdout` following the primary output, or integrated into the final Markdown response within a `<details>` block?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Draft a technical specification for Audit Log delivery and update the `docs/AGENT_TEMPLATE.md` to include a standardized "Audit Log" section that adheres to this protocol.*
+
+### ❓ Question [2026-03-14] - Enforcement of SecretOps CLI Verification
+**Context:** `AGENTS.md` mandates a "Fetch-on-Demand" architecture using `infisical` or `op`. However, the pre-flight script `scripts/verify-env.sh` does not yet check for these tools.
+**Ambiguity / Drift:** There is a gap between the mandatory security policy and the automated environment validation, which could lead to runtime failures for new developers.
+**Question for Product Owner:** Should the `scripts/verify-env.sh` script be updated to fail if neither `infisical` nor `op` is found, or should it simply issue a warning?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` to include a check for `infisical` and `op` CLIs, ensuring at least one is available to satisfy the Fetch-on-Demand requirement.*
+
+### ❓ Question [2026-03-14] - Finalization of ROI Template Link
+**Context:** `tools/roi/README.md` and `REQUIREMENTS.md` mention a standardized Google Sheets ROI calculator.
+**Ambiguity / Drift:** The link in `tools/roi/README.md` is still a placeholder (`[Link Placeholder for ROI Calculator Template]`), preventing users from actually using the methodology.
+**Question for Product Owner:** Is the official Google Sheets template ready for public link inclusion, or should we point to a staging version in the interim?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `tools/roi/README.md` with the live URL for the ROI Calculator Template once provided by the Product Owner.*
+
+### ❓ Question [2026-03-12] - Missing "External Tooling Dependencies" Section
+**Context:** `REQUIREMENTS.md` mandates that "Agents must also document any expected external tooling dependencies (e.g., pnpm, docker) in their persona files."
+**Ambiguity / Drift:** A codebase audit revealed that none of the 18 existing agent personas in the `agents/` directory currently contain this section.
+**Question for Product Owner:** Should Jules proceed with adding a placeholder `## External Tooling Dependencies` section to all personas, or should this be added only as each persona is updated with specific tool requirements?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Audit all 18 persona files in `agents/` and insert a mandatory `## External Tooling Dependencies` section with initial values based on their known capabilities (e.g., Docker for infrastructure agents).*
+
+### ❓ Question [2026-03-15] - Drift in MCP Configuration for ROI Auditor
+**Context:** The `agents/guardian/roi-auditor.md` persona specifies a dependency on a `Logging MCP (or Webhook)` to retrieve execution records. However, this MCP is not listed in the `active_mcps` array in `mcp.config.json`.
+**Ambiguity / Drift:** The `roi-auditor` cannot function in the current "out-of-the-box" configuration because its primary data source is not enabled in the central MCP manifest.
+**Question for Product Owner:** Should a standard `logging-mcp` be added to `mcp.config.json`, or is the `roi-auditor` intended to rely exclusively on custom webhooks provided by the orchestrator?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `mcp.config.json` to include the `logging-mcp` and ensure it is properly configured to interface with the `roi-auditor.md` persona.*
+
+### ❓ Question [2026-03-15] - Standardized Library for Exponential Backoff
+**Context:** `AGENTS.md` mandates that "agents and toolkit components must implement robust error handling patterns," including "Exponential Backoff."
+**Ambiguity / Drift:** While the policy is clear, there is no standardized Node.js library or implementation pattern specified in the documentation or found in the `scripts/` directory.
+**Question for Product Owner:** Is there a preferred Node.js library (e.g., `p-retry`, `axios-retry`, or a native implementation) that should be standardized across the toolkit for exponential backoff?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/METHODOLOGY.md` to specify the mandatory Node.js library for exponential backoff and provide a reference implementation in `scripts/utils/retry-helper.js`.*
