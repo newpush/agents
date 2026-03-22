@@ -197,3 +197,24 @@
 **Question for Product Owner:** Should Jules proceed with a bulk update to all 18 persona files to add the `## External Tooling Dependencies` section, even if the specific tools for some personas are currently unknown (using 'None' as a default)?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Perform a bulk audit and update of the `agents/` library to insert the `## External Tooling Dependencies` section into all 18 persona files, populating it with verified dependencies where possible.*
+
+### ❓ Question [2026-03-21] - Standardized Template for "Data Inventory" (Description Gate)
+**Context:** `REQUIREMENTS.md` (Core Objectives, Item 4) mandates a "Data Inventory (Description)" technical gate for all agents. However, `docs/lifecycle/DESCRIPTION.md` provides only high-level principles and no structured template or JSON schema for this inventory.
+**Ambiguity / Drift:** Without a standardized format, Practitioners cannot consistently perform the required data classification (Public, Internal, Confidential) mandated in `docs/lifecycle/DELEGATION.md`.
+**Question for Product Owner:** Should we provide a standardized Markdown template or a JSON schema for the "Data Inventory" gate to ensure consistency across all agent builds?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Draft a standardized Markdown template for the "4D Data Inventory" and add it to `docs/lifecycle/templates/data-inventory.md`, then update `docs/lifecycle/DESCRIPTION.md` to reference it.*
+
+### ❓ Question [2026-03-21] - Standardized Template for "Acceptance Criteria" (Delegation Gate)
+**Context:** `REQUIREMENTS.md` mandates an "Acceptance Criteria (Delegation)" technical gate. While `docs/lifecycle/DELEGATION.md` defines the concept of "Definition of Done," there is no formal template provided.
+**Ambiguity / Drift:** The lack of a structured "Acceptance Criteria" format prevents Explorers from providing the precise requirements needed for the subsequent Description and Discernment phases.
+**Question for Product Owner:** Is there a preferred format (e.g., Gherkin/Cucumber `Given/When/Then` or a simple bulleted list) that should be mandated for the "Acceptance Criteria" gate?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Create a standardized `Acceptance Criteria` template in `docs/lifecycle/templates/acceptance-criteria.md` and update `docs/lifecycle/DELEGATION.md` to mandate its use.*
+
+### ❓ Question [2026-03-21] - Project-Wide Environment Naming Standard
+**Context:** The `AGENTS.md`, `scripts/verify-env.sh`, and `examples/fleet-deployment/docker-compose.yml` files consistently use or reference `dev` as the default environment name (e.g., `--env=dev`).
+**Ambiguity / Drift:** This naming convention is not formally defined in `REQUIREMENTS.md` or `AGENTS.md` as the project-wide standard, which could lead to confusion when configuring multi-tenant fleet deployments (e.g., using `production` or `staging` unexpectedly).
+**Question for Product Owner:** Should `dev` be formally documented as the mandatory default environment name for all local development and initial fleet provisioning?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/METHODOLOGY.md` to formally define the standardized environment naming hierarchy (e.g., dev, staging, prod) and ensure all scripts and examples adhere to this standard.*
