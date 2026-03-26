@@ -2,6 +2,8 @@
 
 Project NoéMI is an **agent specification library**. It defines AI agent personas, MCP (Model Context Protocol) integrations, and governance frameworks as Markdown files. It is **not** a runtime or execution engine — external orchestrators like [Gemini CLI](https://github.com/google-gemini/gemini-cli), [n8n](https://n8n.io/), or [LangChain](https://www.langchain.com/) consume these specifications to execute tasks.
 
+> **New here?** Start with the [**Project Reference**](docs/PROJECT_REFERENCE.md) — the comprehensive public guide to NoéMI's philosophy, framework, curriculum, and technology stack.
+
 ## Table of Contents
 
 - [Quick Start](#quick-start)
