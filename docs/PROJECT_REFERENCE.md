@@ -371,6 +371,12 @@ Phase 0 is what distinguishes NoéMI from other AI training programs. It is the 
 - Never written to disk, committed to Git, or exposed in AI context windows
 - Machine Identities (not human SSO) for headless agent environments
 
+### Client-Side Phase 0 Baseline
+
+Organizations should complete a short, written **Phase 0 baseline assessment** before starting an advanced AI initiative. This should evaluate identity, endpoint hygiene, backups, logging, secrets management, SaaS and vendor exposure, data boundaries, and incident readiness, then produce a prioritized roadmap of what must be fixed before AI goes live.
+
+For a client-oriented guide on what to assess, how to work with an MSP or MSSP, and how to request a grounded baseline without turning the conversation into a product pitch, see [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](PHASE_ZERO_SECURITY_BASELINE.md).
+
 For implementation details, see [`docs/tool-usages/secure-secret-management.md`](tool-usages/secure-secret-management.md) and [`docs/GOVERNANCE.md`](GOVERNANCE.md).
 
 ---
@@ -456,6 +462,7 @@ This document serves as the entry point to the NoéMI Agents Library. Below is a
 | [`docs/DECISION_LOG.md`](DECISION_LOG.md) | Architectural decision records |
 | [`docs/CLARIFICATIONS.md`](CLARIFICATIONS.md) | Clarifications and FAQs |
 | [`docs/AGENT_TEMPLATE.md`](AGENT_TEMPLATE.md) | Canonical template for all agent specifications |
+| [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](PHASE_ZERO_SECURITY_BASELINE.md) | Client-side guide to grounding cybersecurity before advanced AI work |
 
 ### Agent Documentation
 
