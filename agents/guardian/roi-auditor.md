@@ -35,3 +35,18 @@ To ensure that every autonomous agent deployed in the Fleet is delivering measur
 ## External Tooling Dependencies
 - **Google Sheets MCP:** Required for reading baseline human task times and appending calculated ROI execution data to the ROI Calculator spreadsheet.
 - **Logging infrastructure (Loki/Grafana or n8n webhooks):** Required for ingesting structured execution logs from deployed agents. The ROI Auditor connects to these systems to retrieve task completion records for cost-avoidance calculations.
+
+## Audit Log
+Emit a separate JSON audit record for each ROI calculation batch:
+
+```json
+{
+  "task": "...",
+  "inputs": [],
+  "actions": [],
+  "risks": [],
+  "result": "..."
+}
+```
+
+Exclude secrets, credentials, and any PII from logs. Record the data sources consulted, assumptions used, and confidence level of the calculation.

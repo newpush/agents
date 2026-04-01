@@ -9,6 +9,8 @@ When our Practitioners build applications with Virtual Coworkers, hardcoding cre
 2. **Access (The Injector):** Agents use the Infisical CLI (`infisical run`) to inject secrets into the process memory at runtime.
 3. **Governance (The Guardian Layer):** Secrets are never written to disk, committed to Git, or exposed in the AI's context window.
 
+For the client-side readiness conversation that should happen before these implementation details, see [`../PHASE_ZERO_SECURITY_BASELINE.md`](../PHASE_ZERO_SECURITY_BASELINE.md) and the reusable templates in [`../phase-zero-assessment/`](../phase-zero-assessment/).
+
 ## The Tool Matrix for Project NoéMI
 To replace the 1Password `op run` workflow, we need tools that support an Environment Injection CLI—meaning the secrets exist only in the process memory during runtime and never on the hard drive.
 

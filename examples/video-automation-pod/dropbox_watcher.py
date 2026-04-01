@@ -33,7 +33,7 @@ def check_for_pairs():
         
         return list(projects)
     except Exception as e:
-        print(f"❌ Error scanning Dropbox: {e}")
+        print(f"❌ Error scanning Dropbox: {e}", file=sys.stderr)
         return []
 
 def download_and_process(project_id):
@@ -53,12 +53,20 @@ def download_and_process(project_id):
     
     # TRIGGER THE MANAGER
     print(f"⚡ Triggering Marketing Pod for {project_id}...")
-    subprocess.run([
-        "python", "manager.py", 
+    result = subprocess.run([
+        sys.executable, "manager.py",
         "--project", project_id, 
         "--rough_cut", local_rough, 
         "--pose_clip", local_pose
-    ])
+    ], check=False)
+
+    if result.returncode != 0:
+        print(
+            f"❌ Manager failed for {project_id} with exit code {result.returncode}. "
+            "Leaving source files in Dropbox inbound for retry.",
+            file=sys.stderr,
+        )
+        return False
     
     # Cleanup: Move to processed
     print(f"✅ Cleanup: Moving {project_id} to Processed folder...")
@@ -68,6 +76,7 @@ def download_and_process(project_id):
     # Remove local temp files
     os.remove(local_rough)
     os.remove(local_pose)
+    return True
 
 if __name__ == "__main__":
     while True:
