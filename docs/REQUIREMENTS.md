@@ -94,9 +94,27 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - The repository must contain at least one reusable reference pattern for exponential backoff and retry.
 - Historical Python examples must be clearly labeled as illustrative or legacy so they do not become the default first path for new builders.
 
+### 9. Validation Must Be Easy to Run
+
+- The repository must expose a lightweight built-in test harness through `npm test`.
+- The default test suite must cover:
+  - persona and template contracts
+  - generator determinism and config override behavior
+  - golden fixtures for generated context sections
+  - static smoke checks for example stacks and Docker env inventories
+- The repository must expose a Docker-focused smoke entrypoint through `npm run test:e2e`.
+- The Docker e2e suite must skip cleanly when Docker is unavailable and execute real compose-based runtime checks when it is available.
+
+### 10. Docker Guidance Must Describe the Home, Not a Fake Runtime
+
+- The builder path must include a Docker-oriented guide that explains how to build a home around the repo's assets without misrepresenting the repository as a runtime product.
+- That guide must connect the current local, fleet, and specialist Docker examples into one coherent progression.
+- The builder path must also include a short onboarding walkthrough that chains environment verification, context generation, validation, and initial Docker launch.
+
 ## Runtime and Tooling Requirements
 
 - Node.js is the primary runtime for repository utilities and generation scripts.
+- The built-in Node test runner is the primary validation framework for repository contracts and smoke tests.
 - Docker, Git, and Gemini CLI remain part of the documented local toolchain.
 - Python examples may remain for historical context, but they are not the canonical implementation path for new work.
 
@@ -104,4 +122,5 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 
 - Historical Python examples remain in the repository as legacy references and are not yet fully converted to Node.js.
 - The Gatekeeper deployment example currently demonstrates safe scanning, signed reporting, and observability plumbing; it does not yet implement the full mutating action set described in the Gatekeeper persona.
+- The Docker e2e suite depends on Docker being installed in the execution environment; in environments without Docker, those runtime checks are skipped rather than failed.
 - `mcp.config.json` is unchanged in this wave; any future schema expansion should be treated as a separate contract change.

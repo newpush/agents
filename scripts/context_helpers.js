@@ -89,6 +89,19 @@ function injectBetween(content, startTag, endTag, payload) {
     return `${pre}\n${payload}\n${post}`;
 }
 
+function extractBetweenMarkers(content, markerName) {
+    const startTag = `<!-- ${markerName}_START -->`;
+    const endTag = `<!-- ${markerName}_END -->`;
+    const startIndex = content.indexOf(startTag);
+    const endIndex = content.indexOf(endTag);
+
+    if (startIndex === -1 || endIndex === -1) {
+        throw new Error(`Marker pair not found: ${startTag} / ${endTag}`);
+    }
+
+    return content.slice(startIndex + startTag.length, endIndex).trim();
+}
+
 function extractTopLevelSections(markdown) {
     const headingRegex = /^#\s+(.+)$/gm;
     const matches = [...markdown.matchAll(headingRegex)];
@@ -258,6 +271,7 @@ module.exports = {
     buildSkillsSection,
     discoverAgents,
     extractAgentHeadings,
+    extractBetweenMarkers,
     extractTopLevelSections,
     injectBetween,
     parseCliArgs,

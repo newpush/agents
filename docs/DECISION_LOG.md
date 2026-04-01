@@ -10,6 +10,8 @@
   - Both context generators now share helper logic, support config overrides, and inject the full `AGENTS.md` mandate set.
   - Gatekeeper reporting now uses HMAC-signed dashboard ingestion instead of posting unauthenticated line protocol directly.
   - Historical Python examples are clearly labeled as illustrative rather than recommended first paths.
+  - The repository now includes a built-in Node test harness and a builder-facing Docker Agent Home guide to make validation and Docker adoption easier without reframing the repo as a runtime product.
+  - Validation now has two layers: fast contract/golden tests in `npm test` and compose-based Docker smoke automation in `npm run test:e2e`, plus a builder onboarding walkthrough that ties the path together.
 
 ## [2026-03-03] Fetch-on-Demand and Definitions-Library Execution Model
 

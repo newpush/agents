@@ -7,7 +7,7 @@ Project NoéMI is the **public reference architecture** for NewPush's AI fluency
 **Audience paths:**
 - **Client / Buyer:** [Project Reference](docs/PROJECT_REFERENCE.md) → [Phase 0 Security Baseline](docs/PHASE_ZERO_SECURITY_BASELINE.md) → [Phase 0 Assessment Kit](docs/phase-zero-assessment/README.md)
 - **MSP / MSSP:** [Project Reference](docs/PROJECT_REFERENCE.md) → [MSP Deployment Guide](docs/examples/msp-deployment.md) → [Fleet / governance docs](docs/agents/operations/)
-- **Builder / Accelerator:** [Project Reference](docs/PROJECT_REFERENCE.md) → [Secure Secret Management](docs/tool-usages/secure-secret-management.md) → [Agent Template](docs/AGENT_TEMPLATE.md) / [MCP setup guides](docs/mcp-setup/)
+- **Builder / Accelerator:** [Project Reference](docs/PROJECT_REFERENCE.md) → [Secure Secret Management](docs/tool-usages/secure-secret-management.md) → [Builder First 30 Minutes](docs/examples/builder-first-30-minutes.md) → [Docker Agent Home](docs/examples/docker-agent-home.md)
 
 ## Table of Contents
 
@@ -45,7 +45,13 @@ cat mcp.config.json
 # 4. Generate context files consumed by orchestrators
 node scripts/generate_all.js      # Generates both GEMINI.md and CLAUDE.md
 
-# 5. Use the generated context with your orchestrator
+# 5. Validate personas, generators, and example contracts
+npm test
+
+# 6. Run Docker smoke validation when Docker is available
+npm run test:e2e
+
+# 7. Use the generated context with your orchestrator
 # Example with Gemini CLI:
 infisical run --env=dev -- gemini -p GEMINI.md "List all open PRs in our org"
 # Claude Code reads CLAUDE.md automatically when opened in this repository
@@ -61,7 +67,7 @@ The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, sec
 |----------|------------|------------|
 | **Client / Buyer** | [`docs/PROJECT_REFERENCE.md`](docs/PROJECT_REFERENCE.md) | [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](docs/PHASE_ZERO_SECURITY_BASELINE.md), [`docs/phase-zero-assessment/README.md`](docs/phase-zero-assessment/README.md) |
 | **MSP / MSSP** | [`docs/PROJECT_REFERENCE.md`](docs/PROJECT_REFERENCE.md) | [`docs/examples/msp-deployment.md`](docs/examples/msp-deployment.md), [`docs/agents/operations/`](docs/agents/operations/) |
-| **Builder / Accelerator** | [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-secret-management.md) | [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md), [`docs/mcp-setup/`](docs/mcp-setup/) |
+| **Builder / Accelerator** | [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-secret-management.md) | [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md), [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md), [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) |
 
 ---
 
@@ -75,6 +81,7 @@ The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, sec
 | Deployment examples | `examples/` | Docker Compose stacks, workflow templates, and testing suites |
 | Documentation | `docs/` | Framework docs, setup guides, agent-specific documentation |
 | Build scripts | `scripts/` | Context generation, repo auditing, retry helpers, and environment verification |
+| Test harness | `tests/`, `package.json` | Built-in Node contract, golden fixture, example smoke, and Docker e2e tests |
 | ROI tools | `tools/roi/` | Methodology for calculating agent return on investment |
 
 ---
@@ -133,7 +140,12 @@ The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, sec
 │   ├── generate_all.js              # Runs both generators in sequence
 │   ├── generate_gemini.js           # Builds GEMINI.md from template + skills + MCPs
 │   ├── generate_claude.js           # Builds CLAUDE.md from template + agent index + skills + MCPs
+│   ├── audit-repo.js               # Fails on persona/generator drift
+│   ├── retry-with-backoff.sh       # Reference retry helper for transient failures
 │   └── verify-env.sh               # Checks prerequisites (Docker, CLI tools)
+│
+├── tests/                          # Node built-in contract and smoke tests
+├── package.json                    # Validation and generation entrypoints
 │
 ├── mcp.config.json                  # Declares which MCPs are active
 ├── GEMINI.template.md               # Base template for Gemini context generation
@@ -246,6 +258,12 @@ node scripts/generate_all.js
 
 # Validate persona and generator invariants
 node scripts/audit-repo.js
+
+# Run the full fast test suite
+npm test
+
+# Run Docker smoke tests when Docker is available
+npm run test:e2e
 ```
 
 ### Using with Orchestrators
@@ -268,7 +286,7 @@ Read `GEMINI.md`, `CLAUDE.md`, or individual agent specs from `agents/` as syste
 
 ## Deploying the Examples
 
-All examples use the **Fetch-on-Demand** security model: secrets are injected at runtime via vault CLI wrappers (`infisical run` or `op run`), never hardcoded. Start with the **Secure Secret Management** demo before trying legacy Python examples. See [Security Model](#security-model) for details.
+All examples use the **Fetch-on-Demand** security model: secrets are injected at runtime via vault CLI wrappers (`infisical run` or `op run`), never hardcoded. Start with the **Secure Secret Management** demo, then follow the [Builder First 30 Minutes guide](docs/examples/builder-first-30-minutes.md) and the [Docker Agent Home guide](docs/examples/docker-agent-home.md) before trying legacy Python examples. See [Security Model](#security-model) for details.
 
 ### 1. Docker Sandbox (Historical Python Example)
 
@@ -469,6 +487,8 @@ All documentation lives in `docs/`. Here's where to find what:
 |----------------|-------|
 | Client-side Phase 0 guidance | [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](docs/PHASE_ZERO_SECURITY_BASELINE.md) |
 | Phase 0 assessment kit | [`docs/phase-zero-assessment/README.md`](docs/phase-zero-assessment/README.md) |
+| Builder onboarding walkthrough | [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md) |
+| Builder-facing Docker home guide | [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md) |
 | How to create a new agent | [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) |
 | The 4D Framework methodology | [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) |
 | Governance and compliance | [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md) |
@@ -516,6 +536,8 @@ See [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-sec
 4. **If the agent uses MCP tools**, ensure referenced protocols exist in `mcp-protocols/`
 5. **Run the Red Team Gauntlet** (`examples/red-team-gauntlet/`) against your new agent before deployment
 6. **Regenerate context:** `node scripts/generate_gemini.js`
+7. **Run validation:** `npm test`
+8. **Run Docker smoke tests when relevant:** `npm run test:e2e`
 
 **Required sections:** Role, Tone, Capabilities, Mission, Rules & Constraints, Boundaries, Workflow, Audit Log, External Tooling Dependencies
 

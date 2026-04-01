@@ -1,6 +1,6 @@
 # Docker AI Sandbox: Isolated Agent Environment
 
-> Historical example: this Python-based sandbox is retained as an illustrative legacy reference. For the recommended current entry path, start with [`../tool-usages/secure-secret-management.md`](../tool-usages/secure-secret-management.md) and the Project Reference.
+> Historical example: this Python-based sandbox is retained as an illustrative legacy reference. For the recommended current entry path, start with [`../tool-usages/secure-secret-management.md`](../tool-usages/secure-secret-management.md), then read [`docker-agent-home.md`](docker-agent-home.md).
 
 This guide walks you through setting up a containerized AI agent environment using **Docker**, **PostgreSQL with pgvector**, and the **Gemini API**.
 
