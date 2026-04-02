@@ -1,5 +1,24 @@
 # Decision Log
 
+## [2026-04-02] Docker Image and Compose Version Update
+
+- **Decision:** Bump `pgvector` and `Casdoor` image tags to their current versions, correct repository names, and remove the obsolete `version` attribute from `docker-compose.yml` files.
+- **Context:** The Docker Smoke Validation CI suite failed due to "manifest unknown" for `ankane/pgvector:v0.8.x` tags and "pull access denied" for the `casdoor/casdoor` repository. CI logs also warned about the obsolete `version` attribute.
+- **Impact:**
+  - Updated `pgvector` to `ankane/pgvector:latest` due to inconsistent upstream tag manifesting.
+  - Corrected Casdoor to `casbin/casdoor:2.377.0` (official repository).
+  - Removed `version: "3.8"` from example compose files to align with modern Docker Compose specifications (Compose V2).
+
+## [2026-04-02] Verified Codebase Realignment
+
+- **Decision:** Align repository requirements with the verified codebase state regarding environment keys, MCP protocols, and documentation mirroring.
+- **Context:** An audit of the codebase revealed several inconsistencies between implemented features (e.g., `gatekeeper-deployment`) and the core documentation/environment templates.
+- **Impact:**
+  - Updated `.env.template` to include mandatory InfluxDB and HMAC keys for Gatekeeper and Fleet deployments.
+  - Formally documented the absence of the `logging-mcp` in `REQUIREMENTS.md`.
+  - Clarified documentation mirroring expectations for `docs/agents/` to prioritize guides over individual file symlinks.
+  - Verified the 4D AI Fluency Framework sequence (Delegation, Description, Discernment, Diligence) is consistent across all lifecycle documentation.
+
 ## [2026-04-02] Clarification Backlog Normalization
 
 - **Decision:** Normalize the March-April clarification backlog by moving durable answers into the decision log and removing completed or superseded questions from the active clarification queue.
