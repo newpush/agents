@@ -78,3 +78,7 @@
 - **Impact:**
   - WHMCS-specific assumptions were removed from the core scope.
   - The project direction shifted toward a reusable agent architecture for broader organizational deployment.
+
+## [2026-04-02] - Node.js Exponential Backoff Reference Implementation
+- **Decision:** A standardized Node.js exponential backoff helper must be implemented in `scripts/resilience_helpers.js` (or equivalent) to satisfy the AGENTS.md and REQUIREMENTS.md resilience mandate. The shell `scripts/retry-with-backoff.sh` is insufficient for Node.js/Python agent runtimes.
+- **Reference:** Requirements alignment — existing AGENTS.md and REQUIREMENTS.md resilience mandate.

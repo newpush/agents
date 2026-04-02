@@ -128,3 +128,5 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - `mcp.config.json` is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
 - The `logging-mcp` is currently undefined in the repository and omitted from `mcp.config.json`; logging remains an orchestrator responsibility.
 - Symbolic link mirroring in `docs/agents/` is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
+
+- **Node.js Exponential Backoff Helper**: `scripts/resilience_helpers.js` provides a `withRetry(fn, options)` utility satisfying the exponential backoff resilience mandate for Node.js agent runtimes.
