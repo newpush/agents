@@ -6,7 +6,7 @@
 services:
   # 1. The Memory Layer: Where the agent stores embeddings and past conversations
   agent-memory:
-    image: ankane/pgvector:v0.8.2 # PostgreSQL pre-loaded with vector search
+    image: ankane/pgvector:latest # PostgreSQL pre-loaded with vector search
     container_name: noemi-agent-memory
     environment:
       POSTGRES_USER: ai_user

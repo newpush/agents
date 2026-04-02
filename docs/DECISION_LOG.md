@@ -2,11 +2,12 @@
 
 ## [2026-04-02] Docker Image and Compose Version Update
 
-- **Decision:** Bump `pgvector` and `Casdoor` image tags to their current versions and remove the obsolete `version` attribute from `docker-compose.yml` files.
-- **Context:** The Docker Smoke Validation CI suite failed due to "manifest unknown" for `ankane/pgvector:v0.8.0` and "pull access denied" for `casdoor/casdoor:v2.366.0`. CI logs also warned about the obsolete `version` attribute.
+- **Decision:** Bump `pgvector` and `Casdoor` image tags to their current versions, correct repository names, and remove the obsolete `version` attribute from `docker-compose.yml` files.
+- **Context:** The Docker Smoke Validation CI suite failed due to "manifest unknown" for `ankane/pgvector:v0.8.x` tags and "pull access denied" for the `casdoor/casdoor` repository. CI logs also warned about the obsolete `version` attribute.
 - **Impact:**
-  - Updated `ankane/pgvector` to `v0.8.2` and `casdoor/casdoor` to `v2.377.0`.
-  - Removed `version: "3.8"` from example compose files to align with modern Docker Compose specifications and resolve CI warnings.
+  - Updated `pgvector` to `ankane/pgvector:latest` due to inconsistent upstream tag manifesting.
+  - Corrected Casdoor to `casbin/casdoor:2.377.0` (official repository).
+  - Removed `version: "3.8"` from example compose files to align with modern Docker Compose specifications (Compose V2).
 
 ## [2026-04-02] Verified Codebase Realignment
 
