@@ -53,7 +53,7 @@ test('context templates retain all required injection markers', () => {
 test('builder-facing docs point to the Docker Agent Home path', () => {
     const readme = read('README.md');
     assert.match(readme, /docs\/examples\/docker-agent-home\.md/);
-    assert.match(readme, /npm test/);
+    assert.match(readme, /npm run validate/);
 });
 
 test('root env template documents the shared Gemini runtime key', () => {

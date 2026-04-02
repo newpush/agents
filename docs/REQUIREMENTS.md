@@ -96,6 +96,7 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 
 ### 9. Validation Must Be Easy to Run
 
+- The repository must expose a canonical fast validation gate through `npm run validate`.
 - The repository must expose a lightweight built-in test harness through `npm test`.
 - The default test suite must cover:
   - persona and template contracts
@@ -103,6 +104,7 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
   - golden fixtures for generated context sections
   - static smoke checks for example stacks and Docker env inventories
 - The repository must expose a Docker-focused smoke entrypoint through `npm run test:e2e`.
+- The same validation contract must be enforced in GitHub Actions on pushes and pull requests targeting `develop` and `main`.
 - The Docker e2e suite must skip cleanly when Docker is unavailable and execute real compose-based runtime checks when it is available.
 
 ### 10. Docker Guidance Must Describe the Home, Not a Fake Runtime

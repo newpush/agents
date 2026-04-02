@@ -77,7 +77,7 @@ Your containers should consume the generated context, not hand-written copies.
 
 ```bash
 node scripts/generate_all.js
-npm test
+npm run validate
 ```
 
 That gives your runtime a current `GEMINI.md`, `CLAUDE.md`, and a validated persona/MCP contract before the containers start.
@@ -148,7 +148,7 @@ If you are unsure, start with the secure secret pattern, then the local builder 
 
 1. Read [`../tool-usages/secure-secret-management.md`](../tool-usages/secure-secret-management.md)
 2. Generate context with `node scripts/generate_all.js`
-3. Validate the repo with `npm test`
+3. Validate the repo with `npm run validate`
 4. Start with [`../../examples/docker/`](../../examples/docker/)
 5. Move to [`../../examples/fleet-deployment/`](../../examples/fleet-deployment/) when you need a real operator home
 

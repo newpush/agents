@@ -45,8 +45,8 @@ cat mcp.config.json
 # 4. Generate context files consumed by orchestrators
 node scripts/generate_all.js      # Generates both GEMINI.md and CLAUDE.md
 
-# 5. Validate personas, generators, and example contracts
-npm test
+# 5. Run the fast validation gate
+npm run validate
 
 # 6. Run Docker smoke validation when Docker is available
 npm run test:e2e
@@ -58,6 +58,8 @@ infisical run --env=dev -- gemini -p GEMINI.md "List all open PRs in our org"
 ```
 
 The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, security mandates, and MCP protocol definitions — everything an orchestrator needs to act as your agents.
+
+The same validation gates are enforced in GitHub Actions on pushes and pull requests targeting `develop` and `main`, so local validation mirrors the repository's CI contract.
 
 ---
 
@@ -256,11 +258,8 @@ Both generators use the same shared helper logic, support `--config=path/to/mcp.
 # Regenerate after changing MCP config, protocol files, skills, or adding agents
 node scripts/generate_all.js
 
-# Validate persona and generator invariants
-node scripts/audit-repo.js
-
-# Run the full fast test suite
-npm test
+# Run the canonical fast validation gate
+npm run validate
 
 # Run Docker smoke tests when Docker is available
 npm run test:e2e
@@ -536,8 +535,10 @@ See [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-sec
 4. **If the agent uses MCP tools**, ensure referenced protocols exist in `mcp-protocols/`
 5. **Run the Red Team Gauntlet** (`examples/red-team-gauntlet/`) against your new agent before deployment
 6. **Regenerate context:** `node scripts/generate_gemini.js`
-7. **Run validation:** `npm test`
+7. **Run validation:** `npm run validate`
 8. **Run Docker smoke tests when relevant:** `npm run test:e2e`
+
+GitHub Actions enforces the same fast and Docker validation entrypoints for changes targeting `develop` and `main`.
 
 **Required sections:** Role, Tone, Capabilities, Mission, Rules & Constraints, Boundaries, Workflow, Audit Log, External Tooling Dependencies
 

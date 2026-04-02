@@ -45,11 +45,12 @@ Run this any time you change:
 ## Step 3: Validate the Repository Contracts
 
 ```bash
-npm test
+npm run validate
 ```
 
 This runs the fast validation tier:
 
+- repository audit for persona and generator invariants
 - persona and template contracts
 - generator determinism
 - golden fixtures for generated context sections
@@ -123,7 +124,7 @@ The normal builder loop looks like this:
 ```bash
 bash scripts/verify-env.sh
 node scripts/generate_all.js
-npm test
+npm run validate
 npm run test:e2e
 ```
 
@@ -133,7 +134,7 @@ Then launch or relaunch the Docker home you are working on.
 
 - `verify-env.sh` fails:
   install the missing tool or authenticate the SecretOps CLI first
-- `npm test` fails:
+- `npm run validate` fails:
   fix the contract or generator drift before launching Docker
 - `npm run test:e2e` fails:
   inspect the relevant compose stack before assuming the persona or docs are wrong
