@@ -1,5 +1,25 @@
 # Decision Log
 
+## [2026-04-02] Clarification Backlog Normalization
+
+- **Decision:** Normalize the March-April clarification backlog by moving durable answers into the decision log and removing completed or superseded questions from the active clarification queue.
+- **Context:** `docs/CLARIFICATIONS.md` had accumulated a large number of answered, duplicated, or implementation-overtaken questions, which made it harder to see what still required product-owner input.
+- **Impact:**
+  - Docker Compose remains the canonical deployment example path for this wave; Kubernetes manifests are deferred.
+  - `docs/agents/` mirroring is interpreted at the directory and guide level, not as a mandatory 1:1 duplicated persona-file or symlink mirror.
+  - The canonical persona contract remains `Role`, `Tone`, `Capabilities`, `Mission`, `Rules & Constraints`, `Boundaries`, `Workflow`, `External Tooling Dependencies`, and `Audit Log`.
+  - 4D alignment is expressed through the canonical persona sections and lifecycle docs rather than by introducing dedicated D1-D4 top-level persona sections.
+  - The canonical 4D sequence is D1 Delegation, D2 Description, D3 Discernment, D4 Diligence; Data Inventory belongs to Description.
+  - Audit logs use the lightweight standardized JSON shape in `AGENTS.md` and `docs/AGENT_TEMPLATE.md` and must be emitted separately from the primary user-facing payload.
+  - One of `infisical` or `op` is a required SecretOps dependency for credentialed execution, but the generic pre-flight check warns rather than hard-fails when the CLI is absent.
+  - `dev` remains the default local environment name in shared examples and quick-start flows.
+  - Gemini and Claude context generation are kept behaviorally aligned, including full global-mandate injection and Agent Index parity.
+  - `github` is part of the default active MCP set; a repo-defined `logging-mcp` is not part of the current contract.
+  - Identity verification is treated as an orchestrator or ingress responsibility rather than an agent-side Casdoor token contract.
+  - English-first slug naming remains mandatory for exported workflows and similar artifacts.
+  - Legacy Python examples remain allowed as historical references and should be migrated incrementally rather than through a blocking bulk rewrite.
+  - The ROI calculator should ultimately use a public Google Sheets template URL once that external artifact is available.
+
 ## [2026-04-02] Balanced Reference + Implementation Alignment
 
 - **Decision:** Treat this repository as both a public reference architecture and a truthful implementation library, and align documentation, personas, generators, and examples to that dual role.
