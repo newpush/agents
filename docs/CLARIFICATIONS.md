@@ -25,9 +25,3 @@ Add new questions below this line using the required format.
 **🤖 Jules Action Prompt:** *Optional implementation prompt once the answer is known.*
 ```
 
-### ❓ Question [2026-04-02] - ROI Auditor Logging-MCP Discrepancy
-**Context:** The `agents/guardian/roi-auditor.md` persona references a `logging-mcp` for ingesting agent execution logs, but this MCP is absent from `mcp.config.json` and `mcp-protocols/`.
-**Ambiguity / Drift:** The `REQUIREMENTS.md` now documents this as a known limitation, but the ROI Auditor cannot function as described without this protocol.
-**Question for Product Owner:** Is the `logging-mcp` intended to be a repo-defined protocol (e.g., connecting to Loki/Grafana), or should the ROI Auditor be updated to use a more generic `web-search` or `n8n` protocol for log ingestion?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Resolve the ROI Auditor protocol discrepancy by either creating the missing `mcp-protocols/logging-mcp.md` or updating the `roi-auditor.md` persona to use the approved `n8n` webhook pattern for log ingestion.*

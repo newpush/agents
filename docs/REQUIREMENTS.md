@@ -130,3 +130,5 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - Symbolic link mirroring in `docs/agents/` is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
 
 - **Node.js Exponential Backoff Helper**: `scripts/resilience_helpers.js` provides a `withRetry(fn, options)` utility satisfying the exponential backoff resilience mandate for Node.js agent runtimes.
+
+- **ROI Auditor Logging Protocol**: The `logging-mcp` must be defined as a dual-backend protocol supporting both Loki/Grafana (structured log queries) and n8n webhooks (event-driven ingestion). The ROI Auditor persona must be updated to reference this protocol.
