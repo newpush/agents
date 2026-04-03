@@ -125,7 +125,7 @@ services:
       - ../../GEMINI.md:/workspace/GEMINI.md:ro
 
   agent-memory:
-    image: ankane/pgvector:v0.8.0
+    image: ankane/pgvector:latest
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 ```

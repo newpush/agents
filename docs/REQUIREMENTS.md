@@ -125,4 +125,10 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - Historical Python examples remain in the repository as legacy references and are not yet fully converted to Node.js.
 - The Gatekeeper deployment example currently demonstrates safe scanning, signed reporting, and observability plumbing; it does not yet implement the full mutating action set described in the Gatekeeper persona.
 - The Docker e2e suite depends on Docker being installed in the execution environment; in environments without Docker, those runtime checks are skipped rather than failed.
-- `mcp.config.json` is unchanged in this wave; any future schema expansion should be treated as a separate contract change.
+- `mcp.config.json` is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
+- The `logging-mcp` is currently undefined in the repository and omitted from `mcp.config.json`; logging remains an orchestrator responsibility.
+- Symbolic link mirroring in `docs/agents/` is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
+
+- **Node.js Exponential Backoff Helper**: `scripts/resilience_helpers.js` provides a `withRetry(fn, options)` utility satisfying the exponential backoff resilience mandate for Node.js agent runtimes.
+
+- **ROI Auditor Logging Protocol**: The `logging-mcp` must be defined as a dual-backend protocol supporting both Loki/Grafana (structured log queries) and n8n webhooks (event-driven ingestion). The ROI Auditor persona must be updated to reference this protocol.

@@ -3,12 +3,10 @@
 #    or:  infisical run --env=dev -- docker compose up -d
 # See .env.example for required variable names.
 
-version: '3.8'
-
 services:
   # 1. The Memory Layer: Where the agent stores embeddings and past conversations
   agent-memory:
-    image: ankane/pgvector:v0.8.0 # PostgreSQL pre-loaded with vector search
+    image: ankane/pgvector:latest # PostgreSQL pre-loaded with vector search
     container_name: noemi-agent-memory
     environment:
       POSTGRES_USER: ai_user
