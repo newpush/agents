@@ -78,6 +78,44 @@ test('Google Workspace docs separate Gemini CLI, generic MCP, and n8n setup path
     assert.match(matrix, /n8n Gmail \/ Docs \/ Drive \/ Sheets nodes/);
 });
 
+test('local workspace docs explain CLI-first builder habits across Gemini, Claude, and Codex', () => {
+    const overview = read('docs/tool-usages/agentic-local-workspaces.md');
+    const google = read('docs/tool-usages/google-local-workspace.md');
+    const claude = read('docs/tool-usages/claude-code-local-workspace.md');
+    const codex = read('docs/tool-usages/openai-codex-local-workspace.md');
+    const googleClients = read('docs/mcp-setup/google-workspace-agentic-clients.md');
+    const microsoftClients = read('docs/mcp-setup/microsoft-365-agentic-clients.md');
+
+    assert.match(overview, /Builders \/ Practitioners/i);
+    assert.match(overview, /Accelerators/i);
+    assert.match(overview, /CLI is usually the most durable source of truth/i);
+    assert.match(google, /Antigravity/i);
+    assert.match(google, /gemini mcp add/);
+    assert.match(claude, /claude mcp add/);
+    assert.match(codex, /codex mcp add/);
+    assert.match(googleClients, /Gemini CLI/);
+    assert.match(googleClients, /Antigravity/);
+    assert.match(googleClients, /OpenAI Codex/);
+    assert.match(googleClients, /Claude Code app/);
+    assert.match(googleClients, /Claude Code CLI/);
+    assert.match(microsoftClients, /Microsoft 365, also commonly called Office 365/i);
+    assert.match(microsoftClients, /gemini mcp add microsoft365/);
+    assert.match(microsoftClients, /codex mcp add microsoft365/);
+    assert.match(microsoftClients, /claude mcp add microsoft365/);
+});
+
+test('localized operating profile docs separate culture from translation and guard against stereotypes', () => {
+    const framework = read('docs/frameworks/localized-operating-profiles.md');
+    const profilesReadme = read('operating-profiles/README.md');
+
+    assert.match(framework, /without collapsing everything into simple translation/i);
+    assert.match(framework, /language family/i);
+    assert.match(framework, /subregion or city cluster/i);
+    assert.match(framework, /inferred gender/i);
+    assert.match(profilesReadme, /culturally grounded execution/i);
+    assert.match(profilesReadme, /assumed identity/i);
+});
+
 test('n8n guidance avoids invented helper APIs and documents the real runtime surface', () => {
     const persona = read('docs/tool-usages/n8n-expert-persona.md');
     const protocol = read('mcp-protocols/n8n.md');

@@ -11,6 +11,8 @@ Use this guide when you want ad-hoc, interactive work such as:
 
 This path uses the official Google Workspace extension for Gemini CLI. It does **not** use the generic `GOOGLE_CLIENT_ID` / `GOOGLE_REFRESH_TOKEN` environment-variable pattern described in the generic MCP setup guide, and it does **not** configure n8n credentials.
 
+For the broader comparison between Gemini CLI, Antigravity, Claude Code, and Codex as local agentic workspaces, start with [`agentic-local-workspaces.md`](agentic-local-workspaces.md) and [`google-local-workspace.md`](google-local-workspace.md).
+
 If you want repeatable event-driven automation, use [`../examples/n8n-google-workspace-quickstart.md`](../examples/n8n-google-workspace-quickstart.md) instead.
 
 ## What This Path Is Good For
@@ -122,6 +124,9 @@ The Workspace extension can read and modify Workspace data. Do not aim it at unt
 ## Related Guides
 
 - [`gemini-mcp-setup.md`](gemini-mcp-setup.md) for modular context generation
+- [`agentic-local-workspaces.md`](agentic-local-workspaces.md) for the builder-facing local workspace model
+- [`google-local-workspace.md`](google-local-workspace.md) for Gemini CLI plus Antigravity positioning
 - [`../mcp-setup/google-workspace.md`](../mcp-setup/google-workspace.md) for generic Google MCP server auth patterns
+- [`../mcp-setup/google-workspace-agentic-clients.md`](../mcp-setup/google-workspace-agentic-clients.md) for Google Workspace across Gemini, Antigravity, Codex, and Claude Code
 - [`../examples/n8n-google-workspace-quickstart.md`](../examples/n8n-google-workspace-quickstart.md) for repeatable automation
 - [`../mcp-setup/google-n8n-credential-matrix.md`](../mcp-setup/google-n8n-credential-matrix.md) for Google vs n8n credential troubleshooting

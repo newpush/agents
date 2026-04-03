@@ -66,6 +66,32 @@ test('builder-facing docs expose the split Google Workspace implementation paths
     assert.match(mcpSetupIndex, /google-n8n-credential-matrix\.md/);
 });
 
+test('builder-facing docs expose the local workspace comparison and client integration guides', () => {
+    const readme = read('README.md');
+    const mcpSetupIndex = read('docs/mcp-setup/README.md');
+
+    assert.match(readme, /docs\/tool-usages\/agentic-local-workspaces\.md/);
+    assert.match(readme, /docs\/tool-usages\/google-local-workspace\.md/);
+    assert.match(readme, /docs\/tool-usages\/claude-code-local-workspace\.md/);
+    assert.match(readme, /docs\/tool-usages\/openai-codex-local-workspace\.md/);
+    assert.match(readme, /docs\/mcp-setup\/google-workspace-agentic-clients\.md/);
+    assert.match(readme, /docs\/mcp-setup\/microsoft-365-agentic-clients\.md/);
+    assert.match(mcpSetupIndex, /google-workspace-agentic-clients\.md/);
+    assert.match(mcpSetupIndex, /microsoft-365-agentic-clients\.md/);
+});
+
+test('repo exposes the localized operating profile framework and template', () => {
+    const readme = read('README.md');
+    const framework = read('docs/frameworks/localized-operating-profiles.md');
+    const template = read('operating-profiles/PROFILE_TEMPLATE.md');
+
+    assert.match(readme, /operating-profiles\//);
+    assert.match(framework, /simple translation/i);
+    assert.match(framework, /inferred gender/i);
+    assert.match(template, /## Language And Register/);
+    assert.match(template, /## Do Not Assume/);
+});
+
 test('contributor guide documents the canonical validation and security flow', () => {
     const contributing = read('CONTRIBUTING.md');
     assert.match(contributing, /npm run validate/);
