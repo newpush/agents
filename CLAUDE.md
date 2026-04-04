@@ -143,6 +143,7 @@ When running on a local host, the system uses human SSO or Desktop App integrati
 - **4D Framework Alignment**: All development must adhere to the 4D AI Fluency Framework (Delegation, Description, Discernment, Diligence). Personas must structurally incorporate these dimensions to ensure technical and ethical gating.
 - **Persona Standards**: Specialized agent personas must include the following required sections: `Role`, `Tone`, `Capabilities`, `Mission`, `Rules & Constraints`, `Boundaries`, `Workflow`, `External Tooling Dependencies`, and `Audit Log`.
 - **Naming Conventions**: All exported artifacts (n8n workflows, scripts, documentation) must use English-first, slug-based naming (e.g., `ai-triage-inbound.json`) to avoid localization drift.
+- **Legacy Examples**: All non-Node.js example scripts (e.g., Python, Bash) must include a top-level comment explicitly labeling them as "LEGACY" or "ILLUSTRATIVE" to distinguish them from the canonical Node.js implementation path.
 - **Audit Log (Mandatory)**: All agent personas must include a dedicated `Audit Log` section. The minimum lightweight shape is `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`. Audit logs must exclude secrets and PII and should be emitted separately from the primary payload so the orchestrator can capture them safely.
 <!-- GLOBAL_MANDATES_END -->
 
