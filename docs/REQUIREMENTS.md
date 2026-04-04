@@ -90,7 +90,7 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 ### 8. Reference Examples Must Tell the Truth
 
 - The Gatekeeper deployment example must use HMAC-signed dashboard submissions and a verifiable ingest path.
-- PowerShell preflight verification must check SecretOps availability to the same standard as the shell script.
+- PowerShell preflight verification must check SecretOps availability to the same standard as the shell script (currently defaulting to a warning/soft-fail to support local exploration).
 - The repository must contain at least one reusable reference pattern for exponential backoff and retry (Node.js implementation: `scripts/resilience_helpers.js`).
 - Historical Python examples must be clearly labeled as illustrative or legacy so they do not become the default first path for new builders.
 
@@ -127,5 +127,6 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - The Gatekeeper deployment example currently demonstrates safe scanning, signed reporting, and observability plumbing; it does not yet implement the full mutating action set described in the Gatekeeper persona.
 - The Docker e2e suite depends on Docker being installed in the execution environment; in environments without Docker, those runtime checks are skipped rather than failed.
 - `mcp.config.json` is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
+- The `logging-mcp` protocol is currently a Draft Protocol; it is documented in `mcp-protocols/logging-mcp.md` but is not yet enabled in the default `mcp.config.json`.
 - Symbolic link mirroring in `docs/agents/` is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
 
