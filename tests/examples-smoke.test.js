@@ -60,20 +60,120 @@ test('Docker Agent Home guide connects the current example topologies', () => {
     assert.match(guide, /examples\/fleet-deployment/);
     assert.match(guide, /examples\/gatekeeper-deployment/);
     assert.match(guide, /not a runtime or execution engine/i);
+    assert.match(guide, /zero-to-first-agent\.md/);
+    assert.match(guide, /node:24-alpine/);
+});
+
+test('beginner builder docs start with a safe local success before Docker', () => {
+    const beginnerGuide = read('docs/examples/zero-to-first-agent.md');
+    const builderGuide = read('docs/examples/builder-first-30-minutes.md');
+    const readme = read('README.md');
+    const windowsGuide = read('docs/examples/windows-kickstart.md');
+    const chromeOsGuide = read('docs/examples/chromeos-kickstart.md');
+
+    assert.match(beginnerGuide, /read-only AI task against local repository content/i);
+    assert.match(beginnerGuide, /does \*\*not\*\* require Docker/i);
+    assert.match(beginnerGuide, /engineering agents in this repository/i);
+    assert.match(beginnerGuide, /human approval before external action/i);
+    assert.match(beginnerGuide, /windows-kickstart\.md/);
+    assert.match(beginnerGuide, /chromeos-kickstart\.md/);
+    assert.match(beginnerGuide, /powershell -ExecutionPolicy Bypass -File scripts\/verify-env\.ps1 -Mode builder/i);
+    assert.match(builderGuide, /phase-two Docker path/i);
+    assert.match(builderGuide, /verify-env\.sh --mode=docker/);
+    assert.match(builderGuide, /powershell -ExecutionPolicy Bypass -File scripts\/verify-env\.ps1 -Mode docker/i);
+    assert.match(windowsGuide, /PowerShell/i);
+    assert.match(windowsGuide, /powershell -ExecutionPolicy Bypass -File scripts\/verify-env\.ps1 -Mode builder/i);
+    assert.match(windowsGuide, /You do \*\*not\*\* need WSL/i);
+    assert.match(chromeOsGuide, /Linux development environment/i);
+    assert.match(chromeOsGuide, /bash scripts\/verify-env\.sh --mode=builder/i);
+    assert.match(chromeOsGuide, /ChromeOS is often \*\*not\*\* the easiest place to start the Docker phase/i);
+    assert.match(readme, /docs\/examples\/windows-kickstart\.md/);
+    assert.match(readme, /docs\/examples\/chromeos-kickstart\.md/);
+    assert.match(readme, /powershell -ExecutionPolicy Bypass -File scripts\/verify-env\.ps1 -Mode builder/i);
+    assert.doesNotMatch(readme, /List all open PRs in our org/);
+});
+
+test('secret management guide leads beginners through a local-first choice between Infisical and 1Password', () => {
+    const guide = read('docs/tool-usages/secure-secret-management.md');
+
+    assert.match(guide, /Beginner Quick Path: Local First/);
+    assert.match(guide, /Infisical/);
+    assert.match(guide, /1Password CLI/);
+    assert.match(guide, /repo-only, read-only tasks can start without secrets/i);
+    assert.match(guide, /machine identities/i);
+});
+
+test('phase zero assessment kit separates security readiness from AI readiness and speaks in business-value terms', () => {
+    const kit = read('docs/phase-zero-assessment/README.md');
+    const security = read('docs/phase-zero-assessment/security-assessment.md');
+    const readiness = read('docs/phase-zero-assessment/ai-readiness-assessment.md');
+    const report = read('docs/phase-zero-assessment/report-template.md');
+    const rubric = read('docs/phase-zero-assessment/readiness-rubric.md');
+    const roadmap = read('docs/phase-zero-assessment/roadmap-template.md');
+
+    assert.match(kit, /Security Assessment/);
+    assert.match(kit, /AI Readiness Assessment/);
+    assert.match(kit, /can we do this safely/i);
+    assert.match(kit, /can we do this in a way that creates real business value/i);
+    assert.match(security, /Can we begin this AI initiative safely/i);
+    assert.match(security, /business owner/i);
+    assert.match(readiness, /real business value/i);
+    assert.match(readiness, /manage AI doing the task/i);
+    assert.match(readiness, /more output/i);
+    assert.match(readiness, /lower unit cost/i);
+    assert.match(report, /Security readiness:/);
+    assert.match(report, /AI readiness:/);
+    assert.match(report, /Role Uplift And Operating Model Recommendation/);
+    assert.match(rubric, /Overall recommendation:/);
+    assert.match(rubric, /First pilot recommendation:/);
+    assert.match(roadmap, /Security Track/);
+    assert.match(roadmap, /AI Readiness Track/);
+});
+
+test('front-door docs frame NoeMI as productivity uplift rather than labor replacement', () => {
+    const readme = read('README.md');
+    const projectReference = read('docs/PROJECT_REFERENCE.md');
+    const visualsIndex = read('docs/visuals/README.md');
+
+    assert.match(readme, /higher throughput without growing headcount at the same rate/i);
+    assert.match(readme, /lower delivery cost/i);
+    assert.match(readme, /more consistent first-pass output/i);
+    assert.match(readme, /increase output/i);
+    assert.match(readme, /Virtual Workforce/i);
+    assert.match(readme, /mass unemployment/i);
+    assert.match(projectReference, /increasing the productivity of the active population/i);
+    assert.match(projectReference, /What organizations should expect from this model/i);
+    assert.match(projectReference, /lower unit cost on repetitive operational work/i);
+    assert.match(projectReference, /identify the first safe, worthwhile pilot/i);
+    assert.match(projectReference, /Virtual Workforce model/i);
+    assert.match(projectReference, /labor-displacement fear/i);
+    assert.match(visualsIndex, /lower unit cost on first-pass operational tasks/i);
 });
 
 test('Google Workspace docs separate Gemini CLI, generic MCP, and n8n setup paths', () => {
+    const gwsMachineSetup = read('docs/mcp-setup/gws-cli-machine-setup.md');
     const geminiQuickstart = read('docs/tool-usages/gemini-workspace-quickstart.md');
     const n8nQuickstart = read('docs/examples/n8n-google-workspace-quickstart.md');
     const genericGoogleSetup = read('docs/mcp-setup/google-workspace.md');
+    const clientGuide = read('docs/mcp-setup/google-workspace-agentic-clients.md');
     const matrix = read('docs/mcp-setup/google-n8n-credential-matrix.md');
 
+    assert.match(gwsMachineSetup, /gws auth setup/);
+    assert.match(gwsMachineSetup, /gws auth login -s drive,gmail,sheets/);
+    assert.match(gwsMachineSetup, /gws drive files list --params/);
+    assert.match(gwsMachineSetup, /gemini extensions install https:\/\/github\.com\/googleworkspace\/cli/);
+    assert.match(gwsMachineSetup, /not an officially supported Google product/i);
+    assert.match(gwsMachineSetup, /Claude Code/);
+    assert.match(gwsMachineSetup, /Codex/);
     assert.match(geminiQuickstart, /gemini extensions install https:\/\/github\.com\/gemini-cli-extensions\/workspace/);
     assert.match(geminiQuickstart, /does \*\*not\*\* use the generic `GOOGLE_CLIENT_ID`/);
+    assert.match(geminiQuickstart, /gws-cli-machine-setup\.md/);
     assert.match(n8nQuickstart, /uses \*\*n8n credentials\*\*, not the Gemini CLI Workspace extension/i);
     assert.match(genericGoogleSetup, /generic Google Workspace MCP server pattern/i);
     assert.match(genericGoogleSetup, /Gemini CLI with the official Workspace extension/i);
     assert.match(genericGoogleSetup, /n8n Google Workspace nodes/i);
+    assert.match(clientGuide, /Shared Local Foundation: `gws`/);
+    assert.match(clientGuide, /gws-cli-machine-setup\.md/);
     assert.match(matrix, /Gemini CLI \+ Workspace extension/);
     assert.match(matrix, /n8n Gmail \/ Docs \/ Drive \/ Sheets nodes/);
 });
@@ -90,8 +190,11 @@ test('local workspace docs explain CLI-first builder habits across Gemini, Claud
     assert.match(overview, /Accelerators/i);
     assert.match(overview, /CLI is usually the most durable source of truth/i);
     assert.match(google, /Antigravity/i);
+    assert.match(google, /gws-cli-machine-setup\.md/);
     assert.match(google, /gemini mcp add/);
+    assert.match(claude, /gws-cli-machine-setup\.md/);
     assert.match(claude, /claude mcp add/);
+    assert.match(codex, /gws-cli-machine-setup\.md/);
     assert.match(codex, /codex mcp add/);
     assert.match(googleClients, /Gemini CLI/);
     assert.match(googleClients, /Antigravity/);
