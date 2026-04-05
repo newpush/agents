@@ -20,12 +20,6 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Refactor `scripts/audit-repo.js` and `scripts/generate_all.js` to use the `withRetry` helper for all filesystem operations.*
 
-### ❓ Question [2026-04-02] - `logging-mcp` Activation Drift
-**Context:** The `ROI Auditor` agent specification defines `logging-mcp` as a mandatory dependency for fleet-wide log ingestion, but the protocol is currently disabled (not present in `mcp.config.json`).
-**Ambiguity / Drift:** The `ROI Auditor` cannot be fully validated as "active" in the current context files.
-**Question for Product Owner:** Should `logging-mcp` be added to the default `active_mcps` list immediately to support Guardian agent development?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `mcp.config.json` to include "logging-mcp" in the `active_mcps` list and regenerate context.*
 
 ### ❓ Question [2026-04-02] - Legacy Example Labeling
 **Context:** `REQUIREMENTS.md` Section 8 requires historical Python examples to be "clearly labeled as illustrative or legacy," but several examples (e.g., `examples/docker/`, `examples/video-automation-pod/`) lack these explicit headers.
@@ -33,6 +27,27 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should Jules proceed with a bulk update to prepend "LEGACY/ILLUSTRATIVE" headers to all Python and Bash examples?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update all `.py` and `.sh` files in the `examples/` directory to include the mandatory "LEGACY/ILLUSTRATIVE" header.*
+
+### ❓ Question [2026-04-03] - `logging-mcp` Activation Drift
+**Context:** The `ROI Auditor` agent specification defines `logging-mcp` as a mandatory dependency for fleet-wide log ingestion, but the protocol is currently disabled (not present in `mcp.config.json`).
+**Ambiguity / Drift:** The `ROI Auditor` cannot be fully validated as "active" in the current context files.
+**Question for Product Owner:** Should `logging-mcp` be added to the default `active_mcps` list immediately to support Guardian agent development?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `mcp.config.json` to include "logging-mcp" in the `active_mcps` list and regenerate context.*
+
+### ❓ Question [2026-04-03] - Audit Log JSON Shape Specification
+**Context:** `REQUIREMENTS.md` Section 2 mentions a "lightweight JSON summary shape in prose," while `AGENTS.md` and `docs/AGENT_TEMPLATE.md` define a specific JSON structure (`{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`).
+**Ambiguity / Drift:** The core requirement is vague compared to the implementation rules in `AGENTS.md`, which could lead to inconsistent audit logging across new personas.
+**Question for Product Owner:** Should the `Audit Log` requirement in `REQUIREMENTS.md` be updated to explicitly mandate the JSON shape defined in `AGENTS.md`?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `REQUIREMENTS.md` Section 2 to include the mandatory JSON audit log shape from `AGENTS.md`.*
+
+### ❓ Question [2026-04-03] - ROI Auditor Baseline Data Access
+**Context:** The `ROI Auditor` persona is tasked with correlating actions against a "Human Baseline Time" and "Labor Rate" dictionary. `tools/roi/README.md` indicates these live in a Google Sheets template, but the `google-sheets` MCP is typically used for appending execution logs.
+**Ambiguity / Drift:** There is no documented mechanism for the `ROI Auditor` to programmatically retrieve these "dictionaries" (e.g., via a specific MCP tool, a mounted JSON file, or a read-only Google Sheets range).
+**Question for Product Owner:** How should the `ROI Auditor` access the baseline and labor rate data? Should we define a `google-sheets-read` capability or provide a local JSON reference file?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Add a `baseline-config.json` to `tools/roi/` or update the `ROI Auditor` persona to include a specific `read_rows` capability for the Google Sheets MCP.*
 
 ```md
 ### ❓ Question [YYYY-MM-DD] - Short Title
