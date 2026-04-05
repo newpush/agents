@@ -2,14 +2,29 @@
 
 Project NoéMI is the **public reference architecture** for NewPush's AI fluency and Virtual Workforce model, and the **agent specification library** that backs it. It defines AI agent personas, MCP (Model Context Protocol) integrations, governance frameworks, and Phase 0 security guidance as Markdown files. It is **not** a runtime or execution engine — external orchestrators like [Gemini CLI](https://github.com/google-gemini/gemini-cli), Claude Code, OpenAI Codex, [n8n](https://n8n.io/), or [LangChain](https://www.langchain.com/) consume these specifications to execute tasks.
 
+The goal of Project NoéMI is not to accelerate a replacement narrative around AI. The goal is to help businesses and enterprises raise the productivity of the active workforce by teaching people how to govern AI doing repeatable first-pass work, so organizations can increase output, improve consistency, and lower delivery cost **without** treating mass unemployment as the strategy. In NoéMI terms, this is the move from people doing every task themselves to people managing a governed **Virtual Workforce** of AI agents.
+
+**What value organizations should expect:**
+- higher throughput without growing headcount at the same rate
+- lower delivery cost on repetitive, document-heavy, and coordination-heavy work
+- more consistent first-pass output with human approval still in control
+- role uplift, where skilled staff spend less time on repetition and more time on review, exceptions, and decisions
+- safer AI adoption through Phase 0 security, approval boundaries, and measurable ROI
+
+In plain business terms, NoéMI is useful because it helps an organization move from scattered AI experimentation to a governed operating model where AI creates **more output, better consistency, and lower unit cost**.
+
 > **New here?** Start with the [**Project Reference**](docs/PROJECT_REFERENCE.md) — the comprehensive public guide to NoéMI's philosophy, framework, curriculum, and technology stack.
 
 > **Need the fastest orientation?** Start with the [**Visual Guides**](docs/visuals/README.md) for the system map, audience path, runtime flow, and workshop mind map.
 
+> **New to AI and want one safe first win?** Start with [**Zero To First Agent**](docs/examples/zero-to-first-agent.md).
+
+> **On Windows or ChromeOS?** Use the dedicated [**Windows Kickstart**](docs/examples/windows-kickstart.md) or [**ChromeOS Kickstart**](docs/examples/chromeos-kickstart.md) so you begin in the right shell and runtime.
+
 **Audience paths:**
 - **Client / Buyer:** [Project Reference](docs/PROJECT_REFERENCE.md) → [Phase 0 Security Baseline](docs/PHASE_ZERO_SECURITY_BASELINE.md) → [Phase 0 Assessment Kit](docs/phase-zero-assessment/README.md)
 - **MSP / MSSP:** [Project Reference](docs/PROJECT_REFERENCE.md) → [MSP Deployment Guide](docs/examples/msp-deployment.md) → [Fleet / governance docs](docs/agents/operations/)
-- **Builder / Accelerator:** [Project Reference](docs/PROJECT_REFERENCE.md) → [Secure Secret Management](docs/tool-usages/secure-secret-management.md) → [Agentic Local Workspaces](docs/tool-usages/agentic-local-workspaces.md) → [Google Local Workspace](docs/tool-usages/google-local-workspace.md), [Claude Code Local Workspace](docs/tool-usages/claude-code-local-workspace.md), or [OpenAI Codex Local Workspace](docs/tool-usages/openai-codex-local-workspace.md) → [Google Workspace For Agentic Clients](docs/mcp-setup/google-workspace-agentic-clients.md) or [Microsoft 365 For Agentic Clients](docs/mcp-setup/microsoft-365-agentic-clients.md) → [Value Lenses](docs/frameworks/value-lenses.md) → [Gemini Workspace Quickstart](docs/tool-usages/gemini-workspace-quickstart.md) or [n8n Google Workspace Quickstart](docs/examples/n8n-google-workspace-quickstart.md) → [Builder First 30 Minutes](docs/examples/builder-first-30-minutes.md) → [Docker Agent Home](docs/examples/docker-agent-home.md) → [Orchestrator Runtime Contract](docs/tool-usages/orchestrator-runtime-contract.md)
+- **Builder / Accelerator:** [Zero To First Agent](docs/examples/zero-to-first-agent.md) → [Windows Kickstart](docs/examples/windows-kickstart.md) or [ChromeOS Kickstart](docs/examples/chromeos-kickstart.md) when needed → [Secure Secret Management](docs/tool-usages/secure-secret-management.md) → [Agentic Local Workspaces](docs/tool-usages/agentic-local-workspaces.md) → [Google Local Workspace](docs/tool-usages/google-local-workspace.md), [Claude Code Local Workspace](docs/tool-usages/claude-code-local-workspace.md), or [OpenAI Codex Local Workspace](docs/tool-usages/openai-codex-local-workspace.md) → [GWS CLI Machine Setup](docs/mcp-setup/gws-cli-machine-setup.md) → [Google Workspace For Agentic Clients](docs/mcp-setup/google-workspace-agentic-clients.md) or [Microsoft 365 For Agentic Clients](docs/mcp-setup/microsoft-365-agentic-clients.md) → [Value Lenses](docs/frameworks/value-lenses.md) → [Gemini Workspace Quickstart](docs/tool-usages/gemini-workspace-quickstart.md) or [n8n Google Workspace Quickstart](docs/examples/n8n-google-workspace-quickstart.md) → [Builder First 30 Minutes](docs/examples/builder-first-30-minutes.md) → [Docker Agent Home](docs/examples/docker-agent-home.md) → [Orchestrator Runtime Contract](docs/tool-usages/orchestrator-runtime-contract.md)
 
 ## Table of Contents
 
@@ -32,15 +47,17 @@ Project NoéMI is the **public reference architecture** for NewPush's AI fluency
 
 ## Quick Start
 
-**Prerequisites:** [Node.js](https://nodejs.org/) (24.x LTS recommended; 25+ supported), [Docker](https://www.docker.com/), and a secret manager ([Infisical CLI](https://infisical.com/docs/cli/overview) or [1Password CLI](https://developer.1password.com/docs/cli/))
+**Prerequisites:** [Node.js](https://nodejs.org/) (24.x LTS recommended; 25+ supported), [Git](https://git-scm.com/), one supported local client ([Gemini CLI](https://github.com/google-gemini/gemini-cli), Claude Code, or OpenAI Codex), and a secret manager ([Infisical CLI](https://infisical.com/docs/cli/overview) or [1Password CLI](https://developer.1password.com/docs/cli/)) before you connect business systems. [Docker](https://www.docker.com/) becomes part of the path when you are ready to build a runtime home. On ChromeOS, use the Linux development environment terminal. On Windows, use the PowerShell path below.
+
+### macOS, Linux, or ChromeOS Linux Terminal
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/newpush/agents.git
 cd agents
 
-# 2. Verify your environment has the required tools
-bash scripts/verify-env.sh
+# 2. Verify the beginner local-first path
+bash scripts/verify-env.sh --mode=builder
 
 # 3. Configure which MCP integrations are active (edit as needed)
 cat mcp.config.json
@@ -51,16 +68,46 @@ node scripts/generate_all.js      # Generates both GEMINI.md and CLAUDE.md
 # 5. Run the fast validation gate
 npm run validate
 
-# 6. Run Docker smoke validation when Docker is available
+# 6. Prove one safe local task first
+# Example with Gemini CLI. If you chose Claude Code or Codex, use the same repo-local prompt there instead.
+gemini -p GEMINI.md "List the engineering agents in this repository and summarize what each one does in one sentence."
+
+# 7. Run Docker smoke validation when Docker is available
 npm run test:e2e
 
-# 7. Use the generated context with your orchestrator
-# Example with Gemini CLI:
-infisical run --env=dev -- gemini -p GEMINI.md "List all open PRs in our org"
+# 8. When you need secrets, wrap the client at launch time
+infisical run --env=dev -- gemini
+# or:
+op run --env-file=.env.template -- gemini
 # Claude Code reads CLAUDE.md automatically when opened in this repository
+# Codex can be launched through the same Fetch-on-Demand pattern
+```
+
+### Windows PowerShell
+
+```powershell
+# 1. Clone the repository
+git clone https://github.com/newpush/agents.git
+cd agents
+
+# 2. Verify the beginner local-first path
+powershell -ExecutionPolicy Bypass -File scripts/verify-env.ps1 -Mode builder
+
+# 3. Configure which MCP integrations are active (edit as needed)
+Get-Content mcp.config.json
+
+# 4. Generate context files consumed by orchestrators
+node scripts/generate_all.js
+
+# 5. Run the fast validation gate
+npm run validate
+
+# 6. Prove one safe local task first
+gemini -p GEMINI.md "List the engineering agents in this repository and summarize what each one does in one sentence."
 ```
 
 The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, security mandates, and MCP protocol definitions — everything an orchestrator needs to act as your agents.
+If you are completely new to AI implementation, follow [`docs/examples/zero-to-first-agent.md`](docs/examples/zero-to-first-agent.md) before the Docker-oriented builder path. If you are on Windows or ChromeOS, start with [`docs/examples/windows-kickstart.md`](docs/examples/windows-kickstart.md) or [`docs/examples/chromeos-kickstart.md`](docs/examples/chromeos-kickstart.md) so the shell instructions match your machine.
 
 The same validation gates are enforced in GitHub Actions on pushes and pull requests targeting `develop` and `main`, so local validation mirrors the repository's CI contract.
 When Docker smoke fails on a real host or in CI, inspect `test-artifacts/docker-smoke/` or the uploaded `docker-smoke-diagnostics` artifact.
@@ -73,7 +120,7 @@ When Docker smoke fails on a real host or in CI, inspect `test-artifacts/docker-
 |----------|------------|------------|
 | **Client / Buyer** | [`docs/PROJECT_REFERENCE.md`](docs/PROJECT_REFERENCE.md) | [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](docs/PHASE_ZERO_SECURITY_BASELINE.md), [`docs/phase-zero-assessment/README.md`](docs/phase-zero-assessment/README.md) |
 | **MSP / MSSP** | [`docs/PROJECT_REFERENCE.md`](docs/PROJECT_REFERENCE.md) | [`docs/examples/msp-deployment.md`](docs/examples/msp-deployment.md), [`docs/agents/operations/`](docs/agents/operations/) |
-| **Builder / Accelerator** | [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-secret-management.md) | [`docs/tool-usages/agentic-local-workspaces.md`](docs/tool-usages/agentic-local-workspaces.md), [`docs/tool-usages/google-local-workspace.md`](docs/tool-usages/google-local-workspace.md), [`docs/tool-usages/claude-code-local-workspace.md`](docs/tool-usages/claude-code-local-workspace.md), [`docs/tool-usages/openai-codex-local-workspace.md`](docs/tool-usages/openai-codex-local-workspace.md), [`docs/mcp-setup/google-workspace-agentic-clients.md`](docs/mcp-setup/google-workspace-agentic-clients.md), [`docs/mcp-setup/microsoft-365-agentic-clients.md`](docs/mcp-setup/microsoft-365-agentic-clients.md), [`docs/tool-usages/gemini-workspace-quickstart.md`](docs/tool-usages/gemini-workspace-quickstart.md), [`docs/examples/n8n-google-workspace-quickstart.md`](docs/examples/n8n-google-workspace-quickstart.md), [`docs/mcp-setup/google-n8n-credential-matrix.md`](docs/mcp-setup/google-n8n-credential-matrix.md), [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md), [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md), [`docs/examples/docker-runtime-verification.md`](docs/examples/docker-runtime-verification.md), [`docs/tool-usages/orchestrator-runtime-contract.md`](docs/tool-usages/orchestrator-runtime-contract.md), [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) |
+| **Builder / Accelerator** | [`docs/examples/zero-to-first-agent.md`](docs/examples/zero-to-first-agent.md) | [`docs/examples/windows-kickstart.md`](docs/examples/windows-kickstart.md), [`docs/examples/chromeos-kickstart.md`](docs/examples/chromeos-kickstart.md), [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-secret-management.md), [`docs/tool-usages/agentic-local-workspaces.md`](docs/tool-usages/agentic-local-workspaces.md), [`docs/tool-usages/google-local-workspace.md`](docs/tool-usages/google-local-workspace.md), [`docs/tool-usages/claude-code-local-workspace.md`](docs/tool-usages/claude-code-local-workspace.md), [`docs/tool-usages/openai-codex-local-workspace.md`](docs/tool-usages/openai-codex-local-workspace.md), [`docs/mcp-setup/gws-cli-machine-setup.md`](docs/mcp-setup/gws-cli-machine-setup.md), [`docs/mcp-setup/google-workspace-agentic-clients.md`](docs/mcp-setup/google-workspace-agentic-clients.md), [`docs/mcp-setup/microsoft-365-agentic-clients.md`](docs/mcp-setup/microsoft-365-agentic-clients.md), [`docs/tool-usages/gemini-workspace-quickstart.md`](docs/tool-usages/gemini-workspace-quickstart.md), [`docs/examples/n8n-google-workspace-quickstart.md`](docs/examples/n8n-google-workspace-quickstart.md), [`docs/mcp-setup/google-n8n-credential-matrix.md`](docs/mcp-setup/google-n8n-credential-matrix.md), [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md), [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md), [`docs/examples/docker-runtime-verification.md`](docs/examples/docker-runtime-verification.md), [`docs/tool-usages/orchestrator-runtime-contract.md`](docs/tool-usages/orchestrator-runtime-contract.md), [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) |
 
 ---
 
@@ -157,7 +204,7 @@ When Docker smoke fails on a real host or in CI, inspect `test-artifacts/docker-
 │   ├── generate_claude.js           # Builds CLAUDE.md from template + agent index + skills + MCPs
 │   ├── audit-repo.js               # Fails on persona/generator drift
 │   ├── retry-with-backoff.sh       # Reference retry helper for transient failures
-│   └── verify-env.sh               # Checks prerequisites (Docker, CLI tools)
+│   └── verify-env.sh               # Checks prerequisites by path (builder, client, Docker)
 │
 ├── tests/                          # Node built-in contract and smoke tests
 ├── package.json                    # Validation and generation entrypoints
@@ -301,7 +348,7 @@ Read `GEMINI.md`, `CLAUDE.md`, or individual agent specs from `agents/` as syste
 
 ## Deploying the Examples
 
-All examples use the **Fetch-on-Demand** security model: secrets are injected at runtime via vault CLI wrappers (`infisical run` or `op run`), never hardcoded. Start with the **Secure Secret Management** demo, then follow the [Builder First 30 Minutes guide](docs/examples/builder-first-30-minutes.md) and the [Docker Agent Home guide](docs/examples/docker-agent-home.md) before trying legacy Python examples. See [Security Model](#security-model) for details.
+All examples use the **Fetch-on-Demand** security model: secrets are injected at runtime via vault CLI wrappers (`infisical run` or `op run`), never hardcoded. If you are new, start with [Zero To First Agent](docs/examples/zero-to-first-agent.md), then move into the [Secure Secret Management guide](docs/tool-usages/secure-secret-management.md), the [Builder First 30 Minutes guide](docs/examples/builder-first-30-minutes.md), and the [Docker Agent Home guide](docs/examples/docker-agent-home.md) before trying legacy Python examples. See [Security Model](#security-model) for details.
 
 ### 1. Docker Sandbox (Historical Python Example)
 
@@ -502,6 +549,10 @@ All documentation lives in `docs/`. Here's where to find what:
 |----------------|-------|
 | Client-side Phase 0 guidance | [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](docs/PHASE_ZERO_SECURITY_BASELINE.md) |
 | Phase 0 assessment kit | [`docs/phase-zero-assessment/README.md`](docs/phase-zero-assessment/README.md) |
+| Beginner first-win guide | [`docs/examples/zero-to-first-agent.md`](docs/examples/zero-to-first-agent.md) |
+| Windows beginner guide | [`docs/examples/windows-kickstart.md`](docs/examples/windows-kickstart.md) |
+| ChromeOS beginner guide | [`docs/examples/chromeos-kickstart.md`](docs/examples/chromeos-kickstart.md) |
+| Google Workspace machine setup | [`docs/mcp-setup/gws-cli-machine-setup.md`](docs/mcp-setup/gws-cli-machine-setup.md) |
 | Builder onboarding walkthrough | [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md) |
 | Builder-facing Docker home guide | [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md) |
 | Visual orientation maps | [`docs/visuals/README.md`](docs/visuals/README.md) |

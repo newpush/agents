@@ -22,10 +22,11 @@ It is not a runtime or execution engine. External orchestrators such as Gemini C
 - The repository must present **Phase 0 security** as the prerequisite for serious AI adoption.
 - Client and buyer navigation must reach [`PHASE_ZERO_SECURITY_BASELINE.md`](PHASE_ZERO_SECURITY_BASELINE.md) directly from the top-level experience.
 - The public documentation must include a reusable **Phase 0 Assessment Kit** with:
+  - separate security and AI readiness assessment guides
   - consent template
   - report-of-findings template
   - 30/60/90-day roadmap template
-  - readiness rubric (`ready now`, `ready with guardrails`, `not ready yet`)
+  - readiness rubric covering security readiness, AI readiness, and the overall recommendation
 
 ### 2. Persona Contract Is Mandatory
 
@@ -109,21 +110,23 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 
 ### 10. Docker Guidance Must Describe the Home, Not a Fake Runtime
 
+- The builder path must include a beginner-safe onboarding guide that gets a new user from clone to one harmless local success before Docker becomes mandatory.
 - The builder path must include a Docker-oriented guide that explains how to build a home around the repo's assets without misrepresenting the repository as a runtime product.
 - That guide must connect the current local, fleet, and specialist Docker examples into one coherent progression.
-- The builder path must also include a short onboarding walkthrough that chains environment verification, context generation, validation, and initial Docker launch.
+- The builder path must also include a short Docker onboarding walkthrough that chains environment verification, context generation, validation, and initial Docker launch after the first local success.
 
 ## Runtime and Tooling Requirements
 
 - Node.js is the primary runtime for repository utilities and generation scripts.
 - The built-in Node test runner is the primary validation framework for repository contracts and smoke tests.
-- Docker, Git, and Gemini CLI remain part of the documented local toolchain.
+- Git, Node.js, and at least one supported local AI client (Gemini CLI, Claude Code CLI, or OpenAI Codex) remain part of the documented beginner toolchain.
+- Docker becomes part of the documented toolchain when a builder moves into runtime homes or Docker verification.
 - Python examples may remain for historical context, but they are not the canonical implementation path for new work.
 - The `logging-mcp` is defined as a dual-backend protocol supporting both Loki/Grafana (structured log queries) and n8n webhooks (event-driven ingestion).
 
 ## Current Known Limitations
 
-- Historical Python examples remain in the repository as legacy references and are not yet fully converted to Node.js.
+- Historical Python examples remain in the repository as legacy references and are not yet fully converted to Node.js. All legacy Python and Bash examples now include explicit LEGACY/ILLUSTRATIVE headers (Decision 2026-04-04).
 - The Gatekeeper deployment example currently demonstrates safe scanning, signed reporting, and observability plumbing; it does not yet implement the full mutating action set described in the Gatekeeper persona.
 - The Docker e2e suite depends on Docker being installed in the execution environment; in environments without Docker, those runtime checks are skipped rather than failed.
 - `mcp.config.json` is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
