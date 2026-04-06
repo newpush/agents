@@ -1,12 +1,35 @@
-# Project NoéMI — Agents Library
+# Project NoéMI — Reference Architecture & Agents Library
 
-Project NoéMI is an **agent specification library**. It defines AI agent personas, MCP (Model Context Protocol) integrations, and governance frameworks as Markdown files. It is **not** a runtime or execution engine — external orchestrators like [Gemini CLI](https://github.com/google-gemini/gemini-cli), [n8n](https://n8n.io/), or [LangChain](https://www.langchain.com/) consume these specifications to execute tasks.
+Project NoéMI is the **public reference architecture** for NewPush's AI fluency and Virtual Workforce model, and the **agent specification library** that backs it. It defines AI agent personas, MCP (Model Context Protocol) integrations, governance frameworks, and Phase 0 security guidance as Markdown files. It is **not** a runtime or execution engine — external orchestrators like [Gemini CLI](https://github.com/google-gemini/gemini-cli), Claude Code, OpenAI Codex, [n8n](https://n8n.io/), or [LangChain](https://www.langchain.com/) consume these specifications to execute tasks.
+
+The goal of Project NoéMI is not to accelerate a replacement narrative around AI. The goal is to help businesses and enterprises raise the productivity of the active workforce by teaching people how to govern AI doing repeatable first-pass work, so organizations can increase output, improve consistency, and lower delivery cost **without** treating mass unemployment as the strategy. In NoéMI terms, this is the move from people doing every task themselves to people managing a governed **Virtual Workforce** of AI agents.
+
+**What value organizations should expect:**
+- higher throughput without growing headcount at the same rate
+- lower delivery cost on repetitive, document-heavy, and coordination-heavy work
+- more consistent first-pass output with human approval still in control
+- role uplift, where skilled staff spend less time on repetition and more time on review, exceptions, and decisions
+- safer AI adoption through Phase 0 security, approval boundaries, and measurable ROI
+
+In plain business terms, NoéMI is useful because it helps an organization move from scattered AI experimentation to a governed operating model where AI creates **more output, better consistency, and lower unit cost**.
 
 > **New here?** Start with the [**Project Reference**](docs/PROJECT_REFERENCE.md) — the comprehensive public guide to NoéMI's philosophy, framework, curriculum, and technology stack.
+
+> **Need the fastest orientation?** Start with the [**Visual Guides**](docs/visuals/README.md) for the system map, audience path, runtime flow, and workshop mind map.
+
+> **New to AI and want one safe first win?** Start with [**Zero To First Agent**](docs/examples/zero-to-first-agent.md).
+
+> **Need the right workstation path first?** Start with [**Cross-Platform Kickstart**](docs/examples/cross-platform-kickstart.md), then follow the matching [**macOS/Linux**](docs/examples/macos-linux-kickstart.md), [**Windows**](docs/examples/windows-kickstart.md), or [**ChromeOS**](docs/examples/chromeos-kickstart.md) guide.
+
+**Audience paths:**
+- **Client / Buyer:** [Project Reference](docs/PROJECT_REFERENCE.md) → [Phase 0 Security Baseline](docs/PHASE_ZERO_SECURITY_BASELINE.md) → [Phase 0 Assessment Kit](docs/phase-zero-assessment/README.md)
+- **MSP / MSSP:** [Project Reference](docs/PROJECT_REFERENCE.md) → [MSP Deployment Guide](docs/examples/msp-deployment.md) → [Fleet / governance docs](docs/agents/operations/)
+- **Builder / Accelerator:** [Zero To First Agent](docs/examples/zero-to-first-agent.md) → [Cross-Platform Kickstart](docs/examples/cross-platform-kickstart.md) → [macOS/Linux Kickstart](docs/examples/macos-linux-kickstart.md), [Windows Kickstart](docs/examples/windows-kickstart.md), or [ChromeOS Kickstart](docs/examples/chromeos-kickstart.md) → [Secure Secret Management](docs/tool-usages/secure-secret-management.md) → [Agentic Local Workspaces](docs/tool-usages/agentic-local-workspaces.md) → [Google Local Workspace](docs/tool-usages/google-local-workspace.md), [Claude Code Local Workspace](docs/tool-usages/claude-code-local-workspace.md), or [OpenAI Codex Local Workspace](docs/tool-usages/openai-codex-local-workspace.md) → [GWS CLI Machine Setup](docs/mcp-setup/gws-cli-machine-setup.md) → [Google Workspace For Agentic Clients](docs/mcp-setup/google-workspace-agentic-clients.md) or [Microsoft 365 For Agentic Clients](docs/mcp-setup/microsoft-365-agentic-clients.md) → [Value Lenses](docs/frameworks/value-lenses.md) → [Gemini Workspace Quickstart](docs/tool-usages/gemini-workspace-quickstart.md) or [n8n Google Workspace Quickstart](docs/examples/n8n-google-workspace-quickstart.md) → [Builder First 30 Minutes](docs/examples/builder-first-30-minutes.md) → [Docker Agent Home](docs/examples/docker-agent-home.md) → [Orchestrator Runtime Contract](docs/tool-usages/orchestrator-runtime-contract.md)
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
+- [Audience Paths](#audience-paths)
 - [What This Repository Contains](#what-this-repository-contains)
 - [Repository Structure](#repository-structure)
 - [Agents](#agents)
@@ -15,6 +38,7 @@ Project NoéMI is an **agent specification library**. It defines AI agent person
 - [Deploying the Examples](#deploying-the-examples)
 - [Documentation Guide](#documentation-guide)
 - [Security Model](#security-model)
+- [Contributing](#contributing)
 - [Adding or Modifying Agents](#adding-or-modifying-agents)
 - [Governance](#governance)
 - [Commit Standards](#commit-standards)
@@ -23,29 +47,55 @@ Project NoéMI is an **agent specification library**. It defines AI agent person
 
 ## Quick Start
 
-**Prerequisites:** [Node.js](https://nodejs.org/) (v18+), [Docker](https://www.docker.com/), and a secret manager ([Infisical CLI](https://infisical.com/docs/cli/overview) or [1Password CLI](https://developer.1password.com/docs/cli/))
+**Prerequisites:** [Node.js](https://nodejs.org/) (24.x LTS recommended; 25+ supported), [Git](https://git-scm.com/), one supported local client ([Gemini CLI](https://github.com/google-gemini/gemini-cli), Claude Code, or OpenAI Codex), and a secret manager ([Infisical CLI](https://infisical.com/docs/cli/overview) or [1Password CLI](https://developer.1password.com/docs/cli/)) before you connect business systems. [Docker](https://www.docker.com/) becomes part of the path when you are ready to build a runtime home.
+
+### Step 1: Choose Your Workstation Path
+
+| If your main machine is | Start here | What it means |
+|-------------------------|------------|---------------|
+| macOS or Linux | [`docs/examples/macos-linux-kickstart.md`](docs/examples/macos-linux-kickstart.md) | Native Terminal path using `bash`/`zsh`, best for local-first work and later Docker |
+| Windows | [`docs/examples/windows-kickstart.md`](docs/examples/windows-kickstart.md) | PowerShell-first path, no Bash guessing required |
+| ChromeOS | [`docs/examples/chromeos-kickstart.md`](docs/examples/chromeos-kickstart.md) | Start inside the Linux development environment terminal, then follow the local-first path |
+
+If you want the decision tree in one place before you choose, use [`docs/examples/cross-platform-kickstart.md`](docs/examples/cross-platform-kickstart.md).
+
+### Step 2: Run The Common Repository Loop
+
+Once your workstation path is in place, the shared repository workflow is the same:
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/newpush/agents.git
-cd agents
-
-# 2. Verify your environment has the required tools
-bash scripts/verify-env.sh
-
-# 3. Configure which MCP integrations are active (edit as needed)
-cat mcp.config.json
-
-# 4. Generate context files consumed by orchestrators
-node scripts/generate_all.js      # Generates both GEMINI.md and CLAUDE.md
-
-# 5. Use the generated context with your orchestrator
-# Example with Gemini CLI:
-infisical run --env=dev -- gemini -p GEMINI.md "List all open PRs in our org"
-# Claude Code reads CLAUDE.md automatically when opened in this repository
+node scripts/generate_all.js
+npm run validate
+gemini -p GEMINI.md "List the engineering agents in this repository and summarize what each one does in one sentence."
 ```
 
-The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, security mandates, and MCP protocol definitions — everything an orchestrator needs to act as your agents.
+The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, security mandates, and MCP protocol definitions. Claude Code reads `CLAUDE.md` automatically when opened in this repository, and Codex can use the same generated context and local docs.
+
+### Step 3: Add Secrets Only When You Need Business Systems
+
+Keep the first win local and read-only. Once you connect Gmail, GitHub, Google Workspace, Microsoft 365, or n8n, launch through the Fetch-on-Demand wrapper:
+
+```bash
+infisical run --env=dev -- gemini
+op run --env-file=.env.template -- gemini
+```
+
+### Step 4: Move To Docker Only When You Are Ready
+
+The Docker phase is separate from the first win. Start with [`docs/examples/zero-to-first-agent.md`](docs/examples/zero-to-first-agent.md), then move to [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md) and [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md) when you are ready to build a governed runtime home.
+
+The same validation gates are enforced in GitHub Actions on pushes and pull requests targeting `develop` and `main`, so local validation mirrors the repository's CI contract.
+When Docker smoke fails on a real host or in CI, inspect `test-artifacts/docker-smoke/` or the uploaded `docker-smoke-diagnostics` artifact.
+
+---
+
+## Audience Paths
+
+| Audience | Start Here | Then Go To |
+|----------|------------|------------|
+| **Client / Buyer** | [`docs/PROJECT_REFERENCE.md`](docs/PROJECT_REFERENCE.md) | [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](docs/PHASE_ZERO_SECURITY_BASELINE.md), [`docs/phase-zero-assessment/README.md`](docs/phase-zero-assessment/README.md) |
+| **MSP / MSSP** | [`docs/PROJECT_REFERENCE.md`](docs/PROJECT_REFERENCE.md) | [`docs/examples/msp-deployment.md`](docs/examples/msp-deployment.md), [`docs/agents/operations/`](docs/agents/operations/) |
+| **Builder / Accelerator** | [`docs/examples/zero-to-first-agent.md`](docs/examples/zero-to-first-agent.md) | [`docs/examples/cross-platform-kickstart.md`](docs/examples/cross-platform-kickstart.md), [`docs/examples/macos-linux-kickstart.md`](docs/examples/macos-linux-kickstart.md), [`docs/examples/windows-kickstart.md`](docs/examples/windows-kickstart.md), [`docs/examples/chromeos-kickstart.md`](docs/examples/chromeos-kickstart.md), [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-secret-management.md), [`docs/tool-usages/agentic-local-workspaces.md`](docs/tool-usages/agentic-local-workspaces.md), [`docs/tool-usages/google-local-workspace.md`](docs/tool-usages/google-local-workspace.md), [`docs/tool-usages/claude-code-local-workspace.md`](docs/tool-usages/claude-code-local-workspace.md), [`docs/tool-usages/openai-codex-local-workspace.md`](docs/tool-usages/openai-codex-local-workspace.md), [`docs/mcp-setup/gws-cli-machine-setup.md`](docs/mcp-setup/gws-cli-machine-setup.md), [`docs/mcp-setup/google-workspace-agentic-clients.md`](docs/mcp-setup/google-workspace-agentic-clients.md), [`docs/mcp-setup/microsoft-365-agentic-clients.md`](docs/mcp-setup/microsoft-365-agentic-clients.md), [`docs/tool-usages/gemini-workspace-quickstart.md`](docs/tool-usages/gemini-workspace-quickstart.md), [`docs/examples/n8n-google-workspace-quickstart.md`](docs/examples/n8n-google-workspace-quickstart.md), [`docs/mcp-setup/google-n8n-credential-matrix.md`](docs/mcp-setup/google-n8n-credential-matrix.md), [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md), [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md), [`docs/examples/docker-runtime-verification.md`](docs/examples/docker-runtime-verification.md), [`docs/tool-usages/orchestrator-runtime-contract.md`](docs/tool-usages/orchestrator-runtime-contract.md), [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) |
 
 ---
 
@@ -58,7 +108,14 @@ The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, sec
 | MCP protocol definitions | `mcp-protocols/` | Behavioral rules for 16 tool integrations (Google Workspace, Slack, GitHub, n8n, etc.) |
 | Deployment examples | `examples/` | Docker Compose stacks, workflow templates, and testing suites |
 | Documentation | `docs/` | Framework docs, setup guides, agent-specific documentation |
-| Build scripts | `scripts/` | Context generation (`generate_gemini.js`, `generate_claude.js`) and environment verification |
+| Visual guides | `docs/visuals/` | Mermaid system maps, onboarding diagrams, and workshop-friendly mental models |
+| Infrastructure templates | `templates/` | Base templates that the generators use to build orchestrator context files |
+| Operating profiles | `operating-profiles/` | Localized language, regional, and audience overlays for culturally grounded agent execution |
+| Value lenses | `value-lenses/` | Explicit success criteria and tradeoff overlays for comparing outcomes under different enterprise logics |
+| Build scripts | `scripts/` | Context generation, repo auditing, retry helpers, and environment verification |
+| Test harness | `tests/`, `package.json` | Built-in Node contract, golden fixture, example smoke, and Docker e2e tests |
+| Runtime diagnostics | `test-artifacts/docker-smoke/` | Failure artifacts emitted by Docker smoke verification on real hosts and in CI |
+| Contribution workflow | `CONTRIBUTING.md`, `.github/pull_request_template.md` | Human contributor expectations, validation flow, and PR checklist |
 | ROI tools | `tools/roi/` | Methodology for calculating agent return on investment |
 
 ---
@@ -93,12 +150,18 @@ The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, sec
 │   ├── AGENT_TEMPLATE.md            # Canonical template for new agents
 │   ├── METHODOLOGY.md               # 4D Framework (Delegation, Description, ...)
 │   ├── GOVERNANCE.md                # AI TRiSM and Red Teaming protocols
+│   ├── PHASE_ZERO_SECURITY_BASELINE.md # Client-side cybersecurity grounding guide
 │   ├── REQUIREMENTS.md              # Project requirements and drift tracking
+│   ├── frameworks/                  # Meta-frameworks such as localized operating profiles and value lenses
+│   ├── visuals/                     # Visual system maps, runtime flows, and onboarding diagrams
+│   ├── phase-zero-assessment/       # Consent, findings, roadmap, and readiness kit
 │   ├── agents/                      # Per-agent documentation (mirrors agents/)
 │   ├── examples/                    # Deployment guides (MSP, RFP responder, etc.)
 │   ├── mcp-setup/                   # MCP infrastructure setup guides
-│   ├── lifecycle/                   # 4D Framework lifecycle documentation
-│   └── frameworks/                  # Gartner TRiSM reference
+│   └── lifecycle/                   # 4D Framework lifecycle documentation
+│
+├── operating-profiles/              # Localized workstyle overlays and templates
+├── value-lenses/                    # Explicit success-criteria overlays and templates
 │
 ├── examples/                        # Deployable examples
 │   ├── docker/                      # Docker sandbox with pgvector memory
@@ -115,11 +178,18 @@ The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, sec
 │   ├── generate_all.js              # Runs both generators in sequence
 │   ├── generate_gemini.js           # Builds GEMINI.md from template + skills + MCPs
 │   ├── generate_claude.js           # Builds CLAUDE.md from template + agent index + skills + MCPs
-│   └── verify-env.sh               # Checks prerequisites (Docker, CLI tools)
+│   ├── audit-repo.js               # Fails on persona/generator drift
+│   ├── retry-with-backoff.sh       # Reference retry helper for transient failures
+│   └── verify-env.sh               # Checks prerequisites by path (builder, client, Docker)
+│
+├── templates/
+│   ├── README.md                    # Why templates live below the repo root
+│   └── context/                     # Base templates for generated orchestrator context files
+│
+├── tests/                          # Node built-in contract and smoke tests
+├── package.json                    # Validation and generation entrypoints
 │
 ├── mcp.config.json                  # Declares which MCPs are active
-├── GEMINI.template.md               # Base template for Gemini context generation
-├── CLAUDE.template.md               # Base template for Claude Code context generation
 ├── AGENTS.md                        # Global security mandates and directives
 ├── GEMINI.md                        # Generated output for Gemini (do not edit directly)
 ├── CLAUDE.md                        # Generated output for Claude Code (do not edit directly)
@@ -132,7 +202,7 @@ The generated `GEMINI.md` and `CLAUDE.md` files contain your agent personas, sec
 
 ## Agents
 
-The library includes **20 agent specifications** organized into 8 domains. Each agent is a Markdown file that defines a persona an orchestrator can adopt.
+The library includes **22 agent specifications** organized into 8 domains. Each agent is a Markdown file that defines a persona an orchestrator can adopt.
 
 | Domain | Agents | Purpose |
 |--------|--------|---------|
@@ -145,7 +215,7 @@ The library includes **20 agent specifications** organized into 8 domains. Each 
 | **Operations** | Fleet Dashboard, Knowledge Manager, Multimodal Specialist, QA & Risk Manager | Observability, research, media processing, quality assurance |
 | **Product** | Doc | Technical documentation |
 
-Every agent spec follows the canonical template defined in [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) with required sections: **Role**, **Tone**, **Capabilities**, **Rules & Constraints**, and **Boundaries** (Always / Ask First / Never).
+Every agent spec follows the canonical template defined in [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) with required sections: **Role**, **Tone**, **Capabilities**, **Mission**, **Rules & Constraints**, **Boundaries**, **Workflow**, **Audit Log**, and **External Tooling Dependencies**.
 
 ---
 
@@ -202,10 +272,10 @@ For setup instructions, see [`docs/mcp-setup/`](docs/mcp-setup/).
 
 ### Context Generation Pipeline
 
-The core build step combines your agent specs and MCP protocols into context files that orchestrators consume. Two parallel pipelines exist — one for Gemini CLI and one for Claude Code:
+The core build step combines your agent specs and MCP protocols into context files that orchestrators consume. Two generated context pipelines exist today — one for Gemini CLI and one for Claude Code:
 
 ```
-{GEMINI,CLAUDE}.template.md + mcp.config.json + AGENTS.md
+templates/context/{GEMINI,CLAUDE}.template.md + mcp.config.json + AGENTS.md
          │                          │               │
          │              ┌───────────┘               │
          ▼              ▼                           ▼
@@ -214,19 +284,23 @@ The core build step combines your agent specs and MCP protocols into context fil
 
 Both scripts follow the same steps:
 
-1. Read the base template (`GEMINI.template.md` or `CLAUDE.template.md`)
+1. Read the base template (`templates/context/GEMINI.template.md` or `templates/context/CLAUDE.template.md`)
 2. Read `mcp.config.json` to determine which MCP integrations are active
 3. For each active MCP, inject the protocol definition from `mcp-protocols/`
-4. Extract global security mandates from `AGENTS.md`
+4. Extract the full global mandate set from `AGENTS.md`
 5. Write the final context file
 
-**`generate_claude.js` additionally:**
-- Auto-discovers all agent specs in `agents/` and builds an indexed table (domain, title, file path)
-- Injects the agent index into `CLAUDE.md` so Claude Code has a complete reference at conversation start
+Both generators use the same shared helper logic, support `--config=path/to/mcp.config.json`, and inject the same full mandate set, agent index, active skills, and active MCP protocols.
 
 ```bash
 # Regenerate after changing MCP config, protocol files, skills, or adding agents
 node scripts/generate_all.js
+
+# Run the canonical fast validation gate
+npm run validate
+
+# Run Docker smoke tests when Docker is available
+npm run test:e2e
 ```
 
 ### Using with Orchestrators
@@ -239,6 +313,9 @@ Open this repository in Claude Code. It reads `CLAUDE.md` as project instruction
 infisical run --env=dev -- gemini -p GEMINI.md "Analyze the server logs on web01"
 ```
 
+**OpenAI Codex** (local agentic workspace):
+Use the repo's `AGENTS.md`, `mcp-protocols/`, and the builder-facing docs in [`docs/tool-usages/agentic-local-workspaces.md`](docs/tool-usages/agentic-local-workspaces.md). Codex configuration lives in `~/.codex/config.toml`, while project-level app actions and setup scripts can live in `.codex/`.
+
 **n8n** (automated workflows):
 Import workflow templates from `examples/workflows/` into your n8n instance. The workflows reference agent personas and MCP integrations defined in this repository.
 
@@ -249,9 +326,9 @@ Read `GEMINI.md`, `CLAUDE.md`, or individual agent specs from `agents/` as syste
 
 ## Deploying the Examples
 
-All examples use the **Fetch-on-Demand** security model: secrets are injected at runtime via vault CLI wrappers (`infisical run` or `op run`), never hardcoded. See [Security Model](#security-model) for details.
+All examples use the **Fetch-on-Demand** security model: secrets are injected at runtime via vault CLI wrappers (`infisical run` or `op run`), never hardcoded. If you are new, start with [Zero To First Agent](docs/examples/zero-to-first-agent.md), then move into the [Secure Secret Management guide](docs/tool-usages/secure-secret-management.md), the [Builder First 30 Minutes guide](docs/examples/builder-first-30-minutes.md), and the [Docker Agent Home guide](docs/examples/docker-agent-home.md) before trying legacy Python examples. See [Security Model](#security-model) for details.
 
-### 1. Docker Sandbox (Beginner Start Here)
+### 1. Docker Sandbox (Historical Python Example)
 
 A minimal environment with a PostgreSQL + pgvector memory layer and a Python runtime container. Good for experimenting with agent code locally.
 
@@ -260,12 +337,10 @@ A minimal environment with a PostgreSQL + pgvector memory layer and a Python run
 ```bash
 cd examples/docker
 
-# Create a .env file with your credentials (use .env.template as reference)
-cp ../../.env.template .env
-# Edit .env to add your POSTGRES_PASSWORD and API keys
-
 # Start the stack
-docker compose up -d
+op run --env-file=.env.example -- docker compose up -d --build
+# Or with Infisical:
+infisical run --env=dev -- docker compose up -d --build
 
 # Enter the runtime container
 docker exec -it noemi-agent-runtime bash
@@ -289,13 +364,11 @@ A production-oriented stack simulating parallel environments with shared ingress
 ```bash
 cd examples/fleet-deployment
 
-# Copy and fill in environment variables
-cp .env.example .env
-# Edit .env — set passwords for: GF_ADMIN_PASSWORD, CASDOOR_DB_PASSWORD,
-#   COHORT01_DB_PASSWORD, COHORT02_DB_PASSWORD
+# Review the required variable names and store the real values in your vault
+cat .env.example
 
 # Start the full stack
-op run --env-file=.env -- docker compose up -d
+op run --env-file=.env.example -- docker compose up -d
 # Or with Infisical:
 infisical run --env=dev -- docker compose up -d
 ```
@@ -324,16 +397,11 @@ Deploys the Gatekeeper agent for automated GitHub PR triage, with InfluxDB for r
 ```bash
 cd examples/gatekeeper-deployment
 
-# Copy and fill in environment variables
-cp .env.example .env
-# Edit .env — required:
-#   GH_TOKEN          — GitHub token with repo, read:org scopes
-#   GATEKEEPER_ORG    — Your GitHub organization name
-#   SLACK_WEBHOOK_URL — Slack incoming webhook for notifications
-#   INFLUXDB_PASSWORD, INFLUXDB_ADMIN_TOKEN, GF_ADMIN_PASSWORD
+# Review the required variable names and store the real values in your vault
+cat .env.example
 
 # Build and start
-op run --env-file=.env -- docker compose up -d --build
+op run --env-file=.env.example -- docker compose up -d --build
 ```
 
 **What you get:**
@@ -342,10 +410,11 @@ op run --env-file=.env -- docker compose up -d --build
 |---------|-----|---------|
 | InfluxDB | `http://localhost:8086` | Time-series store for triage reports |
 | Grafana | `http://localhost:3000` | Fleet Dashboard visualization |
+| Dashboard Ingest | internal only | Verifies HMAC signatures and relays signed reports into InfluxDB |
 | Gatekeeper | (runs on schedule) | Scans PRs every 4 hours (configurable) |
 | Alert Relay | (background) | Posts Slack alerts when agents go stale |
 
-**Configuration options** (set in `.env`):
+**Configuration options** (set via vault-backed environment variables):
 - `GATEKEEPER_REPOS` — Comma-separated repo allowlist (empty = scan all)
 - `GATEKEEPER_DRY_RUN=true` — Set to `false` to enable actual merges/closes
 - `GATEKEEPER_INTERVAL_HOURS=4` — Triage cycle frequency
@@ -371,7 +440,7 @@ Pass each test case to your Guardian agent. A correctly functioning agent will r
 
 ---
 
-### 5. Video Automation Pod (YouTube Packaging)
+### 5. Video Automation Pod (Historical Python Example)
 
 Automates the video content lifecycle: transcription, title/thumbnail generation, and SEO optimization using the marketing agent team.
 
@@ -384,7 +453,7 @@ cd examples/video-automation-pod
 pip install -r requirements.txt
 
 # Run the pod with your video files
-python manager.py \
+op run --env-file=.env.example -- python manager.py \
   --project "MyVideo" \
   --rough_cut rough_assembly.mp4 \
   --pose_clip pose_video.mp4
@@ -396,7 +465,7 @@ python manager.py \
 3. Scans the pose clip for the most expressive frames
 4. Composites 15+ thumbnail variations with your brand assets
 
-**Prerequisites:** Python 3.12+, FFmpeg, OpenAI API key (for transcription)
+**Prerequisites:** Python 3.12+, FFmpeg, vault-backed API credentials. This example is retained as historical reference, not the recommended first implementation path.
 
 ---
 
@@ -456,6 +525,17 @@ All documentation lives in `docs/`. Here's where to find what:
 
 | Looking for... | Go to |
 |----------------|-------|
+| Client-side Phase 0 guidance | [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](docs/PHASE_ZERO_SECURITY_BASELINE.md) |
+| Phase 0 assessment kit | [`docs/phase-zero-assessment/README.md`](docs/phase-zero-assessment/README.md) |
+| Beginner first-win guide | [`docs/examples/zero-to-first-agent.md`](docs/examples/zero-to-first-agent.md) |
+| Cross-platform workstation decision guide | [`docs/examples/cross-platform-kickstart.md`](docs/examples/cross-platform-kickstart.md) |
+| macOS/Linux beginner guide | [`docs/examples/macos-linux-kickstart.md`](docs/examples/macos-linux-kickstart.md) |
+| Windows beginner guide | [`docs/examples/windows-kickstart.md`](docs/examples/windows-kickstart.md) |
+| ChromeOS beginner guide | [`docs/examples/chromeos-kickstart.md`](docs/examples/chromeos-kickstart.md) |
+| Google Workspace machine setup | [`docs/mcp-setup/gws-cli-machine-setup.md`](docs/mcp-setup/gws-cli-machine-setup.md) |
+| Builder onboarding walkthrough | [`docs/examples/builder-first-30-minutes.md`](docs/examples/builder-first-30-minutes.md) |
+| Builder-facing Docker home guide | [`docs/examples/docker-agent-home.md`](docs/examples/docker-agent-home.md) |
+| Visual orientation maps | [`docs/visuals/README.md`](docs/visuals/README.md) |
 | How to create a new agent | [`docs/AGENT_TEMPLATE.md`](docs/AGENT_TEMPLATE.md) |
 | The 4D Framework methodology | [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) |
 | Governance and compliance | [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md) |
@@ -489,9 +569,15 @@ op run --env-file=.env.template -- [your command]
 
 4. **Read from environment** — Agent code accesses credentials via `process.env` or `os.getenv()`, never by parsing `.env` files
 
-The `.env.template` file at the repository root documents all required environment variables without containing actual values.
+The `.env.template` file at the repository root documents the shared environment variables without containing actual values. Example-specific `.env.example` files are inventories of required variables and should contain only vault references or placeholders, never real secrets.
 
 See [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-secret-management.md) for the full guide and [`examples/secure-secret-management/`](examples/secure-secret-management/) for a working demo.
+
+---
+
+## Contributing
+
+Start with [`CONTRIBUTING.md`](CONTRIBUTING.md) before opening a pull request. It documents the contributor workflow, the canonical validation commands, regeneration rules, and the Fetch-on-Demand security expectations that CI now enforces.
 
 ---
 
@@ -503,8 +589,12 @@ See [`docs/tool-usages/secure-secret-management.md`](docs/tool-usages/secure-sec
 4. **If the agent uses MCP tools**, ensure referenced protocols exist in `mcp-protocols/`
 5. **Run the Red Team Gauntlet** (`examples/red-team-gauntlet/`) against your new agent before deployment
 6. **Regenerate context:** `node scripts/generate_gemini.js`
+7. **Run validation:** `npm run validate`
+8. **Run Docker smoke tests when relevant:** `npm run test:e2e`
 
-**Required sections:** Role, Tone, Capabilities, Rules & Constraints, Boundaries (Always / Ask First / Never)
+GitHub Actions enforces the same fast and Docker validation entrypoints for changes targeting `develop` and `main`.
+
+**Required sections:** Role, Tone, Capabilities, Mission, Rules & Constraints, Boundaries, Workflow, Audit Log, External Tooling Dependencies
 
 **H1 format:** `# {Name} — {Domain} Agent`
 
@@ -520,10 +610,10 @@ Developed in partnership with George Mason University. Every agent design decisi
 
 | Dimension | Focus | Agent Spec Section |
 |-----------|-------|--------------------|
+| **Delegation** | Decide what should be automated and define done criteria | Mission, Workflow |
 | **Description** | Precise instruction and contextualization | Role, Tone, Capabilities |
-| **Discernment** | Knowing when AI is appropriate vs. human judgment | Boundaries (Ask First / Never) |
-| **Delegation** | Autonomous workflows via MCP integrations | Workflow, Tool Usage |
-| **Diligence** | Continuous verification and ethical alignment | Rules & Constraints |
+| **Discernment** | Validate boundaries, quality, and human escalation points | Boundaries, Audit Log |
+| **Diligence** | Continuous verification, security, and ethical alignment | Rules & Constraints, External Tooling Dependencies |
 
 See [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) and [`docs/lifecycle/`](docs/lifecycle/) for details.
 

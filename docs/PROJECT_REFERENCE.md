@@ -6,6 +6,20 @@
 
 This document is the canonical public reference for Project NoéMI. It introduces the project's philosophy, framework, curriculum, and technology stack, and serves as a guide to the other documents in this repository.
 
+At the highest level, NoéMI exists to help organizations respond to AI by increasing the productivity of the active population, not by normalizing a story of mass unemployment. The program teaches businesses how to redesign work so AI handles governed, repeatable first-pass tasks while people move upward into review, exception handling, decision-making, and governance. The intended result is a surge in output, resilience, and economic usefulness through a **Virtual Workforce** model, not a simplistic replacement model.
+
+**What organizations should expect from this model:**
+
+- more throughput from the same team
+- lower unit cost on repetitive operational work
+- more consistent drafts, classifications, and first-pass decisions
+- less skilled human time lost to low-leverage repetition
+- stronger governance, auditability, and security around AI-enabled workflows
+
+That is the practical promise of NoéMI: not "use AI because it is trendy," but build the ability to manage AI doing bounded work so the organization produces more, with better control, and with less wasted human effort.
+
+Readers who want the fastest structural overview should start with the visual set in [`docs/visuals/`](visuals/).
+
 ---
 
 ## Table of Contents
@@ -33,6 +47,16 @@ This document is the canonical public reference for Project NoéMI. It introduce
 Project NoéMI is a **global AI fluency accelerator program** delivered by **NewPush** and academically credentialed by **George Mason University (GMU)**. It trains *organizations* — not individuals — to build, govern, and deploy a "Virtual Workforce" of AI agents securely and at scale.
 
 It is **not** a generic "prompt engineering" course. It is an enterprise AI transformation program that begins with cybersecurity (Phase 0 Security) and ends with certified, production-ready AI workflows governed by trained human leaders.
+
+Its strategic aim is to help enterprises convert AI from a labor-displacement fear into a productivity system. In practice, that means enabling teams to produce more with the same people, shift skilled staff away from repetitive execution, and build the managerial capability to supervise AI doing bounded operational work.
+
+The expected business outcomes are concrete:
+
+- identify the first safe, worthwhile pilot
+- improve cycle time and throughput on targeted workflows
+- reduce the labor intensity of repetitive first-pass work
+- preserve human control over approvals, exceptions, and sensitive decisions
+- create the conditions for measurable ROI instead of endless experimentation
 
 **Key facts:**
 
@@ -371,6 +395,21 @@ Phase 0 is what distinguishes NoéMI from other AI training programs. It is the 
 - Never written to disk, committed to Git, or exposed in AI context windows
 - Machine Identities (not human SSO) for headless agent environments
 
+### Client-Side Phase 0 Baseline
+
+Organizations should complete a short, written **Phase 0 initial assessment** before starting an advanced AI initiative. In NoeMI, this should now be treated as two linked tracks:
+
+- a **Security Assessment** that evaluates identity, endpoint hygiene, backups, logging, secrets management, SaaS and vendor exposure, data boundaries, and incident readiness
+- an **AI Readiness Assessment** that evaluates business use-case clarity, process stability, approval boundaries, role uplift, and measurement readiness
+
+Together, these two tracks answer both executive questions:
+
+- can we do this safely?
+- can we do this in a way that creates real business value?
+
+For a client-oriented guide on what to assess, how to work with an MSP or MSSP, and how to request a grounded baseline without turning the conversation into a product pitch, see [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](PHASE_ZERO_SECURITY_BASELINE.md).
+For reusable assessment assets, see [`docs/phase-zero-assessment/`](phase-zero-assessment/).
+
 For implementation details, see [`docs/tool-usages/secure-secret-management.md`](tool-usages/secure-secret-management.md) and [`docs/GOVERNANCE.md`](GOVERNANCE.md).
 
 ---
@@ -456,6 +495,9 @@ This document serves as the entry point to the NoéMI Agents Library. Below is a
 | [`docs/DECISION_LOG.md`](DECISION_LOG.md) | Architectural decision records |
 | [`docs/CLARIFICATIONS.md`](CLARIFICATIONS.md) | Clarifications and FAQs |
 | [`docs/AGENT_TEMPLATE.md`](AGENT_TEMPLATE.md) | Canonical template for all agent specifications |
+| [`docs/PHASE_ZERO_SECURITY_BASELINE.md`](PHASE_ZERO_SECURITY_BASELINE.md) | Client-side guide to grounding cybersecurity before advanced AI work |
+| [`docs/phase-zero-assessment/`](phase-zero-assessment/) | Assessment kit: consent, findings, roadmap, and readiness rubric |
+| [`docs/visuals/`](visuals/) | Visual system map, audience entry map, runtime flow, and workshop mind map |
 
 ### Agent Documentation
 
@@ -476,6 +518,7 @@ This document serves as the entry point to the NoéMI Agents Library. Below is a
 | --- | --- |
 | [`docs/lifecycle/`](lifecycle/) | The 4D lifecycle documents (Delegation, Description, Discernment, Diligence) |
 | [`docs/frameworks/gartner-trism.md`](frameworks/gartner-trism.md) | Gartner AI TRiSM framework reference |
+| [`docs/frameworks/value-lenses.md`](frameworks/value-lenses.md) | Explicit success-criteria overlays for comparing outcomes under different enterprise logics |
 | [`docs/mcp-setup/`](mcp-setup/) | MCP server setup guides (Google Workspace, n8n, Slack, Web Search) |
 | [`docs/tool-usages/`](tool-usages/) | Tool-specific guides and integration patterns |
 | [`docs/examples/`](examples/) | Example implementations (Docker sandbox, RFP Responder, Video Automation) |
