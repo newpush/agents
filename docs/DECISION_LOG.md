@@ -103,3 +103,12 @@
 - **Decision:** All non-Node.js example scripts (Python `.py` and Bash `.sh` files) in the `examples/` directory must include a top-level `LEGACY/ILLUSTRATIVE` comment header to distinguish them from the canonical Node.js implementation path. This implements the mandate added to `AGENTS.md` and satisfies REQUIREMENTS.md Section 8.
 - **Reference:** Automated clarification resolution — enforcing existing AGENTS.md "Legacy Examples" mandate.
 - **Status:** COMPLETED (2026-04-04) — Headers added to all 8 legacy example files.
+
+## [2026-04-04] Requirements and AI Context Alignment
+
+- **Decision:** Align `REQUIREMENTS.md` with the verified codebase state and resolved clarifications.
+- **Context:** Several requirements were either outdated (legacy example labeling) or lacked technical specificity (Audit Log JSON shape) compared to `AGENTS.md`.
+- **Impact:**
+  - Updated `REQUIREMENTS.md` to explicitly mandate the JSON Audit Log shape: `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`.
+  - Updated `REQUIREMENTS.md` to reflect the completed labeling of legacy Python and Bash examples.
+  - Identified two new actionable clarifications regarding environment variable drift and protocol alignment.
