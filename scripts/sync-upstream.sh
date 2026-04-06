@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 # sync-upstream.sh — Pull non-conflicting changes from project-noemi/agents
-# into PerformiaHungary/agents (develop branch).
+# into MyOrganization/agents (develop branch).
 #
 # Usage:  ./scripts/sync-upstream.sh [--dry-run]
 #
 # Conflict policy: if a merge conflict occurs, the script aborts the merge
-# so you can resolve manually (favour Performia's version).
+# so you can resolve manually (favour my organization's version).
 
 set -euo pipefail
 
 UPSTREAM_REMOTE="upstream"
 UPSTREAM_URL="https://github.com/project-noemi/agents.git"
 LOCAL_BRANCH="develop"
+MY_ORGANIZATION="[MyOrganization]"
 
 # --- Helpers ---------------------------------------------------------------
 info()  { printf "\033[1;34m▸ %s\033[0m\n" "$*"; }
@@ -83,7 +84,7 @@ if [[ -n "$DEVELOP_DRIFT" ]]; then
     ok "upstream/develop merged cleanly"
   else
     err "Merge conflict with upstream/develop!"
-    warn "Resolve conflicts (favour Performia's version), then: git add . && git commit"
+    warn "Resolve conflicts (favour my organization's version), then: git add . && git commit"
     warn "After resolving, re-run this script to continue with upstream/main."
     exit 1
   fi
@@ -97,7 +98,7 @@ if [[ -n "$MAIN_DRIFT" ]]; then
     ok "upstream/main merged cleanly"
   else
     err "Merge conflict with upstream/main!"
-    warn "Resolve conflicts (favour Performia's version), then: git add . && git commit"
+    warn "Resolve conflicts (favour my organization's version), then: git add . && git commit"
     exit 1
   fi
 fi
@@ -106,4 +107,4 @@ fi
 echo ""
 info "Pushing $LOCAL_BRANCH to origin..."
 git push origin "$LOCAL_BRANCH"
-ok "Sync complete. PerformiaHungary/agents is up to date with project-noemi/agents."
+ok "Sync complete. $MY_ORGANIZATION/agents is up to date with project-noemi/agents."
