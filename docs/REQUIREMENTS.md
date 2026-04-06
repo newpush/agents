@@ -42,7 +42,7 @@ All agent personas in `agents/` must include the following required headings:
 - `External Tooling Dependencies`
 - `Audit Log`
 
-The `Audit Log` requirement must define a lightweight JSON summary shape in prose and must explicitly exclude secrets, credentials, and PII.
+The `Audit Log` requirement must include a mandatory JSON shape: `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`. The audit record must explicitly exclude secrets, credentials, and PII.
 
 ### 3. Persona and Generator Drift Must Fail Fast
 
@@ -93,7 +93,7 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - The Gatekeeper deployment example must use HMAC-signed dashboard submissions and a verifiable ingest path.
 - PowerShell preflight verification must check SecretOps availability to the same standard as the shell script (currently defaulting to a warning/soft-fail to support local exploration).
 - The repository must contain at least one reusable reference pattern for exponential backoff and retry (Node.js implementation: `scripts/resilience_helpers.js`).
-- Historical Python examples must be clearly labeled as illustrative or legacy so they do not become the default first path for new builders.
+- Historical Python and Bash examples are clearly labeled as LEGACY/ILLUSTRATIVE to distinguish them from the canonical Node.js implementation path.
 
 ### 9. Validation Must Be Easy to Run
 
