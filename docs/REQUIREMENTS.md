@@ -138,3 +138,5 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - The standardized `Audit Log` JSON shape and its integration with the `logging-mcp` and `Structured Report` skill schemas remain under clarification for technical alignment.
 - The `Value Lenses` and `Operating Profiles` frameworks are documented but not yet integrated into the automated context generation scripts (`scripts/generate_gemini.js` and `scripts/generate_claude.js`).
 - The `SKILL_TEMPLATE.md` and existing reusable skills do not currently include a mandatory `Audit Log` section, creating a consistency gap with the agent persona mandate.
+- The `Data Inventory` heading is mandated in `METHODOLOGY.md` as part of the 4D Description layer, but it is not yet included in the mandatory persona contract enforced by `scripts/audit-repo.js`.
+- The `logging-mcp` protocol definition does not currently include InfluxDB as a supported backend, despite InfluxDB being the primary time-series store in the reference implementation.
