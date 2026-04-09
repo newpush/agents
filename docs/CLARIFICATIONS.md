@@ -85,3 +85,17 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should the `SKILL_TEMPLATE.md` be updated to include a mandatory `Audit Log` section, or should the audit responsibility remain at the agent level?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Standardize `SKILL_TEMPLATE.md` and existing skills to include a mandatory `Audit Log` definition if required.*
+
+### ❓ Question [2026-04-05] - Data Inventory Persona Mandate
+**Context:** `METHODOLOGY.md` specifies that "Description" (D2) involves defining the "data inventory with precision," but `scripts/audit-repo.js` and `REQUIREMENTS.md` Section 2 do not include `Data Inventory` as a mandatory persona heading.
+**Ambiguity / Drift:** The 4D framework mandate in `METHODOLOGY.md` is not technically enforced, leading to personas that may lack the precise data definitions required for D2 compliance.
+**Question for Product Owner:** Should `Data Inventory` be added as a mandatory heading for all agent personas in `agents/` and enforced via `scripts/audit-repo.js`?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/context_helpers.js` and `REQUIREMENTS.md` to include "Data Inventory" in the mandatory persona contract, then update `AGENT_TEMPLATE.md` and all existing personas to include the new section.*
+
+### ❓ Question [2026-04-05] - `logging-mcp` InfluxDB Backend Support
+**Context:** `mcp-protocols/logging-mcp.md` defines Loki/Grafana and n8n webhooks as the primary backends, but the reference implementation in `examples/gatekeeper-deployment/dashboard-ingest.js` and `docker-compose.yml` uses InfluxDB as the primary time-series datastore.
+**Ambiguity / Drift:** The protocol definition does not account for the primary storage mechanism used in the specialist deployment examples.
+**Question for Product Owner:** Should the `logging-mcp` protocol be updated to explicitly support InfluxDB as a third canonical backend for structured log ingestion?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `mcp-protocols/logging-mcp.md` to include InfluxDB as a supported backend and define the corresponding query/ingestion patterns.*
