@@ -132,4 +132,11 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - `mcp.config.json` is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
 - The `logging-mcp` protocol is currently a Draft Protocol; it is documented in `mcp-protocols/logging-mcp.md` but is not yet enabled in the default `mcp.config.json`.
 - Symbolic link mirroring in `docs/agents/` is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
-
+- The `.env.template` file does not currently include the `NOEMI_DOCKER_SMOKE_*` environment variables used in the Docker e2e suite.
+- The `Client Onboarding` persona (`agents/operations/client-onboarding.md`) references `templates/tiers/` and `clients/` directories that are currently absent from the repository.
+- There is an API path inconsistency between the Fleet Dashboard persona (specifying `/api/v1/reports`) and the current reference implementation (using `/ingest`).
+- The standardized `Audit Log` JSON shape and its integration with the `logging-mcp` and `Structured Report` skill schemas remain under clarification for technical alignment.
+- The `Value Lenses` and `Operating Profiles` frameworks are documented but not yet integrated into the automated context generation scripts (`scripts/generate_gemini.js` and `scripts/generate_claude.js`).
+- The `SKILL_TEMPLATE.md` and existing reusable skills do not currently include a mandatory `Audit Log` section, creating a consistency gap with the agent persona mandate.
+- The `Data Inventory` heading is mandated in `METHODOLOGY.md` as part of the 4D Description layer, but it is not yet included in the mandatory persona contract enforced by `scripts/audit-repo.js`.
+- The `logging-mcp` protocol definition does not currently include InfluxDB as a supported backend, despite InfluxDB being the primary time-series store in the reference implementation.

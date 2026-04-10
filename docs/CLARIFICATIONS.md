@@ -57,3 +57,45 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should the `logging-mcp` protocol be updated to explicitly incorporate the mandated `Audit Log` JSON shape as the primary payload for "success" events?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Align the `logging-mcp` protocol definition with the mandatory `Audit Log` JSON shape to ensure technical consistency across the observability stack.*
+
+### ❓ Question [2026-04-04] - Onboarding Directory Drift
+**Context:** The `Client Onboarding` persona specification (`agents/operations/client-onboarding.md`) references a `templates/tiers/` directory for tier templates and a `clients/` directory for provisioned client configurations.
+**Ambiguity / Drift:** Neither of these directories currently exists in the repository, and the `templates/` directory only contains `context/` templates.
+**Question for Product Owner:** Where should the `Client Onboarding` tier templates be located? Should we create the `templates/tiers/` and `clients/` directories to support this workflow?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Create `templates/tiers/` with basic templates (Basic/Standard/Premium) and initialize the `clients/` directory with a `.gitignore` to support the onboarding workflow.*
+
+### ❓ Question [2026-04-04] - Fleet Dashboard API Path Mismatch
+**Context:** The `Fleet Dashboard` persona (`agents/operations/fleet-dashboard.md`) specifies `/api/v1/reports` as the ingestion endpoint, but the reference implementation in `examples/gatekeeper-deployment/dashboard-ingest.js` (and its corresponding `docker-compose.yml`) uses `/ingest`.
+**Ambiguity / Drift:** This inconsistency causes agents following the persona specification to fail when communicating with the implemented dashboard.
+**Question for Product Owner:** Should the Fleet Dashboard API ingest path be standardized to `/api/v1/reports` (matching the persona) or `/ingest` (matching the implementation)?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Standardize the Fleet Dashboard API ingest endpoint path across all persona specifications and implementation scripts to ensure technical alignment.*
+
+### ❓ Question [2026-04-04] - Framework Integration in Context Generators
+**Context:** The `Value Lenses` and `Operating Profiles` frameworks are documented in `docs/frameworks/` and presented as core layers of the NoéMI architecture. However, the context generators (`scripts/generate_gemini.js` and `scripts/generate_claude.js`) do not currently inject these frameworks into the generated context files.
+**Ambiguity / Drift:** Agents consuming `GEMINI.md` or `CLAUDE.md` lack direct access to the lens and profile definitions, making it difficult for them to adhere to these layers autonomously.
+**Question for Product Owner:** Should the context generators be updated to include `Value Lenses` and `Operating Profiles` as part of the global mandates or as separate injection sections?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/context_helpers.js` and the context generators to support `VALUE_LENS_INJECTIONS` and `OPERATING_PROFILE_INJECTIONS` markers.*
+
+### ❓ Question [2026-04-04] - Mandatory Audit Log for Skills
+**Context:** `REQUIREMENTS.md` and `AGENTS.md` mandate a specific `Audit Log` JSON shape for all **agent personas** in `agents/`. Reusable **skills** in `skills/` currently do not have this requirement, although they perform critical logic.
+**Ambiguity / Drift:** It is unclear if skills should also include an `Audit Log` section or if the calling agent is solely responsible for logging the skill's execution.
+**Question for Product Owner:** Should the `SKILL_TEMPLATE.md` be updated to include a mandatory `Audit Log` section, or should the audit responsibility remain at the agent level?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Standardize `SKILL_TEMPLATE.md` and existing skills to include a mandatory `Audit Log` definition if required.*
+
+### ❓ Question [2026-04-05] - Data Inventory Persona Mandate
+**Context:** `METHODOLOGY.md` specifies that "Description" (D2) involves defining the "data inventory with precision," but `scripts/audit-repo.js` and `REQUIREMENTS.md` Section 2 do not include `Data Inventory` as a mandatory persona heading.
+**Ambiguity / Drift:** The 4D framework mandate in `METHODOLOGY.md` is not technically enforced, leading to personas that may lack the precise data definitions required for D2 compliance.
+**Question for Product Owner:** Should `Data Inventory` be added as a mandatory heading for all agent personas in `agents/` and enforced via `scripts/audit-repo.js`?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/context_helpers.js` and `REQUIREMENTS.md` to include "Data Inventory" in the mandatory persona contract, then update `AGENT_TEMPLATE.md` and all existing personas to include the new section.*
+
+### ❓ Question [2026-04-05] - `logging-mcp` InfluxDB Backend Support
+**Context:** `mcp-protocols/logging-mcp.md` defines Loki/Grafana and n8n webhooks as the primary backends, but the reference implementation in `examples/gatekeeper-deployment/dashboard-ingest.js` and `docker-compose.yml` uses InfluxDB as the primary time-series datastore.
+**Ambiguity / Drift:** The protocol definition does not account for the primary storage mechanism used in the specialist deployment examples.
+**Question for Product Owner:** Should the `logging-mcp` protocol be updated to explicitly support InfluxDB as a third canonical backend for structured log ingestion?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `mcp-protocols/logging-mcp.md` to include InfluxDB as a supported backend and define the corresponding query/ingestion patterns.*
