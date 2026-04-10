@@ -95,7 +95,7 @@ The client should receive:
 
 ## Why This Assessment Matters
 
-This assessment protects the value of the AI initiative itself. The business value is:
+For any business owner considering an AI initiative, this assessment protects the value of the initiative itself. The business value is:
 
 - fewer surprises after launch
 - lower chance of data leakage or uncontrolled Shadow AI behavior
