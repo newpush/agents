@@ -112,3 +112,51 @@
   - Updated `REQUIREMENTS.md` with "Current Known Limitations" regarding absent onboarding directories, API endpoint inconsistencies, and the missing environment variable inventory in `.env.template`.
   - Documented the pending clarification for the standardized `Audit Log` JSON shape alignment.
   - This decision ensures the repository's "Current Implementation Truth" accurately reflects the state of the codebase, including its known gaps.
+
+## [2026-04-11] Bulk Resolution: 14 CEO-Approved Technical Decisions
+
+Status: COMPLETED (All 14 clarifications resolved)
+
+### 1. Resilience Helper Integration
+Answer: No. Core scripts do local filesystem ops, not network calls.
+
+### 2. logging-mcp Activation  
+Answer: Yes, add to default active_mcps.
+
+### 3. ROI Auditor Baseline Data
+Answer: Provide local baseline-config.json in tools/roi/.
+
+### 4. Environment Variable Inventory Drift
+Answer: Yes, add NOEMI_DOCKER_SMOKE_* vars to .env.template.
+
+### 5. Logging-MCP vs Audit Log Shape
+Answer: Audit Log should be the metadata field within logging-mcp payload.
+
+### 6. Onboarding Directory Drift
+Answer: Yes, create templates/tiers/ and clients/ directories.
+
+### 7. Fleet Dashboard API Path
+Answer: Standardize to /api/v1/reports per persona spec.
+
+### 8. Framework Integration in Generators
+Answer: Yes, add Value Lenses and Operating Profiles as injection sections.
+
+### 9. Audit Log for Skills
+Answer: No. Keep audit at agent level. Skills don't need their own audit logs.
+
+### 10. SecretOps Syntax
+Answer: Standardize on .env.template at root, .env.example per example.
+
+### 11. Example Smoke Test Coverage
+Answer: Yes, cover all examples/ subdirectories.
+
+### 12. Skill Template Structural Drift
+Answer: No, keep accountability at agent level.
+
+### 13. Data Inventory Persona Mandate
+Answer: Yes, add Data Inventory as mandatory heading.
+
+### 14. logging-mcp InfluxDB Support
+Answer: Yes, add InfluxDB as third canonical backend.
+
+Impact: All 14 clarifications now have documented answers.
