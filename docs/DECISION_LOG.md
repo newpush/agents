@@ -112,3 +112,34 @@
   - Updated `REQUIREMENTS.md` with "Current Known Limitations" regarding absent onboarding directories, API endpoint inconsistencies, and the missing environment variable inventory in `.env.template`.
   - Documented the pending clarification for the standardized `Audit Log` JSON shape alignment.
   - This decision ensures the repository's "Current Implementation Truth" accurately reflects the state of the codebase, including its known gaps.
+
+
+## [2026-04-11] Technical Clarifications Resolved via Consistency Enforcement
+
+- **Decision:** Resolve 11 technical clarifications by enforcing consistency against REQUIREMENTS.md, AGENTS.md, and METHODOLOGY.md mandates.
+
+- **Decisions Made:**
+
+  1. **Framework Injection:** Update scripts/context_helpers.js to inject Value Lenses and Operating Profiles into generated context files.
+
+  2. **Audit Log for Skills:** Extend mandatory Audit Log and Rules & Constraints to skills/SKILL_TEMPLATE.md.
+
+  3. **Data Inventory Enforcement:** Add Data Inventory as mandatory persona heading, enforced by scripts/audit-repo.js.
+
+  4. **logging-mcp InfluxDB Backend:** Update mcp-protocols/logging-mcp.md to document InfluxDB as canonical backend.
+
+  5. **Fleet Dashboard API Standardization:** Standardize ingest endpoint to /api/v1/reports across all implementations.
+
+  6. **Fleet Dashboard Retention Infrastructure:** Provision second InfluxDB bucket with 1-year retention for aggregates.
+
+  7. **Smoke Test Coverage Expansion:** Expand tests/examples-smoke.test.js to cover all 8 example directories.
+
+  8. **Red Team Gauntlet Test Vectors:** Create examples/red-team-gauntlet/test-vectors.yaml with test cases.
+
+  9. **Onboarding Directories:** Initialize templates/tiers/ and clients/ directories with supporting files.
+
+  10. **Reference Service Audit Logs:** Update dashboard-ingest.js to emit mandated JSON audit log shape.
+
+  11. **Clarifications Archival:** Move 11 answered questions to decision log; retain 3 CEO/PO questions in CLARIFICATIONS.md.
+
+- **Impact:** Frameworks injected into context improve agent autonomy. Skills carry accountability guarantees. API inconsistencies resolved. Infrastructure backs policy. Repository truth updated.

@@ -124,22 +124,33 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - Python examples may remain for historical context, but they are not the canonical implementation path for new work.
 - The `logging-mcp` is defined as a dual-backend protocol supporting both Loki/Grafana (structured log queries) and n8n webhooks (event-driven ingestion).
 
+
 ## Current Known Limitations
 
-- Historical Python examples remain in the repository as legacy references and are not yet fully converted to Node.js. All legacy Python and Bash examples now include explicit LEGACY/ILLUSTRATIVE headers (Decision 2026-04-04).
+### Ongoing Limitations (Unresolved)
+
+- Historical Python examples remain in the repository as legacy references with explicit LEGACY/ILLUSTRATIVE headers (Decision 2026-04-04).
 - The Gatekeeper deployment example currently demonstrates safe scanning, signed reporting, and observability plumbing; it does not yet implement the full mutating action set described in the Gatekeeper persona.
 - The Docker e2e suite depends on Docker being installed in the execution environment; in environments without Docker, those runtime checks are skipped rather than failed.
-- `mcp.config.json` is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
-- The `logging-mcp` protocol is currently a Draft Protocol; it is documented in `mcp-protocols/logging-mcp.md` but is not yet enabled in the default `mcp.config.json`.
-- Symbolic link mirroring in `docs/agents/` is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
-- The `.env.template` file does not currently include the `NOEMI_DOCKER_SMOKE_*` environment variables used in the Docker e2e suite.
-- The `Client Onboarding` persona (`agents/operations/client-onboarding.md`) references `templates/tiers/` and `clients/` directories that are currently absent from the repository.
-- There is an API path inconsistency between the Fleet Dashboard persona (specifying `/api/v1/reports`) and the current reference implementation (using `/ingest`).
-- The standardized `Audit Log` JSON shape and its integration with the `logging-mcp` and `Structured Report` skill schemas remain under clarification for technical alignment.
-- The `Value Lenses` and `Operating Profiles` frameworks are documented but not yet integrated into the automated context generation scripts (`scripts/generate_gemini.js` and `scripts/generate_claude.js`).
-- The `SKILL_TEMPLATE.md` and existing reusable skills do not currently include a mandatory `Audit Log` section, creating a consistency gap with the agent persona mandate.
-- The `Data Inventory` heading is mandated in `METHODOLOGY.md` as part of the 4D Description layer, but it is not yet included in the mandatory persona contract enforced by `scripts/audit-repo.js`.
-- The `logging-mcp` protocol definition does not currently include InfluxDB as a supported backend, despite InfluxDB being the primary time-series store in the reference implementation.
-- The Fleet Dashboard specification (90-day detailed / 1-year aggregate) drifts from the reference implementation (single 90-day bucket).
-- The `Client Onboarding` validation workflow references `red-team-gauntlet` test vectors that are currently missing from the repository.
-- Reference implementation services (e.g., `dashboard-ingest.js`) do not yet emit the mandated JSON Audit Log shape.
+- mcp.config.json is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
+- The logging-mcp protocol is currently a Draft Protocol; it is documented in mcp-protocols/logging-mcp.md but is not yet enabled in the default mcp.config.json.
+- Symbolic link mirroring in docs/agents/ is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
+
+### Resolved in 2026-04-11 Decision
+
+- Framework injection into generated context: VALUE_LENSES and OPERATING_PROFILES now injected via scripts/context_helpers.js.
+- Audit Log for skills: SKILL_TEMPLATE.md extended with mandatory Audit Log and Rules & Constraints sections.
+- Data Inventory mandate: Added to mandatory persona contract enforced by scripts/audit-repo.js and AGENT_TEMPLATE.md.
+- logging-mcp InfluxDB support: InfluxDB documented as canonical backend in mcp-protocols/logging-mcp.md.
+- Fleet Dashboard API path: Standardized to /api/v1/reports across all persona and implementation files.
+- Fleet Dashboard retention policy: Second InfluxDB bucket (agent_summaries) with 1-year retention provisioned.
+- Example smoke test coverage: All 8 example directories now covered by tests/examples-smoke.test.js.
+- Red Team Gauntlet test vectors: examples/red-team-gauntlet/test-vectors.yaml created with starter cases.
+- Onboarding directories: templates/tiers/ and clients/ directories initialized to support Client Onboarding.
+- Reference service audit logs: dashboard-ingest.js updated to emit mandated JSON Audit Log shape.
+
+### Awaiting CEO/PO Input (Per CLARIFICATIONS.md)
+
+- Environment Variable Inventory: Should NOEMI_DOCKER_SMOKE_* vars be added to .env.template?
+- logging-mcp Audit Log Shape: Should Audit Log be part of logging-mcp payload or separate emission?
+- SecretOps Syntax: Standardize on .env.template or .env.example for command wrapper documentation?
