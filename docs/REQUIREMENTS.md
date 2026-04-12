@@ -143,3 +143,5 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - The Fleet Dashboard specification (90-day detailed / 1-year aggregate) drifts from the reference implementation (single 90-day bucket).
 - The `Client Onboarding` validation workflow references `red-team-gauntlet` test vectors that are currently missing from the repository.
 - Reference implementation services (e.g., `dashboard-ingest.js`) do not yet emit the mandated JSON Audit Log shape.
+- There is an implementation gap between the `Fleet Dashboard` multi-tenancy registry and verification specification and the current single-agent reference implementation.
+- The mandatory `Audit Log` JSON shape lacks automated technical validation in `scripts/audit-repo.js`.
