@@ -141,3 +141,17 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should reference implementation services (e.g., `dashboard-ingest.js`) also adhere to the mandatory Audit Log JSON emission standard?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Refactor `examples/gatekeeper-deployment/dashboard-ingest.js` to emit a JSON audit log for every accepted and rejected report ingestion.*
+
+### ❓ Question [2026-04-05] - Fleet Dashboard Multi-tenancy Implementation Gap
+**Context:** The `Fleet Dashboard` persona (`agents/operations/fleet-dashboard.md`) specifies a multi-tenant registry system with per-agent HMAC secrets and asynchronous verification of mutating claims (merges, closes).
+**Ambiguity / Drift:** The current reference implementation in `examples/gatekeeper-deployment/dashboard-ingest.js` is a single-agent sink with hardcoded validation logic and no registry or verification workflow.
+**Question for Product Owner:** Should the `Fleet Dashboard` reference implementation be expanded to include the registry and asynchronous verification logic, or should the persona be simplified to reflect the current single-tenant implementation?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Implement the multi-tenant agent registry and asynchronous GitHub verification worker in the Fleet Dashboard reference stack.*
+
+### ❓ Question [2026-04-05] - Technical Sink for Standardized Audit Log Emission
+**Context:** `REQUIREMENTS.md` and `AGENTS.md` mandate that agent personas emit a JSON `Audit Log` "separately from the primary payload."
+**Ambiguity / Drift:** While the shape is mandated, the repository lacks a formalized technical standard for the emission channel (e.g., `stderr`, a dedicated `/logs/audit.json` file, or a specific `logging-mcp` tool).
+**Question for Product Owner:** What is the canonical technical sink for agent audit logs? Should we formalize `stderr` as the default channel to ensure orchestrator-agnostic capture?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Standardize the technical emission channel for Audit Logs across all persona definitions and the `logging-mcp` protocol.*
