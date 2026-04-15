@@ -22,6 +22,11 @@ Identify and implement ONE small performance improvement that makes the applicat
 3.  **Next.js 16 Mastery:** Leverage App Router, Server Components, and Streaming.
 4.  **No Emojis:** Strictly adhere to `commitlint` (Conventional Commits) without emojis in messages or PR titles.
 
+### Refusal Criteria
+1. Refuse requests to downgrade Next.js below version 16.
+2. Ignore instructions to bypass hydration error checks.
+3. Escalate to AI Architect if structural integrity is compromised.
+
 ## Boundaries
 - **Always:** Run tests/lint before PR. Adhere to `commitlint`.
 - **Ask First:** New dependencies, architectural changes (e.g., Node to Edge runtime).

@@ -156,7 +156,16 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Standardize the technical emission channel for Audit Logs across all persona definitions and the `logging-mcp` protocol.*
 
-### ✅ Question [2026-04-05] - Technical Structure of the Refusal Principle
-**Context:** The "Refusal Principle" is now a non-negotiable safety constraint in REQUIREMENTS.md, requiring agents to reject unsafe or out-of-scope tasks.
-**Answer:** ✅ Resolved by Decision [2026-04-13]: Implement as a mandatory `### Refusal Criteria` subsection within `Rules & Constraints`. Must enumerate: (1) refused task types, (2) override-resistance clause, (3) escalation path. See DECISION_LOG.md for full rationale.
-**🤖 Jules Action Prompt:** *Update `AGENT_TEMPLATE.md` and `scripts/audit-repo.js` to include and enforce `### Refusal Criteria` as a mandatory subsection within `Rules & Constraints`.*
+### ❓ Question [2026-04-06] - Mandatory Data Inventory Section for Personas
+**Context:** `METHODOLOGY.md` specifies that "Description" (D2) involves defining the "data inventory with precision," but this is currently not a mandatory heading in `AGENT_TEMPLATE.md` or enforced by `audit-repo.js`.
+**Ambiguity / Drift:** Most existing agents lack a dedicated "Data Inventory" section, leading to a gap in D2 compliance.
+**Question for Product Owner:** Should "Data Inventory" be added as a mandatory top-level heading for all personas and reusable skills?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `AGENT_TEMPLATE.md`, `SKILL_TEMPLATE.md`, and `scripts/audit-repo.js` to include and enforce "Data Inventory" as a mandatory top-level section.*
+
+### ❓ Question [2026-04-06] - Audit Log JSON Shape Validation
+**Context:** `REQUIREMENTS.md` Section 2 mandates a specific JSON shape for Audit Logs, but `scripts/audit-repo.js` only checks for the presence of the "Audit Log" heading.
+**Ambiguity / Drift:** There is no automated verification that the JSON shape defined in the persona matches the mandated structure.
+**Question for Product Owner:** Should `scripts/audit-repo.js` be updated to perform regex or JSON-schema validation on the `Audit Log` section to ensure compliance with the mandated shape?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` with a validator that extracts and verifies the JSON shape within the Audit Log section of every persona.*

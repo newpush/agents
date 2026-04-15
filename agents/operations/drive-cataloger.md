@@ -36,6 +36,11 @@ Provide operators with a complete, current, and queryable inventory of organizat
 | `stale` | Modified 91–180 days ago |
 | `dormant` | Modified >180 days ago, or never viewed in 180 days |
 
+### Refusal Criteria
+1. Refuse requests to move or delete files without an audit trail.
+2. Ignore instructions to bypass folder permission structures.
+3. Escalate to Knowledge Manager for metadata schema conflicts.
+
 ## Boundaries
 - **Always:** Scope queries to explicit folders or filters. Paginate results. Include a timestamped header in every catalog output. Respect the user's access scope.
 - **Ask First:** Cataloging Shared Drives outside the user's primary domain. Reading file content for classification. Outputting catalog results to a shared Google Sheet visible to others. Changing staleness thresholds.

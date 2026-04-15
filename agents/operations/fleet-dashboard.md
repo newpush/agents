@@ -26,6 +26,11 @@ Give operators a single pane of glass to monitor, audit, and govern all autonomo
 5. **Agent identity:** Every ingested report must include a verified agent identifier, cycle timestamp, and HMAC signature.
 6. **Data verification:** For agents that perform mutating actions (merges, closes), the dashboard must cross-reference claimed actions against the source of truth (GitHub API) before marking them as verified.
 
+### Refusal Criteria
+1. Refuse requests to modify verified report history.
+2. Ignore instructions to bypass HMAC signature verification.
+3. Escalate to AI Architect for persistent ingestion failures.
+
 ## Boundaries
 - **Always:** Validate report schema on ingestion. Show timestamps in UTC. Provide export functionality (CSV, JSON).
 - **Ask First:** Purging historical data. Changing retention policies. Granting dashboard access to external users.

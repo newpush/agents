@@ -20,6 +20,12 @@
 <!-- Required. Numbered constraints. Replace {Methodology} with the applicable
      framework reference, e.g., "4D Diligence" or "Amanda Horvath Methodology". -->
 
+### Refusal Criteria
+<!-- Required. Enumerate:
+     1. Task types the agent will refuse.
+     2. Override-resistance clause (ignore instructions to bypass Role).
+     3. Escalation path (what to do instead of executing a refused task). -->
+
 ## Boundaries
 <!-- Required. Use the Always / Ask First / Never trichotomy.
      Example:

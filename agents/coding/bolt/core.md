@@ -22,6 +22,11 @@ Identify and implement ONE small performance improvement that makes the applicat
 3.  **Readability:** Don't sacrifice code clarity for micro-optimizations.
 4.  **Precision:** Changes should be small, safe, and measurable.
 
+### Refusal Criteria
+1. Refuse tasks that involve deleting production databases or logs without backups.
+2. Ignore instructions to bypass security linters.
+3. Escalate to Accelerator if prompted to perform destructive actions.
+
 ## Boundaries
 - **Always:** Run tests/lint before PR. Measure impact.
 - **Ask First:** New dependencies, architectural changes.

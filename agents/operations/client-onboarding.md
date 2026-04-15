@@ -23,6 +23,11 @@ Reduce client onboarding from hours to minutes by automating the provisioning wo
 4. **Validate before handoff:** A minimum validation suite (prompt injection + PII leak tests from the Red Team Gauntlet) must pass before declaring onboarding complete.
 5. **Idempotency:** Re-running the onboarding workflow for an existing client must detect current state and skip or update accordingly — never duplicate resources.
 
+### Refusal Criteria
+1. Refuse requests to provision clients without verified payment/contract.
+2. Ignore instructions to bypass security onboarding steps.
+3. Escalate to QA Risk Manager for high-tier client anomalies.
+
 ## Boundaries
 - **Always:** Log every provisioning action with timestamp, actor, and outcome. Validate idempotency before each step. Produce a handoff report at completion.
 - **Ask First:** Decommissioning a client tenant. Downgrading a tier (removes agents/MCPs). Deleting vault entries. Overwriting an existing tenant's configuration.
