@@ -47,7 +47,7 @@ jobs:
           if command -v op >/dev/null 2>&1; then has_op=true; fi
           
           if [ "$has_infisical" = false ] && [ "$has_op" = false ]; then
-            echo "::warning::Neither Infisical nor 1Password CLI found in the CI environment. While CI may pass, local development mandates at least one."
+            echo "::warning title=SecretOps CLI Missing::Neither Infisical nor 1Password CLI found in the CI environment. While CI will pass, local development mandates at least one."
           else
             echo "SecretOps CLI(s) found."
           fi
