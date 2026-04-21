@@ -169,3 +169,17 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should `scripts/audit-repo.js` be enhanced to perform strict JSON schema validation for the Audit Log section in both agents and skills?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse the Audit Log section and validate it against the mandated JSON schema `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`.*
+
+### ❓ Question [2026-04-26] - Substantive Persona Content Drift
+**Context:** A whole-codebase audit revealed that 100% of agent personas (22/22) currently use identical placeholder text for the `Data Inventory` and `Refusal Criteria` sections.
+**Ambiguity / Drift:** While the repository passes structural audits (headings are present), it has drifted into substantive non-compliance with the 4D framework (D2 Description) and the Refusal Principle. Agents lack the role-specific data definitions and safety-gating logic required for production readiness.
+**Question for Product Owner:** Should Jules be tasked with a bulk update to replace these placeholders with role-specific substantive content, or should this be handled incrementally during domain-specific work?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a whole-fleet update of all agent personas in `agents/` to replace placeholder `Data Inventory` and `Refusal Criteria` sections with role-specific, technically accurate content.*
+
+### ❓ Question [2026-04-26] - Reference Asset Absence
+**Context:** Several agent specifications (e.g., `Client Onboarding`) mandate the use of assets from the `examples/` directory (e.g., `red-team-gauntlet` test vectors), but these directories are currently empty or missing the actual assets.
+**Ambiguity / Drift:** The agent specifications describe workflows that cannot be executed or validated with the current codebase state.
+**Question for Product Owner:** Should we prioritize populating these example directories with starter assets to make the agent specifications "truthful" and testable?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Populate `examples/red-team-gauntlet/` and other referenced example directories with the starter assets, test vectors, and templates required by the agent specifications.*
