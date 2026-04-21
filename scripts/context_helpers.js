@@ -169,7 +169,16 @@ function discoverAgents(baseDir, prefix = '') {
         const titleMatch = content.match(/^#\s+(.+)/m);
         const roleMatch = content.match(/## Role\s*\n([\s\S]*?)(?=\n## |\n$)/);
         const title = titleMatch ? titleMatch[1].trim() : entry.name.replace('.md', '');
-        const role = roleMatch ? roleMatch[1].trim().split('\n')[0] : '';
+        
+        let role = '';
+        if (roleMatch) {
+            role = roleMatch[1].trim().split('\n')[0];
+            // Take only the first sentence if it exists
+            const sentenceMatch = role.match(/^[^.!?]+[.!?]/);
+            if (sentenceMatch) {
+                role = sentenceMatch[0];
+            }
+        }
 
         agents.push({
             path: `agents/${relativePath}`,
@@ -197,12 +206,13 @@ function buildAgentIndex(agents) {
 
     let output = '## Agent Index\n\n';
     output += `${agents.length} agent specifications across ${Object.keys(byDomain).length} domains:\n\n`;
-    output += '| Domain | Agent | Spec File |\n';
-    output += '|--------|-------|-----------|\n';
+    output += '| Domain | Agent | Role | Spec File |\n';
+    output += '|--------|-------|------|-----------|\n';
 
     for (const domain of Object.keys(byDomain).sort()) {
         for (const agent of byDomain[domain]) {
-            output += `| ${domain} | ${agent.title} | \`${agent.path}\` |\n`;
+            const role = agent.role ? agent.role.replace(/\|/g, '\\|') : '';
+            output += `| ${domain} | ${agent.title} | ${role} | \`${agent.path}\` |\n`;
         }
     }
 
