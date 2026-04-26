@@ -121,40 +121,12 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Implement the multi-tenant agent registry and asynchronous GitHub verification worker in the Fleet Dashboard reference stack.*
 
-### ❓ Question [2026-04-13] - Automated Validation for Audit Log JSON Schema
+### ❓ Question [2026-04-25] - Audit Log JSON Schema Validation
 **Context:** `REQUIREMENTS.md` Section 2 mandates a specific JSON shape for Audit Logs. Currently, `scripts/audit-repo.js` only checks for the presence of the "Audit Log" heading.
 **Ambiguity / Drift:** There is no technical enforcement of the actual JSON schema within the agent files, leading to potential drift where the heading exists but the content is structurally invalid.
-**Question for Product Owner:** Should `scripts/audit-repo.js` be expanded to include basic JSON schema validation for the Audit Log section in all agent and skill files?
+**Question for Product Owner:** Should `scripts/audit-repo.js` be expanded to include strict JSON schema validation for the Audit Log section in all agent and skill files?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse and validate the JSON shape of the Audit Log section against the mandated schema.*
-
-### ❓ Question [2026-04-22] - Technical Enforcement of Skill Contracts
-**Context:** Decision [2026-04-13] mandated specific sections (Rules & Constraints, Audit Log) for skills, but `scripts/audit-repo.js` currently only audits agent personas in `agents/`.
-**Ambiguity / Drift:** Skills perform critical logic but their structural integrity is not automatically enforced in CI, leading to potential silent drift where new skills skip safety-critical sections.
-**Question for Product Owner:** Should `scripts/audit-repo.js` be expanded to enforce the same structural contract (Required Headings, Refusal Criteria) on all files in the `skills/` directory?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `scripts/audit-repo.js` to discover and audit all files in the `skills/` directory for structural compliance with the mandatory skill contract.*
-
-### ❓ Question [2026-04-22] - Audit Log JSON Schema Validation Level
-**Context:** `REQUIREMENTS.md` Section 2 mandates a specific JSON shape for Audit Logs. Currently, the "Audit Log" heading presence is enforced (for agents), but its content is not validated.
-**Ambiguity / Drift:** Agents may emit malformed JSON or JSON that lacks required keys (task, inputs, actions, risks, result), breaking downstream observability and ROI calculation.
-**Question for Product Owner:** Should the repository audit script perform strict JSON schema validation for the Audit Log section, or merely verify that the block contains syntactically valid JSON?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse the Audit Log section and validate it against the mandated JSON schema `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`.*
-
-### ❓ Question [2026-04-22] - Data Inventory for Skills
-**Context:** Agent personas have a mandatory `Data Inventory` (D2) section to satisfy 4D Description requirements. Reusable skills currently use `Inputs` and `Outputs` headings but lack a consolidated `Data Inventory`.
-**Ambiguity / Drift:** Inconsistency between agent and skill documentation makes it harder for builders to maintain a unified data dictionary across the fleet.
-**Question for Product Owner:** Should the `Data Inventory` heading be added to the mandatory skill contract (`SKILL_TEMPLATE.md`) for architectural symmetry with agent personas?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `SKILL_TEMPLATE.md` and all existing skills to include a mandatory `Data Inventory` section, replacing or consolidating the current `Inputs`/`Outputs` logic where appropriate.*
-
-### ❓ Question [2026-04-25] - Fleet Dashboard Ingest Path Standardization
-**Context:** The `Fleet Dashboard` persona (`agents/operations/fleet-dashboard.md`) specifies `/api/v1/reports` as the ingestion endpoint, but the reference implementation in `examples/gatekeeper-deployment/dashboard-ingest.js` uses `/ingest`.
-**Ambiguity / Drift:** Agents following the persona specification fail when communicating with the reference dashboard implementation.
-**Question for Product Owner:** Should the Fleet Dashboard API ingest path be standardized to `/api/v1/reports` (matching the persona) or `/ingest` (matching the implementation)?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Standardize the Fleet Dashboard API ingest endpoint path across all persona specifications and implementation scripts to ensure technical alignment.*
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse and validate the JSON shape of the Audit Log section against the mandated schema `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`.*
 
 ### ❓ Question [2026-04-25] - Skill Contract Audit Enforcement
 **Context:** Decision [2026-04-13] mandated specific sections (Rules & Constraints, Audit Log) for skills, but `scripts/audit-repo.js` currently only audits agent personas in `agents/`.
@@ -163,12 +135,12 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `scripts/audit-repo.js` to discover and audit all files in the `skills/` directory for structural compliance with the mandatory skill contract.*
 
-### ❓ Question [2026-04-25] - Audit Log JSON Schema Validation
-**Context:** `REQUIREMENTS.md` Section 2 mandates a specific JSON shape for Audit Logs. Currently, `scripts/audit-repo.js` only checks for the heading's presence.
-**Ambiguity / Drift:** There is no technical enforcement of the actual JSON schema, allowing for malformed or incomplete audit logs that break downstream observability and ROI calculation.
-**Question for Product Owner:** Should `scripts/audit-repo.js` be enhanced to perform strict JSON schema validation for the Audit Log section in both agents and skills?
+### ❓ Question [2026-04-22] - Data Inventory for Skills
+**Context:** Agent personas have a mandatory `Data Inventory` (D2) section to satisfy 4D Description requirements. Reusable skills currently use `Inputs` and `Outputs` headings but lack a consolidated `Data Inventory`.
+**Ambiguity / Drift:** Inconsistency between agent and skill documentation makes it harder for builders to maintain a unified data dictionary across the fleet.
+**Question for Product Owner:** Should the `Data Inventory` heading be added to the mandatory skill contract (`SKILL_TEMPLATE.md`) for architectural symmetry with agent personas?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse the Audit Log section and validate it against the mandated JSON schema `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`.*
+**🤖 Jules Action Prompt:** *Update `SKILL_TEMPLATE.md` and all existing skills to include a mandatory `Data Inventory` section, replacing or consolidating the current `Inputs`/`Outputs` logic where appropriate.*
 
 ### ❓ Question [2026-04-26] - Substantive Persona Content Drift
 **Context:** A whole-codebase audit revealed that 100% of agent personas (22/22) currently use identical placeholder text for the `Data Inventory` and `Refusal Criteria` sections.
@@ -197,3 +169,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should we extend the Gatekeeper reference implementation to include "dry-run" or optional mutating actions to better reflect the persona's mission?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Extend the Gatekeeper deployment example and `entrypoint.sh` to include a placeholder or dry-run mode for the mutating actions defined in the Gatekeeper persona.*
+
+### ❓ Question [2026-05-01] - Node.js 24 Baseline Enforcement in Docker
+**Context:** The repository mandates Node.js 24 as the baseline for all logic and utilities (`AGENTS.md`, `package.json`).
+**Ambiguity / Drift:** Reference Docker configurations in `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to `node:20-alpine`, drifting from the mandated baseline.
+**Question for Product Owner:** Should all reference Dockerfiles and Compose files be updated to `node:24-alpine` to maintain technical alignment with the repository baseline?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update all `Dockerfile` and `docker-compose.yml` files in `examples/` and `tools/` to use the `node:24-alpine` image to satisfy the repository's baseline requirement.*
+
+### ❓ Question [2026-05-01] - Persona Journal Section Standardization
+**Context:** Only 4 out of 22 agent personas (`sentinel/core.md`, `bolt/core.md`, `bolt/nextjs-16.md`, `gatekeeper.md`) currently include a `## Journal` section.
+**Ambiguity / Drift:** While not a strictly mandated section in `AGENTS.md`, its presence in a minority of agents creates inconsistency in how agents are expected to record critical learnings across the fleet.
+**Question for Product Owner:** Should the `## Journal` section be added to the mandatory persona contract in `AGENTS.md` and enforced across all agents to support standardized across-fleet learning?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/AGENT_TEMPLATE.md` to include `Journal` as a mandatory section, then perform a bulk update to add it to all 22 agent personas.*
+
+### ❓ Question [2026-05-01] - Audit Log Emission to Stderr in Reference Services
+**Context:** `REQUIREMENTS.md` mandates that agents emit JSON Audit Logs to `stderr`.
+**Ambiguity / Drift:** Reference implementation services that perform agent-like ingestion and processing, such as `examples/gatekeeper-deployment/dashboard-ingest.js`, do not currently emit their own audit logs to `stderr` in the mandated JSON shape.
+**Question for Product Owner:** Should reference implementation services also be required to emit JSON audit logs to `stderr` to align with the observability standards set for agents?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Refactor `examples/gatekeeper-deployment/dashboard-ingest.js` and other reference services to emit JSON audit logs to `stderr` for every significant operational event.*
