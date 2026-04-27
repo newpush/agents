@@ -190,3 +190,17 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should reference implementation services also be required to emit JSON audit logs to `stderr` to align with the observability standards set for agents?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Refactor `examples/gatekeeper-deployment/dashboard-ingest.js` and other reference services to emit JSON audit logs to `stderr` for every significant operational event.*
+
+### ❓ Question [2026-05-02] - Node.js 24 Baseline Enforcement in Docker Reference Examples
+**Context:** `AGENTS.md` and `package.json` mandate Node.js 24 as the technical baseline for all repository logic and utilities.
+**Ambiguity / Drift:** Reference Docker configurations in `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to `node:20-alpine`, drifting from the mandated baseline.
+**Question for Product Owner:** Should all reference Dockerfiles and Compose files be updated to `node:24-alpine` to maintain technical alignment with the repository baseline?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update all `Dockerfile` and `docker-compose.yml` files in `examples/` and `tools/` to use the `node:24-alpine` image to satisfy the repository's baseline requirement.*
+
+### ❓ Question [2026-05-02] - Persona Journal Section Standardization
+**Context:** Only 4 out of 22 agent personas (`sentinel/core.md`, `bolt/core.md`, `bolt/nextjs-16.md`, `gatekeeper.md`) currently include a `## Journal` section.
+**Ambiguity / Drift:** While not a strictly mandated section in `AGENTS.md`, its presence in a minority of agents creates inconsistency in how agents are expected to record critical learnings across the fleet.
+**Question for Product Owner:** Should the `## Journal` section be added to the mandatory persona contract in `AGENTS.md` and enforced across all agents to support standardized across-fleet learning?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/AGENT_TEMPLATE.md` to include `Journal` as a mandatory section, then perform a bulk update to add it to all 22 agent personas.*

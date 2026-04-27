@@ -44,6 +44,7 @@ When running on a local host, the system uses human SSO or Desktop App integrati
 - 1Password: If execution fails, ensure you are logged in via `op signin`.
 
 ## 📝 Coding Standards
+- **Node.js Baseline**: All repository logic, utilities, and reference Docker images must use Node.js version 24 as the technical baseline to ensure cross-fleet compatibility.
 - **Fetch-on-Demand**: When writing code that requires configuration, always assume the values will be provided via process memory environment variables (e.g., `os.getenv()`). Do not create local `.env` parsing logic.
 - **4D Framework Alignment**: All development must adhere to the 4D AI Fluency Framework (Delegation, Description, Discernment, Diligence). Personas must structurally incorporate these dimensions to ensure technical and ethical gating.
 - **Persona Standards**: Specialized agent personas must include the following required sections: `Role`, `Tone`, `Capabilities`, `Mission`, `Rules & Constraints`, `Boundaries`, `Workflow`, `External Tooling Dependencies`, and `Audit Log`.
