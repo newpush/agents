@@ -9,6 +9,26 @@ function read(relativePath) {
     return fs.readFileSync(path.join(repoRoot, relativePath), 'utf8');
 }
 
+test('root .env.template inventories the mandatory NOEMI_DOCKER_SMOKE_* variables (Decision [2026-04-13])', () => {
+    const envTemplate = read('.env.template');
+    const required = [
+        'NOEMI_DOCKER_SMOKE_TIMEOUT_MS',
+        'NOEMI_DOCKER_SMOKE_POLL_INTERVAL_MS',
+        'NOEMI_DOCKER_SMOKE_ARTIFACT_DIR'
+    ];
+
+    for (const name of required) {
+        const pattern = new RegExp(`^${name}=.+`, 'm');
+        assert.match(envTemplate, pattern, `.env.template is missing ${name}`);
+    }
+
+    // The two *_MS variables must be positive integers.
+    const timeoutMatch = envTemplate.match(/^NOEMI_DOCKER_SMOKE_TIMEOUT_MS=(\d+)\s*$/m);
+    const pollMatch = envTemplate.match(/^NOEMI_DOCKER_SMOKE_POLL_INTERVAL_MS=(\d+)\s*$/m);
+    assert.ok(timeoutMatch && Number(timeoutMatch[1]) > 0, 'NOEMI_DOCKER_SMOKE_TIMEOUT_MS must be a positive integer');
+    assert.ok(pollMatch && Number(pollMatch[1]) > 0, 'NOEMI_DOCKER_SMOKE_POLL_INTERVAL_MS must be a positive integer');
+});
+
 test('docker env inventories use vault references instead of placeholder secrets', () => {
     const envFiles = [
         'examples/docker/.env.example',
@@ -43,7 +63,7 @@ test('gatekeeper deployment includes the signed dashboard ingest path', () => {
     const entrypoint = read('examples/gatekeeper-deployment/entrypoint.sh');
 
     assert.match(compose, /dashboard-ingest:/);
-    assert.match(compose, /DASHBOARD_API_URL=http:\/\/dashboard-ingest:8081\/ingest/);
+    assert.match(compose, /DASHBOARD_API_URL=http:\/\/dashboard-ingest:8081\/api\/v1\/reports/);
     assert.match(entrypoint, /X-Signature-256/);
     assert.match(entrypoint, /retry_with_backoff/);
 });

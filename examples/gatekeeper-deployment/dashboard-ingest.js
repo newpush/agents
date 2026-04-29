@@ -90,7 +90,12 @@ const server = http.createServer(async (request, response) => {
         return;
     }
 
-    if (request.method !== 'POST' || request.url !== '/ingest') {
+    // Accept the canonical persona path (`/api/v1/reports`) and continue
+    // to accept the legacy `/ingest` path for backward compatibility with
+    // existing deployments. Decision [2026-04-29].
+    const isReportPost = request.method === 'POST'
+        && (request.url === '/api/v1/reports' || request.url === '/ingest');
+    if (!isReportPost) {
         sendJson(response, 404, { error: 'Not found' });
         return;
     }

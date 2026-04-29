@@ -31,14 +31,26 @@ This should be performed **every Monday** by the repository admin. Budget 5–10
 
 A sync script is included in the repository at `scripts/sync-upstream.sh`.
 
+The script is configurable via environment variables (Decision [2026-04-29])
+so forking organizations no longer need to edit the script in place:
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `NOEMI_SYNC_UPSTREAM_REMOTE` | `upstream` | Name of the upstream Git remote. |
+| `NOEMI_SYNC_UPSTREAM_URL` | `https://github.com/project-noemi/agents.git` | URL added if the remote is missing. |
+| `NOEMI_SYNC_LOCAL_BRANCH` | `develop` | Branch the script merges into. |
+| `NOEMI_SYNC_MY_ORG` | `[MyOrganization]` | Display name used in success output. |
+
+Either export these (e.g., in your shell profile) or pass them inline:
+
 ```bash
 cd /path/to/MyOrganization/agents
 
 # Step 1: Check what's new (dry run, no changes made)
-./scripts/sync-upstream.sh --dry-run
+NOEMI_SYNC_MY_ORG=acme ./scripts/sync-upstream.sh --dry-run
 
 # Step 2: If the drift looks good, merge and push
-./scripts/sync-upstream.sh
+NOEMI_SYNC_MY_ORG=acme ./scripts/sync-upstream.sh
 ```
 
 The script will:

@@ -14,6 +14,16 @@ const REQUIRED_AGENT_SECTIONS = [
     'Audit Log'
 ];
 
+const REQUIRED_SKILL_SECTIONS = [
+    'Purpose',
+    'Inputs',
+    'Procedure',
+    'Outputs',
+    'Rules & Constraints',
+    'Boundaries',
+    'Audit Log'
+];
+
 const REQUIRED_GLOBAL_SECTIONS = [
     '🔐 Secrets & Configuration',
     '🛡 Error Handling and Resilience',
@@ -274,6 +284,7 @@ function extractAgentHeadings(content) {
 
 module.exports = {
     REQUIRED_AGENT_SECTIONS,
+    REQUIRED_SKILL_SECTIONS,
     REQUIRED_GLOBAL_SECTIONS,
     REQUIRED_TEMPLATE_MARKERS,
     buildAgentIndex,

@@ -148,6 +148,79 @@
 - **Context:** Decision [2026-04-13] updated `SKILL_TEMPLATE.md`, but the mandate was not yet formalized in the core requirements.
 - **Impact:** All skills must include: Purpose, Inputs, Procedure, Outputs, Rules & Constraints (4D Diligence), Boundaries, and Audit Log.
 
+## [2026-04-29] Clarification Resolution Wave
+
+A batch of clarification items in `docs/CLARIFICATIONS.md` was reviewed and
+resolved. The durable answers are recorded below.
+
+### [2026-04-29] - Fleet Dashboard API Path Standardization
+- **Decision:** The canonical Fleet Dashboard ingest path is `/api/v1/reports`,
+  matching the persona specification. The reference `dashboard-ingest.js`
+  service accepts both `/api/v1/reports` (canonical) and `/ingest`
+  (legacy compatibility) so existing deployments do not break.
+- **Reference:** Resolves CLARIFICATIONS [2026-04-04] "Fleet Dashboard API
+  Path Mismatch". Persona file is the authoritative spec; implementation
+  follows.
+
+### [2026-04-29] - Onboarding Tier Templates and Clients Directory
+- **Decision:** `templates/tiers/` is the canonical home for Basic / Standard
+  / Premium tier templates referenced by the Client Onboarding agent.
+  `clients/` is the canonical home for provisioned tenant configurations,
+  with a `.gitignore` that prevents real client configs from being committed.
+- **Reference:** Resolves CLARIFICATIONS [2026-04-04] "Onboarding Directory
+  Drift".
+
+### [2026-04-29] - Node.js 24 Baseline in Reference Docker Images
+- **Decision:** All reference `Dockerfile`s and `docker-compose.yml` files
+  in `examples/` and `tools/` use `node:24-alpine` to match the repository's
+  documented Node.js 24 baseline. Specifically updated:
+  - `examples/gatekeeper-deployment/docker-compose.yml` (`dashboard-ingest`)
+  - `tools/executive-assistant/Dockerfile` (multi-stage)
+- **Reference:** Resolves CLARIFICATIONS [2026-05-01] / [2026-05-02] duplicates
+  on Node.js 24 baseline enforcement in Docker.
+
+### [2026-04-29] - SecretOps Reference-File Convention
+- **Decision:** Repository-level commands (Gemini CLI, Claude Code, Codex,
+  repo scripts) use the root [`.env.template`](../.env.template) as their
+  inventory. Per-deployment Docker stacks under `examples/` use their local
+  `.env.example` as the inventory. AGENTS.md now codifies this rule and
+  documents both 1Password patterns.
+- **Reference:** Resolves CLARIFICATIONS [2026-04-05] "SecretOps Syntax
+  Drift: `.env.template` vs `.env.example`".
+
+### [2026-04-29] - Red Team Gauntlet Starter Vectors
+- **Decision:** A machine-readable starter set of 5 test vectors (3 prompt
+  injection, 2 PII leak) was added at `examples/red-team-gauntlet/test-vectors.yaml`
+  to satisfy the Client Onboarding VALIDATE step. The README continues to
+  serve as the human-readable narrative.
+- **Reference:** Resolves CLARIFICATIONS [2026-04-05] "Red Team Gauntlet
+  Test Vector Absence" and [2026-04-26] "Reference Asset Absence" (red-team
+  scope only).
+
+### [2026-04-29] - Audit Script Coverage and Case-Insensitive Headings
+- **Decision:** `scripts/audit-repo.js` now (a) audits files in `skills/`
+  against the mandated skill contract from REQUIREMENTS.md Section 2 and
+  (b) performs case-insensitive heading matches so casing variants like
+  "Refusal criteria" no longer cause structural failures. JSON shape
+  validation for the Audit Log content remains deferred (separate decision).
+- **Reference:** Resolves CLARIFICATIONS [2026-04-25] "Skill Contract Audit
+  Enforcement" and [2026-05-02] "Case-Insensitive Heading Audits".
+
+### [2026-04-29] - NOEMI_DOCKER_SMOKE Variable Smoke Check
+- **Decision:** `tests/examples-smoke.test.js` now asserts the presence and
+  format of the three `NOEMI_DOCKER_SMOKE_*` variables in the root
+  `.env.template`, satisfying REQUIREMENTS Section 9.
+- **Reference:** Resolves CLARIFICATIONS [2026-04-23] "Missing
+  NOEMI_DOCKER_SMOKE_* Smoke Test Validation".
+
+### [2026-04-29] - Sync Script Generalization
+- **Decision:** `scripts/sync-upstream.sh` reads its remote name, upstream
+  URL, working branch, and organization label from environment variables
+  (`NOEMI_SYNC_*`) with the historical defaults preserved. The script no
+  longer requires in-place edits by forking organizations.
+- **Reference:** Resolves CLARIFICATIONS [2026-05-02] "Sync Script
+  Generalization".
+
 ## [2026-05-02] Holistic Codebase Alignment Audit
 
 - **Decision:** Perform a whole-codebase audit to identify and document technical drifts in `REQUIREMENTS.md`.

@@ -1,0 +1,20 @@
+{
+  "active_mcps": [
+    "github",
+    "slack",
+    "gmail",
+    "google-drive",
+    "google-calendar",
+    "google-docs",
+    "google-sheets",
+    "web-search"
+  ],
+  "active_skills": [
+    "classification/risk-triage",
+    "verification/pre-flight-check",
+    "verification/cross-reference",
+    "reporting/structured-report",
+    "reporting/alert-notify",
+    "security/pii-scan"
+  ]
+}

@@ -9,6 +9,7 @@ This file now tracks only active, unresolved questions that still require produc
 - Durable answers from the March-April 2026 clarification backlog were normalized into [DECISION_LOG.md](DECISION_LOG.md), especially the entries dated `2026-04-02`.
 - Questions that were superseded by implemented repo changes were closed as overtaken by events and removed from the active backlog.
 - [2026-04-04] Resolved Node.js Resilience Helper scope (mandate satisfied by reference pattern; core scripts do not need retry for local filesystem ops) and Legacy Example Labeling (bulk update completed — LEGACY/ILLUSTRATIVE headers added to all Python and Bash examples).
+- [2026-04-29] Resolution wave: Fleet Dashboard API path, onboarding directory drift, Node.js 24 baseline in Docker, SecretOps `.env.template` vs `.env.example` convention, Red Team Gauntlet starter vectors, audit-script skill coverage, case-insensitive headings, `NOEMI_DOCKER_SMOKE_*` smoke check, and sync script generalization were all moved to [DECISION_LOG.md](DECISION_LOG.md).
 
 ## Template for New Questions
 
@@ -22,20 +23,6 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Optional implementation prompt once the answer is known.*
 ```
-
-### ❓ Question [2026-04-02] - Node.js Resilience Helper Integration
-**Context:** The `scripts/resilience_helpers.js` file exists and is mandated as a reference in `REQUIREMENTS.md`, but it is currently not utilized by the repository's core generation (`generate_all.js`) or audit tools (`audit-repo.js`).
-**Ambiguity / Drift:** The core tools lack the exponential backoff resilience that the project mandates for agents.
-**Question for Product Owner:** Should the `resilience_helpers.js` be integrated into the core repository scripts (`audit-repo.js`, `generate_all.js`) to satisfy the "Resilience" mandate within the repository's own tooling?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Refactor `scripts/audit-repo.js` and `scripts/generate_all.js` to use the `withRetry` helper for all filesystem operations.*
-
-### ❓ Question [2026-04-03] - `logging-mcp` Activation Drift
-**Context:** The `ROI Auditor` agent specification defines `logging-mcp` as a mandatory dependency for fleet-wide log ingestion, but the protocol is currently disabled (not present in `mcp.config.json`).
-**Ambiguity / Drift:** The `ROI Auditor` cannot be fully validated as "active" in the current context files.
-**Question for Product Owner:** Should `logging-mcp` be added to the default `active_mcps` list immediately to support Guardian agent development?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `mcp.config.json` to include "logging-mcp" in the `active_mcps` list and regenerate context.*
 
 ### ❓ Question [2026-04-03] - ROI Auditor Baseline Data Access
 **Context:** The `ROI Auditor` persona is tasked with correlating actions against a "Human Baseline Time" and "Labor Rate" dictionary. `tools/roi/README.md` indicates these live in a Google Sheets template, but the `google-sheets` MCP is typically used for appending execution logs.
@@ -51,20 +38,6 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Align the `logging-mcp` protocol definition with the mandatory `Audit Log` JSON shape to ensure technical consistency across the observability stack.*
 
-### ❓ Question [2026-04-04] - Onboarding Directory Drift
-**Context:** The `Client Onboarding` persona specification (`agents/operations/client-onboarding.md`) references a `templates/tiers/` directory for tier templates and a `clients/` directory for provisioned client configurations.
-**Ambiguity / Drift:** Neither of these directories currently exists in the repository, and the `templates/` directory only contains `context/` templates.
-**Question for Product Owner:** Where should the `Client Onboarding` tier templates be located? Should we create the `templates/tiers/` and `clients/` directories to support this workflow?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Create `templates/tiers/` with basic templates (Basic/Standard/Premium) and initialize the `clients/` directory with a `.gitignore` to support the onboarding workflow.*
-
-### ❓ Question [2026-04-04] - Fleet Dashboard API Path Mismatch
-**Context:** The `Fleet Dashboard` persona (`agents/operations/fleet-dashboard.md`) specifies `/api/v1/reports` as the ingestion endpoint, but the reference implementation in `examples/gatekeeper-deployment/dashboard-ingest.js` (and its corresponding `docker-compose.yml`) uses `/ingest`.
-**Ambiguity / Drift:** This inconsistency causes agents following the persona specification to fail when communicating with the implemented dashboard.
-**Question for Product Owner:** Should the Fleet Dashboard API ingest path be standardized to `/api/v1/reports` (matching the persona) or `/ingest` (matching the implementation)?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Standardize the Fleet Dashboard API ingest endpoint path across all persona specifications and implementation scripts to ensure technical alignment.*
-
 ### ❓ Question [2026-04-04] - Framework Integration in Context Generators
 **Context:** The `Value Lenses` and `Operating Profiles` frameworks are documented in `docs/frameworks/` and presented as core layers of the NoéMI architecture. However, the context generators (`scripts/generate_gemini.js` and `scripts/generate_claude.js`) do not currently inject these frameworks into the generated context files.
 **Ambiguity / Drift:** Agents consuming `GEMINI.md` or `CLAUDE.md` lack direct access to the lens and profile definitions, making it difficult for them to adhere to these layers autonomously.
@@ -79,13 +52,6 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `mcp-protocols/logging-mcp.md` to include InfluxDB as a supported backend and define the corresponding query/ingestion patterns.*
 
-### ❓ Question [2026-04-05] - SecretOps Syntax Drift: `.env.template` vs `.env.example`
-**Context:** `AGENTS.md` specifies the 1Password command wrapper pattern using `--env-file=.env.template`, while `docs/tool-usages/secure-secret-management.md` and all `docker-compose.yml` files in `examples/` use `--env-file=.env.example`.
-**Ambiguity / Drift:** This inconsistency creates confusion for builders and may lead to execution failures if they use the wrong reference file for secret injection.
-**Question for Product Owner:** Should the repository standardize on `.env.template` (the root inventory) or `.env.example` (the per-example inventory) for all 1Password command wrapper documentation?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Standardize all 1Password command wrapper examples across `AGENTS.md`, `docs/tool-usages/`, and `examples/` to use the chosen reference file.*
-
 ### ❓ Question [2026-04-05] - Incomplete Example Smoke Test Coverage
 **Context:** `REQUIREMENTS.md` Section 9 mandates "static smoke checks for example stacks and Docker env inventories." However, `tests/examples-smoke.test.js` currently omits several reference implementations including `examples/rfp-split`, `examples/gmu-validation`, and `examples/secure-secret-management`.
 **Ambiguity / Drift:** Reference examples that are not covered by the smoke test suite may drift from the core architecture (e.g., regarding secret handling or Node baseline) without being detected by the CI pipeline.
@@ -99,13 +65,6 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should the reference implementation be updated to include a second InfluxDB bucket (e.g., `agent_summaries`) with a 1-year retention policy and a downsampling task, or should the persona be updated to reflect a single 90-day retention period?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `examples/gatekeeper-deployment/docker-compose.yml` to provision an `agent_summaries` bucket and implement an InfluxDB task for report downsampling.*
-
-### ❓ Question [2026-04-05] - Red Team Gauntlet Test Vector Absence
-**Context:** The `Client Onboarding` agent (`agents/operations/client-onboarding.md`) mandates running a validation suite using 5 specific test cases from `examples/red-team-gauntlet/`.
-**Ambiguity / Drift:** The `examples/red-team-gauntlet/` directory only contains a `README.md` and lacks the actual test vectors (Prompts/PII patterns) required to execute the mandated validation workflow.
-**Question for Product Owner:** Should the `red-team-gauntlet` example be populated with a starter set of YAML/JSON test vectors to support the `Client Onboarding` validation requirement?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Create `examples/red-team-gauntlet/test-vectors.yaml` with the 5 starter cases (Prompt Injection and PII) required by the Onboarding workflow.*
 
 ### ❓ Question [2026-04-05] - Reference Service Audit Log Compliance
 **Context:** `REQUIREMENTS.md` and `AGENTS.md` mandate a JSON Audit Log shape for all personas. Reference implementation services like `examples/gatekeeper-deployment/dashboard-ingest.js` perform critical ingestion tasks.
@@ -128,13 +87,6 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse and validate the JSON shape of the Audit Log section against the mandated schema `{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`.*
 
-### ❓ Question [2026-04-25] - Skill Contract Audit Enforcement
-**Context:** Decision [2026-04-13] mandated specific sections (Rules & Constraints, Audit Log) for skills, but `scripts/audit-repo.js` currently only audits agent personas in `agents/`.
-**Ambiguity / Drift:** Reusable skills perform critical logic, but their structural integrity is not automatically enforced, leading to silent drift where new skills skip safety-critical sections or the Refusal Criteria subsection.
-**Question for Product Owner:** Should `scripts/audit-repo.js` be expanded to enforce the same structural contract (Required Headings, Refusal Criteria) on all files in the `skills/` directory?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `scripts/audit-repo.js` to discover and audit all files in the `skills/` directory for structural compliance with the mandatory skill contract.*
-
 ### ❓ Question [2026-04-22] - Data Inventory for Skills
 **Context:** Agent personas have a mandatory `Data Inventory` (D2) section to satisfy 4D Description requirements. Reusable skills currently use `Inputs` and `Outputs` headings but lack a consolidated `Data Inventory`.
 **Ambiguity / Drift:** Inconsistency between agent and skill documentation makes it harder for builders to maintain a unified data dictionary across the fleet.
@@ -149,33 +101,12 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Perform a whole-fleet update of all agent personas in `agents/` to replace placeholder `Data Inventory` and `Refusal Criteria` sections with role-specific, technically accurate content.*
 
-### ❓ Question [2026-04-26] - Reference Asset Absence
-**Context:** Several agent specifications (e.g., `Client Onboarding`) mandate the use of assets from the `examples/` directory (e.g., `red-team-gauntlet` test vectors), but these directories are currently empty or missing the actual assets.
-**Ambiguity / Drift:** The agent specifications describe workflows that cannot be executed or validated with the current codebase state.
-**Question for Product Owner:** Should we prioritize populating these example directories with starter assets to make the agent specifications "truthful" and testable?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Populate `examples/red-team-gauntlet/` and other referenced example directories with the starter assets, test vectors, and templates required by the agent specifications.*
-
-### ❓ Question [2026-04-23] - Missing NOEMI_DOCKER_SMOKE_* Smoke Test Validation
-**Context:** `REQUIREMENTS.md` Section 9 mandates static smoke checks for `NOEMI_DOCKER_SMOKE_*` environment variables, but these are currently missing from `tests/examples-smoke.test.js`.
-**Ambiguity / Drift:** Without these checks, the repository lacks automated validation that the mandatory Docker smoke test configuration is correctly present and formatted in `.env.template`.
-**Question for Product Owner:** Should Jules be tasked with implementing these specific smoke checks in `tests/examples-smoke.test.js` to satisfy Requirement 9?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Implement static smoke checks in `tests/examples-smoke.test.js` to validate the presence and format of `NOEMI_DOCKER_SMOKE_*` variables in the root `.env.template`.*
-
 ### ❓ Question [2026-04-23] - Gatekeeper Reference Implementation Mutating Actions
 **Context:** The `Gatekeeper` agent persona describes mutating actions (merging PRs, closing issues), but the reference implementation in `examples/gatekeeper-deployment/` is currently limited to signed reporting.
 **Ambiguity / Drift:** The implementation truth drifts from the persona specification, leaving the "Accelerator" role partially unimplemented in the reference stack.
 **Question for Product Owner:** Should we extend the Gatekeeper reference implementation to include "dry-run" or optional mutating actions to better reflect the persona's mission?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Extend the Gatekeeper deployment example and `entrypoint.sh` to include a placeholder or dry-run mode for the mutating actions defined in the Gatekeeper persona.*
-
-### ❓ Question [2026-05-01] - Node.js 24 Baseline Enforcement in Docker
-**Context:** The repository mandates Node.js 24 as the baseline for all logic and utilities (`AGENTS.md`, `package.json`).
-**Ambiguity / Drift:** Reference Docker configurations in `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to `node:20-alpine`, drifting from the mandated baseline.
-**Question for Product Owner:** Should all reference Dockerfiles and Compose files be updated to `node:24-alpine` to maintain technical alignment with the repository baseline?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update all `Dockerfile` and `docker-compose.yml` files in `examples/` and `tools/` to use the `node:24-alpine` image to satisfy the repository's baseline requirement.*
 
 ### ❓ Question [2026-05-01] - Persona Journal Section Standardization
 **Context:** Only 4 out of 22 agent personas (`sentinel/core.md`, `bolt/core.md`, `bolt/nextjs-16.md`, `gatekeeper.md`) currently include a `## Journal` section.
@@ -191,13 +122,6 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Add `VALUE_LENS_INJECTIONS` and `OPERATING_PROFILE_INJECTIONS` markers to context templates and update `scripts/context_helpers.js` to support their injection.*
 
-### ❓ Question [2026-05-02] - Case-Insensitive Heading Audits
-**Context:** `scripts/audit-repo.js` currently performs strict string matching for required headings like `Refusal Criteria`.
-**Ambiguity / Drift:** Minor casing differences (e.g., "Refusal criteria") can cause audit failures for files that are substantively compliant.
-**Question for Product Owner:** Should `scripts/audit-repo.js` be updated to perform case-insensitive heading validation?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `scripts/audit-repo.js` and `scripts/context_helpers.js` to perform case-insensitive matching for all required persona and skill headings.*
-
 ### ❓ Question [2026-05-02] - SecretOps Authentication Verification
 **Context:** `verify-env.sh` and `verify-env.ps1` check for the *presence* of the Infisical or 1Password CLI but do not verify whether the user is actually *authenticated* to their respective vault.
 **Ambiguity / Drift:** A successful pre-flight check may still lead to runtime failures if the user is not logged in, as "Fetch-on-Demand" commands (`infisical run`, `op run`) will fail to resolve secrets.
@@ -205,30 +129,9 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to perform an active authentication check for Infisical or 1Password when in `builder` or `docker` modes.*
 
-### ❓ Question [2026-05-02] - Sync Script Generalization
-**Context:** `scripts/sync-upstream.sh` and `docs/UPSTREAM_SYNC.md` contain hardcoded `[MyOrganization]` placeholders and use fixed repository URLs.
-**Ambiguity / Drift:** This forces every "forking" organization to manually find and replace these strings in a script that is intended to be a reusable, low-friction reference utility.
-**Question for Product Owner:** Should the synchronization script be generalized to use environment variables or a local `.noemi-sync.json` configuration file for the organization name and repository URLs?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Generalize `scripts/sync-upstream.sh` to read its configuration from environment variables or a local config file, and update `docs/UPSTREAM_SYNC.md` to reflect the new standardized usage.*
-
 ### ❓ Question [2026-05-01] - Audit Log Emission to Stderr in Reference Services
 **Context:** `REQUIREMENTS.md` mandates that agents emit JSON Audit Logs to `stderr`.
 **Ambiguity / Drift:** Reference implementation services that perform agent-like ingestion and processing, such as `examples/gatekeeper-deployment/dashboard-ingest.js`, do not currently emit their own audit logs to `stderr` in the mandated JSON shape.
 **Question for Product Owner:** Should reference implementation services also be required to emit JSON audit logs to `stderr` to align with the observability standards set for agents?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Refactor `examples/gatekeeper-deployment/dashboard-ingest.js` and other reference services to emit JSON audit logs to `stderr` for every significant operational event.*
-
-### ❓ Question [2026-05-02] - Node.js 24 Baseline Enforcement in Docker Reference Examples
-**Context:** `AGENTS.md` and `package.json` mandate Node.js 24 as the technical baseline for all repository logic and utilities.
-**Ambiguity / Drift:** Reference Docker configurations in `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to `node:20-alpine`, drifting from the mandated baseline.
-**Question for Product Owner:** Should all reference Dockerfiles and Compose files be updated to `node:24-alpine` to maintain technical alignment with the repository baseline?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update all `Dockerfile` and `docker-compose.yml` files in `examples/` and `tools/` to use the `node:24-alpine` image to satisfy the repository's baseline requirement.*
-
-### ❓ Question [2026-05-02] - Persona Journal Section Standardization
-**Context:** Only 4 out of 22 agent personas (`sentinel/core.md`, `bolt/core.md`, `bolt/nextjs-16.md`, `gatekeeper.md`) currently include a `## Journal` section.
-**Ambiguity / Drift:** While not a strictly mandated section in `AGENTS.md`, its presence in a minority of agents creates inconsistency in how agents are expected to record critical learnings across the fleet.
-**Question for Product Owner:** Should the `## Journal` section be added to the mandatory persona contract in `AGENTS.md` and enforced across all agents to support standardized across-fleet learning?
-**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/AGENT_TEMPLATE.md` to include `Journal` as a mandatory section, then perform a bulk update to add it to all 22 agent personas.*

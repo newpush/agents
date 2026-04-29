@@ -31,10 +31,15 @@ Use `infisical run` or `op run` to dynamically pull the specified environment an
 - Infisical Pattern: `infisical run --env=dev -- <command>`
 
 
-- 1Password Pattern: `op run --env-file=.env.template -- <command>`
+- 1Password Pattern (root inventory): `op run --env-file=.env.template -- <command>`
+
+
+- 1Password Pattern (per-example inventory): `op run --env-file=.env.example -- docker compose up -d`
 
 
 - Starting a Chat Session: `infisical run --env=dev -- gemini chat`
+
+> **Reference-file convention (Decision [2026-04-29]):** The root [`.env.template`](.env.template) is the canonical inventory for repository-level commands (Gemini CLI, Claude Code, Codex, repository scripts). Per-deployment `examples/*/.env.example` files are the canonical inventories for their own `docker compose` stacks. Always reference the inventory that lives next to the command you are running.
 
 ## 🛠 Local Development & Authentication
 When running on a local host, the system uses human SSO or Desktop App integration for authentication.

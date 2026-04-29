@@ -9,10 +9,13 @@
 
 set -euo pipefail
 
-UPSTREAM_REMOTE="upstream"
-UPSTREAM_URL="https://github.com/project-noemi/agents.git"
-LOCAL_BRANCH="develop"
-MY_ORGANIZATION="[MyOrganization]"
+# Decision [2026-04-29]: configuration is sourced from environment
+# variables so this script is reusable by any forking organization
+# without local edits. Defaults below preserve the historical behaviour.
+UPSTREAM_REMOTE="${NOEMI_SYNC_UPSTREAM_REMOTE:-upstream}"
+UPSTREAM_URL="${NOEMI_SYNC_UPSTREAM_URL:-https://github.com/project-noemi/agents.git}"
+LOCAL_BRANCH="${NOEMI_SYNC_LOCAL_BRANCH:-develop}"
+MY_ORGANIZATION="${NOEMI_SYNC_MY_ORG:-[MyOrganization]}"
 
 # --- Helpers ---------------------------------------------------------------
 info()  { printf "\033[1;34m▸ %s\033[0m\n" "$*"; }

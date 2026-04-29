@@ -1,0 +1,6 @@
+# Provisioned client tenants live here. Never commit real client configs
+# or secrets. Tier templates live in `templates/tiers/`.
+*
+!.gitignore
+!README.md
+!_archived/
