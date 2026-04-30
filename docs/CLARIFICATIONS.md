@@ -184,6 +184,20 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/AGENT_TEMPLATE.md` to include `Journal` as a mandatory section, then perform a bulk update to add it to all 22 agent personas.*
 
+### ❓ Question [2026-05-02] - Refusal Criteria Structural and Substantive Enforcement
+**Context:** The requirements and `AGENTS.md` mandate that `Refusal Criteria` must be a mandatory **H3 subsection** within `Rules & Constraints` and must enumerate three specific safety clauses (refused types, override resistance, and escalation path).
+**Ambiguity / Drift:** Currently, `scripts/audit-repo.js` only verifies the presence of the "Refusal Criteria" heading at any level and does not validate the required substantive content. This allows personas to pass the audit while remaining safety-deficient.
+**Question for Product Owner:** Should the audit script be enhanced to enforce the H3 hierarchy and perform basic substantive checks (e.g., regex for the three mandatory clauses) within the Refusal Criteria section?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to verify that `Refusal Criteria` is a child of `Rules & Constraints` and contains the three mandated safety clauses.*
+
+### ❓ Question [2026-05-02] - Artifact Naming Convention Drift
+**Context:** `AGENTS.md` mandates that all exported artifacts (workflows, scripts, documentation) must use **English-first, slug-based naming** (e.g., `ai-triage-inbound.json`) to avoid localization drift.
+**Ambiguity / Drift:** A whole-codebase scan identified `docs/n8n workflows/`, which uses spaces instead of slugs. Additionally, `scripts/audit-repo.js` currently lacks any logic to enforce this naming convention across the repository.
+**Question for Product Owner:** Should `scripts/audit-repo.js` be updated to enforce slug-based naming for all files and directories in `docs/`, `examples/`, and `tools/`?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/audit-repo.js` to enforce English-first, slug-based naming for all repository artifacts and rename `docs/n8n workflows/` to `docs/n8n-workflows/`.*
+
 ### ❓ Question [2026-05-02] - Framework Markers in Context Templates
 **Context:** The `Value Lenses` and `Operating Profiles` frameworks are core NoéMI layers, but the context generators and templates (`GEMINI.template.md`, `CLAUDE.template.md`) lack the corresponding `<!-- VALUE_LENS_INJECTIONS_START -->` and `<!-- OPERATING_PROFILE_INJECTIONS_START -->` markers.
 **Ambiguity / Drift:** Agents cannot currently receive these frameworks in their context files, even though they are documented as mandatory layers.
