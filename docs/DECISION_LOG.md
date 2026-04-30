@@ -153,3 +153,12 @@
 - **Decision:** Perform a whole-codebase audit to identify and document technical drifts in `REQUIREMENTS.md`.
 - **Context:** The repository as a reference architecture must accurately reflect implementation gaps to guide future work.
 - **Impact:** Documented drifts for Node.js 24 baseline, `resilience_helpers.js` integration, `sync-upstream.sh` placeholders, and `audit-repo.js` script gaps.
+
+## [2026-05-02] Incremental Requirements Refinement (Structural & Naming Drift)
+
+- **Decision:** Formally document verified drifts regarding structural audit gaps, artifact naming, and pre-flight validation depth.
+- **Context:** Incremental audit by "Doc" identified specific technical inconsistencies with `AGENTS.md` mandates that were not previously captured in `REQUIREMENTS.md`.
+- **Impact:**
+  - Added "Audit Script Structural Blindness" to Known Limitations (scripts/audit-repo.js ignores H3 hierarchy mandate).
+  - Added "Artifact Naming Drift" to Known Limitations (spaces in `docs/n8n workflows/`).
+  - Added "Pre-flight Script Shallow Validation" to Known Limitations (lack of active authentication checks).
