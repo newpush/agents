@@ -288,3 +288,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should the `## Journal` section be added to the mandatory persona contract in `AGENTS.md` and enforced across all agents to support standardized across-fleet learning?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `AGENTS.md` and `docs/AGENT_TEMPLATE.md` to include `Journal` as a mandatory section, then perform a bulk update to add it to all 22 agent personas.*
+
+### ❓ Question [2026-05-02] - Automated Audit Script Coverage Gaps
+**Context:** `AGENTS.md` and `REQUIREMENTS.md` mandate strict structural contracts for both agents and skills. However, a holistic scan confirms that `scripts/audit-repo.js` currently only audits the `agents/` directory and ignores the `skills/` directory. Additionally, it verifies the existence of the "Audit Log" heading but does not perform JSON schema validation on the mandated shape.
+**Ambiguity / Drift:** Reusable skills and Audit Log structural integrity are currently unenforced by the repository's own gates, leading to silent drift in safety-critical sections.
+**Question for Product Owner:** Should the audit script be prioritized for a bulk update to include skill auditing and strict JSON schema validation for the Audit Log section?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to audit all files in `skills/` and implement JSON schema validation for the `Audit Log` section across all personas and skills.*
+
+### ❓ Question [2026-05-02] - Artifact Naming Convention Drift
+**Context:** `AGENTS.md` mandates English-first, slug-based naming for all artifacts. A codebase scan identified `docs/n8n workflows/`, which uses spaces instead of slugs.
+**Ambiguity / Drift:** Non-slug naming creates cross-platform compatibility risks and violates the repository's own naming mandate.
+**Question for Product Owner:** Should we rename `docs/n8n workflows/` to `docs/n8n-workflows/` and add automated filename validation to the audit script?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Rename `docs/n8n workflows/` to `docs/n8n-workflows/` and update `scripts/audit-repo.js` to enforce slug-based naming for all files in `docs/`, `agents/`, and `skills/`.*
+
+### ❓ Question [2026-05-02] - SecretOps Authentication Depth
+**Context:** `verify-env.sh` and `verify-env.ps1` check for the *presence* of SecretOps CLIs (Infisical/1Password) but do not verify if the user is actually *authenticated* to their vault.
+**Ambiguity / Drift:** A "success" in pre-flight may still lead to runtime failures when "Fetch-on-Demand" commands fail due to an expired or missing session.
+**Question for Product Owner:** Should the pre-flight scripts be updated to perform an active authentication check (e.g., `infisical whoami` or `op get user`)?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to include active authentication checks for the detected SecretOps provider.*

@@ -153,37 +153,22 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 
 ## Current Known Limitations
 
-- Historical Python examples remain in the repository as legacy references and are not yet fully converted to Node.js. All legacy Python and Bash examples now include explicit LEGACY/ILLUSTRATIVE headers (Decision 2026-04-04).
-- The Gatekeeper deployment example currently demonstrates safe scanning, signed reporting, and observability plumbing; it does not yet implement the full mutating action set described in the Gatekeeper persona.
-- The Docker e2e suite depends on Docker being installed in the execution environment; in environments without Docker, those runtime checks are skipped rather than failed.
-- `mcp.config.json` is the current source of truth for active MCPs and skills; any future schema expansion or dynamic service discovery should be treated as a separate contract change.
-- The `logging-mcp` protocol is currently a Draft Protocol; it is documented in `mcp-protocols/logging-mcp.md` but is not yet enabled in the default `mcp.config.json`.
-- Symbolic link mirroring in `docs/agents/` is not strictly enforced at the 1:1 file level; directory and guide-level documentation takes precedence.
-- The `Client Onboarding` persona (`agents/operations/client-onboarding.md`) references `templates/tiers/` and `clients/` directories that are currently absent from the repository.
-- There is an API path inconsistency between the Fleet Dashboard persona (specifying `/api/v1/reports`) and the current reference implementation (`examples/gatekeeper-deployment/dashboard-ingest.js` using `/ingest`).
-- The standardized `Audit Log` JSON shape and its integration with the `logging-mcp` and `Structured Report` skill schemas remain under clarification for technical alignment.
-- The `Value Lenses` and `Operating Profiles` frameworks are documented in `docs/frameworks/` but not yet integrated into the automated context generation scripts (`scripts/generate_gemini.js` and `scripts/generate_claude.js`).
-- The `logging-mcp` protocol definition does not currently include InfluxDB as a supported backend, despite InfluxDB being the primary time-series store in the reference implementation.
-- The Fleet Dashboard specification (90-day detailed / 1-year aggregate) drifts from the reference implementation (single 90-day bucket).
-- The `Client Onboarding` validation workflow references `red-team-gauntlet` test vectors that are currently missing from the repository.
-- Reference implementation services (e.g., `dashboard-ingest.js`) do not yet emit the mandated JSON Audit Log shape.
-- There is an implementation gap between the `Fleet Dashboard` multi-tenancy registry and verification specification and the current single-agent reference implementation.
-- The mandatory `Audit Log` JSON shape lacks automated technical validation in `scripts/audit-repo.js`.
-- **Audit Script Gaps**: `scripts/audit-repo.js` currently only audits files in the `agents/` directory. It does not yet enforce structural contracts (Required Headings, Refusal Criteria) on the `skills/` directory, nor does it perform JSON schema validation for the `Audit Log` content.
-- **Test Suite Gaps**: `tests/examples-smoke.test.js` lacks the mandated static smoke check validation for `NOEMI_DOCKER_SMOKE_*` environment variables required by Section 9.
-- **Structural vs. Substantive Compliance**: 100% of agent personas currently use identical placeholder text for the mandatory `Data Inventory` and `Refusal Criteria` sections. While these satisfy structural audit checks, they fail to provide role-specific technical and safety context required by the 4D framework.
-- **Reference Example Completeness**: Several reference examples, notably `examples/red-team-gauntlet/`, lack the actual assets (test vectors, prompts) required to execute the workflows described in agent specifications.
-- **Node.js 24 Baseline Drift**: Reference Docker configurations in `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to Node.js 20, drifting from the repository's mandatory Node.js 24 baseline.
-- **Persona Journal Inconsistency**: The `Journal` section is currently implemented in only 4 of 22 agent personas (`sentinel/core.md`, `bolt/core.md`, `bolt/nextjs-16.md`, `gatekeeper.md`), drifting from the goal of a standardized across-fleet learning mechanism.
-- **Reference Service Audit Log Drift**: Reference implementation services (e.g., `dashboard-ingest.js`) do not yet emit their own operational audit logs to `stderr` in the mandated JSON shape, hindering unified observability of the ingestion stack.
-- **Resilience Helper Integration Gap**: While `scripts/resilience_helpers.js` is provided as a reference, it is not yet integrated into the repository's own Node.js-based tooling (`audit-repo.js`, `generate_all.js`), nor utilized by the 22 agent personas.
-- **Sync Script Hardcoding**: `scripts/sync-upstream.sh` and its documentation contain hardcoded `[MyOrganization]` placeholders and fixed GitHub URLs, drifting from the project's goal of providing generalized, environment-agnostic reference assets.
-- **Audit Script Heading Case Sensitivity**: `scripts/audit-repo.js` expects "Refusal Criteria" but some personas or templates might use "Refusal criteria" or other case variations, causing potential audit failures or drift.
-- **Audit Log Placeholder Ubiquity**: 100% of agent personas and skills use the exact same placeholder JSON for the `Audit Log` section, satisfying structural audits but providing no substantive implementation guidance.
-- **Audit Script Structural Blindness**: `scripts/audit-repo.js` verifies the presence of the `Refusal Criteria` heading but ignores its required hierarchy (H3 subsection within `Rules & Constraints`), drifting from the mandate in `AGENTS.md`.
-- **Artifact Naming Drift**: `docs/n8n workflows/` contains spaces, drifting from the mandatory "English-first, slug-based naming" convention defined in `AGENTS.md`.
-- **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `scripts/verify-env.ps1` check for the presence of SecretOps CLIs but do not perform active authentication verification (e.g., `op whoami`), leading to potential runtime failures in "Fetch-on-Demand" mode.
-- **Audit Log Emission Gaps in Tooling**: Current build and audit utilities (`generate_all.js`, `audit-repo.js`) use standard `console.error` for errors but do not emit the mandated JSON Audit Log shape to `stderr`, drifting from the observability requirements set for agents and reference services.
-- **Agent Index Accuracy Drift**: `scripts/context_helpers.js` extracts only the first sentence of the 'Role' section for the Agent Index, which may lead to truncated or misleading descriptions for complex agents.
-- **Config-to-Asset Mapping Drift**: The repository lacks automated verification that `active_mcps` and `active_skills` entries in `mcp.config.json` actually correspond to existing files in `mcp-protocols/` and `skills/`.
-- **Skill Data Inventory Inconsistency**: Reusable skills currently lack the mandatory `Data Inventory` section required for agent personas, drifting from the 4D Description (D2) standard across the fleet.
+- **Historical Python Drift**: Legacy Python/Bash examples include mandatory "LEGACY/ILLUSTRATIVE" headers (Decision [2026-04-04]) but remain unmigrated to the Node.js baseline.
+- **Gatekeeper Implementation Gap**: The reference implementation in `examples/gatekeeper-deployment/` does not yet execute the full mutating action set (merges/closes) described in the persona.
+- **Docker e2e Skip Behavior**: The Docker e2e suite skips runtime checks if Docker is absent, rather than failing, which can mask environmental gaps in CI.
+- **Logging Protocol Implementation Gap**: `logging-mcp` is a dual-backend draft (Loki/n8n) but is not yet active in `mcp.config.json`, and reference services (e.g., `dashboard-ingest.js`) lack alignment with its schema.
+- **Reference implementation Path Inconsistency**: API path mismatch exists between the Fleet Dashboard persona (`/api/v1/reports`) and implementation (`/ingest`).
+- **Audit Script Structural Blindness**: `scripts/audit-repo.js` verifies the presence of `Refusal Criteria` but ignores its required H3 hierarchy within `Rules & Constraints` (Decision [2026-04-13]).
+- **Audit Script Gaps**: `scripts/audit-repo.js` only audits the `agents/` directory; it skips `skills/` and lacks JSON schema validation for the `Audit Log` section.
+- **Test Suite Gaps**: `tests/examples-smoke.test.js` lacks validation for mandated `NOEMI_DOCKER_SMOKE_*` environment variables (Requirement 9).
+- **Structural vs. Substantive Compliance**: All 22 agent personas use identical placeholder text for `Data Inventory`, `Refusal Criteria`, and `Audit Log`, satisfying structural audits but failing framework requirements.
+- **Artifact Naming Drift**: `docs/n8n workflows/` uses spaces, drifting from the mandatory English-first slug-based naming convention (AGENTS.md).
+- **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `.ps1` check for CLI tool presence but lack active authentication verification (e.g., `op whoami`).
+- **Node.js 24 Baseline Drift**: `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to Node.js 20.
+- **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by audit scripts.
+- **Skill Data Inventory Inconsistency**: Reusable skills lack the mandatory `Data Inventory` section required of agent personas, drifting from the D2 Description standard.
+- **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented but not yet injected by `scripts/generate_all.js` due to missing template markers.
+- **Agent Index Accuracy Drift**: `scripts/context_helpers.js` extracts only the first sentence of the `Role` section, which may truncate complex agent descriptions.
+- **Resilience Helper Integration Gap**: `scripts/resilience_helpers.js` exists as a reference but is not utilized by repository tools or agent personas.
+- **Sync Script Hardcoding**: `scripts/sync-upstream.sh` contains hardcoded `[MyOrganization]` placeholders.
+- **Audit Log Emission Gaps**: Build utilities (`generate_all.js`, `audit-repo.js`) and reference services lack machine-readable JSON Audit Log emission to `stderr`.

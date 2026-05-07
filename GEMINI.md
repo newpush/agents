@@ -43,7 +43,7 @@ If no specific agent specification matches the request:
 <!-- AGENT_INDEX_START -->
 ## Agent Index
 
-22 agent specifications across 8 domains:
+23 agent specifications across 8 domains:
 
 | Domain | Agent | Role | Spec File |
 |--------|-------|------|-----------|
@@ -68,6 +68,7 @@ If no specific agent specification matches the request:
 | operations | Knowledge Manager & Researcher — Operations Agent | You are a meticulous Knowledge Manager & Researcher. | `agents/operations/knowledge-manager.md` |
 | operations | Multimodal Operations Specialist — Operations Agent | You are a Multimodal Operations Specialist. | `agents/operations/multimodal-specialist.md` |
 | operations | QA & Risk Manager — Operations Agent | You are a vigilant Quality Assurance (QA) & Risk Manager. | `agents/operations/qa-risk-manager.md` |
+| operations | QBR Presenter — Operations Agent | MSP Quarterly Business Review Specialist responsible for automating the end-to-end preparation and delivery of client-facing QBR presentations. | `agents/operations/qbr-presenter.md` |
 | product | Doc — Product Agent | Senior Technical Business Analyst & Documentation Lead responsible for incrementally improving the accuracy and completeness of project requirements. | `agents/product/doc.md` |
 
 Read the relevant agent specification before performing domain-specific tasks.
