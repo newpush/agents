@@ -154,11 +154,12 @@
 - **Context:** The repository as a reference architecture must accurately reflect implementation gaps to guide future work.
 - **Impact:** Documented drifts for Node.js 24 baseline, `resilience_helpers.js` integration, `sync-upstream.sh` placeholders, and `audit-repo.js` script gaps.
 
-## [2026-05-02] Incremental Requirements Refinement (Structural & Naming Drift)
+## [2026-05-02] Holistic Codebase Alignment Audit & Refinement
 
-- **Decision:** Formally document verified drifts regarding structural audit gaps, artifact naming, and pre-flight validation depth.
-- **Context:** Incremental audit by "Doc" identified specific technical inconsistencies with `AGENTS.md` mandates that were not previously captured in `REQUIREMENTS.md`.
+- **Decision:** Perform a multi-track audit of the entire repository to identify and consolidate technical drifts in `REQUIREMENTS.md`.
+- **Context:** As the repository matures, structural, substantive, and environmental drifts have emerged across personas, skills, scripts, and examples.
 - **Impact:**
-  - Added "Audit Script Structural Blindness" to Known Limitations (scripts/audit-repo.js ignores H3 hierarchy mandate).
-  - Added "Artifact Naming Drift" to Known Limitations (spaces in `docs/n8n workflows/`).
-  - Added "Pre-flight Script Shallow Validation" to Known Limitations (lack of active authentication checks).
+  - Verified and documented 19 distinct technical drifts in `REQUIREMENTS.md`.
+  - Identified major gaps in automated audit coverage (skills directory, JSON schema validation, H3 hierarchy enforcement).
+  - Documented environmental drifts (Node.js 24 baseline in Docker, SecretOps authentication depth).
+  - Formalized the "Groundedness Rule" for documentation by verifying the dual-backend nature of the `logging-mcp` draft.
