@@ -62,15 +62,21 @@ function checkPersonas() {
             fail(`${agent.path} is missing a '## Role' section (required for the Agent Index).`);
         }
 
-        const missing = REQUIRED_AGENT_SECTIONS.filter(
-            (required) => !headings.some((heading) => heading === required || heading.startsWith(`${required} (`))
-        );
+        // Decision [2026-05-08]: Case-insensitive heading validation to avoid
+        // false-positive audit failures from minor casing differences.
+        const lowerHeadings = headings.map((heading) => heading.toLowerCase());
+        const missing = REQUIRED_AGENT_SECTIONS.filter((required) => {
+            const target = required.toLowerCase();
+            return !lowerHeadings.some(
+                (heading) => heading === target || heading.startsWith(`${target} (`)
+            );
+        });
         if (missing.length > 0) {
             fail(`${agent.path} is missing required sections: ${missing.join(', ')}`);
         }
 
         // Check mandatory Refusal Criteria subsection (aligned with main)
-        if (!headings.includes('Refusal Criteria')) {
+        if (!lowerHeadings.includes('refusal criteria')) {
             fail(`${agent.path} missing required subsection: Refusal Criteria`);
         }
     }

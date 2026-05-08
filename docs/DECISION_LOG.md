@@ -1,5 +1,19 @@
 # Decision Log
 
+## [2026-05-08] Clarification Backlog Resolution Wave
+
+- **Decision:** Resolve a batch of long-pending clarifications via durable answers and small, contained implementations. Drop duplicate questions from `CLARIFICATIONS.md` and update `REQUIREMENTS.md` to reflect newly closed gaps.
+- **Context:** The clarification queue had accumulated several entries that either restated earlier decisions, were already covered by existing requirements, or had clear implementations consistent with prior policy.
+- **Impact:**
+  - `logging-mcp` Standardized Log Shape vs. Audit Log: the two emissions remain distinct. Agents continue to emit the mandated Audit Log JSON to `stderr` (Decision [2026-04-13]); when `logging-mcp` is wired up, the Audit Log payload may be embedded under the protocol's `metadata` field rather than replacing it. The `logging-mcp` shape is not modified.
+  - `.env.template` vs `.env.example`: standardize on the root `.env.template` as the master variable inventory (and the canonical reference for 1Password/Infisical command wrappers in `AGENTS.md`); per-example `.env.example` files remain stack-local inventories used by their own `docker-compose.yml`. No conflict — both layers are intentional.
+  - Fleet Dashboard API Path: standardize on `/api/v1/reports` from the persona spec as the canonical contract. Reference implementations should migrate toward this path; the existing `/ingest` route remains a back-compat alias until the migration completes.
+  - Case-Insensitive Heading Audits: yes — `scripts/audit-repo.js` now performs case-insensitive matching for required persona headings to avoid false-positive failures from minor casing differences.
+  - Node.js 24 Baseline in Docker: yes — `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are updated from `node:20-alpine` to `node:24-alpine` to match the repository baseline.
+  - Skill Contract Audit Enforcement / Data Inventory for Skills: already mandated by `REQUIREMENTS.md` Section 2 (Reusable Skill Contract) and Decisions [2026-04-13]/[2026-04-22]. The remaining work is implementation of skill auditing in `scripts/audit-repo.js` and skill-file remediation; tracked as the existing "Audit Script Gaps" and "Skill Contract Substantive Drift" limitations.
+  - Persona Journal Section Standardization: deferred — keep `## Journal` optional. Promoting it to a mandatory section would require a fleet-wide migration that exceeds the scope of an automated wave; revisit after the Refusal Criteria/Data Inventory substantive remediation lands.
+- **Reference:** Automated clarification resolution wave; consistent with Decisions [2026-04-13], [2026-04-22], [2026-05-01], and [2026-05-02].
+
 ## [2026-04-02] Docker Image and Compose Version Update
 
 - **Decision:** Bump `pgvector` and `Casdoor` image tags to their current versions, correct repository names, and remove the obsolete `version` attribute from `docker-compose.yml` files.

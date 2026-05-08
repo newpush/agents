@@ -2,7 +2,7 @@
 # Project NoéMI - Executive Assistant (Cloud Run)
 
 # Multi-stage build for a lean production image
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 
 WORKDIR /usr/src/app
 
@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Final stage
-FROM node:20-alpine
+FROM node:24-alpine
 
 WORKDIR /usr/src/app
 
