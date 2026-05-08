@@ -53,7 +53,8 @@ Reusable skills in `skills/` must include the following required headings:
 - `Inputs`
 - `Procedure`
 - `Outputs`
-- `Rules & Constraints (4D Diligence)`
+- `Data Inventory` (Mandatory D2 requirement)
+- `Rules & Constraints (4D Diligence)` (including `### Refusal Criteria`)
 - `Boundaries`
 - `Audit Log` (Mandatory; see Decision [2026-04-22])
 
@@ -166,9 +167,10 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `.ps1` check for CLI tool presence but lack active authentication verification (e.g., `op whoami`).
 - **Node.js 24 Baseline Drift**: `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to Node.js 20.
 - **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by audit scripts.
-- **Skill Data Inventory Inconsistency**: Reusable skills lack the mandatory `Data Inventory` section required of agent personas, drifting from the D2 Description standard.
+- **Skill Contract Substantive Drift**: All 8 reusable skills lack the mandatory `Data Inventory` section and the `Refusal Criteria` H3 subsection.
 - **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented but not yet injected by `scripts/generate_all.js` due to missing template markers.
 - **Agent Index Accuracy Drift**: `scripts/context_helpers.js` extracts only the first sentence of the `Role` section, which may truncate complex agent descriptions.
 - **Resilience Helper Integration Gap**: `scripts/resilience_helpers.js` exists as a reference but is not utilized by repository tools or agent personas.
 - **Sync Script Hardcoding**: `scripts/sync-upstream.sh` contains hardcoded `[MyOrganization]` placeholders.
-- **Audit Log Emission Gaps**: Build utilities (`generate_all.js`, `audit-repo.js`) and reference services lack machine-readable JSON Audit Log emission to `stderr`.
+- **Audit Log Emission Gaps**: Build utilities (`generate_all.js`, `audit-repo.js`), reference services, and tools (e.g., `executive-assistant`) lack machine-readable JSON Audit Log emission to `stderr`.
+- **Legacy Header Absence in Tools**: `tools/roi/generate_roi_template.py` lacks the mandatory `LEGACY/ILLUSTRATIVE` header required for all non-Node.js scripts.

@@ -309,3 +309,17 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should the pre-flight scripts be updated to perform an active authentication check (e.g., `infisical whoami` or `op get user`)?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to include active authentication checks for the detected SecretOps provider.*
+
+### ❓ Question [2026-05-02] - Tool Baseline Alignment (Executive Assistant)
+**Context:** The `Executive Assistant` tool (`tools/executive-assistant/`) is implemented in Node.js but lacks several repository-wide standards: it uses Node 20 in its `Dockerfile` and does not emit structured JSON Audit Logs to `stderr`.
+**Ambiguity / Drift:** Internal tools that act as agentic interfaces are currently drifting from the baseline requirements set for "external" agents.
+**Question for Product Owner:** Should all Node.js-based tools in the `tools/` directory be required to adhere to the same technical baseline (Node 24) and observability standard (JSON Audit Log to `stderr`) as agent personas?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `tools/executive-assistant/` to use Node 24 and implement structured JSON Audit Log emission to `stderr` for all triage and configuration events.*
+
+### ❓ Question [2026-05-02] - Skill Contract Enforcement Depth
+**Context:** Reusable skills perform critical logic, but all 8 current skills lack the mandatory `Data Inventory` (D2) section and the `Refusal Criteria` H3 subsection.
+**Ambiguity / Drift:** There is a mismatch between the theoretical "Reusable Skill Contract" in `REQUIREMENTS.md` and the actual state of the skill library.
+**Question for Product Owner:** Should Jules perform a fleet-wide remediation of the `skills/` directory to bring all 8 skills into substantive compliance with the latest contract requirements?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a bulk update of all 8 files in `skills/` to include the mandatory `Data Inventory` section and `Refusal Criteria` H3 subsection.*
