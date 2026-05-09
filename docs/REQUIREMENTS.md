@@ -162,6 +162,7 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Audit Script Structural Blindness**: `scripts/audit-repo.js` verifies the presence of `Refusal Criteria` but ignores its required H3 hierarchy within `Rules & Constraints` (Decision [2026-04-13]).
 - **Audit Script Gaps**: `scripts/audit-repo.js` only audits the `agents/` directory; it skips `skills/` and lacks JSON schema validation for the `Audit Log` section.
 - **Test Suite Gaps**: `tests/examples-smoke.test.js` lacks validation for mandated `NOEMI_DOCKER_SMOKE_*` environment variables (Requirement 9).
+- **Missing Onboarding and Configuration Directories**: `clients/` and `.gatekeeper/` directories referenced in agent specifications (`Client Onboarding`, `Gatekeeper`, `QBR Presenter`) do not exist in the repository.
 - **Structural vs. Substantive Compliance**: All 22 agent personas use identical placeholder text for `Data Inventory`, `Refusal Criteria`, and `Audit Log`, satisfying structural audits but failing framework requirements.
 - **Artifact Naming Drift**: `docs/n8n workflows/` uses spaces, drifting from the mandatory English-first slug-based naming convention (AGENTS.md).
 - **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `.ps1` check for CLI tool presence but lack active authentication verification (e.g., `op whoami`).
