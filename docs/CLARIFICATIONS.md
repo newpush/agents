@@ -323,3 +323,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should Jules perform a fleet-wide remediation of the `skills/` directory to bring all 8 skills into substantive compliance with the latest contract requirements?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Perform a bulk update of all 8 files in `skills/` to include the mandatory `Data Inventory` section and `Refusal Criteria` H3 subsection.*
+
+### ❓ Question [2026-05-02] - Missing Referenced Assets and Directories
+**Context:** Several agent personas (e.g., `Client Onboarding`, `Gatekeeper`, `QBR Presenter`) reference directories like `clients/` and `.gatekeeper/` which do not currently exist in the repository. Additionally, `red-team-gauntlet` test vectors are missing.
+**Ambiguity / Drift:** The agent specifications describe workflows and configurations that cannot be executed or validated because the supporting infrastructure and assets are absent.
+**Question for Product Owner:** Should we prioritize creating these directory structures with `.gitignore` placeholders and populating the test vectors to make the repository specifications "runnable" for external orchestrators?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Create the missing `clients/` and `.gatekeeper/` directories with `.gitignore` placeholders and populate `examples/red-team-gauntlet/` with the starter test vectors required for agent validation.*
+
+### ❓ Question [2026-05-02] - Node.js 24 Baseline Enforcement in Reference Examples
+**Context:** The repository mandates Node.js 24 as the technical baseline, but several reference Docker images (e.g., `gatekeeper-deployment`, `executive-assistant`) are still pinned to Node 20.
+**Ambiguity / Drift:** This environmental drift creates inconsistency between the repository's core logic and its deployment examples, potentially leading to runtime issues or security gaps.
+**Question for Product Owner:** Should all reference Dockerfiles and Docker Compose files be updated to `node:24-alpine` immediately to ensure baseline compliance across the entire ecosystem?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a bulk update of all `Dockerfile` and `docker-compose.yml` files in the repository to use `node:24-alpine` as the standard base image.*
+
+### ❓ Question [2026-05-02] - Identity Provider Implementation Gap
+**Context:** `DECISION_LOG.md` and `REQUIREMENTS.md` mention Casdoor as the reference identity layer for multi-tenant fleet deployments.
+**Ambiguity / Drift:** While `docker-compose.yml` in `examples/fleet-deployment/` includes a Casdoor service, there is no evidence of Casdoor integration logic in any of the repository's scripts or agent personas.
+**Question for Product Owner:** Should we implement a basic `casdoor-mcp` or add authentication middleware to the reference services to make the identity layer requirement "truthful"?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Draft a `casdoor-mcp` protocol and implement basic JWT validation middleware for the Fleet Dashboard reference services.*

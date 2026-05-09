@@ -159,7 +159,8 @@
 - **Decision:** Perform a multi-track audit of the entire repository to identify and consolidate technical drifts in `REQUIREMENTS.md`.
 - **Context:** As the repository matures, structural, substantive, and environmental drifts have emerged across personas, skills, scripts, and examples.
 - **Impact:**
-  - Verified and documented 19 distinct technical drifts in `REQUIREMENTS.md`.
+  - Verified and documented 20 distinct technical drifts in `REQUIREMENTS.md`.
+  - Identified missing `clients/` and `.gatekeeper/` directories referenced in agent personas.
   - Identified major gaps in automated audit coverage (skills directory, JSON schema validation, H3 hierarchy enforcement).
   - Documented environmental drifts (Node.js 24 baseline in Docker, SecretOps authentication depth).
   - Formalized the "Groundedness Rule" for documentation by verifying the dual-backend nature of the `logging-mcp` draft.
