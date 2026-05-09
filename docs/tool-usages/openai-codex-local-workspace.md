@@ -74,6 +74,43 @@ After the CLI is working, use the app's local-environment features to define sha
 
 Unlike Gemini's Google Workspace extension path, the clean Codex story for Google Workspace and Microsoft 365 is the MCP route.
 
+### 4. Understand App Automations
+
+Codex CLI has no first-class scheduling subcommand. For local unattended schedules, use the operating system scheduler with `codex exec` and the same `op run` / `infisical run` SecretOps wrapper described in [`secure-secret-management.md`](secure-secret-management.md).
+
+Codex App Automations are different: they are app-hosted schedules managed in the Codex App UI. Treat them as useful for local recurring work while the app and project are available, not as a cloud scheduler that runs independently of the workstation.
+
+### 5. Keep Automation Auth Outside The Worktree
+
+Codex App Automations may run in fresh worktrees. Treat those worktrees as disposable execution checkouts, not as places to store durable login state.
+
+Put reusable tool authentication in stable user-level locations instead:
+
+- Codex state and config: `$CODEX_HOME`, normally `~/.codex`
+- Codex user config: `$CODEX_HOME/config.toml`
+- tool-specific config directories outside the repo, for example `~/.codex/gcloud` or `~/.config/gcloud`
+
+When an automation depends on a tool that looks up credentials from the environment, set those paths explicitly in Codex's shell environment policy:
+
+```toml
+# ~/.codex/config.toml
+[shell_environment_policy]
+inherit = "all"
+set = { CODEX_HOME = "/Users/<your-username>/.codex", CLOUDSDK_CONFIG = "/Users/<your-username>/.codex/gcloud" }
+```
+
+Then authenticate the tool into that stable directory:
+
+```bash
+export CODEX_HOME="${HOME}/.codex"
+export CLOUDSDK_CONFIG="${CODEX_HOME}/gcloud"
+
+gcloud auth login
+gcloud auth application-default login
+```
+
+This solves the "new worktree every run" problem because every run points back to the same credential directory. It does **not** remove the need to keep the credential itself healthy. Browser-based user tokens can still expire or require reauthentication; for non-interactive production-grade runs, prefer scoped machine identities, service accounts, workload identity federation, or service-account impersonation where the target platform supports it.
+
 ## Strengths
 
 - strong local agent execution model
