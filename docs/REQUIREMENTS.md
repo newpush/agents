@@ -164,9 +164,7 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Test Suite Gaps**: `tests/examples-smoke.test.js` lacks validation for mandated `NOEMI_DOCKER_SMOKE_*` environment variables (Requirement 9).
 - **Missing Onboarding and Configuration Directories**: `clients/` and `.gatekeeper/` directories referenced in agent specifications (`Client Onboarding`, `Gatekeeper`, `QBR Presenter`) do not exist in the repository.
 - **Structural vs. Substantive Compliance**: All 22 agent personas use identical placeholder text for `Data Inventory`, `Refusal Criteria`, and `Audit Log`, satisfying structural audits but failing framework requirements.
-- **Artifact Naming Drift**: `docs/n8n workflows/` uses spaces, drifting from the mandatory English-first slug-based naming convention (AGENTS.md).
 - **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `.ps1` check for CLI tool presence but lack active authentication verification (e.g., `op whoami`).
-- **Node.js 24 Baseline Drift**: `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` are still pinned to Node.js 20.
 - **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by audit scripts.
 - **Skill Contract Substantive Drift**: All 8 reusable skills lack the mandatory `Data Inventory` section and the `Refusal Criteria` H3 subsection.
 - **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented but not yet injected by `scripts/generate_all.js` due to missing template markers.
@@ -174,4 +172,3 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Resilience Helper Integration Gap**: `scripts/resilience_helpers.js` exists as a reference but is not utilized by repository tools or agent personas.
 - **Sync Script Hardcoding**: `scripts/sync-upstream.sh` contains hardcoded `[MyOrganization]` placeholders.
 - **Audit Log Emission Gaps**: Build utilities (`generate_all.js`, `audit-repo.js`), reference services, and tools (e.g., `executive-assistant`) lack machine-readable JSON Audit Log emission to `stderr`.
-- **Legacy Header Absence in Tools**: `tools/roi/generate_roi_template.py` lacks the mandatory `LEGACY/ILLUSTRATIVE` header required for all non-Node.js scripts.
