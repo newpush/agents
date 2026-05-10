@@ -164,3 +164,13 @@
   - Identified major gaps in automated audit coverage (skills directory, JSON schema validation, H3 hierarchy enforcement).
   - Documented environmental drifts (Node.js 24 baseline in Docker, SecretOps authentication depth).
   - Formalized the "Groundedness Rule" for documentation by verifying the dual-backend nature of the `logging-mcp` draft.
+
+## [2026-05-10] Technical Drift Remediation and Artifact Normalization
+
+- **Decision:** Remediate verified technical drifts regarding artifact naming, Node.js baselines, and legacy documentation headers.
+- **Context:** A whole-codebase audit identified several areas where the implementation had drifted from the mandates in `AGENTS.md` and `REQUIREMENTS.md`.
+- **Impact:**
+  - Renamed `docs/n8n workflows/` to `docs/n8n-workflows/` to satisfy the English-first, slug-based naming convention.
+  - Updated `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` to Node.js 24 images, ensuring fleet-wide baseline compliance.
+  - Applied the mandatory `LEGACY/ILLUSTRATIVE` header to `tools/roi/generate_roi_template.py`.
+  - Updated `REQUIREMENTS.md` to reflect these remediations and maintain an accurate list of known limitations.

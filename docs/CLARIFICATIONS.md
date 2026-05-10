@@ -344,3 +344,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should we implement a basic `casdoor-mcp` or add authentication middleware to the reference services to make the identity layer requirement "truthful"?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Draft a `casdoor-mcp` protocol and implement basic JWT validation middleware for the Fleet Dashboard reference services.*
+
+### ❓ Question [2026-05-10] - Substantive Persona Remediation Strategy
+**Context:** All 22 agent personas and 8 reusable skills currently use identical placeholder text for the `Data Inventory` and `Refusal Criteria` sections.
+**Ambiguity / Drift:** While structurally compliant (the headings exist), the repository is in substantive drift from the 4D Description (D2) and Refusal Principle mandates.
+**Question for Product Owner:** Should Jules be authorized to perform a fleet-wide "substantive remediation" to replace these placeholders with role-specific, technically accurate content?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a bulk substantive remediation of all agent personas in `agents/` and skills in `skills/` to replace placeholder Data Inventory and Refusal Criteria with role-specific content.*
+
+### ❓ Question [2026-05-10] - Audit Script Coverage Expansion
+**Context:** `scripts/audit-repo.js` currently only audits the `agents/` directory and ignores `skills/`. It also lacks JSON schema validation for the `Audit Log` section.
+**Ambiguity / Drift:** The repository's own gates are currently blind to structural or substantive drift within the skill library and the mandatory Audit Log shape.
+**Question for Product Owner:** Should we prioritize expanding `audit-repo.js` to include the `skills/` directory and strict JSON schema validation for the Audit Log section?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to audit the `skills/` directory and implement strict JSON schema validation for the `Audit Log` section across all personas and skills.*
+
+### ❓ Question [2026-05-10] - Missing Infrastructure Assets for Agent Validation
+**Context:** Several agent specifications (e.g., `Client Onboarding`, `Gatekeeper`, `QBR Presenter`) reference directories (`clients/`, `.gatekeeper/`) and test vectors (`red-team-gauntlet`) that do not exist.
+**Ambiguity / Drift:** These agents describe workflows that cannot be executed or validated because the supporting infrastructure and reference data are missing.
+**Question for Product Owner:** Should Jules be tasked with creating these directory structures (with `.gitignore` placeholders) and populating the test vectors to make the agent specifications "truthful" and runnable?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Create the missing `clients/` and `.gatekeeper/` directories with `.gitignore` placeholders and populate `examples/red-team-gauntlet/` with the starter test vectors required for agent validation.*
