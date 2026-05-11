@@ -174,3 +174,14 @@
   - Updated `examples/gatekeeper-deployment/docker-compose.yml` and `tools/executive-assistant/Dockerfile` to Node.js 24 images, ensuring fleet-wide baseline compliance.
   - Applied the mandatory `LEGACY/ILLUSTRATIVE` header to `tools/roi/generate_roi_template.py`.
   - Updated `REQUIREMENTS.md` to reflect these remediations and maintain an accurate list of known limitations.
+
+## [2026-05-11] Reality Check and Documentation Refinement
+
+- **Decision:** Perform a granular verification of documented technical drifts and refine `REQUIREMENTS.md` and `AGENTS.md` to ensure absolute accuracy.
+- **Context:** An autonomous audit verified several persistent implementation gaps (missing directories, shallow pre-flight checks, template marker duplication) that require explicit tracking.
+- **Impact:**
+  - Confirmed `clients/`, `.gatekeeper/`, and `templates/tiers/` remain absent.
+  - Confirmed `scripts/context_helpers.js` truncates `Role` sections, impacting Agent Index richness.
+  - Confirmed `scripts/audit-repo.js` lacks `skills/` coverage and structured JSON Audit Log validation.
+  - Confirmed `templates/context/GEMINI.template.md` contains duplicate marker pairs.
+  - Documented the need for active SecretOps authentication verification in `scripts/verify-env.sh` and `scripts/verify-env.ps1`.

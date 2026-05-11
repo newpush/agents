@@ -365,3 +365,17 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should Jules be tasked with creating these directory structures (with `.gitignore` placeholders) and populating the test vectors to make the agent specifications "truthful" and runnable?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Create the missing `clients/` and `.gatekeeper/` directories with `.gitignore` placeholders and populate `examples/red-team-gauntlet/` with the starter test vectors required for agent validation.*
+
+### ❓ Question [2026-05-11] - Pre-flight Authentication Check Implementation
+**Context:** `AGENTS.md` now mandates active authentication checks in pre-flight scripts, but `scripts/verify-env.sh` and `scripts/verify-env.ps1` currently only check for tool presence.
+**Ambiguity / Drift:** Builders may pass pre-flight but fail at runtime due to expired SecretOps sessions. We need to standardize the specific commands used for `whoami` checks across Infisical and 1Password.
+**Question for Product Owner:** Should we implement `infisical whoami` and `op user get --me` as the canonical verification commands, and should a failure in these checks be a "Hard Fail" (exit 1) or a "Warning"?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to include active authentication checks using the approved SecretOps commands.*
+
+### ❓ Question [2026-05-11] - Template Marker Duplication Resolution
+**Context:** `templates/context/GEMINI.template.md` contains duplicate marker pairs for `GLOBAL_MANDATES` and `AGENT_INDEX`.
+**Ambiguity / Drift:** This causes the generated `GEMINI.md` to have redundant sections, increasing token usage and potential agent confusion.
+**Question for Product Owner:** Should we standardize on a single placement for these markers (e.g., at the end of the file) and remove the duplicates?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Remove duplicate `GLOBAL_MANDATES` and `AGENT_INDEX` markers from `templates/context/GEMINI.template.md` and ensure a clean, single-injection structure.*
