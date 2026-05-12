@@ -259,7 +259,7 @@ Add new questions below this line using the required format.
 **Ambiguity / Drift:** A successful pre-flight check may still lead to runtime failures if the user is not logged in, as "Fetch-on-Demand" commands (`infisical run`, `op run`) will fail to resolve secrets.
 **Question for Product Owner:** Should the pre-flight verification scripts be updated to include an authentication check (e.g., `infisical whoami` or `op get user`) for the detected SecretOps provider?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to perform an active authentication check for Infisical or 1Password when in `builder` or `docker` modes.*
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to include an active authentication check for Infisical or 1Password when in `builder` or `docker` modes.*
 
 ### ❓ Question [2026-05-02] - Sync Script Generalization
 **Context:** `scripts/sync-upstream.sh` and `docs/UPSTREAM_SYNC.md` contain hardcoded `[MyOrganization]` placeholders and use fixed repository URLs.
@@ -379,3 +379,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should we standardize on a single placement for these markers (e.g., at the end of the file) and remove the duplicates?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Remove duplicate `GLOBAL_MANDATES` and `AGENT_INDEX` markers from `templates/context/GEMINI.template.md` and ensure a clean, single-injection structure.*
+
+### ❓ Question [2026-05-12] - Skill Contract Substantive Drift and Placeholder Audit
+**Context:** A reality check confirms that all 8 reusable skills in the `skills/` directory lack the mandated `## Data Inventory` and `### Refusal Criteria` sections. Furthermore, the `Audit Log` section in these skills consists entirely of placeholder JSON.
+**Ambiguity / Drift:** While the repository mandates these sections in `AGENTS.md` and `REQUIREMENTS.md`, the actual skill library is in substantive non-compliance, leaving reusable logic components without the required data definitions and safety gates.
+**Question for Product Owner:** Should Jules perform a fleet-wide update of the `skills/` directory to replace these placeholders and missing sections with technically accurate, role-specific content?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a bulk substantive remediation of the `skills/` directory to include mandatory `Data Inventory` and `Refusal Criteria` sections and replace Audit Log placeholders.*
+
+### ❓ Question [2026-05-12] - Internal Tool Observability Gap
+**Context:** `AGENTS.md` mandates that all personas emit a JSON Audit Log to `stderr`. However, internal Node.js tools like `tools/executive-assistant/server.js` and reference services like `examples/gatekeeper-deployment/dashboard-ingest.js` currently only use unstructured `console.log/error`.
+**Ambiguity / Drift:** Internal tools that act as agentic gateways or ingestion sinks lack the observability standard required of the agents they serve.
+**Question for Product Owner:** Should we enforce the structured JSON Audit Log emission to `stderr` for all internal tools and reference services to ensure a unified observability stack?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Implement structured JSON Audit Log emission to `stderr` for `executive-assistant` and `dashboard-ingest` services.*
+
+### ❓ Question [2026-05-12] - Pre-flight Script Logic Contradiction
+**Context:** `scripts/verify-env.sh` contains two redundant blocks for SecretOps CLI verification. The first block treats the absence of both `infisical` and `op` as a hard failure (`ALL_GOOD=false` and exit 1), while the second block treats it as a warning for "local repo-only prompts."
+**Ambiguity / Drift:** This contradiction causes the script to fail for beginners who may not yet need SecretOps for local exploration, violating the "beginner-safe" requirement.
+**Question for Product Owner:** Should we remove the first "hard-fail" block and standardize on the "warning" behavior for pre-flight SecretOps checks to support local-first onboarding?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Refactor `scripts/verify-env.sh` and `scripts/verify-env.ps1` to remove redundant SecretOps checks and ensure consistent "Warning" behavior for missing vault CLIs.*
