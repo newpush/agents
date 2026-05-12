@@ -165,6 +165,8 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Missing Onboarding and Configuration Directories**: `clients/`, `.gatekeeper/`, and `templates/tiers/` directories referenced in agent specifications (`Client Onboarding`, `Gatekeeper`, `QBR Presenter`) do not exist in the repository.
 - **Structural vs. Substantive Compliance**: All 22 agent personas use identical placeholder text for `Data Inventory`, `Refusal Criteria`, and `Audit Log`, satisfying structural audits but failing framework requirements.
 - **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `.ps1` check for CLI tool presence but lack active authentication verification (e.g., `op whoami`).
+- **Pre-flight Logic Contradiction**: `scripts/verify-env.sh` contains redundant and contradictory SecretOps checks; one block treats the absence of `infisical` or `op` as a hard failure (exit 1), while a subsequent block treats it as a warning for local-only work.
+- **Internal Tool Observability Gap**: Node.js tools in `tools/` and reference services in `examples/` lack structured JSON Audit Log emission to `stderr`, drifting from the observability standards set for agent personas.
 - **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by audit scripts.
 - **Skill Contract Substantive Drift**: All 8 reusable skills lack the mandatory `Data Inventory` section and the `Refusal Criteria` H3 subsection.
 - **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented but not yet injected by `scripts/generate_all.js` due to missing template markers.
