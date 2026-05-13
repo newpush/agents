@@ -49,7 +49,7 @@ Add new questions below this line using the required format.
 **Ambiguity / Drift:** While complementary, it's unclear if the `Audit Log` is intended to be *part* of the `logging-mcp` payload (e.g., inside `metadata`) or if they are two separate emissions that need to be reconciled.
 **Question for Product Owner:** Should the `logging-mcp` protocol be updated to explicitly incorporate the mandated `Audit Log` JSON shape as the primary payload for "success" events?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
-**🤖 Jules Action Prompt:** *Align the `logging-mcp` protocol definition with the mandatory `Audit Log` JSON shape to ensure technical consistency across the observability stack.*
+**🤖 Jules Action Prompt:** *Align the `logging-mcp` protocol definition with the mandated `Audit Log` JSON shape to ensure technical consistency across the observability stack.*
 
 ### ❓ Question [2026-04-04] - Onboarding Directory Drift
 **Context:** The `Client Onboarding` persona specification (`agents/operations/client-onboarding.md`) references a `templates/tiers/` directory for tier templates and a `clients/` directory for provisioned client configurations.
@@ -268,7 +268,7 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Generalize `scripts/sync-upstream.sh` to read its configuration from environment variables or a local config file, and update `docs/UPSTREAM_SYNC.md` to reflect the new standardized usage.*
 
-### ❓ Question [2026-05-01] - Audit Log Emission to Stderr in Reference Services
+### ❓ Question [2026-04-05] - Audit Log Emission to Stderr in Reference Services
 **Context:** `REQUIREMENTS.md` mandates that agents emit JSON Audit Logs to `stderr`.
 **Ambiguity / Drift:** Reference implementation services that perform agent-like ingestion and processing, such as `examples/gatekeeper-deployment/dashboard-ingest.js`, do not currently emit their own audit logs to `stderr` in the mandated JSON shape.
 **Question for Product Owner:** Should reference implementation services also be required to emit JSON audit logs to `stderr` to align with the observability standards set for agents?
@@ -400,3 +400,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should we remove the first "hard-fail" block and standardize on the "warning" behavior for pre-flight SecretOps checks to support local-first onboarding?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Refactor `scripts/verify-env.sh` and `scripts/verify-env.ps1` to remove redundant SecretOps checks and ensure consistent "Warning" behavior for missing vault CLIs.*
+
+### ❓ Question [2026-05-13] - RFP Split Naming Convention Remediation
+**Context:** `AGENTS.md` mandates English-first, slug-based naming. `examples/rfp-split/` contains several files like `Section_1_General_Information.pdf` that violate this rule.
+**Ambiguity / Drift:** These files represent technical drift from the repository's naming standards and may cause issues in some environments.
+**Question for Product Owner:** Should Jules perform a bulk rename of the assets in `examples/rfp-split/` to align with the slug-based naming convention (e.g., `section-1-general-information.pdf`)?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Rename all files in `examples/rfp-split/` to follow the English-first, slug-based naming convention.*
+
+### ❓ Question [2026-05-13] - Skill Directory Audit Enforcement
+**Context:** `scripts/audit-repo.js` currently skips the `skills/` directory.
+**Ambiguity / Drift:** This allows skills to drift from the mandatory structural contract (Audit Log, Data Inventory, Refusal Criteria) without being caught by the repository's gates.
+**Question for Product Owner:** Should we prioritize expanding `audit-repo.js` to include a structural and substantive audit of the `skills/` directory?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to discover and audit all files in `skills/` for structural and substantive compliance.*
+
+### ❓ Question [2026-05-13] - Pre-flight Active Authentication Checks
+**Context:** `AGENTS.md` mandates active authentication checks in pre-flight scripts, but `verify-env.sh` and `verify-env.ps1` currently only check for CLI presence.
+**Ambiguity / Drift:** We need to confirm the canonical commands for authentication verification.
+**Question for Product Owner:** Should we use `infisical whoami` and `op user get --me` as the standard authentication checks, and should their failure be treated as a "Hard Fail" (exit 1) in `builder` and `docker` modes?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to implement active authentication checks with the specified commands.*
