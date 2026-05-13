@@ -175,3 +175,6 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Resilience Helper Integration Gap**: `scripts/resilience_helpers.js` exists as a reference but is not utilized by repository tools or agent personas.
 - **Sync Script Hardcoding**: `scripts/sync-upstream.sh` contains hardcoded `[MyOrganization]` placeholders.
 - **Audit Log Emission Gaps**: Build utilities (`generate_all.js`, `audit-repo.js`), reference services, and tools (e.g., `executive-assistant`) lack machine-readable JSON Audit Log emission to `stderr`.
+- **Naming Convention Drift (Examples)**: `examples/rfp-split/` contains files with spaces and uppercase (e.g., `Section_1_General_Information.pdf`), drifting from the English-first, slug-based naming mandate.
+- **Pre-flight Active Authentication Gap**: `scripts/verify-env.sh` and `scripts/verify-env.ps1` check for SecretOps CLI presence but lack active authentication verification (e.g., `infisical whoami` or `op get user`).
+- **Audit Script JSON Schema Blindness**: `scripts/audit-repo.js` verifies the presence of the "Audit Log" heading but does not validate the mandated JSON schema or its technical emission to `stderr`.
