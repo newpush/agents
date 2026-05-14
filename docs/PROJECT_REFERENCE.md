@@ -543,6 +543,8 @@ Three principles govern the stack:
 
 For n8n integration patterns, see [`docs/tool-usages/n8n-expert-persona.md`](tool-usages/n8n-expert-persona.md).
 
+For the hosted Labs appliance, environment boundaries, and when to use Labs vs. a production cluster, see [`docs/tool-usages/newpush-labs.md`](tool-usages/newpush-labs.md).
+
 ---
 
 ## Chapter 13: Partnerships and Credentials
