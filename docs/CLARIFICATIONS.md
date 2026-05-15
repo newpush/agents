@@ -421,3 +421,17 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should we use `infisical whoami` and `op user get --me` as the standard authentication checks, and should their failure be treated as a "Hard Fail" (exit 1) in `builder` and `docker` modes?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to implement active authentication checks with the specified commands.*
+
+### ❓ Question [2026-05-15] - Test Suite Reinforcement of API Path Drift
+**Context:** The requirements and `Fleet Dashboard` persona mandate `/api/v1/reports` as the ingestion endpoint. However, `examples/gatekeeper-deployment/dashboard-ingest.js` implements `/ingest`, and `tests/examples-smoke.test.js` explicitly asserts that `/ingest` is the correct path.
+**Ambiguity / Drift:** The test suite is currently "codifying" a technical drift, making it harder to remediate the inconsistency without breaking the build.
+**Question for Product Owner:** Should the test suite be updated to reflect the persona mandate (`/api/v1/reports`) even if the current implementation still uses `/ingest`, or should we wait until the implementation is ready to change?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `tests/examples-smoke.test.js` to expect `/api/v1/reports` and coordinate with the implementation fix in `dashboard-ingest.js`.*
+
+### ❓ Question [2026-05-15] - Skill-to-Agent Referential Integrity
+**Context:** Agent personas reference reusable skills in their `Workflow` sections using the `**Skill:** [path/to/skill]` pattern. Currently, `scripts/audit-repo.js` does not verify that these referenced skills exist or are enabled in `mcp.config.json`.
+**Ambiguity / Drift:** This allows for "broken links" in agent specifications where an agent depends on a skill that has been renamed, deleted, or is not available in the current context.
+**Question for Product Owner:** Should the audit script be enhanced to perform referential integrity checks on skill references within agent workflows?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse agent workflows for skill references and verify their existence in the `skills/` directory.*
