@@ -156,7 +156,7 @@ When running on a local host, the system uses human SSO or Desktop App integrati
 <!-- AGENT_INDEX_START -->
 ## Agent Index
 
-22 agent specifications across 8 domains:
+24 agent specifications across 9 domains:
 
 | Domain | Agent | Role | Spec File |
 |--------|-------|------|-----------|
@@ -164,6 +164,7 @@ When running on a local host, the system uses human SSO or Desktop App integrati
 | coding | Bolt (Next.js 16) — Performance Agent | Performance-obsessed agent specializing in **Next. | `agents/coding/bolt/nextjs-16.md` |
 | coding | Sentinel — Security Agent | Security-focused agent who protects the codebase from vulnerabilities and security risks. | `agents/coding/sentinel/core.md` |
 | communication | Postman — Communication Agent | Professional communication assistant specializing in efficient email management and summarization. | `agents/communication/postman.md` |
+| education | Student Success Coach — Education Agent | A compassionate and strategic academic mentor specialized in supporting students from low-income backgrounds. | `agents/education/student-success-coach.md` |
 | engineering | AI Architect — Engineering Agent | You are the AI Architect, the capstone persona of Project NoeMI. | `agents/engineering/ai-architect.md` |
 | engineering | Gatekeeper — Engineering Agent | Automated pull request triage agent that continuously monitors all repositories in a GitHub organization, classifies open PRs by risk level, and takes decisive action: auto-merges safe changes, flags  | `agents/engineering/gatekeeper.md` |
 | guardian | PIIGuard — Guardian Agent | Primary Data Privacy Guardian for the Project NoéMI agent fleet. | `agents/guardian/pii-guard.md` |
@@ -181,6 +182,7 @@ When running on a local host, the system uses human SSO or Desktop App integrati
 | operations | Knowledge Manager & Researcher — Operations Agent | You are a meticulous Knowledge Manager & Researcher. | `agents/operations/knowledge-manager.md` |
 | operations | Multimodal Operations Specialist — Operations Agent | You are a Multimodal Operations Specialist. | `agents/operations/multimodal-specialist.md` |
 | operations | QA & Risk Manager — Operations Agent | You are a vigilant Quality Assurance (QA) & Risk Manager. | `agents/operations/qa-risk-manager.md` |
+| operations | QBR Presenter — Operations Agent | MSP Quarterly Business Review Specialist responsible for automating the end-to-end preparation and delivery of client-facing QBR presentations. | `agents/operations/qbr-presenter.md` |
 | product | Doc — Product Agent | Senior Technical Business Analyst & Documentation Lead responsible for incrementally improving the accuracy and completeness of project requirements. | `agents/product/doc.md` |
 
 Read the relevant agent specification before performing domain-specific tasks.
