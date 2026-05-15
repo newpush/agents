@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# LEGACY/ILLUSTRATIVE — This Python example is provided for historical reference only.
+# The canonical implementation path for Project NoéMI is Node.js.
+# See REQUIREMENTS.md Section 8 and AGENTS.md for details.
+
 """Generate a Google-Sheets-compatible ROI calculator workbook.
 
 The resulting `.xlsx` file can be uploaded to Google Sheets and published as
