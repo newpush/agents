@@ -178,3 +178,5 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Naming Convention Drift (Examples)**: `examples/rfp-split/` contains files with spaces and uppercase (e.g., `Section_1_General_Information.pdf`), drifting from the English-first, slug-based naming mandate.
 - **Pre-flight Active Authentication Gap**: `scripts/verify-env.sh` and `scripts/verify-env.ps1` check for SecretOps CLI presence but lack active authentication verification (e.g., `infisical whoami` or `op get user`).
 - **Audit Script JSON Schema Blindness**: `scripts/audit-repo.js` verifies the presence of the "Audit Log" heading but does not validate the mandated JSON schema or its technical emission to `stderr`.
+- **Test Suite Reinforcement of Technical Drift**: `tests/examples-smoke.test.js` reinforces the `/ingest` path drift by asserting it as the expected endpoint, despite the Fleet Dashboard persona mandating `/api/v1/reports`.
+- **Skill-to-Agent Reference Integrity Gap**: `scripts/audit-repo.js` does not verify that skills referenced in agent `Workflow` sections exist in the `skills/` directory or are enabled in `mcp.config.json`.
