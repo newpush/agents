@@ -170,7 +170,6 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by audit scripts.
 - **Skill Contract Substantive Drift**: All 8 reusable skills lack the mandatory `Data Inventory` section and the `Refusal Criteria` H3 subsection.
 - **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented but not yet injected by `scripts/generate_all.js` due to missing template markers.
-- **Template Marker Duplication**: `templates/context/GEMINI.template.md` contains duplicate marker pairs for `GLOBAL_MANDATES` and `AGENT_INDEX`.
 - **Agent Index Accuracy Drift**: `scripts/context_helpers.js` extracts only the first sentence of the `Role` section, which may truncate complex agent descriptions.
 - **Resilience Helper Integration Gap**: `scripts/resilience_helpers.js` exists as a reference but is not utilized by repository tools or agent personas.
 - **Sync Script Hardcoding**: `scripts/sync-upstream.sh` contains hardcoded `[MyOrganization]` placeholders.

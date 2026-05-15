@@ -421,3 +421,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should we use `infisical whoami` and `op user get --me` as the standard authentication checks, and should their failure be treated as a "Hard Fail" (exit 1) in `builder` and `docker` modes?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to implement active authentication checks with the specified commands.*
+
+### ❓ Question [2026-05-14] - Audit Log Machine-Readable Output
+**Context:** `REQUIREMENTS.md` mandates that build and audit utilities emit machine-readable JSON Audit Logs to `stderr`. Currently, `scripts/audit-repo.js` only provides human-readable console output and lacks the mandated JSON emission.
+**Ambiguity / Drift:** This prevents automated orchestrators from programmatically consuming the audit results, creating an observability gap for the repository's own governance tools.
+**Question for Product Owner:** Should the `Audit Log` emitted to `stderr` by `audit-repo.js` and `generate_all.js` follow the exact same schema as agent personas (`{ "task": "...", "inputs": [], "actions": [], "risks": [], "result": "..." }`), or should they use a tool-specific schema that includes granular file-level results?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/audit-repo.js` and `scripts/generate_all.js` to emit a structured JSON audit log to `stderr` using the approved schema.*
+
+### ❓ Question [2026-05-14] - Sync Script Generalization and Naming
+**Context:** `scripts/sync-upstream.sh` is intended to be a reusable utility for forking organizations, but it contains a hardcoded `[MyOrganization]` placeholder.
+**Ambiguity / Drift:** The presence of hardcoded organization names hinders reusability and creates extra work for builders who must manually patch the script.
+**Question for Product Owner:** Should we generalize `sync-upstream.sh` to use environment variables (e.g., `NOEMI_ORG_NAME`) for the organization identifier, and should we also rename it to `sync-upstream.sh` (removing the organizational assumption from the file itself)?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Refactor `scripts/sync-upstream.sh` to remove hardcoded placeholders and use environment variables for configuration.*
+
+### ❓ Question [2026-05-14] - Skill Directory Audit Strategy
+**Context:** All 8 reusable skills in the `skills/` directory currently lack the mandatory `Data Inventory` and `Refusal Criteria` sections.
+**Ambiguity / Drift:** While `audit-repo.js` could be extended to fail on these missing sections today, it would cause a total audit failure for the entire repository.
+**Question for Product Owner:** Should we implement the `skills/` audit as a "Warning" initially to allow for incremental remediation, or should we treat it as a "Hard Fail" immediately to force baseline compliance?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Extend `scripts/audit-repo.js` to include the `skills/` directory with the chosen failure severity.*
