@@ -167,8 +167,8 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `.ps1` check for CLI tool presence but lack active authentication verification (e.g., `op whoami`).
 - **Pre-flight Logic Contradiction**: `scripts/verify-env.sh` contains redundant and contradictory SecretOps checks; one block treats the absence of `infisical` or `op` as a hard failure (exit 1), while a subsequent block treats it as a warning for local-only work.
 - **Internal Tool Observability Gap**: Node.js tools in `tools/` and reference services in `examples/` lack structured JSON Audit Log emission to `stderr`, drifting from the observability standards set for agent personas.
-- **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by audit scripts.
-- **Skill Contract Substantive Drift**: All 8 reusable skills lack the mandatory `Data Inventory` section and the `Refusal Criteria` H3 subsection.
+- **Skill Contract Substantive Drift**: All 8 reusable skills and the `SKILL_TEMPLATE.md` lack the mandatory `Data Inventory` section and the `Refusal Criteria` H3 subsection.
+- **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by `scripts/audit-repo.js`, leading to potential "silent failures" in context generation.
 - **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented but not yet injected by `scripts/generate_all.js` due to missing template markers.
 - **Template Marker Duplication**: `templates/context/GEMINI.template.md` contains duplicate marker pairs for `GLOBAL_MANDATES` and `AGENT_INDEX`.
 - **Agent Index Accuracy Drift**: `scripts/context_helpers.js` extracts only the first sentence of the `Role` section, which may truncate complex agent descriptions.

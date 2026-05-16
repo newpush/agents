@@ -435,3 +435,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should the audit script be enhanced to perform referential integrity checks on skill references within agent workflows?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to parse agent workflows for skill references and verify their existence in the `skills/` directory.*
+
+### ❓ Question [2026-05-16] - Skill Template and Library Substantive Remediation
+**Context:** A whole-codebase audit verified that `skills/SKILL_TEMPLATE.md` and all 8 reusable skills in the `skills/` directory are missing the mandated `## Data Inventory` and `### Refusal Criteria` sections.
+**Ambiguity / Drift:** The skill library is in substantive drift from the 4D Description (D2) and Refusal Principle mandates, which are required for production-ready logic.
+**Question for Product Owner:** Should Jules be tasked with a fleet-wide "substantive remediation" of the skill library to add these missing sections and replace Audit Log placeholders with role-specific content?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Perform a bulk substantive remediation of `skills/SKILL_TEMPLATE.md` and all files in `skills/` to incorporate `Data Inventory` and `Refusal Criteria` and replace Audit Log placeholders.*
+
+### ❓ Question [2026-05-16] - Referential Integrity Enforcement for Context Configuration
+**Context:** `mcp.config.json` defines the `active_mcps` and `active_skills` injected into context. Currently, `scripts/audit-repo.js` does not verify that these entries actually map to existing files.
+**Ambiguity / Drift:** Typos or missing files in the configuration lead to incomplete context generation without triggering an audit failure, creating a "silent failure" mode in the CI/CD pipeline.
+**Question for Product Owner:** Should the repository's audit gate be enhanced to perform strict "referential integrity" checks ensuring all configured MCPs and skills exist in their respective directories?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Enhance `scripts/audit-repo.js` to validate that every entry in `mcp.config.json` maps to a valid file in `mcp-protocols/` or `skills/`.*
+
+### ❓ Question [2026-05-16] - Test Suite Alignment with API Mandates
+**Context:** The `Fleet Dashboard` persona mandates `/api/v1/reports`, but the implementation uses `/ingest`. `tests/examples-smoke.test.js` currently asserts that `/ingest` is the correct path.
+**Ambiguity / Drift:** The test suite is codifying and reinforcing a technical drift, making it harder to remediate the API path inconsistency.
+**Question for Product Owner:** Should the test suite be updated to expect the mandated `/api/v1/reports` path (triggering a deliberate failure until the implementation is fixed) or should the persona be updated to match the implementation?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `tests/examples-smoke.test.js` to expect `/api/v1/reports` and implement the corresponding fix in `examples/gatekeeper-deployment/dashboard-ingest.js`.*
