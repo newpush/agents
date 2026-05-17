@@ -456,3 +456,24 @@ Add new questions below this line using the required format.
 **Question for Product Owner:** Should the test suite be updated to expect the mandated `/api/v1/reports` path (triggering a deliberate failure until the implementation is fixed) or should the persona be updated to match the implementation?
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `tests/examples-smoke.test.js` to expect `/api/v1/reports` and implement the corresponding fix in `examples/gatekeeper-deployment/dashboard-ingest.js`.*
+
+### ❓ Question [2026-05-17] - Generator Script Redundancy
+**Context:** The repository contains `scripts/generate_all.js`, `scripts/generate_gemini.js`, and `scripts/generate_claude.js`. `generate_all.js` appears to perform the same logic for both Gemini and Claude by calling shared helpers.
+**Ambiguity / Drift:** Maintenance overhead is increased by having three entry points for context generation. It's unclear if `generate_gemini.js` and `generate_claude.js` should be deprecated in favor of the single `generate_all.js` orchestrator.
+**Question for Product Owner:** Should we deprecate `scripts/generate_gemini.js` and `scripts/generate_claude.js` and standardize on `scripts/generate_all.js` for all context generation tasks?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Remove `scripts/generate_gemini.js` and `scripts/generate_claude.js`, ensuring `scripts/generate_all.js` is the sole, fully-featured entry point for context generation.*
+
+### ❓ Question [2026-05-17] - Logging MCP Reference Implementation Gap
+**Context:** `mcp-protocols/logging-mcp.md` exists as a dual-backend draft, but it is not active in `mcp.config.json`, and reference services like `dashboard-ingest.js` do not yet adhere to its schema.
+**Ambiguity / Drift:** The observability "standard" is documented but not implemented in the repository's own reference services, creating a gap between architectural theory and implementation truth.
+**Question for Product Owner:** Should Jules be tasked with a "substantive implementation" of the `logging-mcp` pattern across the repository's reference services and build tools?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Activate `logging-mcp` in `mcp.config.json` and refactor `dashboard-ingest.js` and build utilities to emit logs according to the protocol's standardized JSON shape.*
+
+### ❓ Question [2026-05-17] - Pre-flight Active Authentication Checks
+**Context:** `AGENTS.md` mandates active authentication checks in pre-flight scripts, but `verify-env.sh` and `verify-env.ps1` currently only check for CLI presence.
+**Ambiguity / Drift:** We need to confirm the canonical commands for authentication verification.
+**Question for Product Owner:** Should we use `infisical whoami` and `op user get --me` as the standard authentication checks, and should their failure be treated as a "Hard Fail" (exit 1) in `builder` and `docker` modes?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to implement active authentication checks with the specified commands.*
