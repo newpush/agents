@@ -162,15 +162,15 @@ Lifecycle docs, templates, and governance text must not reorder these dimensions
 - **Audit Script Structural Blindness**: `scripts/audit-repo.js` verifies the presence of `Refusal Criteria` but ignores its required H3 hierarchy within `Rules & Constraints` (Decision [2026-04-13]).
 - **Audit Script Gaps**: `scripts/audit-repo.js` only audits the `agents/` directory; it skips `skills/` and lacks JSON schema validation for the `Audit Log` section.
 - **Test Suite Gaps**: `tests/examples-smoke.test.js` lacks validation for mandated `NOEMI_DOCKER_SMOKE_*` environment variables (Requirement 9).
-- **Missing Onboarding and Configuration Directories**: `clients/`, `.gatekeeper/`, and `templates/tiers/` directories referenced in agent specifications (`Client Onboarding`, `Gatekeeper`, `QBR Presenter`) do not exist in the repository.
+- **Missing Onboarding and Configuration Directories**: `clients/`, `.gatekeeper/`, and `templates/tiers/` directories referenced in agent specifications (`Client Onboarding`, `Gatekeeper`, `QBR Presenter`) do not exist in the repository root.
 - **Structural vs. Substantive Compliance**: All 22 agent personas use identical placeholder text for `Data Inventory`, `Refusal Criteria`, and `Audit Log`, satisfying structural audits but failing framework requirements.
-- **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `.ps1` check for CLI tool presence but lack active authentication verification (e.g., `op whoami`).
+- **Pre-flight Script Shallow Validation**: `scripts/verify-env.sh` and `scripts/verify-env.ps1` check for CLI tool presence but lack active authentication verification (e.g., `infisical whoami` or `op get user`).
 - **Pre-flight Logic Contradiction**: `scripts/verify-env.sh` contains redundant and contradictory SecretOps checks; one block treats the absence of `infisical` or `op` as a hard failure (exit 1), while a subsequent block treats it as a warning for local-only work.
-- **Internal Tool Observability Gap**: Node.js tools in `tools/` and reference services in `examples/` lack structured JSON Audit Log emission to `stderr`, drifting from the observability standards set for agent personas.
-- **Skill Contract Substantive Drift**: All 8 reusable skills and the `SKILL_TEMPLATE.md` lack the mandatory `Data Inventory` section and the `Refusal Criteria` H3 subsection.
+- **Internal Tool Observability Gap**: Node.js tools in `tools/` (e.g., `executive-assistant`) and reference services in `examples/` (e.g., `dashboard-ingest.js`) lack structured JSON Audit Log emission to `stderr`, drifting from the observability standards set for agent personas.
+- **Skill Contract Substantive Drift**: All 8 reusable skills and the `SKILL_TEMPLATE.md` lack the mandatory `## Data Inventory` section and the `### Refusal Criteria` H3 subsection.
 - **Config-to-Asset Mapping Drift**: `mcp.config.json` entries for active MCPs/skills are not verified for existence by `scripts/audit-repo.js`, leading to potential "silent failures" in context generation.
-- **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented but not yet injected by `scripts/generate_all.js` due to missing template markers.
-- **Template Marker Duplication**: `templates/context/GEMINI.template.md` contains duplicate marker pairs for `GLOBAL_MANDATES` and `AGENT_INDEX`.
+- **Framework Injection Gap**: `Value Lenses` and `Operating Profiles` are documented in `docs/frameworks/` but not yet injected by `scripts/generate_all.js` due to missing template markers in `templates/context/`.
+- **Template Marker Duplication**: `templates/context/GEMINI.template.md` contains duplicate marker pairs for `GLOBAL_MANDATES` and `AGENT_INDEX`, causing redundant section injection.
 - **Agent Index Accuracy Drift**: `scripts/context_helpers.js` extracts only the first sentence of the `Role` section, which may truncate complex agent descriptions.
 - **Resilience Helper Integration Gap**: `scripts/resilience_helpers.js` exists as a reference but is not utilized by repository tools or agent personas.
 - **Sync Script Hardcoding**: `scripts/sync-upstream.sh` contains hardcoded `[MyOrganization]` placeholders.
