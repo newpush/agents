@@ -422,6 +422,27 @@ Add new questions below this line using the required format.
 **Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
 **🤖 Jules Action Prompt:** *Update `scripts/verify-env.sh` and `scripts/verify-env.ps1` to implement active authentication checks with the specified commands.*
 
+### ❓ Question [2026-05-17] - Branch Protection Enforcement Mandate
+**Context:** The repository contains `scripts/setup-branch-protection.sh` to automate GitHub branch protection rules, aligning with the `develop` -> `main` workflow mandated in `REQUIREMENTS.md` Section 9.
+**Ambiguity / Drift:** While the workflow is mandated, the use of the enforcement script itself is not a requirement. This leads to a "soft enforcement" where the script exists but its execution is not verified or required for repository governance.
+**Question for Product Owner:** Should the execution of `scripts/setup-branch-protection.sh` (or an equivalent automated enforcement) be added as a mandatory requirement for "Governance and Trust Controls" in `REQUIREMENTS.md`?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `REQUIREMENTS.md` Section 7 to include mandatory branch protection enforcement using the provided script and add a validation check to `audit-repo.js` to ensure protection is active via the GitHub API.*
+
+### ❓ Question [2026-05-17] - Phase 0 Assessment Kit Inventory Drift
+**Context:** `REQUIREMENTS.md` Section 1 specifies a list of templates for the Phase 0 Assessment Kit (security/AI readiness guides, consent, report-of-findings, roadmap, rubric).
+**Ambiguity / Drift:** The `docs/phase-zero-assessment/` directory contains additional critical assets: `PRACTITIONER_NOTES.md` and `network-security-assessment.md`. These are currently "extra-canonical" and not tracked by the requirement suite.
+**Question for Product Owner:** Should the Phase 0 Assessment Kit requirement in `REQUIREMENTS.md` be expanded to explicitly include `PRACTITIONER_NOTES.md` and `network-security-assessment.md`?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Update `REQUIREMENTS.md` Section 1 to include `PRACTITIONER_NOTES.md` and `network-security-assessment.md` in the canonical Phase 0 Assessment Kit inventory.*
+
+### ❓ Question [2026-05-17] - AI Model Version Baseline for Reference Workflows
+**Context:** Reference n8n workflows (e.g., `examples/workflows/rfp-responder.json`) and smoke tests (`tests/examples-smoke.test.js`) are pinned to `models/gemini-2.5-flash`.
+**Ambiguity / Drift:** There is no "AI Model Baseline" requirement in `REQUIREMENTS.md` or `AGENTS.md` comparable to the "Node.js 24 Baseline." This makes it unclear if `gemini-2.5-flash` is the mandated reference model for all NoéMI examples or if it's just a placeholder.
+**Question for Product Owner:** Should the repository establish a canonical AI Model Baseline (e.g., Gemini 2.5 Flash) for all reference workflows and examples to ensure predictable performance and cost during validation?
+**Answer:** [LEAVE BLANK FOR HUMAN TO FILL]
+**🤖 Jules Action Prompt:** *Define a "Reference AI Model Baseline" in `AGENTS.md` and `REQUIREMENTS.md` and update all example workflows and smoke tests to adhere to this standard.*
+
 ### ❓ Question [2026-05-15] - Test Suite Reinforcement of API Path Drift
 **Context:** The requirements and `Fleet Dashboard` persona mandate `/api/v1/reports` as the ingestion endpoint. However, `examples/gatekeeper-deployment/dashboard-ingest.js` implements `/ingest`, and `tests/examples-smoke.test.js` explicitly asserts that `/ingest` is the correct path.
 **Ambiguity / Drift:** The test suite is currently "codifying" a technical drift, making it harder to remediate the inconsistency without breaking the build.
